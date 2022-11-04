@@ -1,0 +1,30 @@
+/*================== FOOTER ==================== */
+#footer{
+    height: 60px;
+    background: $color--background;
+    color: $color--text2;
+    .logo{
+        width: 100%;
+        max-width: 120px;
+        cursor: pointer;
+    }
+    .redes{
+        font-size: 1.4em;
+        .red{
+            @include transition(400ms);
+            cursor: pointer;
+            &:hover{
+                &.facebook{
+                    color: $color--facebook;
+                }
+                &.twitter{
+                    color: $color--twitter;
+                }
+                &.youtube{
+                    color: $color--youtube;
+                }
+            }
+        }
+    }
+}
+/*================== FOOTER ==================== */

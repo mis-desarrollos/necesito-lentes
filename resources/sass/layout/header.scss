@@ -1,0 +1,48 @@
+/*================== HEADER ==================== */
+#header{
+	background: $color--background;
+	height: 80px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+	 .logo{
+        img{
+            max-height: 100%;
+            max-width: 100%;
+            cursor: pointer;
+        }
+    }
+    .menu{
+        nav{
+            ul{
+                li{
+                    font-size: 1.2em;
+                    padding-left: 0.8rem;
+                    padding-right: 0.8rem;
+                    color: $color--text2;
+                    cursor: pointer;
+                    position: relative;
+                    font-weight: bold;
+                    &:after{
+                        @extend %horizontal-align;
+                        @include transition(400ms);
+                        content: "";
+                        bottom: 8px;
+                        width: 0;
+                        height: 2px;
+                        background: $color--text2;
+                    }
+                    &:hover:after{
+                        width: 50%;
+                    }
+                    &.router-link-exact-active:after{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+/*================== HEADER ==================== */
