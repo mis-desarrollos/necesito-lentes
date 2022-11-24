@@ -71,7 +71,35 @@ class MenusTableSeeder extends Seeder
             "position"=>6
         ]);
 
-        /*DB::table('menus')->insert([
+        DB::table('menus')->insert([
+            "name"=>"Comunicados",
+            "description"=>"Comunicados de tu sitio",
+            "route"=>"/blogs",
+            "icon"=>"fa fa-newspaper",
+            "permissions_name"=>"blogs",
+            "position"=>7
+        ]);
+
+        DB::table('menus')->insert([
+            "name"=>"Banners",
+            "description"=>"Banners de tu sitio",
+            "route"=>"/banners",
+            "icon"=>"fa fa-images",
+            "permissions_name"=>"banners",
+            "position"=>8
+        ]);
+
+        DB::table('menus')->insert([
+            "name"=>"Examenes de la vista",
+            "description"=>"Examenes de la vista de tu sitio",
+            "route"=>"/exams",
+            "icon"=>"fa fa-eye",
+            "permissions_name"=>"exams",
+            "position"=>9
+        ]);
+
+
+        DB::table('menus')->insert([
             "name"=>"Extras",
             "description"=>"Configuraciones extra de tu sitio",
             "route"=>"/extras",
@@ -99,7 +127,7 @@ class MenusTableSeeder extends Seeder
             "permissions_name"=>"configuration"
         ]);
 
-        DB::table('menus')->insert([
+        /*DB::table('menus')->insert([
             "name"=>"Preguntas frecuentes",
             "description"=>"",
             "route"=>"/preguntas-frecuentes",

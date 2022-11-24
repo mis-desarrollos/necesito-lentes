@@ -3,7 +3,7 @@
 	<div :class="{'logging-in login-form-fall':inPetition,'page-body login-page':2>1}">
 	<div class="login-container">
 
-		<div class="login-header login-caret" style="background-color: white;">
+		<div class="login-header login-caret" style="background-color: #7dc7ba;">
 
 			<div class="login-content">
 
@@ -25,7 +25,7 @@
 			<div :style="'width:'+percent+'%'"></div>
 		</div>
 
-		<div class="login-form" style="background-color: #7dc7ba;">
+		<div class="login-form" >
 
 			<div class="login-content">
 

@@ -72,6 +72,7 @@ Route::prefix('admin')->group(function () {
 		Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index']);
 		Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class, 'show']);
 		Route::post('/order/{id}', [App\Http\Controllers\OrderController::class, 'setStatus']);
+		Route::post('/ordersFilter', [App\Http\Controllers\OrderController::class, 'Filter']);
 
 		//productos
 		Route::get('/products', [App\Http\Controllers\ProductController::class, 'index']);
@@ -156,7 +157,17 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/opticians/{id}', [App\Http\Controllers\OpticianController::class, 'destroy']);
 		Route::delete('/opticians', [App\Http\Controllers\OpticianController::class, 'destroyMultiple']);
 
+		//examenes
+        Route::get('/exams', [App\Http\Controllers\ExamController::class, 'index']);
+		Route::get('/exams/{id}', [App\Http\Controllers\ExamController::class, 'show']);
+		Route::post('/exams', [App\Http\Controllers\ExamController::class, 'store']);
+		Route::post('/exams/{id}', [App\Http\Controllers\ExamController::class, 'update']);
+		Route::delete('/exams/{id}', [App\Http\Controllers\ExamController::class, 'destroy']);
+		Route::delete('/exams', [App\Http\Controllers\ExamController::class, 'destroyMultiple']);
+
 	});//sanctum
+
+	Route::get('/ordersExport', [App\Http\Controllers\OrderController::class, 'exportExcel']);
 });
 
 

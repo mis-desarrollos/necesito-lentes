@@ -20,6 +20,8 @@ import * as VueGoogleMaps from 'vue2-google-maps';
 
 import VueGoogleAutocomplete from 'vue-google-autocomplete';
 
+import SweetModal from 'sweet-modal-vue/src/plugin.js';
+
 //Funcion para añadirlas a Vue
 function fire(Vue){
 	//Vee-validate
@@ -35,6 +37,7 @@ function fire(Vue){
 	Vue.use(Vue2Editor);
 	Vue.component('vue-dropzone', vue2Dropzone);
 
+	Vue.use(SweetModal);
 	//Google map
 	Vue.use(VueGoogleMaps, {
 		load: {

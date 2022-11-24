@@ -20,7 +20,7 @@ const MyRouter = new VueRouter({
 	    { path: '/roles/edit/:id', component: require(page+'configuration/permissions.vue').default, meta:{title:"Editar"}},
 
 		//Banners
-	    { path: '/banners', component: require(page+'banners/index.vue').default, meta:{title:"Bnners"}},
+	    { path: '/banners', component: require(page+'banners/index.vue').default, meta:{title:"Banners"}},
 	    { path: '/banners/edit', component: require(page+'banners/edit.vue').default, meta:{title:"Editar"}},//Cuando no envian parametro
 	    { path: '/banners/edit/:id', component: require(page+'banners/edit.vue').default, meta:{title:"Editar"}},//Con parametro
 
@@ -79,6 +79,9 @@ const MyRouter = new VueRouter({
 		{ path: '/opticians', component: require(page+'opticians/index.vue').default, meta:{title:"Opticas" }},
 		{ path: '/opticians/edit', component: require(page+'opticians/edit.vue').default, meta:{title:"Editar" }},
 		{ path: '/opticians/edit/:id', component: require(page+'opticians/edit.vue').default, meta:{title:"Editar"}},
+
+		//examanes
+		{ path: '/exams', component: require(page+'exams/index.vue').default, meta:{title:"Examanes de la vista" }},
 	  ]
 });
 
