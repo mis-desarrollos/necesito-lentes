@@ -1,0 +1,25 @@
+.btn-s1 {
+  padding: 0.65rem 1.50rem;
+  min-width: 124px;
+  font-size: 1.10rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 34px;
+  text-align: center;
+
+  &.btn-lg {
+    padding: 0.75rem 2.1rem;
+    font-size: 1.5rem;
+  }
+
+  &.bg-blue {
+    color: #ffffff !important;
+    border-color: $blue;
+    background-color: $blue;
+
+    &:hover, &:focus, &:active {
+      border-color: $blue2 !important;
+      background-color: $blue2 !important;
+    }
+  }
+}

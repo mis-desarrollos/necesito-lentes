@@ -1,2 +1,33 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600;700&display=swap');
+
+.h1s {
+  font-size: 2.9rem !important;
+}
+
+.f-w-300 {
+  font-weight: 300 !important;
+}
+.f-w-400 {
+  font-weight: 400 !important;
+}
+.f-w-500 {
+  font-weight: 500 !important;
+}
+.f-w-600 {
+  font-weight: 600 !important;
+}
+.f-w-700 {
+  font-weight: 700 !important;
+}
+.f-w-800 {
+  font-weight: 800 !important;
+}
+
+.txt-blue {
+  color: $blue !important;
+}
+.txt-white {
+  color: #ffffff !important;
+}

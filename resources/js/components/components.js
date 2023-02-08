@@ -7,7 +7,7 @@
 const page="./page/";
 // import slick from 'vue-slick';
 import BootstrapVue from 'bootstrap-vue';
-// import VueAwesomeSwiper from 'vue-awesome-swiper';
+import VueAwesomeSwiper from 'vue-awesome-swiper';
 // import VueSweetalert2 from 'vue-sweetalert2';
 
 function plugin (Vue) {
@@ -16,7 +16,7 @@ function plugin (Vue) {
 	Vue.component('my-footer', require(page+'shared/footer.vue').default);
 	// Vue.component('slick',slick);
   Vue.use(BootstrapVue);
-  // Vue.use(VueAwesomeSwiper, /* { default options with global component } */);
+  Vue.use(VueAwesomeSwiper, /* { default options with global component } */);
   // Vue.use(VueSweetalert2);
 }
 

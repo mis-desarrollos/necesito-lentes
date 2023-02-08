@@ -1,0 +1,27 @@
+#get-glasses-page {
+
+  .first-section {
+    position: relative;
+    padding: 35px 0;
+    min-height: calc(100vh - 198px - 87px);
+    text-align: center;
+    background-color: $aqua;
+
+    .form-group-qa {
+      text-align: left;
+
+      >label, >legend {
+        color: $blue;
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      >div {
+        .custom-radio {
+          display: block;
+        }
+      }
+    }
+  }
+
+}
