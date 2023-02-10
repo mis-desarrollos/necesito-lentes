@@ -1,9 +1,13 @@
 #get-glasses-page {
 
-  .first-section {
+  .box-step-wr {
     position: relative;
     padding: 35px 0;
     min-height: calc(100vh - 198px - 87px);
+  }
+
+  .first-section {
+    position: relative;
     text-align: center;
     background-color: $aqua;
 
@@ -12,14 +16,276 @@
 
       >label, >legend {
         color: $blue;
-        font-size: 1.3rem;
-        font-weight: 700;
+      }
+    }
+  }
+
+  .second-section {
+    position: relative;
+    text-align: center;
+    background-color: $yellow;
+
+    .box-top {
+      position: relative;
+
+      >.container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
       }
 
-      >div {
-        .custom-radio {
-          display: block;
+      .col-price {
+        padding-left: 0;
+        text-align: left;
+
+        .box {
+          display: inline-flex;
+          flex-wrap: wrap;
+          align-items: center;
+          padding-left: 15px;
+          color: #ffffff;
+          background-color: $blue;
+
+          .c1 {
+            @include flex-center-xy();
+            margin-left: 5px;
+            width: 44px;
+            height: 44px;
+            color: $blue;
+            font-family: "Kanit", "Raleway", sans-serif;
+            font-size: 2.0rem;
+            font-weight: 500;
+            border-radius: 50%;
+            background-color: #ffffff;
+          }
+
+          .c2 {
+            padding: 12px 22px 11px 16px;
+            margin-right: 22px;
+            min-width: 170px;
+            border-right: 1px solid #373154;
+
+            h6 {
+              font-size: 1.1rem;
+              font-weight: 600;
+              letter-spacing: 1px;
+              line-height: 1;
+            }
+
+            h5 {
+              font-weight: 800;
+              font-size: 2.3rem;
+              letter-spacing: 1px;
+              line-height: 1.0;
+            }
+          }
+
+          .c3 {
+            padding-right: 32px;
+            min-width: 150px;
+
+            h5 {
+              font-family: "Kanit", "Raleway", sans-serif;
+              font-size: 2.2rem;
+              font-weight: 500;
+              letter-spacing: 1px;
+            }
+          }
         }
+      }
+
+      .col-icon {
+        line-height: 1;
+
+        .icon {
+          display: inline-block;
+          width: 40px;
+          height: 32px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-image: url('../images/pages/test/icon-glasses.svg');
+        }
+      }
+    }
+
+    .step-2 {
+      padding-bottom: 501px;
+
+      .packages-con {
+        margin-top: 40px;
+        margin-bottom: 15px;
+
+        .form-group {
+          >div {
+            display: flex;
+            flex-wrap: wrap;
+          }
+        }
+
+        >.row {
+          justify-content: center;
+        }
+
+        .col-package{
+          padding: 15px;
+          margin: 0;
+
+          .box-package {
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+            line-height: 1;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            @include transition(100ms);
+
+            .box-name {
+              display: block;
+              padding: 18px 16px 20px 16px;
+              min-height: 105px;
+              text-align: center;
+              border-radius: 9px 9px 0 0;
+
+              .lab {
+                font-size: 1.3rem;
+                font-weight: 600;
+              }
+
+              .name {
+                font-size: 2.2rem;
+                font-weight: 800;
+                line-height: 1;
+                letter-spacing: 1px;
+              }
+            }
+
+            .box-info {
+              display: block;
+              min-height: 175px;
+              padding: 22px 20px;
+              color: $blue;
+              font-size: 1.05rem;
+              font-weight: 500;
+
+              ul, ol {
+                padding-left: 15px;
+                margin-bottom: 0;
+
+                li {
+                  margin-bottom: 6px;
+                }
+              }
+            }
+
+            .box-price {
+              display: block;
+              padding: 9px 15px 9px 15px;
+              text-align: center;
+              border-radius: 0 0 9px 9px;
+
+              h5 {
+                font-family: "Kanit", "Raleway", sans-serif;
+                font-size: 2.2rem;
+                font-weight: 500;
+                letter-spacing: 1px;
+              }
+            }
+
+            &.blue {
+              border-color: $blue;
+
+              .box-name {
+                color: #ffffff;
+                background-color: $blue;
+              }
+
+              .box-price {
+                color: #ffffff;
+                background-color: $blue;
+              }
+            }
+
+            &.aqua {
+              border-color: #006b78;
+
+              .box-name {
+                color: #ffffff;
+                background-color: #006b78;
+              }
+
+              .box-price {
+                color: #ffffff;
+                background-color: #006b78;
+              }
+            }
+
+            &.white {
+              border-color: #eaedec;
+
+              .box-name {
+                color: $blue;
+                background-color: #eaedec;
+              }
+
+              .box-price {
+                color: $blue;
+                background-color: #eaedec;
+              }
+            }
+          }
+
+          >.custom-control-label {
+            width: 100%;
+            cursor: pointer;
+            @include transition(250ms);
+
+            &:before, &:after {
+              display: none;
+            }
+
+            &:hover {
+              opacity: 0.9;
+            }
+          }
+
+          .custom-control-input:checked ~ .custom-control-label {
+            opacity: 1 !important;
+
+            .box-package {
+              @include cp-property(transform, scale(1.08));
+
+              &.blue {
+                box-shadow: 0 0 7px rgba(0, 34, 107, 0.9);
+              }
+
+              &.aqua {
+                box-shadow: 0 0 7px rgba(0, 107, 120, 0.9);
+              }
+
+              &.white {
+                box-shadow: 0 0 7px rgba(234, 237, 236, 0.9);
+              }
+            }
+          }
+        }
+
+        @media screen and (max-width: 575px) {
+          .col-package {
+            padding-top: 8px;
+            padding-bottom: 8px;
+          }
+        }
+      }
+
+      .box-head {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 501px;
+        background-size: contain !important;
+        background-image: url('../images/pages/test/head-1.png');
       }
     }
   }

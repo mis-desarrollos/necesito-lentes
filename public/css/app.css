@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Kanit:wght@600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap);
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -29836,7 +29836,7 @@ readers do not read off random characters that represent icons */
 body, html {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
-  color: #3a3d46;
+  color: #222121;
 }
 
 #app.loading-page {
@@ -29973,6 +29973,34 @@ input[type=number] {
 .btn-s1.bg-blue:hover, .btn-s1.bg-blue:focus, .btn-s1.bg-blue:active {
   border-color: #011b53 !important;
   background-color: #011b53 !important;
+}
+
+.custom-radio-group > label, .custom-radio-group > legend {
+  padding-bottom: 3px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.custom-radio-group > div .custom-radio {
+  display: block;
+  padding-left: 1.7rem;
+  margin: 3px 0;
+}
+.custom-radio-group > div .custom-radio .custom-control-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.custom-radio-group > div .custom-radio .custom-control-label:before {
+  left: -1.7rem;
+  border: 1px solid #222121;
+  background-color: transparent;
+}
+.custom-radio-group > div .custom-radio .custom-control-label:after {
+  left: -1.7rem;
+}
+.custom-radio-group > div .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #222121 !important;
+  border-color: #222121;
 }
 
 #header {
@@ -30552,10 +30580,13 @@ input[type=number] {
   }
 }
 
-#get-glasses-page .first-section {
+#get-glasses-page .box-step-wr {
   position: relative;
   padding: 35px 0;
   min-height: calc(100vh - 198px - 87px);
+}
+#get-glasses-page .first-section {
+  position: relative;
   text-align: center;
   background-color: #67c9bb;
 }
@@ -30564,9 +30595,232 @@ input[type=number] {
 }
 #get-glasses-page .first-section .form-group-qa > label, #get-glasses-page .first-section .form-group-qa > legend {
   color: #00226b;
-  font-size: 1.3rem;
-  font-weight: 700;
 }
-#get-glasses-page .first-section .form-group-qa > div .custom-radio {
+#get-glasses-page .second-section {
+  position: relative;
+  text-align: center;
+  background-color: #ff9c00;
+}
+#get-glasses-page .second-section .box-top {
+  position: relative;
+}
+#get-glasses-page .second-section .box-top > .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#get-glasses-page .second-section .box-top .col-price {
+  padding-left: 0;
+  text-align: left;
+}
+#get-glasses-page .second-section .box-top .col-price .box {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-left: 15px;
+  color: #ffffff;
+  background-color: #00226b;
+}
+#get-glasses-page .second-section .box-top .col-price .box .c1 {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: 5px;
+  width: 44px;
+  height: 44px;
+  color: #00226b;
+  font-family: "Kanit", "Raleway", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+#get-glasses-page .second-section .box-top .col-price .box .c2 {
+  padding: 12px 22px 11px 16px;
+  margin-right: 22px;
+  min-width: 170px;
+  border-right: 1px solid #373154;
+}
+#get-glasses-page .second-section .box-top .col-price .box .c2 h6 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+#get-glasses-page .second-section .box-top .col-price .box .c2 h5 {
+  font-weight: 800;
+  font-size: 2.3rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+#get-glasses-page .second-section .box-top .col-price .box .c3 {
+  padding-right: 32px;
+  min-width: 150px;
+}
+#get-glasses-page .second-section .box-top .col-price .box .c3 h5 {
+  font-family: "Kanit", "Raleway", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+#get-glasses-page .second-section .box-top .col-icon {
+  line-height: 1;
+}
+#get-glasses-page .second-section .box-top .col-icon .icon {
+  display: inline-block;
+  width: 40px;
+  height: 32px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../images/pages/test/icon-glasses.svg");
+}
+#get-glasses-page .second-section .step-2 {
+  padding-bottom: 501px;
+}
+#get-glasses-page .second-section .step-2 .packages-con {
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+#get-glasses-page .second-section .step-2 .packages-con .form-group > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+#get-glasses-page .second-section .step-2 .packages-con > .row {
+  justify-content: center;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package {
+  padding: 15px;
+  margin: 0;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  line-height: 1;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  transition: all 100ms ease-in-out;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-name {
   display: block;
+  padding: 18px 16px 20px 16px;
+  min-height: 105px;
+  text-align: center;
+  border-radius: 9px 9px 0 0;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-name .lab {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-name .name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-info {
+  display: block;
+  min-height: 175px;
+  padding: 22px 20px;
+  color: #00226b;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-info ul, #get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-info ol {
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-info ul li, #get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-info ol li {
+  margin-bottom: 6px;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-price {
+  display: block;
+  padding: 9px 15px 9px 15px;
+  text-align: center;
+  border-radius: 0 0 9px 9px;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package .box-price h5 {
+  font-family: "Kanit", "Raleway", sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.blue {
+  border-color: #00226b;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.blue .box-name {
+  color: #ffffff;
+  background-color: #00226b;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.blue .box-price {
+  color: #ffffff;
+  background-color: #00226b;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.aqua {
+  border-color: #006b78;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.aqua .box-name {
+  color: #ffffff;
+  background-color: #006b78;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.aqua .box-price {
+  color: #ffffff;
+  background-color: #006b78;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.white {
+  border-color: #eaedec;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.white .box-name {
+  color: #00226b;
+  background-color: #eaedec;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .box-package.white .box-price {
+  color: #00226b;
+  background-color: #eaedec;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package > .custom-control-label {
+  width: 100%;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package > .custom-control-label:before, #get-glasses-page .second-section .step-2 .packages-con .col-package > .custom-control-label:after {
+  display: none;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package > .custom-control-label:hover {
+  opacity: 0.9;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .custom-control-input:checked ~ .custom-control-label {
+  opacity: 1 !important;
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .custom-control-input:checked ~ .custom-control-label .box-package {
+  transform: scale(1.08);
+  -webkit-transform: scale(1.08);
+  -moz-transform: scale(1.08);
+  -o-transform: scale(1.08);
+  -sm-transform: scale(1.08);
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .custom-control-input:checked ~ .custom-control-label .box-package.blue {
+  box-shadow: 0 0 7px rgba(0, 34, 107, 0.9);
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .custom-control-input:checked ~ .custom-control-label .box-package.aqua {
+  box-shadow: 0 0 7px rgba(0, 107, 120, 0.9);
+}
+#get-glasses-page .second-section .step-2 .packages-con .col-package .custom-control-input:checked ~ .custom-control-label .box-package.white {
+  box-shadow: 0 0 7px rgba(234, 237, 236, 0.9);
+}
+@media screen and (max-width: 575px) {
+  #get-glasses-page .second-section .step-2 .packages-con .col-package {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+#get-glasses-page .second-section .step-2 .box-head {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 501px;
+  background-size: contain !important;
+  background-image: url("../images/pages/test/head-1.png");
 }
