@@ -22,4 +22,14 @@
       background-color: $blue2 !important;
     }
   }
+  &.outline-blue {
+    color: $blue !important;
+    border-color: $blue;
+    background-color: transparent !important;
+
+    &:hover, &:focus, &:active {
+      color: $blue2 !important;
+      border-color: $blue2 !important;
+    }
+  }
 }

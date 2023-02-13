@@ -76,7 +76,7 @@
               </b-form-group>
 
               <p>
-                <b-button type="submit" class="btn btn-lg btn-s1 bg-blue">Finalizar</b-button>
+                <b-button type="submit" class="btn btn-lg btn-s1 bg-blue">Guardar</b-button>
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@
     </section>
 
     <section class="second-section">
-      <div class="box-top">
+      <div class="box-top" v-if="form.plan">
         <div class="container">
           <div class="col-lg col-price">
             <div class="box">
@@ -109,94 +109,17 @@
       </div>
 
       <!-- Paso 2 -->
-      <div class="box-step-wr step-2" v-if="step == 2">
-        <h2 class="h1s f-w-800 txt-blue">Elige cuánto quieres gastar</h2>
-
-        <div class="container packages-con">
-          <b-form-radio-group class="row" v-model="form.plan" name="r-plan" required>
-            <b-form-radio class="col-sm-6 col-lg-4 col-xl-3 col-package" value="1">
-              <div class="box-package blue">
-                <div class="box-name">
-                  <h6 class="lab">Paquete</h6>
-                  <h5 class="name">Ultra</h5>
-                </div>
-
-                <div class="box-info">
-                  <h5 class="f-w-600 mb-2">Incluye</h5>
-
-                  <ul>
-                    <li>Cualquier material.</li>
-                    <li>Cualquier armazón.</li>
-                    <li>Cualquier material.</li>
-                    <li>Cualquier armazón.</li>
-                  </ul>
-                </div>
-
-                <div class="box-price">
-                  <h5>$ 1,900</h5>
-                </div>
-              </div>
-            </b-form-radio>
-
-            <b-form-radio class="col-sm-6 col-lg-4 col-xl-3 col-package" value="2">
-              <div class="box-package aqua">
-                <div class="box-name">
-                  <h6 class="lab">Paquete</h6>
-                  <h5 class="name">Pro</h5>
-                </div>
-
-                <div class="box-info">
-                  <h5 class="f-w-600 mb-2">Incluye</h5>
-
-                  <ul>
-                    <li>Cualquier material.</li>
-                    <li>Cualquier armazón.</li>
-                    <li>Cualquier material.</li>
-                    <li>Cualquier armazón.</li>
-                  </ul>
-                </div>
-
-                <div class="box-price">
-                  <h5>$ 1,600</h5>
-                </div>
-              </div>
-            </b-form-radio>
-
-            <b-form-radio class="col-sm-6 col-lg-4 col-xl-3 col-package" value="3">
-              <div class="box-package white">
-                <div class="box-name">
-                  <h6 class="lab">Paquete</h6>
-                  <h5 class="name">Novato</h5>
-                </div>
-
-                <div class="box-info">
-                  <h5 class="f-w-600 mb-2">Incluye</h5>
-
-                  <ul>
-                    <li>Cualquier material.</li>
-                    <li>Cualquier armazón.</li>
-                    <li>Cualquier material.</li>
-                    <li>Cualquier armazón.</li>
-                  </ul>
-                </div>
-
-                <div class="box-price">
-                  <h5>$ 1,200</h5>
-                </div>
-              </div>
-            </b-form-radio>
-          </b-form-radio-group>
-
-          <div class="row">
-            <div class="col-12 mt-4 text-center">
-              <b-button type="submit" class="btn btn-lg btn-s1 bg-blue">Siguiente</b-button>
-            </div>
-          </div>
-        </div>
-
-        <div class="placed-backg box-head"></div>
-      </div>
+      <Step2 v-if="step == 2"></Step2>
       <!--  -->
+
+      <!-- Paso 3 -->
+      <Step3 v-if="step == 3"></Step3>
+      <!--  -->
+
+      <!-- Paso 4 -->
+      <Step4 v-if="step == 4"></Step4>
+      <!--  -->
+
     </section>
 
     <NextStepsComponent></NextStepsComponent>
@@ -206,14 +129,17 @@
 
 <script>
 import NextStepsComponent from '../next-steps-component.vue'
+import Step2 from './step-2.vue'
+import Step3 from './step-3.vue'
+import Step4 from './step-4.vue'
 export default {
   components: {
-    NextStepsComponent
+    NextStepsComponent, Step2, Step3, Step4
   },
 
   data() {
     return {
-      step: 2,
+      step: 1,
       showInfoForm: false,
 
       form: {
@@ -229,7 +155,22 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      console.log('xxx');
+      console.log('onSubmit');
+
+      if(this.step == 4) {
+        this.step = 5;
+        // Cosas del paso 4
+      }
+
+      if(this.step == 3) {
+        this.step = 4;
+        // Cosas del paso 3
+      }
+
+      if(this.step == 2) {
+        this.step = 3;
+        // Cosas del paso 2
+      }
 
       if(this.step == 1) {
         if(!this.showInfoForm) {
