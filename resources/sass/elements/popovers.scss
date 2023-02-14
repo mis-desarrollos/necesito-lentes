@@ -1,0 +1,21 @@
+.popover-glass-opt {
+  border-color: $pink;
+  background-color: $pink !important;
+
+  .arrow {
+    &:before {
+      border-top-color: transparent;
+    }
+    &:after {
+      border-top-color: $pink;
+    }
+  }
+
+  .popover-body {
+    padding: .3rem .95rem .5rem .95rem;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+}

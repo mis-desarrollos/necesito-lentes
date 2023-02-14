@@ -11,8 +11,8 @@ const page="./components/page/";
 const MyRouter = new VueRouter({
   	routes:[
       { path: '/', component: require(page+'home.vue').default },
-      { path: '/test', component: require(page+'test/index.vue').default, meta:{title:"Test de la vista"} },
-	    { path: '/obtener-lentes', component: require(page+'test/glasses/index.vue').default, meta:{title:"Obtén tus lentes"} },
+      { path: '/test', component: require(page+'test/simple-test/index.vue').default, meta:{title:"Test de la vista"} },
+	    { path: '/obtener-lentes', component: require(page+'test/crear-lentes/index.vue').default, meta:{title:"Obtén tus lentes"} },
 
 	    // { path: '/checkout', component: require(page+'checkout.vue').default, meta:{title:"Checkout"}},
 	  ]

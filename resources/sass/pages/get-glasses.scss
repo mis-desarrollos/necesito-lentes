@@ -291,114 +291,46 @@
       }
     }
 
-    .step-3 {
-      .material-con {
-        margin-top: 40px;
-        margin-bottom: 15px;
+    .step-4 {
+      .main-con {
+        margin-top: 30px;
         text-align: left;
 
         >.row {
           justify-content: center;
         }
 
-        .box-options {
-          padding-top: 15px;
-          padding-bottom: 15px;
-          border: 2px solid $blue;
-          border-radius: 15px;
+        .box-opt {
+          display: inline-block;
+          padding: 19px 15px;
+          width: 100%;
+          color: #ffffff;
+          cursor: pointer;
+          font-size: 1.9em;
+          font-weight: 700;
+          line-height: 1;
+          text-align: center;
+          border-radius: 50px;
+          background-color: $blue;
+          @include transition(250ms);
 
-          .custom-radio {
-            display: inline-block;
-            padding-left: 0;
-            margin-right: 0;
-            width: 100%;
-            margin-top: 10px;
-            margin-bottom: 10px;
-
-            .custom-control-label {
-              display: flex;
-              flex-wrap: wrap;
-              padding-left: 0;
-              color: $blue;
-              align-items: center;
-              cursor: pointer;
-
-              &:before {
-                top: calc(50% - 16px);
-                left: 1.3rem;
-                width: 32px;
-                height: 32px;
-                border: 2px solid $blue;
-                background-color: transparent;
-              }
-
-              &:after {
-                display: none;
-              }
-
-              .col-name {
-                padding: 0 12px 0 72px;
-                font-size: 1.3rem;
-                font-weight: 600;
-                line-height: 1.1;
-              }
-
-              .col-descr {
-                padding-top: 2px;
-                padding-bottom: 2px;
-                border-left: 1px solid $blue;
-                font-size: 1.20rem;
-                line-height: 1.35;
-              }
-            }
-
-            .custom-control-input:checked ~ .custom-control-label {
-              &:before {
-                background-color: $blue;
-              }
-            }
+          small {
+            position: relative;
+            bottom: 2px;
+            font-size: 65%;
+            font-weight: 500;
           }
-        }
-      }
 
-      .col-nav-buttons {
-        margin-top: 25px;
-        text-align: center;
-
-        .btn-s1 {
-          margin: 5px 7px;
-
-          &:first-child {
-            margin-left: 0;
+          .icon-info {
+            position: relative;
+            margin-left: 14px;
+            bottom: 3px;
+            color: #fff;
+            font-size: 65%;
           }
-          &:last-child {
-            margin-right: 0;
-          }
-        }
-      }
 
-      @media screen and (max-width: 575px) {
-        .material-con {
-          .box-options {
-            .custom-radio {
-              .custom-control-label {
-                &:before {
-                  top: calc(50% - 11px);
-                  left: 0.75rem;
-                  width: 22px;
-                  height: 22px;
-                }
-
-                .col-name {
-                  padding: 0 12px 0 44px;
-                  font-size: 1.10rem;
-                }
-
-                .col-descr {
-                  font-size: 1.0rem;
-                }
-              }
-            }
+          &:hover {
+            background-color: $blue2;
           }
         }
       }
