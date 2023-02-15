@@ -30479,7 +30479,7 @@ input[type=number] {
   color: #00226b;
   font-size: 2.9rem;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.1;
 }
 .modal-glasses-opts .modal-dialog .modal-content .modal-header .close {
   position: absolute;
@@ -30510,11 +30510,178 @@ input[type=number] {
 .modal-glasses-opts .modal-dialog .modal-content .modal-body .col-nav-buttons .btn-s1:last-child {
   margin-right: 0;
 }
+@media screen and (max-width: 991px) {
+  .modal-glasses-opts .modal-dialog .modal-header .modal-title {
+    margin-top: 5px;
+    font-size: 2rem !important;
+  }
+  .modal-glasses-opts .modal-dialog .modal-header .close {
+    top: -16px !important;
+    right: 3px !important;
+  }
+  .modal-glasses-opts .modal-dialog .modal-body .col-nav-buttons .btn-s1 {
+    padding: 0.6rem 1.9rem;
+    font-size: 1.2rem;
+  }
+}
 .modal-glasses-opts.modal-g-step-material .modal-body > .row {
   justify-content: center;
 }
 .modal-glasses-opts.modal-g-step-recubrimiento .modal-body > .row {
   justify-content: center;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-dialog .modal-content {
+  background-color: #ffffff;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-dialog .modal-content .modal-header {
+  padding-bottom: 8px;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-dialog .modal-content .modal-header .modal-title {
+  padding-right: 30px;
+  text-align: center;
+  font-size: 2.6rem;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body {
+  padding-top: 0;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body > .row {
+  justify-content: center;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel {
+  min-height: 190px;
+  background-color: #ffffff;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel.loading {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../images/shared/loading-pink.svg");
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-prev {
+  left: 3px;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-next {
+  right: 3px;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-prev, .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-next {
+  color: #00226b;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-prev:after, .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-next:after {
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-prev:hover, .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-next:hover {
+  color: #011b53;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide {
+  padding: 3px;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt.active {
+  border-color: #00226b !important;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt.disabled {
+  cursor: not-allowed;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt.disabled .inside {
+  pointer-events: none !important;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt.disabled .box-legend {
+  display: flex !important;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .inside {
+  position: relative;
+  display: block;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-legend {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 32px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-legend > div {
+  display: inline-block;
+  width: 100%;
+  color: #00226b;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-image {
+  display: block;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-image .image {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-image .image img {
+  width: 100%;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-info {
+  display: block;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 15px;
+  color: #00226b;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-info .name {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+.modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-info .descr {
+  display: block;
+  padding-top: 4px;
+  font-size: 1.1rem;
+  line-height: 1.1;
+}
+@media screen and (max-width: 991px) {
+  .modal-glasses-opts.modal-g-step-armazon .modal-header .modal-title {
+    padding-right: 0;
+  }
+  .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel.loading {
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-prev, .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-next {
+    top: 45%;
+  }
+  .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-prev:after, .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-next:after {
+    font-size: 2.1rem;
+  }
+  .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-image {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+  .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-info {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-info .name {
+    font-size: 1.25rem;
+  }
+  .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-slide .box-opt .box-info .descr {
+    font-size: 1.05rem;
+  }
 }
 
 .modal-glasses-opts + .modal-backdrop {

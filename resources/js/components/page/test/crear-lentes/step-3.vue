@@ -41,7 +41,18 @@
 
           <!-- Armazón -->
           <div class="box-opt" @click="$parent.showModalArmazon = true">
-            <div>Elige el armazón</div>
+            <div v-if="$parent.form.armazon">
+              <small>Armazón:</small> {{ armazon.name }}
+              <a class="icon-info" id="popover-armazon">
+                <i class="fal fa-info-circle"></i>
+
+                <b-popover target="popover-armazon" placement="top" custom-class="popover-glass-opt" triggers="hover">
+                  {{ armazon.shortDescr }}
+                </b-popover>
+              </a>
+            </div>
+
+            <div v-else>Elige el armazón</div>
           </div>
           <!--  -->
         </div>
@@ -56,6 +67,7 @@ export default {
     return {
       material: {},
       recubrimiento: {},
+      armazon: {},
     }
   },
 
@@ -67,6 +79,10 @@ export default {
     setRecubrimiento() {
       this.recubrimiento = this.$parent.recubrimientos.find(x => x.id == this.$parent.form.recubrimiento);
     },
+
+    setArmazon() {
+      this.armazon = this.$parent.armazones.find(x => x.id == this.$parent.form.armazon);
+    },
   },
 
   watch: {
@@ -76,7 +92,11 @@ export default {
 
     '$parent.form.recubrimiento'(val, oldVal) {
       this.setRecubrimiento();
-    }
+    },
+
+    '$parent.form.armazon'(val, oldVal) {
+      this.setArmazon();
+    },
   },
 }
 </script>

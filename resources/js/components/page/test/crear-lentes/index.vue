@@ -13,7 +13,7 @@
     <section class="second-section">
       <div class="box-top" v-if="form.plan">
         <div class="container">
-          <div class="col-lg col-price">
+          <div class="col col-price">
             <div class="box">
               <div class="c1">1</div>
               <div class="c2">
@@ -27,7 +27,7 @@
             </div>
           </div>
 
-          <div class="col-lg col-icon">
+          <div class="col col-icon">
             <i class="icon"></i>
           </div>
         </div>
@@ -70,10 +70,10 @@ export default {
 
   data() {
     return {
-      step: 1,
+      step: 3,
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimiento: false,  // Modal recubrimientos
-      showModalArmazon: true,         // Modal armazón
+      showModalArmazon: false,         // Modal armazón
 
       // Materieles
       materiales: [
@@ -93,6 +93,9 @@ export default {
 
       // Armazones
       armazones: [
+        { id: 1, imageUrl: 'public/images/pages/test/glasses-1.jpg', disabled: false, selected: false, name: 'Armazón 1',  shortDescr: 'Negro - Transparente / Pasta' },
+        { id: 2, imageUrl: 'public/images/pages/test/glasses-2.jpg', disabled: false, selected: false, name: 'Armazón 2',  shortDescr: 'Negro / Pasta' },
+        { id: 3, imageUrl: 'public/images/pages/test/glasses-3.jpg', disabled: true, selected: false, name: 'Armazón 3',  shortDescr: 'Negro - Rojo / Pasta' },
       ],
 
 

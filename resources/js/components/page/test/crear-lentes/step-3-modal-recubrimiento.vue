@@ -1,5 +1,5 @@
 <template lang="html">
-  <b-modal modal-class="modal-glasses-opts modal-g-step-material" ref="modal-lentes-recubrimiento" size="xl" title="Elige el recubrimiento indicado para ti" centered hide-footer @hidden="destroyComp">
+  <b-modal modal-class="modal-glasses-opts modal-g-step-material" ref="modal-lentes-recubrimiento" size="xl" title="Elige el recubrimiento indicado para ti" centered hide-footer no-close-on-backdrop no-close-on-esc @hidden="destroyComp">
     <b-form id="get-glasses-page" @submit="onSubmit" class="row">
       <div class="col-lg-8 col-xl-6">
         <b-form-radio-group class="box-radio-options-s1" required v-model="$parent.form.recubrimiento" name="r-material">
