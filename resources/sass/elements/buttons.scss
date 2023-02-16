@@ -32,4 +32,14 @@
       border-color: $blue2 !important;
     }
   }
+  &.outline-white {
+    color: #ffffff !important;
+    border-color: #ffffff;
+    background-color: transparent !important;
+
+    &:hover, &:focus, &:active {
+      color: #eae6e6 !important;
+      border-color: #eae6e6 !important;
+    }
+  }
 }

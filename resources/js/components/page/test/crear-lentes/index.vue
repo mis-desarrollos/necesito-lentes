@@ -1,5 +1,28 @@
 <template lang="html">
   <b-form id="get-glasses-page" @submit="onSubmit">
+    <!-- Plan / Paquete seleccionado -->
+    <div class="box-plan-selected" v-if="form.plan">
+      <div class="container">
+        <div class="col col-price">
+          <div class="box">
+            <div class="c1">1</div>
+            <div class="c2">
+              <h6>Paquete</h6>
+              <h5>Ultra</h5>
+            </div>
+
+            <div class="c3">
+              <h5>$1,900</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-icon">
+          <i class="icon"></i>
+        </div>
+      </div>
+    </div>
+    <!--  -->
 
     <section class="first-section">
       <div class="container">
@@ -11,28 +34,6 @@
 
     <!-- Sección amarilla (pasos 2, 3, 4) -->
     <section class="second-section">
-      <div class="box-top" v-if="form.plan">
-        <div class="container">
-          <div class="col col-price">
-            <div class="box">
-              <div class="c1">1</div>
-              <div class="c2">
-                <h6>Paquete</h6>
-                <h5>Ultra</h5>
-              </div>
-
-              <div class="c3">
-                <h5>$1,900</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col col-icon">
-            <i class="icon"></i>
-          </div>
-        </div>
-      </div>
-
       <!-- Paso 2 -->
       <Step2 v-if="step == 2"></Step2>
       <!--  -->
@@ -45,10 +46,39 @@
       <Step3ModalArmazon :opts="armazones" v-if="showModalArmazon"></Step3ModalArmazon>
       <!--  -->
 
+      <!-- Paso 4 -->
+      <Step4 v-if="step == 4"></Step4>
+      <!--  -->
     </section>
 
-    <StepsComponent></StepsComponent>
+    <section class="third-section">
+      <!-- Paso 5 -->
+      <div class="box-step-wr padding-b-plan step-5" v-if="step == 5">
+        <div class="wr">
+          <div class="col-12">
+            <h2 class="h1s f-w-800 txt-blue">Encuentra tu óptica más cercana</h2>
+          </div>
 
+          <div class="col-12">
+            <div class="row">
+              <div class="col-12">
+                <p class="mt-3 h4 f-w-600 txt-white">
+                  Si no conoces tu graduación, un profesional te hará un exámen sin costo.
+                </p>
+              </div>
+
+              <div class="col-12 mt-5 col-btn-navs">
+                <b-button type="submit" class="btn btn-lg btn-s1 bg-blue">Ir al mapa</b-button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--  -->
+    </section>
+
+    <StepsComponent :nstep="step"></StepsComponent>
   </b-form>
 </template>
 
@@ -60,17 +90,19 @@ import Step3 from './step-3.vue';
 import Step3ModalMateriales from './step-3-modal-materiales.vue';
 import Step3ModalRecubrimiento from './step-3-modal-recubrimiento.vue';
 import Step3ModalArmazon from './step-3-modal-armazon.vue';
+import Step4 from './step-4.vue';
 export default {
   components: {
     StepsComponent,
     Step1,
     Step2,
-    Step3, Step3ModalMateriales, Step3ModalRecubrimiento, Step3ModalArmazon
+    Step3, Step3ModalMateriales, Step3ModalRecubrimiento, Step3ModalArmazon,
+    Step4,
   },
 
   data() {
     return {
-      step: 3,
+      step: 1,
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimiento: false,  // Modal recubrimientos
       showModalArmazon: false,         // Modal armazón
@@ -104,7 +136,7 @@ export default {
         misdatos: {
           pregunta1: null,
         },
-        plan: 1,
+        plan: null,
         material: null,
         recubrimiento: null,
         armazon: null,

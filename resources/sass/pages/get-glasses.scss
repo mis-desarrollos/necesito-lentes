@@ -1,11 +1,198 @@
 #get-glasses-page {
+  position: relative;
 
+  // == Contenedor de pasos ==
   .box-step-wr {
     position: relative;
-    padding: 35px 0;
-    min-height: calc(100vh - 198px - 87px);
-  }
+    min-height: calc(100vh - 148px - 87px);
 
+    >.wr {
+      padding: 35px 0;
+    }
+  }
+  // == ==
+
+  // Plan / Paquete seleccionado
+  .box-plan-selected {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // height: 77px (> 576px) | height: 62px (< 575px)
+    z-index: 45;
+
+    >.container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .col-price {
+      padding-left: 0;
+      text-align: left;
+
+      .box {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-left: 15px;
+        color: #ffffff;
+        background-color: $blue;
+
+        .c1 {
+          @include flex-center-xy();
+          margin-left: 5px;
+          width: 44px;
+          height: 44px;
+          color: $blue;
+          font-family: "Kanit", "Raleway", sans-serif;
+          font-size: 2.0rem;
+          font-weight: 500;
+          border-radius: 50%;
+          background-color: #ffffff;
+        }
+
+        .c2 {
+          padding: 12px 22px 11px 16px;
+          margin-right: 22px;
+          min-width: 170px;
+          border-right: 1px solid #373154;
+
+          h6 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            line-height: 1;
+          }
+
+          h5 {
+            font-weight: 800;
+            font-size: 2.3rem;
+            letter-spacing: 1px;
+            line-height: 1.0;
+          }
+        }
+
+        .c3 {
+          padding-right: 32px;
+          min-width: 150px;
+
+          h5 {
+            font-family: "Kanit", "Raleway", sans-serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+
+    .col-icon {
+      padding: 0;
+      line-height: 1;
+      max-width: 40px;
+
+      .icon {
+        display: inline-block;
+        width: 40px;
+        height: 32px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('../images/pages/test/icon-glasses.svg');
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      .col-price {
+        .box {
+          padding-left: 11px;
+          width: 100%;
+
+          .c1 {
+            margin-left: 0;
+            width: 36px;
+            height: 36px;
+            font-size: 1.5rem;
+            font-weight: 600;
+          }
+
+          .c2 {
+            padding: 10px 8px 10px 10px;
+            margin-right: 0;
+            min-width: inherit;
+            border-right: 0;
+
+            h6 {
+              font-size: 0.95rem;
+            }
+
+            h5 {
+              font-size: 1.70rem;
+            }
+          }
+
+          .c3 {
+            min-width: inherit;
+            padding: 0 12px 0 0;
+            margin-left: auto;
+
+            h5 {
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .padding-b-plan {
+    padding-top: 77px;
+
+    @media screen and (max-width: 575px) {
+      padding-top: 62px;
+    }
+  }
+  // == ==
+
+  // == Caja contenedora de los botones "anterior" y "siguiente"
+  .col-btn-navs {
+    text-align: center;
+
+    .btn-s1 {
+      margin-left: 5px;
+      margin-right: 5px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      .btn-s1 {
+        padding: 0.6rem 1.9rem;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  // == ==
+
+  // Caja con la imagen de la cabeza ==
+  .box-head-s1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 501px;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-image: url('../images/pages/test/head-1.png');
+  }
+  // == ==
+
+  // == Primer sección (aqua) ==
   .first-section {
     position: relative;
     text-align: center;
@@ -19,97 +206,13 @@
       }
     }
   }
+  // == ==
 
+  // == Secunda sección (amarilla) ==
   .second-section {
     position: relative;
     text-align: center;
     background-color: $yellow;
-
-    .box-top {
-      position: relative;
-
-      >.container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-
-      .col-price {
-        padding-left: 0;
-        text-align: left;
-
-        .box {
-          display: inline-flex;
-          flex-wrap: wrap;
-          align-items: center;
-          padding-left: 15px;
-          color: #ffffff;
-          background-color: $blue;
-
-          .c1 {
-            @include flex-center-xy();
-            margin-left: 5px;
-            width: 44px;
-            height: 44px;
-            color: $blue;
-            font-family: "Kanit", "Raleway", sans-serif;
-            font-size: 2.0rem;
-            font-weight: 500;
-            border-radius: 50%;
-            background-color: #ffffff;
-          }
-
-          .c2 {
-            padding: 12px 22px 11px 16px;
-            margin-right: 22px;
-            min-width: 170px;
-            border-right: 1px solid #373154;
-
-            h6 {
-              font-size: 1.1rem;
-              font-weight: 600;
-              letter-spacing: 1px;
-              line-height: 1;
-            }
-
-            h5 {
-              font-weight: 800;
-              font-size: 2.3rem;
-              letter-spacing: 1px;
-              line-height: 1.0;
-            }
-          }
-
-          .c3 {
-            padding-right: 32px;
-            min-width: 150px;
-
-            h5 {
-              font-family: "Kanit", "Raleway", sans-serif;
-              font-size: 2.2rem;
-              font-weight: 500;
-              letter-spacing: 1px;
-            }
-          }
-        }
-      }
-
-      .col-icon {
-        padding: 0;
-        line-height: 1;
-        max-width: 40px;
-
-        .icon {
-          display: inline-block;
-          width: 40px;
-          height: 32px;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-image: url('../images/pages/test/icon-glasses.svg');
-        }
-      }
-    }
 
     .step-2 {
       padding-bottom: 501px;
@@ -257,6 +360,10 @@
             .box-package {
               @include cp-property(transform, scale(1.08));
 
+              @media screen and (max-width: 575px) {
+                @include cp-property(transform, scale(1.05));
+              }
+
               &.blue {
                 box-shadow: 0 0 7px rgba(0, 34, 107, 0.9);
               }
@@ -279,19 +386,9 @@
           }
         }
       }
-
-      .box-head {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 501px;
-        background-size: contain !important;
-        background-image: url('../images/pages/test/head-1.png');
-      }
     }
 
-    .step-4 {
+    .step-3 {
       .main-con {
         margin-top: 30px;
         text-align: left;
@@ -334,7 +431,75 @@
           }
         }
       }
+
+      @media screen and (max-width: 767px) {
+        .main-con {
+          .box-opt {
+            padding: 15px 15px;
+            font-size: 1.45rem;
+          }
+        }
+      }
+    }
+
+    .step-4 {
+      padding-bottom: 501px;
+
+      .main-con {
+        margin-top: 30px;
+
+        .col-info {
+          text-align: center;
+
+          h5 {
+            margin-bottom: 9px;
+            color: $blue;
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+
+            small {
+              font-size: 90%;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      @media screen and (max-width: 575px) {
+        .main-con {
+          .col-info {
+            h5 {
+              font-size: 1.50rem;
+            }
+          }
+        }
+      }
     }
   }
+  // == ==
 
+  // == Tercera sección (azul) ==
+  .third-section {
+    position: relative;
+    text-align: center;
+    background-color: $blueLight;
+
+    .step-5 {
+
+    }
+  }
+  // == ==
+
+  @media screen and (max-width: 767px) {
+    .h1s {
+      font-size: 2.5rem !important;
+      line-height: 1.0;
+    }
+  }
+  @media screen and (max-width: 575px) {
+    .h1s {
+      font-size: 2.15rem !important;
+    }
+  }
 }

@@ -49,7 +49,7 @@ export default {
 
       // == Carousels options ==
       carouselOptions: {
-        loop: true,
+        loop: false,
 
         navigation: {
           nextEl: '.swiper-button-next',
