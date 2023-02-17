@@ -53,28 +53,7 @@
 
     <section class="third-section">
       <!-- Paso 5 -->
-      <div class="box-step-wr padding-b-plan step-5" v-if="step == 5">
-        <div class="wr">
-          <div class="col-12">
-            <h2 class="h1s f-w-800 txt-blue">Encuentra tu óptica más cercana</h2>
-          </div>
-
-          <div class="col-12">
-            <div class="row">
-              <div class="col-12">
-                <p class="mt-3 h4 f-w-600 txt-white">
-                  Si no conoces tu graduación, un profesional te hará un exámen sin costo.
-                </p>
-              </div>
-
-              <div class="col-12 mt-5 col-btn-navs">
-                <b-button type="submit" class="btn btn-lg btn-s1 bg-blue">Ir al mapa</b-button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <Step5 v-if="step == 5"></Step5>
       <!--  -->
     </section>
 
@@ -91,6 +70,7 @@ import Step3ModalMateriales from './step-3-modal-materiales.vue';
 import Step3ModalRecubrimiento from './step-3-modal-recubrimiento.vue';
 import Step3ModalArmazon from './step-3-modal-armazon.vue';
 import Step4 from './step-4.vue';
+import Step5 from './step-5.vue';
 export default {
   components: {
     StepsComponent,
@@ -98,6 +78,7 @@ export default {
     Step2,
     Step3, Step3ModalMateriales, Step3ModalRecubrimiento, Step3ModalArmazon,
     Step4,
+    Step5,
   },
 
   data() {
@@ -129,7 +110,6 @@ export default {
         { id: 2, imageUrl: 'public/images/pages/test/glasses-2.jpg', disabled: false, selected: false, name: 'Armazón 2',  shortDescr: 'Negro / Pasta' },
         { id: 3, imageUrl: 'public/images/pages/test/glasses-3.jpg', disabled: true, selected: false, name: 'Armazón 3',  shortDescr: 'Negro - Rojo / Pasta' },
       ],
-
 
       form: {
         graduacion: null,
@@ -186,7 +166,5 @@ export default {
       deep: true
     }
   },
-
-
 }
 </script>
