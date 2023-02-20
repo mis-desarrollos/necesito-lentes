@@ -11,6 +11,10 @@
     padding: 0.75rem 2.1rem;
     font-size: 1.5rem;
   }
+  &.btn-sm {
+    padding: 0.50rem 1.5rem;
+    font-size: 0.95rem;
+  }
 
   &.bg-blue {
     color: #ffffff !important;
@@ -20,6 +24,16 @@
     &:hover, &:focus, &:active {
       border-color: $blue2 !important;
       background-color: $blue2 !important;
+    }
+  }
+  &.bg-white {
+    color: $blue !important;
+    border-color: #ffffff;
+    background-color: #ffffff;
+
+    &:hover, &:focus, &:active {
+      border-color: #e8e4e4 !important;
+      background-color: #e8e4e4 !important;
     }
   }
   &.outline-blue {

@@ -55,6 +55,10 @@
       <!-- Paso 5 -->
       <Step5 v-if="step == 5"></Step5>
       <!--  -->
+
+      <!-- Paso 6 -->
+      <Step6 v-if="step == 6"></Step6>
+      <!--  -->
     </section>
 
     <StepsComponent :nstep="step"></StepsComponent>
@@ -71,6 +75,7 @@ import Step3ModalRecubrimiento from './step-3-modal-recubrimiento.vue';
 import Step3ModalArmazon from './step-3-modal-armazon.vue';
 import Step4 from './step-4.vue';
 import Step5 from './step-5.vue';
+import Step6 from './step-6.vue';
 export default {
   components: {
     StepsComponent,
@@ -79,11 +84,12 @@ export default {
     Step3, Step3ModalMateriales, Step3ModalRecubrimiento, Step3ModalArmazon,
     Step4,
     Step5,
+    Step6,
   },
 
   data() {
     return {
-      step: 1,
+      step: 6,
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimiento: false,  // Modal recubrimientos
       showModalArmazon: false,         // Modal armazón
@@ -120,6 +126,7 @@ export default {
         material: null,
         recubrimiento: null,
         armazon: null,
+        optica: null,
       }
     }
   },
