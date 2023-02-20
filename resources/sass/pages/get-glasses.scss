@@ -648,6 +648,154 @@
         }
       }
     }
+
+    .step-6 {
+      .main-con {
+        >.row {
+          justify-content: center;
+        }
+      }
+
+      .col-calendar {
+        margin-top: 25px;
+
+        .vc-container {
+          border-color: $blue;
+          background-color: transparent;
+
+          .vc-pane-container {
+            .vc-pane-layout {
+              .vc-header {
+                padding: 10px 18px 14px 18px;
+                color: #ffffff;
+                border-radius: 4px 4px 0 0;
+                background-color: $blue;
+
+                .vc-title {
+                  color: #ffffff;
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  text-transform: capitalize;
+                }
+              }
+
+              .vc-weeks {
+                padding: 0 0 15px 0;
+
+                .vc-weekday {
+                  padding-top: 18px;
+                  padding-bottom: 18px;
+                  margin-bottom: 14px;
+                  color: $blue;
+                  font-size: 1.3rem;
+                  font-weight: 700;
+                  background-color: #ffffff;
+                }
+
+                .vc-day {
+                  min-height: 44px;
+                  color: $blue;
+
+                  &.is-not-in-month {
+                    // display: none;
+                    height: 0;
+                    min-height: 0;
+
+                    .vc-day-content {
+                      height: 0;
+                      min-height: 0;
+                      padding: 0;
+                    }
+                  }
+
+                  .vc-day-content {
+                    width: 36px;
+                    height: 36px;
+                    font-size: 1.25rem;
+                    font-weight: 600;
+                    border: 1px solid transparent;
+
+                    &:hover {
+                      background-color: transparent !important;
+                      border-color: $blue;
+                    }
+
+                    &.is-disabled {
+                      pointer-events: none;
+                      color: #3e62ae;
+                      background-color: transparent !important;
+
+                      &:hover {
+                        border-color: transparent;
+                      }
+                    }
+                  }
+
+                  .vc-highlights {
+                    background-color: transparent !important;
+
+                    .vc-day-layer {
+                      background-color: transparent !important;
+
+                      .vc-highlight {
+                        width: 36px;
+                        height: 36px;
+                        background-color: transparent !important;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .vc-arrows-container {
+              top: 2px;
+
+              .vc-arrow {
+                color: #ffffff;
+                border: 1px solid transparent;
+
+                &:hover {
+                  border-color: #ffffff;
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .col-time {
+        margin-top: 15px;
+
+        .box {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          border: 2px solid $blue;
+          border-radius: 8px;
+
+          .b-lab {
+            display: flex;
+            padding: 6px 18px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 4px 0 0 4px;
+            background-color: $blue;
+          }
+
+          .b-time {
+            display: flex;
+            padding: 0;
+
+            .form-group {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
   }
   // == ==
 
