@@ -44,7 +44,7 @@
             </div>
           </div>
 
-          <div class="col-12 col-branc-info">
+          <div class="col-12 col-branch-info">
             <h5 class="title">Ledesma Opticos</h5>
 
             <div class="desc">

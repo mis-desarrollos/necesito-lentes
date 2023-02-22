@@ -202,6 +202,16 @@
     background-repeat: no-repeat;
     background-image: url('../images/pages/test/head-2.png');
   }
+  .box-head-s3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 551px;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-image: url('../images/pages/test/head-3.png');
+  }
   // == ==
 
   // == Primer sección (aqua) ==
@@ -838,7 +848,7 @@
         }
       }
 
-      .col-branc-info {
+      .col-branch-info {
         margin-top: 32px;
         color: $blue;
         text-align: center;
@@ -873,6 +883,193 @@
           }
         }
       }
+    }
+
+    .step-7 {
+      padding-bottom: 501px;
+      color: $blue;
+
+      .main-con {
+        .col-text {
+          .date {
+            font-weight: 700;
+          }
+
+          .hour {
+            font-weight: 600;
+          }
+        }
+
+        .col-branch-info {
+          margin-top: 32px;
+          color: $blue;
+          text-align: center;
+
+          .title {
+            margin-bottom: 2px;
+            font-size: 1.50rem;
+            font-weight: 700;
+          }
+
+          .desc {
+            display: inline-block;
+            margin-bottom: 15px;
+            width: 100%;
+            line-height: 1.3;
+            font-size: 1.1rem;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  // == ==
+
+  // == Cuarta sección (rosa) ==
+  .fourth-section {
+    position: relative;
+    text-align: center;
+    background-color: $pink;
+
+    .step-8 {
+      .main-con {
+        margin-bottom: 20px;
+
+        >.row {
+          justify-content: center;
+        }
+
+        .col-form {
+          margin-top: 25px;
+
+          ul, ol {
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+
+    .step-9 {
+      padding-bottom: 551px;
+
+      .main-con {
+        margin-bottom: 20px;
+
+        >.row {
+          justify-content: center;
+        }
+      }
+
+      .col-payment {
+        margin-top: 25px;
+
+        .payment-radiogroup  {
+          .custom-radio {
+            width: 100%;
+            padding: 0;
+            margin: 0 0 25px 0;
+
+            .custom-control-label {
+              width: 100%;
+
+              &:before, &:after {
+                display: none;
+              }
+
+              .box-payment {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                color: #ffffff;
+                cursor: pointer;
+                border: 2px solid $blue;
+                border-radius: 50px;
+                overflow: hidden;
+                @include transition(150ms);
+
+                .box-icon {
+                  @include transition(150ms);
+                  display: flex;
+                  align-items: center;
+                  -ms-flex-item-align: stretch !important;
+                  align-self: stretch !important;
+                  flex: 0 0 174px;
+                  max-width: 174px;
+                  background-color: $blue;
+
+                  >div {
+                    display: inline-block;
+                    line-height: 1;
+                    width: 100%;
+                    text-align: center;
+
+                    .icon-card {
+                      width: 58px;
+                      max-width: 90%;
+                    }
+
+                    .icon-paypal {
+                      width: 94px;
+                      max-width: 90%;
+                    }
+                  }
+                }
+
+                .box-text {
+                  @include transition(150ms);
+                  padding: 14px 15px 14px 30px;
+                  text-align: left;
+
+                  h5 {
+                    margin-bottom: 4px;
+                    font-size: 1.10rem;
+                    letter-spacing: 1px;
+                  }
+
+                  .price {
+                    font-family: "Kanit", "Raleway", sans-serif;
+                    font-size: 1.85rem;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                  }
+                }
+
+                &:hover {
+                  border-color: $blue2;
+
+                  .box-icon {
+                    background-color: $blue2;
+                  }
+                }
+              }
+            }
+
+            .custom-control-input:checked ~ .custom-control-label {
+              border-color: $blue2;
+
+              .box-icon {
+                background-color: $blue2;
+              }
+
+              .box-text {
+                background-color: #a83e4f;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // == ==
+
+  // == Quinta sección (blanca) ==
+  .five-section {
+    position: relative;
+    text-align: center;
+    background-color: #eff4f4;
+
+    .step-10 {
+      
     }
   }
   // == ==

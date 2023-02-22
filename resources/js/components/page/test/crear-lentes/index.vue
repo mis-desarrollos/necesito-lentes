@@ -65,6 +65,22 @@
       <!--  -->
     </section>
 
+    <section class="fourth-section">
+      <!-- Paso 8 -->
+      <Step8 v-if="step == 8"></Step8>
+      <!--  -->
+
+      <!-- Paso 9 -->
+      <Step9 v-if="step == 9"></Step9>
+      <!--  -->
+    </section>
+
+    <section class="five-section">
+      <!-- Paso 10 -->
+      <Step10 v-if="step == 10"></Step10>
+      <!--  -->
+    </section>
+
     <StepsComponent :nstep="step"></StepsComponent>
   </b-form>
 </template>
@@ -81,6 +97,9 @@ import Step4 from './step-4.vue';
 import Step5 from './step-5.vue';
 import Step6 from './step-6.vue';
 import Step7 from './step-7.vue';
+import Step8 from './step-8.vue';
+import Step9 from './step-9.vue';
+import Step10 from './step-10.vue';
 export default {
   components: {
     StepsComponent,
@@ -91,11 +110,14 @@ export default {
     Step5,
     Step6,
     Step7,
+    Step8,
+    Step9,
+    Step10,
   },
 
   data() {
     return {
-      step: 6,
+      step: 1,
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimiento: false,  // Modal recubrimientos
       showModalArmazon: false,         // Modal armazón
@@ -135,6 +157,13 @@ export default {
         optica: null,
         fecha: null,
         hora: null,
+
+        nombre: null,
+        email: null,
+        contrasena: null,
+        confcontrasena: null,
+
+        formadePago: null,
       }
     }
   },

@@ -12,7 +12,7 @@
       <div class="container"><i class="icon"></i></div>
     </div>
 
-    <div class="box-step s-4">
+    <div class="box-step s-4" v-if="nstep <= 7">
       <div class="container"><i class="icon"></i></div>
     </div>
     <!-- <div class="box-step s-5">

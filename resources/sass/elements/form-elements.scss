@@ -146,3 +146,28 @@
     }
   }
 }
+
+.custom-form-group-s1 {
+  text-align: left;
+
+  label, legend {
+    padding-left: 15px;
+    padding-bottom: 4px;
+    color: $blue;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  >div {
+    .form-control {
+      height: auto;
+      padding: 0.60rem 1.4rem 0.65rem 1.4rem;
+      color: $blue;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-color: $blue;
+      border-radius: 28px;
+      background-color: transparent;
+    }
+  }
+}
