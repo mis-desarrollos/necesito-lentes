@@ -59,6 +59,10 @@
       <!-- Paso 6 -->
       <Step6 v-if="step == 6"></Step6>
       <!--  -->
+
+      <!-- Paso 7 -->
+      <Step7 v-if="step == 7"></Step7>
+      <!--  -->
     </section>
 
     <StepsComponent :nstep="step"></StepsComponent>
@@ -76,6 +80,7 @@ import Step3ModalArmazon from './step-3-modal-armazon.vue';
 import Step4 from './step-4.vue';
 import Step5 from './step-5.vue';
 import Step6 from './step-6.vue';
+import Step7 from './step-7.vue';
 export default {
   components: {
     StepsComponent,
@@ -85,6 +90,7 @@ export default {
     Step4,
     Step5,
     Step6,
+    Step7,
   },
 
   data() {
@@ -127,6 +133,8 @@ export default {
         recubrimiento: null,
         armazon: null,
         optica: null,
+        fecha: null,
+        hora: null,
       }
     }
   },
@@ -134,21 +142,27 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
+      window.scrollTo(0,0);
       console.log('onSubmit');
+
+      if(this.step == 6) {
+        this.step = 7;
+        // Codigo para el paso 6
+      }
 
       if(this.step == 4) {
         this.step = 5;
-        // Cosas del paso 4
+        // Codigo para el paso 4
       }
 
       if(this.step == 3) {
         this.step = 4;
-        // Cosas del paso 3
+        // Codigo para el paso 3
       }
 
       if(this.step == 2) {
         this.step = 3;
-        // Cosas del paso 2
+        // Codigo para el paso 2
       }
 
       if(this.step == 1) {
