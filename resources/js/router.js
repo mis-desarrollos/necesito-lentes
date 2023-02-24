@@ -11,10 +11,14 @@ const page="./components/page/";
 const MyRouter = new VueRouter({
   	routes:[
       { path: '/', component: require(page+'home.vue').default },
+      { path: '/contacto', component: require(page+'contact/index.vue').default, meta:{title:"Contacto"}},
+
       { path: '/test', component: require(page+'test/simple-test/index.vue').default, meta:{title:"Test de la vista"} },
       { path: '/obtener-lentes', component: require(page+'test/crear-lentes/index.vue').default, meta:{title:"Obtén tus lentes"} },
 	    { path: '/finalizado', component: require(page+'test/pagado/index.vue').default, meta:{title:"Pagado correctamente"} },
-      { path: '/contacto', component: require(page+'contact/index.vue').default, meta:{title:"Contacto"}},
+
+      { path: '/productos/:id?', component: require(page+'products/results.vue').default, meta:{title:"Productos"}},
+      { path: '/producto/:id', component: require(page+'products/detail.vue').default, meta:{title:"Producto"}},
 
       { path: '/aviso-de-privacidad', component: require(page+'text-pages/aviso.vue').default, meta:{title:"Aviso de privacidad"}},
       { path: '/terminos-y-condiciones', component: require(page+'text-pages/terminos.vue').default, meta:{title:"Términos y condiciones de uso"}},

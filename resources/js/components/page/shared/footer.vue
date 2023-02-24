@@ -55,9 +55,9 @@
                 <h5 class="title">General</h5>
 
                 <p>
-									<router-link to="">¿Necesitas lentes?</router-link><br />
-                  <router-link to="">Sobre nosotros</router-link><br />
-                  <router-link to="">Contacto</router-link>
+									<router-link to="/test">¿Necesitas lentes?</router-link><br />
+                  <router-link to="/nosotros">Sobre nosotros</router-link><br />
+                  <router-link to="/contacto">Contacto</router-link>
                 </p>
               </div>
 
@@ -66,8 +66,8 @@
 
                 <p>
                   <router-link to="/">Home</router-link><br />
-                  <router-link to="">Productos</router-link><br />
-                  <router-link to="">Promociones</router-link>
+                  <router-link to="/busqueda">Armazones</router-link><br />
+                  <router-link to="/obtener-lentes">Obtén tus lentes</router-link>
                 </p>
               </div>
 
@@ -75,9 +75,9 @@
                 <h5 class="title">Links de ayuda</h5>
 
                 <p>
-                  <router-link to="">Iniciar sesión</router-link><br />
-                  <router-link to="">Crear cuenta</router-link><br />
-                  <router-link to="">FAQ</router-link>
+                  <router-link to="/cart">Carrito de compras</router-link><br />
+                  <router-link to="/login">Iniciar sesión</router-link><br />
+                  <router-link to="/registrarse">Registrarse</router-link>
                 </p>
               </div>
             </div>
@@ -94,7 +94,7 @@
             <p class="mt-3">
               <router-link class="mini-text" to="/aviso-de-privacidad">Aviso de privacidad</router-link><br />
               <router-link class="mt-1 mini-text" to="/terminos-y-condiciones">Términos y condiciones de uso</router-link><br />
-              <span class="mt-1 mini-text">Copyright © 2023 Necesito lentes</span>
+              <span class="mt-1 mini-text">Copyright © {{ currentYear }} Necesito lentes</span>
             </p>
           </div>
         </div>
@@ -108,6 +108,8 @@
 export default {
   data(){
     return{
+      currentYear: null,
+
       form: {
         email: null
       },
@@ -117,15 +119,14 @@ export default {
   },
 
   methods:{
-
     makeToast(variant = null, msg, title) {
-        this.$bvToast.toast(msg, {
-          title: title,
-          variant: variant,
-          solid: true,
-          toaster: 'b-toaster-top-right',
-          appendToast: true
-        });
+      this.$bvToast.toast(msg, {
+        title: title,
+        variant: variant,
+        solid: true,
+        toaster: 'b-toaster-top-right',
+        appendToast: true
+      });
     },
 
     onSubmit(evt) {
@@ -154,6 +155,7 @@ export default {
   },
 
   beforeMount(){
+    this.currentYear = new Date().getFullYear();
   }
 }
 </script>

@@ -6,13 +6,13 @@
         <h2 class="mb-4 h1s f-w-800 txt-blue">¿Conoces tu graduación?</h2>
 
         <div class="d-block pb-5">
-          <b-button type="submit" class="btn btn-lg btn-s1 bg-blue" @click="$parent.form.graduacion = 'no'">Si</b-button>
+          <b-button type="submit" class="btn btn-lg btn-s1 bg-blue" @click="$parent.form.graduacion = 'si'; showInfoForm = true">Si</b-button>
 
           <p class="mt-3 h4 f-w-600 txt-white">Sube tus datos</p>
         </div>
 
         <div>
-          <b-button type="submit" class="btn btn-lg btn-s1 bg-blue" @click="$parent.form.graduacion = 'no'; showInfoForm = true">No</b-button>
+          <b-button type="submit" class="btn btn-lg btn-s1 bg-blue" @click="$parent.form.graduacion = 'no'">No</b-button>
 
           <p class="mt-3 h4 f-w-600 txt-white">Comienza el proceso de mandar a hacer tus lentes con nosotros y pedir que un profesional te realice el examen gratuito.</p>
         </div>

@@ -11,7 +11,7 @@
       </div>
 
       <div class="col-12 col-nav-buttons">
-        <b-button type="submit" class="btn btn-lg btn-s1 bg-blue">Siguiente</b-button>
+        <b-button type="submit" class="btn btn-lg btn-s1 bg-blue">Continuar</b-button>
       </div>
     </b-form>
   </b-modal>

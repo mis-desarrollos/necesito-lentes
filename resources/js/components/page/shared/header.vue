@@ -13,22 +13,23 @@
 
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav class="ml-auto">
-              <b-nav-item class="simple-item" to="/empresa">Nosotros</b-nav-item>
+              <b-nav-item class="simple-item btn-item" to="/test"><i class="fal fa-sunglasses ic-simple d-lg-none"></i> Test de la vista</b-nav-item>
+              <!-- <b-nav-item class="simple-item" to="/empresa">Nosotros</b-nav-item> -->
               <li class="nav-item simple-item">
-                <a class="nav-link" @click="isPActive = true;">Productos</a>
+                <a class="nav-link" @click="isPActive = true;"><i class="far fa-glasses ic-simple mr-lg-1"></i> Armazones</a>
               </li>
-              <b-nav-item class="simple-item" to="/contacto">Contacto</b-nav-item>
+              <b-nav-item class="simple-item" to="/contacto"><i class="far fa-envelope ic-simple d-lg-none"></i> Contacto</b-nav-item>
 
               <b-nav-item-dropdown class="simple-item dropdown-account" right>
                 <template #button-content>
-                  <span><i class="far fa-user-circle"></i> Mi cuenta</span>
+                  <span><i class="fal fa-user-circle ic-simple"></i> Mi cuenta</span>
                 </template>
                 <b-dropdown-item to="/login">Iniciar sesión</b-dropdown-item>
                 <b-dropdown-item to="/registrarse">Registrarse</b-dropdown-item>
               </b-nav-item-dropdown>
 
               <b-nav-item class="simple-item cart" to="/cart">
-                <span class="icon"><i class="fas fa-shopping-cart"></i><i class="num">0</i></span>
+                <span class="icon"><i class="fal fa-shopping-cart"></i><i class="num">0</i></span>
                 <span class="d-lg-none ml-2">Mi carrito</span>
               </b-nav-item>
 
@@ -50,9 +51,9 @@
 
       <div class="tablist" role="tablist">
         <div class="t-250 box-title" @click="isPActive = false">
-          <h4>PRODUCTOS</h4>
+          <h4>ARMAZONES</h4>
           <br>
-          <h5>Categorias</h5>
+          <h5>Colecciones</h5>
           <i class="fas fa-chevron-left icon"></i>
         </div>
 
@@ -108,7 +109,7 @@ export default {
         { id: 182, name: 'De aumento', subcategories: [] },
         { id: 182, name: 'Cuadrados', subcategories: [] },
         { id: 182, name: 'Monofocales', subcategories: [] },
-        { id: 182, name: 'Redondo', subcategories: [] },
+        { id: 182, name: 'Redondos', subcategories: [] },
       ],
     }
   },

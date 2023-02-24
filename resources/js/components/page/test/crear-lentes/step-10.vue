@@ -77,7 +77,7 @@
           </div>
 
           <div class="col-12 mt-5 text-center col-btn-navs">
-            <b-button type="button" class="btn btn-lg btn-s1 outline-blue" @click="$parent.step = 9;">Anterior</b-button>
+            <b-button type="button" class="btn btn-lg btn-s1 outline-blue" @click="$parent.step = 9;">Regresar</b-button>
             <b-button type="submit" class="btn btn-lg btn-s1 bg-blue px-5">Pagar</b-button>
           </div>
         </div>

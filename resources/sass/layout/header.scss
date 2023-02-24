@@ -41,7 +41,7 @@
 							color: #ffffff;
 							cursor: pointer;
 							font-size: 1rem;
-							font-weight: 600;
+							font-weight: 500;
 							@include transition(150ms);
 
 							&:hover {
@@ -66,7 +66,8 @@
 						}
 
 						.dropdown-menu {
-							border-radius: 3px;
+							border: 0;
+							border-radius: 0;
 							padding-top: 0px;
 							padding-bottom: 0px;
 
@@ -80,7 +81,7 @@
 
 									&:hover, &:focus, &:active {
 										color: #ffffff;
-										background-color: $aqua2;
+										background-color: $pink;
 									}
 								}
 							}
@@ -115,7 +116,7 @@
 									font-style: normal;
 									text-align: center;
 									border-radius: 50%;
-									background-color: $yellow;
+									background-color: $pink;
 									overflow: hidden;
 								}
 							}
@@ -162,6 +163,27 @@
 								}
 							}
 						}
+
+						.btn-item {
+							.nav-link {
+								padding: 0.50rem 1.2rem 0.40rem 1.2rem;
+								color: #ffffff !important;
+								border-radius: 24px;
+								background-color: $blue;
+
+								&:hover, &:focus, &:active {
+									background-color: $blue2 !important;
+								}
+
+								&.router-link-exact-active {
+									background-color: $blue2;
+
+									&:before {
+										display: none !important;
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -177,6 +199,16 @@
 								.nav-link {
 									padding-right: 0.4rem;
 									padding-left: 0.4rem;
+								}
+							}
+
+							.btn-item {
+								margin-right: 5px !important;
+
+								.nav-link {
+									position: relative;
+									top: 2px;
+									padding: 0.35rem 1.2rem 0.30rem 1.2rem !important;
 								}
 							}
 						}
@@ -230,34 +262,45 @@
 				}
 
 				#nav-collapse {
-					.simple-item {
-						.nav-link {
-							padding-top: 0.2rem;
-							padding-bottom: 0.2rem;
+					.navbar-nav {
+						.ic-simple {
+							width: 22px;
 						}
 
-						.router-link-exact-active {
-							color: $yellow !important;
+						.simple-item {
+							.nav-link {
+								padding-top: 0.2rem;
+								padding-bottom: 0.2rem;
+							}
 						}
-					}
 
-					.cart, .dropdown-account {
-						>.nav-link {
-							padding-top: 0.5rem;
-							padding-bottom: 0.4rem;
+						.btn-item {
+							margin-top: 10px;
+
+							.nav-link {
+								color: $blue !important;
+								font-weight: 800;
+							}
 						}
-					}
 
-					.networks-item {
-						padding-top: 8px;
-						padding-bottom: 10px;
+						.cart, .dropdown-account {
+							>.nav-link {
+								padding-top: 0.5rem;
+								padding-bottom: 0.4rem;
+							}
+						}
 
-						.nav-link {
-							text-align: center;
+						.networks-item {
+							padding-top: 8px;
+							padding-bottom: 10px;
 
-							.btn-network {
-								img {
-									max-height: 40px;
+							.nav-link {
+								text-align: center;
+
+								.btn-network {
+									img {
+										max-height: 40px;
+									}
 								}
 							}
 						}

@@ -1,6 +1,19 @@
 #get-glasses-page {
   position: relative;
 
+  .form-info-box {
+    position: fixed;
+    padding: 8px 12px;
+    top: 0;
+    left: 0;
+    font-size: 0.70rem;
+    font-weight: 700;
+    border-radius: 0 0 4px 0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    background-color: #ffffff;
+    z-index: 999;
+  }
+
   // == Contenedor de pasos ==
   .box-step-wr {
     position: relative;
@@ -21,6 +34,10 @@
     // height: 77px (> 576px) | height: 62px (< 575px)
     pointer-events: none;
     z-index: 45;
+
+    a {
+      cursor: pointer;
+    }
 
     >.container {
       display: flex;
@@ -58,7 +75,6 @@
           padding: 12px 22px 11px 16px;
           margin-right: 22px;
           min-width: 170px;
-          border-right: 1px solid #373154;
 
           h6 {
             font-size: 1.1rem;
@@ -84,6 +100,41 @@
             font-size: 2.2rem;
             font-weight: 500;
             letter-spacing: 1px;
+          }
+        }
+
+        &.pack-1 {
+          background-color: $blue;
+
+          .c1 {
+            color: $blue;
+          }
+
+          .c2 {
+            border-right: 1px solid #373154;
+          }
+        }
+        &.pack-2 {
+          background-color: #006b78;
+
+          .c1 {
+            color: #006b78;
+          }
+          .c2 {
+            border-right: 1px solid #14a3b5;
+          }
+        }
+        &.pack-3 {
+          color: $blue;
+          box-shadow: 0 0 2px rgba(0,0,0,0.2);
+          background-color: #eaedec;
+
+          .c1 {
+            color: #eaedec;
+            background-color: $blue;
+          }
+          .c2 {
+            border-right: 1px solid #c3cac7;
           }
         }
       }

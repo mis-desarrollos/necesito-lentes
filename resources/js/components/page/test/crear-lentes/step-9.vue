@@ -68,6 +68,10 @@ export default {
         this.isBtnDisabled = false;
       }
     },
+  },
+
+  beforeMount() {
+    this.$parent.form.formadePago = null;
   }
 }
 </script>

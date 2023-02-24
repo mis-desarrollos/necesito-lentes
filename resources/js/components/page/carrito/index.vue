@@ -233,7 +233,7 @@
                 <hr />
                 <p>
                   Favor de enviarnos el comprobante de pago al siguiente correo: <br />
-                  <strong>pago@mipaw.com.mx</strong>
+                  <strong>pago@necesitolentes.club</strong>
                 </p>
               </div>
               <!--  -->
@@ -245,7 +245,7 @@
                 <hr />
                 <p>
                   Favor de enviarnos el comprobante de pago al siguiente correo: <br />
-                  <strong>pago@mipaw.com.mx</strong>
+                  <strong>pago@necesitolentes.club</strong>
                 </p>
               </div>
               <!--  -->

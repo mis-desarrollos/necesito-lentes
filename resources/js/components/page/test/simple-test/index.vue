@@ -3,6 +3,10 @@
 
     <section class="questions-section" v-bind:class="{ 'step6' : step == 6 }">
       <div class="container">
+        <div class="d-block text-center mb-3">
+          <h2 class="h1s f-w-800 txt-blue">Test de la vista</h2>
+        </div>
+
         <div class="box-progress">
           <div class="box-icons">
             <div class="icon icon-1"></div>

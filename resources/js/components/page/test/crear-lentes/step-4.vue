@@ -17,8 +17,8 @@
 
         <div class="row">
           <div class="col-12 mt-5 text-center col-btn-navs">
-            <b-button type="button" class="btn btn-lg btn-s1 outline-white" @click="$parent.step = 3;">Anterior</b-button>
-            <b-button type="button" class="btn btn-lg btn-s1 bg-blue" @click="$parent.step = 5;">Siguiente</b-button>
+            <b-button type="button" class="btn btn-lg btn-s1 outline-white" @click="$parent.step = 3;">Regresar</b-button>
+            <b-button type="button" class="btn btn-lg btn-s1 bg-blue" @click="$parent.step = 5;">Continuar</b-button>
           </div>
         </div>
       </div>

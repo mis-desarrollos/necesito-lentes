@@ -53,7 +53,7 @@
           </div>
 
           <div class="col-12 mt-5 text-center col-btn-navs">
-            <b-button type="button" class="btn btn-lg btn-s1 outline-white" @click="$parent.step = 5;">Anterior</b-button>
+            <b-button type="button" class="btn btn-lg btn-s1 outline-white" @click="$parent.step = 5;">Regresar</b-button>
             <b-button type="submit" class="btn btn-lg btn-s1 bg-blue" :disabled="isBtnDisabled">Confirmar</b-button>
           </div>
         </div>
@@ -87,9 +87,11 @@ export default {
     }
   },
 
-  beforeMount(){
-    const now = new Date();
-    this.minDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  methods: {
+    resetDate() { // Resetear pues el usuario estará cambiando de sucursal
+      this.$parent.form.fecha = null;
+      this.$parent.form.hora = null;
+    }
   },
 
   watch: {
@@ -104,6 +106,17 @@ export default {
         this.isBtnDisabled = false;
       }
     }
-  }
+  },
+
+  beforeMount(){
+    const now = new Date();
+    this.minDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    this.resetDate();
+  },
+
+  beforeDestroy() {
+    this.resetDate();
+  },
 }
 </script>

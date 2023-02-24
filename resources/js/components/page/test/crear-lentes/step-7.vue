@@ -17,7 +17,7 @@
               Calz. del Federalismo Sur 199, Centro, 44100 Guadalajara, Jal.<br /> Tel: 33 3614 9234
             </div>
 
-            <a class="h5 txt-white" @click="cancel()"><u>Cancelar cita</u></a>
+            <a class="h5 txt-white c-pointer" @click="cancel()"><u>Cancelar cita</u></a>
           </div>
 
           <div class="col-12 mt-5 text-center col-btn-navs">

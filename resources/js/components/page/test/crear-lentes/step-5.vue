@@ -75,7 +75,7 @@
 
               <div class="box-buttons">
                 <b-button type="button" class="btn btn-s1 btn-sm outline-white" @click="closeBranchInfo(); stepPart = 1;">Regresar</b-button>
-                <b-button type="button" class="btn btn-s1 btn-sm bg-white" @click="$parent.step = 6;">Siguiente</b-button>
+                <b-button type="button" class="btn btn-s1 btn-sm bg-white" @click="$parent.step = 6;">Continuar</b-button>
               </div>
             </div>
           </div>

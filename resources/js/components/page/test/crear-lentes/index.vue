@@ -1,27 +1,10 @@
 <template lang="html">
   <b-form id="get-glasses-page" @submit="onSubmit">
+    <!-- Para ver el la INFORMACIÓN del formulario siempre visible -->
+    <!-- <pre class="form-info-box">{{ form }}</pre> -->
+
     <!-- Plan / Paquete seleccionado -->
-    <div class="box-plan-selected" v-if="form.plan">
-      <div class="container">
-        <div class="col col-price">
-          <div class="box">
-            <div class="c1">1</div>
-            <div class="c2">
-              <h6>Paquete</h6>
-              <h5>Ultra</h5>
-            </div>
-
-            <div class="c3">
-              <h5>$1,900</h5>
-            </div>
-          </div>
-        </div>
-
-        <div class="col col-icon">
-          <i class="icon"></i>
-        </div>
-      </div>
-    </div>
+    <PlanSelected :plan="form.plan" v-if="form.plan"></PlanSelected>
     <!--  -->
 
     <section class="first-section">
@@ -87,6 +70,7 @@
 
 <script>
 import StepsComponent from '../steps-component.vue';
+import PlanSelected from './plan-selected.vue';
 import Step1 from './step-1.vue';
 import Step2 from './step-2.vue';
 import Step3 from './step-3.vue';
@@ -103,6 +87,7 @@ import Step10 from './step-10.vue';
 export default {
   components: {
     StepsComponent,
+    PlanSelected,
     Step1,
     Step2,
     Step3, Step3ModalMateriales, Step3ModalRecubrimiento, Step3ModalArmazon,
@@ -121,6 +106,13 @@ export default {
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimiento: false,  // Modal recubrimientos
       showModalArmazon: false,         // Modal armazón
+
+      // Planes
+      plans: [
+        { id: 1, color: '#00226b', name: 'Ultra', price: '1,900' },
+        { id: 2, color: '#006b78', name: 'Pro', price: '1,600' },
+        { id: 3, color: '#eaedec', name: 'Novato', price: '1,200' },
+      ],
 
       // Materieles
       materiales: [
@@ -145,6 +137,7 @@ export default {
         { id: 3, imageUrl: 'public/images/pages/test/glasses-3.jpg', disabled: true, selected: false, name: 'Armazón 3',  shortDescr: 'Negro - Rojo / Pasta' },
       ],
 
+      // Formulario principal
       form: {
         graduacion: null,
         misdatos: {
@@ -164,7 +157,7 @@ export default {
         confcontrasena: null,
 
         formadePago: null,
-      }
+      },
     }
   },
 
@@ -173,6 +166,11 @@ export default {
       event.preventDefault();
       window.scrollTo(0,0);
       console.log('onSubmit');
+
+      if(this.step == 10) {
+        this.$router.push('/finalizado')
+        // Codigo para el paso 10
+      }
 
       if(this.step == 6) {
         this.step = 7;
@@ -210,11 +208,15 @@ export default {
   watch: {
     form: {
       handler(val){
-        // this.step += 1;
-        // window.scrollTo(0,0);
+        // X codigo
       },
+
       deep: true
-    }
+    },
+
+    'step'(val, oldVal) {
+      window.scrollTo(0,0);
+    },
   },
 }
 </script>

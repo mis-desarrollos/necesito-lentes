@@ -64,8 +64,8 @@
         <div class="row">
           <div class="col-12 mt-5 pt-4 text-center col-btn-navs"
             v-if="this.$parent.form.material && this.$parent.form.recubrimiento && this.$parent.form.armazon">
-            <b-button type="button" class="btn btn-lg btn-s1 outline-white" @click="$parent.step = 2;">Anterior</b-button>
-            <b-button type="button" class="btn btn-lg btn-s1 bg-blue" @click="$parent.step = 4;">Siguiente</b-button>
+            <b-button type="button" class="btn btn-lg btn-s1 outline-white" @click="$parent.step = 2;">Regresar</b-button>
+            <b-button type="button" class="btn btn-lg btn-s1 bg-blue" @click="$parent.step = 4;">Continuar</b-button>
           </div>
         </div>
       </div>
