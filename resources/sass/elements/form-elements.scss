@@ -169,5 +169,14 @@
       border-radius: 28px;
       background-color: transparent;
     }
+
+    .form-control-sm {
+      padding: 0.45rem 1.2rem 0.5rem 1.2rem;
+      font-size: 1.0rem;
+    }
+
+    textarea {
+      resize: none;
+    }
   }
 }

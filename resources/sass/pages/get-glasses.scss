@@ -1058,6 +1058,57 @@
           }
         }
       }
+
+      @media screen and (max-width: 575px) {
+        .col-payment {
+          .payment-radiogroup {
+            .custom-radio {
+              .custom-control-label {
+                .box-payment {
+                  .box-icon {
+                    flex: 0 0 135px;
+                    max-width: 135px;
+
+                    >div {
+                      .icon-card {
+                        width: 52px;
+                      }
+
+                      .icon-paypal {
+                        width: 88px;
+                        max-width: 85%;
+                      }
+                    }
+                  }
+
+                  .box-text {
+                    padding: 10px 15px 10px 18px;
+
+                    h5 {
+                      margin-bottom: 0;
+                      font-size: 0.95rem;
+                    }
+
+                    .price {
+                      font-size: 1.75rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .step-finalized {
+      padding-top: 20px;
+      padding-bottom: 551px;
+      color: $blue;
+
+      a {
+        cursor: pointer;
+      }
     }
   }
   // == ==
@@ -1065,11 +1116,100 @@
   // == Quinta sección (blanca) ==
   .five-section {
     position: relative;
-    text-align: center;
+    color: $blue;
     background-color: #eff4f4;
 
     .step-10 {
-      
+      .main-con {
+        margin-bottom: 20px;
+
+        >.row {
+          justify-content: center;
+        }
+      }
+
+      .col-summary {
+        .box-summary {
+          position: relative;
+          display: flex;
+          flex-wrap: wrap;
+          padding: 20px 0;
+          flex: 0 0 100%;
+          max-width: 100%;
+          border: 2px solid $blue;
+          border-radius: 35px;
+          background-color: #ffffff;
+
+          .col-image {
+            display: flex;
+            flex: 0 0 210px;
+            max-width: 210px;
+            align-items: center;
+
+            .img {
+              display: inline-block;
+              text-align: center;
+              width: 100%;
+
+              img {
+                max-width: 96%;
+              }
+            }
+          }
+
+          .col-info {
+            padding-left: 20px;
+            border-left: 1px solid $blue;
+          }
+        }
+      }
+
+      .col-text {
+        .box-text {
+          position: relative;
+          padding: 17px 25px 16px 25px;
+          border: 2px solid $blue;
+          border-radius: 35px;
+          background-color: #ffffff;
+
+          a {
+            color: $blue;
+          }
+
+          .title {
+            margin-bottom: 4px;
+            font-weight: 700;
+            line-height: 1.1;
+          }
+
+          .descr {
+            display: block;
+            line-height: 1.2;
+          }
+        }
+      }
+
+      .col-payment {}
+
+      @media screen and (max-width: 575px) {
+        .col-summary {
+          .box-summary {
+            padding: 10px 0 22px 0;
+
+            .col-image {
+              flex: 0 0 100%;
+              max-width: 100%;
+            }
+
+            .col-info {
+              margin-top: 5px;
+              padding-left: 15px;
+              text-align: center;
+              border-left: 0;
+            }
+          }
+        }
+      }
     }
   }
   // == ==

@@ -7,7 +7,7 @@
 
       <div class="container main-con">
         <div class="row">
-          <div class="col-lg-6 col-payment">
+          <div class="col-md-9 col-lg-7 col-xl-6 col-payment">
             <b-form-radio-group
               class="payment-radiogroup"
               v-model="$parent.form.formadePago"

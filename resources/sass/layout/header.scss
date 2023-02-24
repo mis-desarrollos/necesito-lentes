@@ -106,7 +106,6 @@
 
 								.num {
 									position: absolute;
-									padding-top: 2px;
 									top: -9px;
 									right: -8px;
 									width: 19px;
@@ -267,5 +266,192 @@
 			}
 		}
 	}
+
+	// == Products menu ==
+	.products-menu{
+		position: fixed;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		top: 0;
+		left: 0;
+		width: 335px;
+		height: 100%;
+		color: #fff;
+		font-size: 15px;
+		box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+		background: $blue;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 480;
+		@include cp-property(transform, translateX(-380px) !important);
+
+		a{
+			color: #fff;
+		}
+
+		.menu-bg{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100%;
+			background-color: transparent;
+			z-index: 1;
+		}
+
+		.tablist{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			overflow-x: hidden;
+			z-index: 2;
+
+			.box-title{
+				padding: 8px 0px;
+				margin-bottom: 6px;
+				font-weight: 400;
+				text-align: center;
+				cursor: pointer;
+
+				&:hover{
+					opacity: 0.8;
+				}
+
+				h4{
+					font-size: 1.3rem;
+				}
+
+				.icon{
+					position: absolute;
+					top: 13px;
+					right: 24px;
+					font-size: 1.2rem;
+				}
+			}
+		}
+
+		.card{
+			border: 0;
+			border-radius: 0;
+			background-color: transparent;
+
+			.card-header{
+				background-color: transparent;
+				border: 0;
+				border-radius: 0;
+				padding: 0.2rem;
+
+				.btn-toggle{
+					position: relative;
+					display: block;
+					padding: 0px 45px 0px 10px;
+					text-align: right;
+					color: #fff;
+					text-transform: uppercase;
+					font-size: 15px;
+					font-weight: 700;
+					cursor: pointer;
+					@extend .t-250;
+
+					.fake-toggle{
+						position: absolute;
+						right: 0;
+						top: 0;
+						width: 43px;
+						height: 100%;
+						z-index: 10;
+					}
+
+					&:after{
+						content: " ";
+						position: absolute;
+						top: 7px;
+						right: 18px;
+						width: 16px;
+						height: 8px;
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-image: url('../images/shared/chevron-down.svg');
+						z-index: 1;
+					}
+
+					&:hover{
+						opacity: 0.8;
+					}
+				}
+				.btn-toggle-fake{
+					position: relative;
+					display: block;
+					padding: 0px 25px 0px 10px;
+					text-align: right;
+					color: #fff;
+					text-transform: uppercase;
+					font-size: 15px;
+					font-weight: 700;
+					cursor: pointer;
+					@extend .t-250;
+
+					.fake-toggle{
+						position: absolute;
+						right: 0;
+						top: 0;
+						width: 43px;
+						height: 100%;
+						z-index: 10;
+					}
+
+					&:hover{
+						opacity: 0.8;
+					}
+				}
+
+				.btn-direct-link{
+					position: relative;
+					right: -43px;
+					padding-right: 43px;
+				}
+			}
+
+			.card-body{
+				padding: 0.4rem 0;
+				line-height: 1.3;
+				background-color: $blue2;
+
+				.ul-sub-options{
+					padding-left: 0;
+					margin-bottom: 0;
+					list-style-type: none;
+
+					li{
+						margin-top: 5px;
+						margin-bottom: 5px;
+						display: inline-block;
+						width: 100%;
+						font-size: 15px;
+						text-align: right;
+
+						a{
+							display: block;
+							padding: 0px 1.45rem;
+
+							&:hover{
+								text-decoration: none;
+								opacity: 0.8;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.active{
+			opacity: 1;
+			visibility: visible;
+			@include cp-property(transform, translateX(0px) !important);
+		}
+	}
+	// == ==
 
 }

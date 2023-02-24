@@ -39,7 +39,7 @@
         <div class="row">
           <div class="col-sm-6 col-lg-3 col-main-1">
             <p class="mt-3 t-w-break">
-              <a class="link-icon email" href="mailto:contacto@necesito-lentes.com"><i></i> contacto@necesito-lentes.com</a>
+              <a class="link-icon email" href="mailto:contacto@necesitolentes.club"><i></i> contacto@necesitolentes.club</a>
             </p>
             <p class="mt-2 t-w-break">
               <a class="link-icon help"><i></i> +55 323-4332-9438</a>
@@ -93,7 +93,7 @@
 
             <p class="mt-3">
               <router-link class="mini-text" to="/aviso-de-privacidad">Aviso de privacidad</router-link><br />
-              <router-link class="mt-1 mini-text" to="/terminologia-legal">Términos y condiciones de uso</router-link><br />
+              <router-link class="mt-1 mini-text" to="/terminos-y-condiciones">Términos y condiciones de uso</router-link><br />
               <span class="mt-1 mini-text">Copyright © 2023 Necesito lentes</span>
             </p>
           </div>

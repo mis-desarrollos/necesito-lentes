@@ -1,0 +1,52 @@
+#contact-page{
+
+  .main-section{
+    padding-top: 35px;
+		padding-bottom: 35px;
+
+    .col-title{
+      margin-bottom: 15px;
+      text-align: center;
+
+      .title-s-1{
+        text-align: center;
+      }
+    }
+
+    .col-info{
+      text-align: right;
+      line-height: 1.3;
+
+      .title{
+        font-size: 1.15rem;
+        line-height: 1.1;
+      }
+
+      .subtitle{
+        color: $blue;
+        font-size: 1.10rem;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+
+      .btn-network{
+        color: #444645;
+        font-size: 1.6rem;
+      }
+    }
+
+    .col-form{}
+
+    @media screen and (max-width: 991px){
+      .col-title{
+        margin-bottom: 0;
+      }
+
+      .col-info{
+        margin-bottom: 15px;
+        text-align: center;
+      }
+    }
+  }
+
+}
