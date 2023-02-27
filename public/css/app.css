@@ -29932,6 +29932,10 @@ input[type=number] {
   font-size: 2.9rem !important;
 }
 
+.f-f-kanit {
+  font-family: "Kanit", sans-serif;
+}
+
 .f-w-300 {
   font-weight: 300 !important;
 }
@@ -32725,6 +32729,55 @@ input[type=number] {
   min-height: 77vh;
 }
 
+#about-us-page .main-section {
+  position: relative;
+  background-color: #ecf0ef;
+}
+#about-us-page .main-section .bg-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../images/pages/about-us/bg-1.jpg");
+}
+#about-us-page .main-section .container > .row {
+  min-height: 77vh;
+  align-items: center;
+}
+#about-us-page .main-section .col-info {
+  line-height: 1.3;
+  text-align: justify;
+}
+@media screen and (max-width: 767px) {
+  #about-us-page .main-section {
+    padding-bottom: 405px;
+  }
+  #about-us-page .main-section .bg-image {
+    top: inherit;
+    bottom: 0;
+    width: 100%;
+    height: 400px;
+    background-position: center top;
+  }
+  #about-us-page .main-section .container > .row {
+    min-height: inherit;
+  }
+  #about-us-page .main-section .col-info {
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+}
+@media screen and (max-width: 575px) {
+  #about-us-page .main-section .bg-image {
+    background-position: right 43% top;
+    background-size: 240%;
+  }
+}
+
 #contact-page .main-section {
   padding-top: 35px;
   padding-bottom: 35px;
@@ -33249,9 +33302,19 @@ input[type=number] {
 }
 .row-products .col-info .txt-name {
   font-size: 1.05rem;
+  font-weight: 700;
 }
 .row-products .col-info .txt-name a {
   color: #212529;
+}
+.row-products .col-info .txt-features {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.row-products .col-info .txt-features small {
+  color: #6a6767;
+  font-size: 90%;
+  font-weight: 600;
 }
 .row-products .col-info .txt-md {
   font-size: 0.95rem;

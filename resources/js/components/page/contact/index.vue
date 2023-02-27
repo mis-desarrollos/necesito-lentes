@@ -4,7 +4,7 @@
     <section class="container main-section">
       <div class="row align-items-center">
         <div class="col-12 col-title">
-          <h1 class="title-s1">Contacto</h1>
+          <h1 class="h1s f-w-800 txt-blue">Contacto</h1>
         </div>
 
         <div class="col-lg-6 col-info">

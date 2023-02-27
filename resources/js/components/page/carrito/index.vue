@@ -48,22 +48,13 @@
                   <h5 class="txt-name">
                     <router-link target="_blank" :to="'/producto/'+product.id">{{ product.name }}</router-link>
                   </h5>
+                  <h5 class="txt-features"><small>Material: </small> Parasol</h5>
+                  <h5 class="txt-features"><small>Recubrimiento: </small> Matiz E Azul</h5>
+                  <h5 class="txt-features"><small>SKU: </small> {{ product.sku }}</h5>
 
-                  <div class="row mx-0 align-items-center">
-                    <div class="d-flex">
-                      <h6 class="txt-sm text-muted">SKU: {{ product.sku }}</h6>
-                    </div>
-                    <div class="d-flex">
-                      <div class="box-color-opt opt-sm">
-                        <!-- <a class="color" title="Color x" v-bind:style="{ backgroundColor: '#e63003' }">{{ product.color }}</a> -->
-                        <!-- <a class="color" :title="product.color">{{ product.color }}</a>
-                        <a class="color" :title="product.size">{{ product.size }}</a> -->
-                      </div>
-                    </div>
-                  </div>
-                  <hr class="mt-0 mb-1" />
+                  <hr class="mt-1 mb-1" />
 
-                  <router-link class="link-sm text-muted" target="_blank" :to="'/producto/'+product.id">Ver producto</router-link> <span class="mx-2">|</span> <a class="link-sm text-danger" @click="removeCart(index)"><i class="far fa-trash-alt"></i> Quitar</a>
+                  <router-link class="link-sm text-muted" target="_blank" :to="'/producto/'+product.id">Ver armazón</router-link> <span class="mx-2">|</span> <a class="link-sm text-danger" @click="removeCart(index)"><i class="far fa-trash-alt"></i> Quitar</a>
                 </div>
 
                 <div class="col col-price">
@@ -104,19 +95,71 @@
                     <b-form-input id="user-phone" type="text" v-model="form.user.phone" size="sm" required placeholder="Teléfono" maxlength="10"/>
                 </div>
 
+                <b-form-group class="mt-4" label="¿Conoces tu graduación?">
+                  <b-form-radio-group v-model="form.metodoenvio" name="radio-envio">
+                    <b-form-radio class="d-block" value="1"><strong>No.</strong> Hacer mi graduacuón en una sucursal para recogerlos.</b-form-radio>
+                    <b-form-radio class="d-block" value="2"><strong>Si.</strong> Enviar mis productos a mi dirección</b-form-radio>
+                  </b-form-radio-group>
+                </b-form-group>
 
-                <h6 class="mt-5">Información de envío</h6>
-                <hr class="c-hr" />
+                <!-- EN CASO DE QUE EL USUARIO SELECCIONÓ RECORGER EN SUCURSAL y hacer test de la vista -->
+                <div v-if="form.metodoenvio == 1">
+                  <h6 class="mt-5">Sucursal para recorger y/o hacer mi test de la vista</h6>
+                  <hr class="c-hr" />
 
-                <!-- <div class="row mx-0 no-gutters">
-                    <div class="col-md-12">
-                        <b-form-group class="custom-input" label="Tipo de entrega:" label-for="i-entrega">
-                            <v-select v-model="form.shippingMethod" :options="['Enviar a domicilio', 'Recoger en tienda']" placeholder="Tipo de entrega"/>
-                        </b-form-group>
+                  <div class="row mx-0 no-gutters">
+                    <div class="col-md-6 pr-md-3">
+                      <b-form-group class="custom-input" label="Estado:">
+                          <v-select v-model="form.stateSucursal_id" :options="estadoSucursales" label="name" index="id" />
+                      </b-form-group>
                     </div>
-                </div> -->
 
-                <div >
+                    <div class="col-md-6 pr-md-3">
+                      <b-form-group class="custom-input" label="Sucursal:">
+                          <v-select v-model="form.sucursal_id" :options="sucursales" label="name" index="id"/>
+                      </b-form-group>
+                    </div>
+
+                    <div class="col-md-6 pr-md-3">
+                      <b-form-group class="custom-input" label="Fecha:">
+                        <b-form-datepicker v-model="form.sucursalDate" :min="minDate" :date-format-options="dateFormOpts" v-bind="datepickerOpts" placeholder="Fecha" required></b-form-datepicker>
+                      </b-form-group>
+                    </div>
+
+                    <div class="col-md-6 pr-md-3">
+                      <b-form-group class="custom-input" label="Fecha:">
+                        <b-form-select required v-model="form.sucursalHour">
+                          <b-form-select-option disabled :value="null">Seleccione una hora</b-form-select-option>
+                          <b-form-select-option value="1">10:00 AM</b-form-select-option>
+                          <b-form-select-option value="2">11:00 AM</b-form-select-option>
+                          <b-form-select-option value="3">12:00 AM</b-form-select-option>
+                          <b-form-select-option value="4">1:00 PM</b-form-select-option>
+                          <b-form-select-option value="5">2:00 PM</b-form-select-option>
+                          <b-form-select-option value="6">3:00 PM</b-form-select-option>
+                          <b-form-select-option value="7">4:00 PM</b-form-select-option>
+                          <b-form-select-option value="8">5:00 PM</b-form-select-option>
+                          <b-form-select-option value="9">6:00 PM</b-form-select-option>
+                          <b-form-select-option value="10">7:00 PM</b-form-select-option>
+                        </b-form-select>
+                      </b-form-group>
+                    </div>
+                  </div>
+                </div>
+                <!--  -->
+
+                <!-- EN CASO DE ENVÍO A DOMICILIO y que el usuario no quiso test de la vista -->
+                <div v-if="form.metodoenvio == 2">
+                  <h6 class="mt-5">Información de envío</h6>
+                  <hr class="c-hr" />
+
+                  <!-- <div class="row mx-0 no-gutters">
+                      <div class="col-md-12">
+                          <b-form-group class="custom-input" label="Tipo de entrega:" label-for="i-entrega">
+                              <v-select v-model="form.shippingMethod" :options="['Enviar a domicilio', 'Recoger en tienda']" placeholder="Tipo de entrega"/>
+                          </b-form-group>
+                      </div>
+                  </div> -->
+                  <div >
                     <div class="row mx-0 no-gutters">
                         <div class="col-md-7 col-lg-6">
                         <b-form-group class="custom-input" label="Calle:" label-for="i-calle">
@@ -157,15 +200,17 @@
                         <b-form-group class="custom-input" label="Estado:" label-for="i-estado">
                             <v-select v-model="form.user.state_id" :options="states" label="name" index="id" @change="getTowns"/>
                         </b-form-group>
-                        </div>
+                      </div>
 
-                        <div class="col-md-6">
+                      <div class="col-md-6">
                         <b-form-group class="custom-input" label="Ciudad:" label-for="i-ciudad">
                             <v-select v-model="form.user.town_id" :options="towns" label="name" index="id"/>
                         </b-form-group>
-                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
+                <!--  -->
             </div>
             <!-- Paso 2, fin  -->
 
@@ -291,7 +336,11 @@ export default {
   data(){
     return{
       form: {
-        products: [],
+        products: [
+          { id: 5, imageUrl: 'public/images/pages/test/glasses-2.jpg', name: 'Armazón número 2', sku: 'AR02DSB' },
+        ],
+
+        metodoenvio: null,
 
         user: {
           "email": '',
@@ -328,6 +377,16 @@ export default {
       userLogin: false,
       states: [],
       towns: [],
+      estadoSucursales: [
+        { id: 1, name: 'Ciudad de México' },
+        { id: 2, name: 'Monterrey' },
+        { id: 3, name: 'Jalisco' },
+      ],
+      sucursales: [
+        { id: 1, name: 'Sucursal 1' },
+        { id: 2, name: 'Sucursal 2' },
+        { id: 3, name: 'Sucursal 3' },
+      ],
       order_id: null,
       paqueteria: 0,
 
@@ -337,6 +396,22 @@ export default {
 
       desactivar: false,
 
+      // == Variables para datepicker y timepicker ==
+      minDate: null,
+      dateFormOpts: { year: 'numeric', month: 'numeric', day: 'numeric' },
+      datepickerOpts: {
+        labelPrevYear: 'Año anterior',
+        labelPrevMonth: 'Mes anterior',
+        labelCurrentMonth: 'Mes actual',
+        labelNextMonth: 'Mes siguiente',
+        labelNextYear: 'Año siguiente',
+        labelToday: 'Hoy',
+        labelSelected: 'Fecha Seleccionada',
+        labelNoDateSelected: 'No seleccionado',
+        labelCalendar: 'Calendario',
+        labelHelp: 'Use las teclas de movimiento para navegar'
+      },
+      // == ==
     }
   },
 
@@ -378,7 +453,6 @@ export default {
           }
 
         }
-
 
       var envio = 0;
       if (checkserv > 0) {
@@ -628,6 +702,9 @@ export default {
   },
 
   beforeMount(){
+    const now = new Date();
+    this.minDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
     this.getSteps();
     this.getStates();
     this.getCart();
@@ -635,8 +712,6 @@ export default {
     if(this.$root.logged){
       this.getInfo();
     }
-
-
   },
 
   watch: {

@@ -430,10 +430,24 @@
 
     .txt-name{
       font-size: 1.05rem;
+      font-weight: 700;
+
       a{
         color: #212529;
       }
     }
+
+    .txt-features {
+      font-size: 0.90rem;
+      font-weight: 600;
+
+      small {
+        color: #6a6767;
+        font-size: 90%;
+        font-weight: 600;
+      }
+    }
+
     .txt-md{
       font-size: 0.95rem;
       font-weight: 400;
