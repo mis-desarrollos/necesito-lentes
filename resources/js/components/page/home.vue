@@ -2,7 +2,7 @@
   <div id="home-page">
 
     <section class="banner-section">
-      <swiper class="swiper desktop" :options="bannersOptions">
+      <swiper class="swiper swiper-s1 blue desktop" :options="bannersOptions">
         <swiper-slide v-for="(b, bhInx) in banners" :key="'bhInx-'+bhInx">
           <router-link class="placed-backg box" v-bind:style="{ backgroundImage: 'url('+b.imageUrl+')' }" to="/test">
             <img src="public/images/pages/home/banner.png">
@@ -13,7 +13,7 @@
         <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
 
-      <swiper class="swiper mobile" :options="bannersOptions">
+      <swiper class="swiper swiper-s1 blue mobile" :options="bannersOptions">
         <swiper-slide v-for="(b, bhmInx) in banners" :key="'bhmInx-'+bhmInx">
           <router-link class="placed-backg box" v-bind:style="{ backgroundImage: 'url('+b.imageMobUrl+')' }" to="/test">
             <img src="public/images/pages/home/banner-m.png">

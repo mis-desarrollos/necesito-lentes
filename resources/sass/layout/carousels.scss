@@ -1,0 +1,67 @@
+.swiper-s1 {
+  .swiper-button-prev, .swiper-button-next {
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background-color: transparent;
+    @include transition(150ms);
+    opacity: 1;
+
+    &:after {
+      font-family: "Font Awesome 5 Pro";
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 20px;
+    padding-right: 2px;
+
+    &:after {
+      content: "\f053";
+    }
+  }
+
+  .swiper-button-next {
+    right: 20px;
+    padding-left: 3px;
+
+    &:after {
+      content: "\f054";
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .swiper-button-prev, .swiper-button-next {
+      width: 40px;
+      height: 40px;
+      border-width: 1px;
+
+      &:after {
+        font-size: 1.15rem;
+      }
+    }
+
+    .swiper-button-prev {
+      left: 14px;
+    }
+    .swiper-button-next {
+      right: 14px;
+    }
+  }
+
+  &.blue {
+    .swiper-button-prev, .swiper-button-next {
+      color: $blue;
+      border-color: $blue;
+    }
+  }
+  &.pink {
+    .swiper-button-prev, .swiper-button-next {
+      color: $pink;
+      border-color: $pink;
+    }
+  }
+}

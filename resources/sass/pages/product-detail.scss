@@ -1,5 +1,132 @@
 #product-description-page {
-  min-height: 77vh;
 
+  .product-info-section {
+    .col-gallery {
+      .swiper {
+        .swiper-slide {
+          padding-left: 40px;
+          padding-right: 40px;
+
+          .box-image {
+            display: block;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .col-info {
+      padding-bottom: 25px;
+
+      .p-name {
+        color: $pink;
+        font-size: 2.3rem;
+        font-weight: 700;
+      }
+
+      .p-sku {
+        margin-bottom: 8px;
+        color: #181818;
+        font-size: 0.95rem;
+      }
+
+      .p-price {
+        color: #565658;
+        font-family: "Kanit", "Raleway", sans-serif;
+        font-size: 1.9rem;
+        font-weight: 500;
+
+        .discount {
+          margin-right: 10px;
+          color: #c7c4c4;
+          text-decoration: line-through;
+        }
+      }
+
+      .subtitle {
+        color: $blue;
+        font-size: 0.95rem;
+        font-weight: 700;
+        line-height: 1.0;
+      }
+
+      .box-descr {
+        display: block;
+        line-height: 1.2;
+        font-size: 0.95rem;
+
+        .btn-opt {
+          display: inline-block;
+          padding: 9px 16px 8px 16px;
+          min-width: 240px;
+          color: #ffffff;
+          cursor: pointer;
+          font-size: 0.80rem;
+          font-weight: 600;
+          letter-spacing: 1px;
+          text-align: center;
+          border: 1px solid $blue;
+          border-radius: 20px;
+          background-color: $blue;
+
+          &:hover {
+            border-color: $blue2;
+            background-color: $blue2;
+          }
+        }
+      }
+
+      .col-quantity2{
+        display: flex;
+
+        .input-q{
+          padding-top: 7px;
+          padding-left: 3px;
+          padding-right: 3px;
+          width: 45px;
+          height: 34px;
+          font-family: Arial, "Noto Sans", sans-serif;
+          font-size: 1.0rem;
+          font-weight: 600;
+          text-align: center;
+          border: 0;
+          border-top: 1px solid $blue;
+          border-bottom: 1px solid $blue;
+          border-radius: 0;
+        }
+
+        .btn-q{
+          height: 34px;
+          padding-top: 6px;
+          padding-bottom: 6px;
+          width: 40px;
+          color: $blue;
+          border: 1px solid $blue;
+          cursor: pointer;
+
+          &:first-child{
+            border-radius: 0.25rem 0 0 0.25rem;
+          }
+          &:last-child{
+            border-radius: 0 0.25rem 0.25rem 0;
+          }
+        }
+      }
+
+      .btn-add {
+        min-width: 240px;
+      }
+    }
+  }
+
+  .related-products-section {
+    margin-top: 30px;
+  }
 
 }
