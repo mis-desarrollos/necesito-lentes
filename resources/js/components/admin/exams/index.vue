@@ -10,6 +10,32 @@
               <div class="col-md-12">
                   
                   <button class="btn btn-success btn-sm" @click="addnewrow"><i class="fa fa-plus"></i> Nuevo</button>
+                  <br><br>
+
+                    <div class="form-group" v-if="$root.user.roles[0]['name'] == 'administrador'">
+                          <label for="row_email" class="col-sm-3 control-label">Filtrar por optica:</label>   
+                          <div class="col-sm-7">
+                             <v-select v-model="filter.users_id_opticians" :options="opticiansOpcs" label="name" index="id" />
+                          </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-sm-3"></div>
+                          <div class="col-sm-2">
+                            <label >Todos: </label>   
+                             <input v-model="filter.status" type="radio" style="transform:scale(1.5)" value="all" name="filter_type">
+                          </div>
+                          <div class="col-sm-2">
+                            <label >Pendientes: </label>  
+                             <input v-model="filter.status" type="radio" style="transform:scale(1.5)" value="Pendiente" name="filter_type">
+                          </div>
+                          <div class="col-sm-2">
+                            <label >Finalizado: </label>  
+                             <input v-model="filter.status" type="radio" style="transform:scale(1.5)" value="Finalizado" name="filter_type">
+                          </div>
+                    </div>
+                    <br><br>
+
                  <!--  <button class="btn btn-danger btn-sm" @click="deleteRow()"><i class="fa fa-trash"></i> Borrar</button> -->
   
                   <FullCalendar :options="calendarOptions" />
@@ -20,8 +46,13 @@
               <form role="form" class="form-horizontal" @submit.prevent="newRow($event.target)">
   
                   
-  
-                  <input-form name="customer_name" text="Cliente" :data.sync="orderForm.name" ></input-form>
+                <div class="form-group">
+                      <label class="col-sm-3 control-label">Cliente:</label>
+                      <div class="col-sm-7">
+                          <v-select v-model="orderForm.users_id" :options="usersOpcs" label="name" index="id" />
+                      </div>
+                  </div>    
+                  
                   <input-form name="customer_phone" text="Telefono" :data.sync="orderForm.phone" ></input-form>
                   <input-form name="customer_email" text="Email" :data.sync="orderForm.email" ></input-form>
   
@@ -31,16 +62,23 @@
   
                  
 
-                  <div class="form-group">
+                  <div class="form-group" v-if="$root.user.roles[0]['name'] == 'administrador'">
                       <label class="col-sm-3 control-label">Optica:</label>
                       <div class="col-sm-7">
-                          <v-select v-model="orderForm.opticians_id" :options="opticiansOpcs" label="name" index="id" />
+                          <v-select v-model="orderForm.users_id_optician" :options="opticiansOpcs" label="name" index="id" />
                       </div>
                   </div>    
 
+                   
+
                   <text-form  name="comments" text="Comentarios" :data.sync="orderForm.comments" ></text-form>
-       
-  
+                    <hr>
+                  <div class="form-group" v-if="$root.user.roles[0]['name'] == 'optica' && orderForm.id != null">
+                      <label class="col-sm-3 control-label">Estatus:</label>
+                      <div class="col-sm-7">
+                          <v-select v-model="orderForm.status" :options="[{'id':'Pendiente'},{'id':'Finalizado'},{'id':'Cancelado'}]" label="id" index="id" />
+                      </div>
+                  </div>   
                   <div class="form-group">
                       <div class="col-sm-12">
                           <button type="button" class="btn btn-danger pull-left" @click="deleteOrder()"><i class="fa fa-trash"></i> Borrar</button>
@@ -64,41 +102,77 @@
         },
        data(){
           return {
+            eventsAll:[],
               orderForm:{
 
               },
-                calendarOptions: {
-  
-  
-                    headerToolbar: {
-                
-                    right: 'dayGridMonth,dayGridWeek,dayGridDay'
-                  },
-                    editable: true,
-                  selectable: true,
-                  selectMirror: true,
-                  eventClick: this.handleEventClick,
-  
-                  plugins: [ dayGridPlugin, interactionPlugin ],
-                  initialView: 'dayGridMonth',
-  
-                  events: [
-                   
-                  ],
-                  locale:esLocale,
-                  
+              calendarOptions: {
+          
+                headerToolbar: {
+                    start: 'dayGridMonth,dayGridWeek,dayGridDay',
+                    center: 'title',
+                    end: 'prev,next'
                 },
+
+                editable: true,
+                selectable: true,
+                selectMirror: true,
+                eventClick: this.handleEventClick,
+    
+                plugins: [ dayGridPlugin, interactionPlugin ],
+                initialView: 'dayGridMonth',
+                events: [],
+                locale:esLocale,
+            },
                 fieldsOpcs:[],
                 statusOpcs:[
                     {id:'Agendada'},
                     {id:'Cancelada'}
                 ],
-                opticiansOpcs:[]
-            
+                opticiansOpcs:[],
+                usersOpcs:[],
+                filter:{
+                    users_id_opticians:null,
+                    status:'all',
+                }
           }
       },
       watch:{
-          
+        filter: {
+            handler(val){
+                var newdata = [];
+                //filtro de optica
+                if (val.users_id_opticians != null) {
+                    for (let x = 0; x < this.eventsAll.length; x++) {
+                        if (this.eventsAll[x]['users_id_optician'] == val.users_id_opticians) {
+                            newdata.push(this.eventsAll[x]);
+                        };
+                        
+                    }
+                }
+                else{
+                    newdata = this.eventsAll;
+                }
+
+                var newdatados = [];
+                if (val.status != 'all') {
+                    for (let x = 0; x < newdata.length; x++) {
+                        if (newdata[x]['status'] == val.status) {
+                            newdatados.push(newdata[x]);
+                        };
+                        
+                    }
+                }
+                else{
+                    newdatados = newdata;
+                }
+
+
+                this.calendarOptions.events = newdatados;
+
+            },
+            deep: true
+        }
   
       },
       methods:{
@@ -106,6 +180,7 @@
           getRows(){
             this.$parent.inPetition=true;
             axios.get(tools.url("/api/admin/exams")).then((response)=>{
+                this.eventsAll = response.data;
                 this.calendarOptions.events = response.data;
                 
                 this.$parent.inPetition=false;
@@ -158,8 +233,13 @@
                   date:null,
                   hour:null,
                   comments:null,
-                  opticians_id:null,
+                  users_id_optician:null,
+                  users_id:null
               };
+
+              if(this.$root.user.roles[0]['name'] == 'optica'){
+                this.orderForm.users_id_optician = this.$root.user.id;
+              }
               this.$refs.addOrderModal.open();
           },
           newRow(form){				
@@ -179,7 +259,7 @@
                                 date:null,
                                 hour:null,
                                 comments:null,
-                                opticians_id:null,
+                                users_id_optician:null,
                               };
                               this.$refs.addOrderModal.close();
                               this.$parent.showMessage("Registro modificado correctamente!","success");
@@ -203,6 +283,7 @@
                                 hour:null,
                                 comments:null,
                                 opticians_id:null,    
+                                users_id:null,
                               };
                               this.$refs.addOrderModal.close();
   
@@ -250,11 +331,20 @@
             }).catch((error)=>{
             });
         },
+    
+        getUsersOpcs(){
+            axios.get(tools.url("/api/admin/customersOpcs")).then((response)=>{
+                this.usersOpcs = response.data;
+            }).catch((error)=>{
+            });
+        },
+        
   
   
       },
       mounted() {
             this.getOpticiansOpcs();
+            this.getUsersOpcs();
             this.getRows(); 
       }
     }

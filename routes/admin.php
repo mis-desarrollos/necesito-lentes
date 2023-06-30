@@ -67,7 +67,8 @@ Route::prefix('admin')->group(function () {
 		Route::post('/customers/{id}', [App\Http\Controllers\CustomerController::class, 'update']);
 		Route::delete('/customers/{id}', [App\Http\Controllers\CustomerController::class, 'destroy']);
 		Route::delete('/customers', [App\Http\Controllers\CustomerController::class, 'destroyMultiple']);
-
+		Route::get('/customersOpcs', [App\Http\Controllers\CustomerController::class, 'indexOpcs']);
+		
 		//pedidos
 		Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index']);
 		Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class, 'show']);
@@ -83,6 +84,8 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/products', [App\Http\Controllers\ProductController::class, 'destroyMultiple']);
 		//importar
 		Route::post('/importProducts', [App\Http\Controllers\ProductController::class, 'import']);
+		Route::post('/dropzone/productsImage/{id}', [App\Http\Controllers\ProductController::class, 'uploadImage']);
+        Route::delete('/dropzone/productsImage/{id}', [App\Http\Controllers\ProductController::class, 'deleteImage']);
 
 		//categorias
 		Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
@@ -130,6 +133,15 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/materials/{id}', [App\Http\Controllers\MaterialController::class, 'destroy']);
 		Route::delete('/materials', [App\Http\Controllers\MaterialController::class, 'destroyMultiple']);
 
+		//recubrimientos
+        Route::get('/coverings', [App\Http\Controllers\CoveringController::class, 'index']);
+		Route::get('/coverings/{id}', [App\Http\Controllers\CoveringController::class, 'show']);
+		Route::post('/coverings', [App\Http\Controllers\CoveringController::class, 'store']);
+		Route::post('/coverings/{id}', [App\Http\Controllers\CoveringController::class, 'update']);
+		Route::delete('/coverings/{id}', [App\Http\Controllers\CoveringController::class, 'destroy']);
+		Route::delete('/coverings', [App\Http\Controllers\CoveringController::class, 'destroyMultiple']);
+
+
 		//paquetes
         Route::get('/packages', [App\Http\Controllers\PackageController::class, 'index']);
 		Route::get('/packages/{id}', [App\Http\Controllers\PackageController::class, 'show']);
@@ -139,7 +151,7 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/packages', [App\Http\Controllers\PackageController::class, 'destroyMultiple']);
 
 		//armazones
-        Route::get('/frames', [App\Http\Controllers\FrameController::class, 'index']);
+       /* Route::get('/frames', [App\Http\Controllers\FrameController::class, 'index']);
 		Route::get('/frames/{id}', [App\Http\Controllers\FrameController::class, 'show']);
 		Route::post('/frames', [App\Http\Controllers\FrameController::class, 'store']);
 		Route::post('/frames/{id}', [App\Http\Controllers\FrameController::class, 'update']);
@@ -147,7 +159,7 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/frames', [App\Http\Controllers\FrameController::class, 'destroyMultiple']);
 
 		Route::post('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'uploadImage']);
-        Route::delete('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'deleteImage']);
+        Route::delete('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'deleteImage']);*/
 
 		//opticas
         Route::get('/opticians', [App\Http\Controllers\OpticianController::class, 'index']);
@@ -165,6 +177,14 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/exams/{id}', [App\Http\Controllers\ExamController::class, 'destroy']);
 		Route::delete('/exams', [App\Http\Controllers\ExamController::class, 'destroyMultiple']);
 
+		Route::get('/newsletters', [App\Http\Controllers\NewsletterController::class, 'index']);
+		Route::get('/newsletters/{id}', [App\Http\Controllers\NewsletterController::class, 'show']);
+		Route::post('/newsletters', [App\Http\Controllers\NewsletterController::class, 'store']);
+		Route::post('/newsletters/{id}', [App\Http\Controllers\NewsletterController::class, 'update']);
+		Route::delete('/newsletters/{id}', [App\Http\Controllers\NewsletterController::class, 'destroy']);
+		Route::delete('/newsletters', [App\Http\Controllers\NewsletterController::class, 'destroyMultiple']);
+		Route::post('/newsletters', [App\Http\Controllers\NewsletterController::class, 'store']);
+		
 	});//sanctum
 
 	Route::get('/ordersExport', [App\Http\Controllers\OrderController::class, 'exportExcel']);

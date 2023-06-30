@@ -23,10 +23,13 @@ class CreateExamsTable extends Migration
             $table->string('phone')->nullable();
             $table->longText('comments')->nullable();
 
-            $table->unsignedBigInteger('opticians_id')->nullable();;
+            $table->unsignedBigInteger('users_id_optician')->nullable();;
+            $table->unsignedBigInteger('users_id')->nullable();;
+            $table->enum('status',['Pendiente','Finalizado','Cancelado'])->nullable();;
 
-            $table->foreign('opticians_id')->references('id')->on('opticians');
-
+            $table->foreign('users_id_optician')->references('id')->on('users');
+            $table->foreign('users_id')->references('id')->on('users');
+            
             $table->timestamps();
         });
     }

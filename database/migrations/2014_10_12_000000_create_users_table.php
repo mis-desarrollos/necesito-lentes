@@ -23,8 +23,21 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->boolean('access')->default(0);
+
+            $table->string('web')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->unsignedBigInteger('states_id')->nullable();
+            $table->unsignedBigInteger('towns_id')->nullable();
+            
+            $table->string('address')->nullable();
+            $table->float('lng')->nullable();
+            $table->float('lat')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

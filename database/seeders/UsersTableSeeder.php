@@ -22,5 +22,9 @@ class UsersTableSeeder extends Seeder
         $user = User::factory()->create(['name' => 'cliente', "lastname" => "sustam", 'email' => 'cliente@sustam.com', 'password' => bcrypt('sustam')]);
         $userAddress = Address::create(['user_id' => $user->id]);   
         $user->assignRole('cliente');
+
+        $optica = User::factory()->create(['name' => 'Optica Sustam', "lastname" => "sustam", 'email' => 'optica@sustam.com', 'password' => bcrypt('sustam'), 'access' => 1]);
+      
+        $optica->assignRole('optica');
     }
 }

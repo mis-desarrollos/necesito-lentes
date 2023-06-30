@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ExamController extends Controller
 {
     /**
@@ -14,11 +15,58 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $row = Exam::all();
-        foreach ($row as $key => $value) {
-            $value->title = $value->name.' | '.$value->hour;
+         
+
+        $rolcheck = Auth::user()->roles[0]['name'];
+        if($rolcheck == 'administrador'){
+            $row = Exam::all();
+            foreach ($row as $key => $value) {
+                $customer = User::find($value->users_id);
+                if ($customer) {
+                    $value->title = $customer->name.' | '.$value->hour;
+                }
+                else{
+                    $value->title = $value->hour;
+                }
+                if ($value->status == 'Pendiente') {
+                    
+                    $value->color = '#0075ff';
+                }
+                elseif ($value->status == 'Finalizado') {
+                    $value->color = '#00a651';
+                }
+                elseif ($value->status == 'Cancelado') {
+                    $value->color = '#303641';
+                }
+            }
+            return $row;
         }
-        return $row; 
+        elseif ($rolcheck == 'optica') {
+            $row = Exam::where('users_id_optician',Auth::user()->id)->get();
+            foreach ($row as $key => $value) {
+                $customer = User::find($value->users_id);
+                if ($customer) {
+                    $value->title = $customer->name.' | '.$value->hour;
+                }
+                else{
+                    $value->title = $value->hour;
+                }
+
+                if ($value->status == 'Pendiente') {
+                    
+                    $value->color = '#0075ff';
+                }
+                elseif ($value->status == 'Finalizado') {
+                    $value->color = '#00a651';
+                }
+                elseif ($value->status == 'Cancelado') {
+                    $value->color = '#303641';
+                }
+                
+            }
+            return response()->json($row);
+        }
+
     }
 
     /**
@@ -36,8 +84,9 @@ class ExamController extends Controller
         $row->date = $request->date;
         $row->hour = $request->hour;
         $row->comments = $request->comments;
-        $row->opticians_id = $request->opticians_id;
-        
+        $row->users_id_optician = $request->users_id_optician;
+        $row->users_id = $request->users_id;
+        $row->status = 'Pendiente';
         $row->save();
 
         return $row;
@@ -73,7 +122,8 @@ class ExamController extends Controller
         $row->date = $request->date;
         $row->hour = $request->hour;
         $row->comments = $request->comments;
-        $row->opticians_id = $request->opticians_id;
+        $row->users_id_optician = $request->users_id_optician;
+        $row->status = $request->status;
         $row->save();
 
         return $row;

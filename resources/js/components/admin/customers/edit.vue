@@ -14,42 +14,61 @@
 				</div>
 				
 				<div class="panel-body">
-					<form role="form" class="form-horizontal" @submit.prevent="newCustomer($event.target)">
+					<div id="tabs" >
+						<ul class="nav nav-tabs">
+							<li :class="active1"><a @click="setActive(1)" href="#1" data-toggle="tab">Información</a></li>
+							<li :class=" active2"><a @click="setActive(2)" href="#2" data-toggle="tab">RX</a></li>
+							<li :class=" active3"><a @click="setActive(3)" href="#3" data-toggle="tab">Pedidos</a></li>
+							
+						</ul>
+						<div class="tab-content">
+                            <div :class=" 'tab-pane ' + active1" id="1">
+								<form role="form" class="form-horizontal" @submit.prevent="newCustomer($event.target)">
 
-						<input-form name="nombre" text="Nombre" :data.sync="customer.name" validate="required|min:3"></input-form>
-						<input-form name="nombre" text="Apellidos" :data.sync="customer.lastname" validate="required|min:3"></input-form>
-						<input-form name="email" text="Email" :data.sync="customer.email" validate="email|required"></input-form>
-						<input-form type="password" name="password" text="Password" :data.sync="customer.password" :validate="rule_password" place="Solo si desea cambiarla"></input-form>
-						<input-form type="tel" name="telefono" text="Telefono" :data.sync="customer.phone" validate="digits:10"></input-form>
+									<input-form name="nombre" text="Nombre" :data.sync="customer.name" validate="required|min:3"></input-form>
+									<input-form name="nombre" text="Apellidos" :data.sync="customer.lastname" validate="required|min:3"></input-form>
+									<input-form name="email" text="Email" :data.sync="customer.email" validate="email|required"></input-form>
+									<input-form type="password" name="password" text="Password" :data.sync="customer.password" :validate="rule_password" place="Solo si desea cambiarla"></input-form>
+									<input-form type="tel" name="telefono" text="Telefono" :data.sync="customer.phone" validate="digits:10"></input-form>
 
-						<input-form name="street" text="Calle" :data.sync="customer.street"></input-form>
-						<input-form name="num_ext" text="Numero exterior" :data.sync="customer.num_ext"></input-form>
-						<input-form name="num_int" text="Numero Interior" :data.sync="customer.num_init"></input-form>
-						<input-form name="neighborhood" text="Colonia" :data.sync="customer.neighborhood"></input-form>
-						<input-form name="cp" text="Código postal" :data.sync="customer.zipcode"></input-form>
+									<input-form name="street" text="Calle" :data.sync="customer.street"></input-form>
+									<input-form name="num_ext" text="Numero exterior" :data.sync="customer.num_ext"></input-form>
+									<input-form name="num_int" text="Numero Interior" :data.sync="customer.num_init"></input-form>
+									<input-form name="neighborhood" text="Colonia" :data.sync="customer.neighborhood"></input-form>
+									<input-form name="cp" text="Código postal" :data.sync="customer.zipcode"></input-form>
 
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Estado:</label>
-							<div class="col-sm-7">
-								<v-select v-model="customer.state_id" :options="estados" label="name" index="id" @change="getTowns" required/>
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Estado:</label>
+										<div class="col-sm-7">
+											<v-select v-model="customer.state_id" :options="estados" label="name" index="id" @change="getTowns" required/>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Ciudad:</label>
+										<div class="col-sm-7">
+											<v-select v-model="customer.town_id" :options="ciudades" label="name" index="id" required/>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-12">
+											<button type="button" class="btn btn-danger" @click="deleteRow" v-show="$route.params.id"><i class="fa fa-trash"></i> Borrar</button>
+											<button type="submit" class="btn btn-success pull-right"><i class="far fa-save"></i> Guardar</button> 
+											<button type="button" class="btn btn-default pull-right" @click="$router.push('/customers/')">Cancelar</button>			
+										</div>
+									</div>
+								</form>		
+							</div>
+							<div :class=" 'tab-pane ' + active2" id="2">
+							
+							</div>
+							<div :class=" 'tab-pane ' + active3" id="3">
+								
 							</div>
 						</div>
-
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Ciudad:</label>
-							<div class="col-sm-7">
-								<v-select v-model="customer.town_id" :options="ciudades" label="name" index="id" required/>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<div class="col-sm-12">
-								<button type="button" class="btn btn-danger" @click="deleteRow" v-show="$route.params.id"><i class="fa fa-trash"></i> Borrar</button>
-								<button type="submit" class="btn btn-success pull-right"><i class="far fa-save"></i> Guardar</button> 
-								<button type="button" class="btn btn-default pull-right" @click="$router.push('/customers/')">Cancelar</button>			
-							</div>
-						</div>
-					</form>					
+					</div>
+								
 				</div>			
 			</div>		
 		</div>
@@ -60,6 +79,7 @@
 	export default {
 		data(){
 			return {
+				active:1,
 				customer:{
 					name:'',
 					lastname: '',
@@ -81,6 +101,7 @@
 				id: null
 			}
 		},
+		
 		computed:{
 			rule_password:function(){
 				if(this.customer.password==undefined || this.customer.password.length==0){
@@ -90,10 +111,25 @@
 					return 'min:6|required';
 				}
 			},
+			active1: function()
+            {
+                return (this.active == 1) ? 'active' : '';
+            },
+            active2: function()
+            {
+                return (this.active == 2) ? 'active' : '';
+            },
+            active3: function()
+            {
+                return (this.active == 3) ? 'active' : '';
+            },
 		},
 
 		methods:{
-
+			setActive(val)
+            {
+                this.active = val;
+            },
 			getCustomer(){
 				axios.get(tools.url("/api/admin/customers/"+this.id)).then((response)=>{
 			    	this.customer = response.data;
@@ -160,6 +196,7 @@
 					this.$parent.handleErrors(error);
 				});
 			},
+			
 
 		},
 		

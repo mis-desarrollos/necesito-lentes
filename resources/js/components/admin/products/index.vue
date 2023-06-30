@@ -1,38 +1,33 @@
 <template>
   <div>
     <ol class="breadcrumb 2">
-			<li><router-link to="/home"><i class="entypo-home"></i>Home</router-link></li>
-			<li class="active"><strong>Productos</strong></li>
-		</ol>
-		<h2 class="margin-bottom">Productos</h2>
+            <li><router-link to="/home"><i class="entypo-home"></i>Home</router-link></li>
+            <li class="active"><strong>Armazones</strong></li>
+        </ol>
+        <h2 class="margin-bottom">Armazones</h2>
 
-		<div class="row">
-			<div class="col-md-12">
-				<div id="toolbar">
-			        <router-link to="/products/edit">
-			        	<button class="btn btn-success btn-sm">
-				            <i class="fa fa-plus"></i> Nuevo
-				        </button>
-			        </router-link>
-			        <button class="btn btn-danger btn-sm" @click="deleteRows()">
-			            <i class="fa fa-trash"></i> Borrar
-			        </button>
-              <!-- <router-link to="/products/import">
-              <button class="btn btn-success btn-sm">
-                  <i class="fa fa-file"></i> Importar
-              </button>
-            </router-link> -->
-			    </div>
-				<table id="table"></table>
-			</div>
-		</div>
-	</div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="toolbar">
+                    <router-link to="/products/edit">
+                        <button class="btn btn-success btn-sm">
+                            <i class="fa fa-plus"></i> Nuevo
+                        </button>
+                    </router-link>
+                    <button class="btn btn-danger btn-sm" @click="deleteRows()">
+                        <i class="fa fa-trash"></i> Borrar
+                    </button>
+                </div>
+                <table id="table"></table>
+            </div>
+        </div>
+    </div>
 </template>
 <script type="text/javascript">
   export default {
   data(){
     return {
-      productos:[],
+      rows:[],
     }
   },
   methods:{
@@ -43,10 +38,16 @@
             field:"check",
             checkbox:true,
             align: 'center',
-          },        
+          },   
           {
-            field: 'sku',
-            title: 'SKU',
+          field: 'image',
+          title: ' ',
+          sortable:false,
+          width:"52px",
+        },       
+          {
+            field: 'id',
+            title: '#',
             sortable:true,
             switchable:true,
           },
@@ -57,32 +58,13 @@
             switchable:true,
           },
           {
-            field: 'stock',
-            title: 'cantidad',
+            field: 'description',
+            title: 'Descripcion',
             sortable:true,
             switchable:true,
           },
-          {
-            field: 'category.name',
-            title: 'Categoria',
-            sortable:true,
-            switchable:true,
-          },
-          {
-            field: 'subcategory.name',
-            title: 'Subcategoria',
-            sortable:true,
-            switchable:true,
-          },
-          {
-            field: 'created_at',
-            title: 'Fecha de creación',
-            sortable:true,
-            switchable:true,
-          }
         ],
         showRefresh:true,
-        
       });
 
       jQuery('#table').on('refresh.bs.table',()=>{
@@ -98,12 +80,15 @@
     },
 
     getContent(){
+      this.$parent.inPetition=true;
       axios.get(tools.url("/api/admin/products")).then((response)=>{
-          this.productos = response.data;
+          this.rows = response.data;
           jQuery('#table').bootstrapTable('removeAll');
-          jQuery('#table').bootstrapTable('append',this.productos);
+          jQuery('#table').bootstrapTable('append',this.rows);
+          this.$parent.inPetition=false;
         }).catch((error)=>{
             this.$parent.handleErrors(error);
+            this.$parent.inPetition=false;
         });
     },
 
@@ -113,17 +98,21 @@
         return false;
       }
       alertify.confirm("Alerta!","¿Seguro que deseas borrar "+rows.length+" registros?",()=>{
+        this.$parent.inPetition=true;
         var params={};
         params.ids=jQuery.map(rows,(row)=>{
           return row.id;
         });
 
-        axios.delete(tools.url('/api/admin/products'),{data:params}).then((response)=>{
+        axios.delete(tools.url('/api/admin/products'),{data:params})
+        .then((response)=>{
           this.$parent.showMessage(response.data.msg,"success");
           this.getContent();
+          this.$parent.inPetition=false;
         })
         .catch((error)=>{
           this.$parent.handleErrors(error);
+              this.$parent.inPetition=false;
         });
       },
       ()=>{

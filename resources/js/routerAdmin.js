@@ -64,6 +64,10 @@ const MyRouter = new VueRouter({
 		{ path: '/materials', component: require(page+'materials/index.vue').default, meta:{title:"Materiales" }},
 		{ path: '/materials/edit', component: require(page+'materials/edit.vue').default, meta:{title:"Editar" }},
 		{ path: '/materials/edit/:id', component: require(page+'materials/edit.vue').default, meta:{title:"Editar"}},
+		//Recubrimientos
+		{ path: '/coverings', component: require(page+'coverings/index.vue').default, meta:{title:"Recubrimientos" }},
+		{ path: '/coverings/edit', component: require(page+'coverings/edit.vue').default, meta:{title:"Editar" }},
+		{ path: '/coverings/edit/:id', component: require(page+'coverings/edit.vue').default, meta:{title:"Editar"}},
 
 		//Paquetes
 		{ path: '/packages', component: require(page+'packages/index.vue').default, meta:{title:"Paquetes" }},
@@ -82,6 +86,10 @@ const MyRouter = new VueRouter({
 
 		//examanes
 		{ path: '/exams', component: require(page+'exams/index.vue').default, meta:{title:"Examanes de la vista" }},
+		//Newslette
+		{ path: '/newsletters', component: require(page+'newsletters/index.vue').default, meta:{title:"Newsletter" }},
+		//Estado de cuenta
+		{ path: '/accountstatus', component: require(page+'accountstatus/index.vue').default, meta:{title:"Estado de cuenta" }},
 	  ]
 });
 
