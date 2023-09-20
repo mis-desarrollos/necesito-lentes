@@ -18,16 +18,16 @@
 
   &.bg-blue {
     color: #ffffff !important;
-    border-color: $blue;
-    background-color: $blue;
+    border-color: $purple;
+    background-color: $purple;
 
     &:hover, &:focus, &:active {
-      border-color: $blue2 !important;
-      background-color: $blue2 !important;
+      border-color: $purple2 !important;
+      background-color: $purple2 !important;
     }
   }
   &.bg-white {
-    color: $blue !important;
+    color: $purple !important;
     border-color: #ffffff;
     background-color: #ffffff;
 
@@ -37,13 +37,13 @@
     }
   }
   &.outline-blue {
-    color: $blue !important;
-    border-color: $blue;
+    color: $purple !important;
+    border-color: $purple;
     background-color: transparent !important;
 
     &:hover, &:focus, &:active {
-      color: $blue2 !important;
-      border-color: $blue2 !important;
+      color: $purple2 !important;
+      border-color: $purple2 !important;
     }
   }
   &.outline-white {

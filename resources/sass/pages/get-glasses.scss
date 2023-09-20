@@ -56,14 +56,14 @@
         padding-left: 15px;
         color: #ffffff;
         pointer-events: all;
-        background-color: $blue;
+        background-color: $purple;
 
         .c1 {
           @include flex-center-xy();
           margin-left: 5px;
           width: 44px;
           height: 44px;
-          color: $blue;
+          color: $purple;
           font-family: "Kanit", "Raleway", sans-serif;
           font-size: 2.0rem;
           font-weight: 500;
@@ -104,10 +104,10 @@
         }
 
         &.pack-1 {
-          background-color: $blue;
+          background-color: $purple;
 
           .c1 {
-            color: $blue;
+            color: $purple;
           }
 
           .c2 {
@@ -125,13 +125,13 @@
           }
         }
         &.pack-3 {
-          color: $blue;
+          color: $purple;
           box-shadow: 0 0 2px rgba(0,0,0,0.2);
           background-color: #eaedec;
 
           .c1 {
             color: #eaedec;
-            background-color: $blue;
+            background-color: $purple;
           }
           .c2 {
             border-right: 1px solid #c3cac7;
@@ -275,7 +275,7 @@
       text-align: left;
 
       >label, >legend {
-        color: $blue;
+        color: $purple;
       }
     }
   }
@@ -342,7 +342,7 @@
               display: block;
               min-height: 175px;
               padding: 22px 20px;
-              color: $blue;
+              color: $purple;
               font-size: 1.05rem;
               font-weight: 500;
 
@@ -371,16 +371,16 @@
             }
 
             &.blue {
-              border-color: $blue;
+              border-color: $purple;
 
               .box-name {
                 color: #ffffff;
-                background-color: $blue;
+                background-color: $purple;
               }
 
               .box-price {
                 color: #ffffff;
-                background-color: $blue;
+                background-color: $purple;
               }
             }
 
@@ -402,12 +402,12 @@
               border-color: #eaedec;
 
               .box-name {
-                color: $blue;
+                color: $purple;
                 background-color: #eaedec;
               }
 
               .box-price {
-                color: $blue;
+                color: $purple;
                 background-color: #eaedec;
               }
             }
@@ -481,7 +481,7 @@
           line-height: 1;
           text-align: center;
           border-radius: 50px;
-          background-color: $blue;
+          background-color: $purple;
           @include transition(250ms);
 
           small {
@@ -500,7 +500,7 @@
           }
 
           &:hover {
-            background-color: $blue2;
+            background-color: $purple2;
           }
         }
       }
@@ -526,7 +526,7 @@
 
           h5 {
             margin-bottom: 9px;
-            color: $blue;
+            color: $purple;
             font-size: 1.85rem;
             font-weight: 800;
             letter-spacing: 1px;
@@ -556,7 +556,7 @@
   .third-section {
     position: relative;
     text-align: center;
-    background-color: $blueLight;
+    background-color: $purpleLight;
 
     .step-5-1 {
       padding-bottom: 501px;
@@ -617,7 +617,7 @@
           color: #ffffff;
           text-align: left;
           pointer-events: all;
-          background-color: $blue;
+          background-color: $purple;
 
           .btn-close {
             position: absolute;
@@ -723,7 +723,7 @@
         margin-top: 25px;
 
         .vc-container {
-          border: 2px solid $blue;
+          border: 2px solid $purple;
           border-radius: 24px;
           background-color: transparent;
 
@@ -733,7 +733,7 @@
                 padding: 10px 18px 14px 18px;
                 color: #ffffff;
                 border-radius: 18px 18px 0 0;
-                background-color: $blue;
+                background-color: $purple;
 
                 .vc-title {
                   color: #ffffff;
@@ -750,7 +750,7 @@
                   padding-top: 18px;
                   padding-bottom: 18px;
                   margin-bottom: 14px;
-                  color: $blue;
+                  color: $purple;
                   font-size: 1.3rem;
                   font-weight: 700;
                   background-color: #ffffff;
@@ -758,7 +758,7 @@
 
                 .vc-day {
                   min-height: 44px;
-                  color: $blue;
+                  color: $purple;
 
                   &.is-not-in-month {
                     // display: none;
@@ -781,7 +781,7 @@
 
                     &:hover {
                       background-color: transparent !important;
-                      border-color: $blue;
+                      border-color: $purple;
                     }
 
                     &.is-disabled {
@@ -836,7 +836,7 @@
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          border: 2px solid $blue;
+          border: 2px solid $purple;
           border-radius: 30px;
 
           .b-lab {
@@ -846,7 +846,7 @@
             font-size: 1.4rem;
             font-weight: 700;
             border-radius: 20px 0 0 20px;
-            background-color: $blue;
+            background-color: $purple;
           }
 
           .b-time {
@@ -863,11 +863,11 @@
                 background: transparent;
 
                 .btn {
-                  color: $blue;
+                  color: $purple;
                 }
 
                 .form-control {
-                  color: $blue !important;
+                  color: $purple !important;
                   font-size: 1.3rem;
                   font-weight: 700;
                 }
@@ -879,7 +879,7 @@
             padding: 0;
 
             .custom-select {
-              color: $blue;
+              color: $purple;
               font-size: 1.3rem;
               font-weight: 700;
               text-align: center;
@@ -901,7 +901,7 @@
 
       .col-branch-info {
         margin-top: 32px;
-        color: $blue;
+        color: $purple;
         text-align: center;
 
         .title {
@@ -938,7 +938,7 @@
 
     .step-7 {
       padding-bottom: 501px;
-      color: $blue;
+      color: $purple;
 
       .main-con {
         .col-text {
@@ -953,7 +953,7 @@
 
         .col-branch-info {
           margin-top: 32px;
-          color: $blue;
+          color: $purple;
           text-align: center;
 
           .title {
@@ -1033,7 +1033,7 @@
                 align-items: center;
                 color: #ffffff;
                 cursor: pointer;
-                border: 2px solid $blue;
+                border: 2px solid $purple;
                 border-radius: 50px;
                 overflow: hidden;
                 @include transition(150ms);
@@ -1046,7 +1046,7 @@
                   align-self: stretch !important;
                   flex: 0 0 174px;
                   max-width: 174px;
-                  background-color: $blue;
+                  background-color: $purple;
 
                   >div {
                     display: inline-block;
@@ -1086,20 +1086,20 @@
                 }
 
                 &:hover {
-                  border-color: $blue2;
+                  border-color: $purple2;
 
                   .box-icon {
-                    background-color: $blue2;
+                    background-color: $purple2;
                   }
                 }
               }
             }
 
             .custom-control-input:checked ~ .custom-control-label {
-              border-color: $blue2;
+              border-color: $purple2;
 
               .box-icon {
-                background-color: $blue2;
+                background-color: $purple2;
               }
 
               .box-text {
@@ -1155,7 +1155,7 @@
     .step-finalized {
       padding-top: 20px;
       padding-bottom: 551px;
-      color: $blue;
+      color: $purple;
 
       a {
         cursor: pointer;
@@ -1167,7 +1167,7 @@
   // == Quinta sección (blanca) ==
   .five-section {
     position: relative;
-    color: $blue;
+    color: $purple;
     background-color: #eff4f4;
 
     .step-10 {
@@ -1187,7 +1187,7 @@
           padding: 20px 0;
           flex: 0 0 100%;
           max-width: 100%;
-          border: 2px solid $blue;
+          border: 2px solid $purple;
           border-radius: 35px;
           background-color: #ffffff;
 
@@ -1210,7 +1210,7 @@
 
           .col-info {
             padding-left: 20px;
-            border-left: 1px solid $blue;
+            border-left: 1px solid $purple;
           }
         }
       }
@@ -1219,12 +1219,12 @@
         .box-text {
           position: relative;
           padding: 17px 25px 16px 25px;
-          border: 2px solid $blue;
+          border: 2px solid $purple;
           border-radius: 35px;
           background-color: #ffffff;
 
           a {
-            color: $blue;
+            color: $purple;
           }
 
           .title {

@@ -38,7 +38,7 @@
 .box-radio-options-s1 {
   padding-top: 15px;
   padding-bottom: 15px;
-  border: 2px solid $blue;
+  border: 2px solid $purple;
   border-radius: 15px;
 
   .custom-radio {
@@ -53,7 +53,7 @@
       display: flex;
       flex-wrap: wrap;
       padding-left: 0;
-      color: $blue;
+      color: $purple;
       align-items: center;
       cursor: pointer;
 
@@ -62,7 +62,7 @@
         left: 1.3rem;
         width: 32px;
         height: 32px;
-        border: 2px solid $blue;
+        border: 2px solid $purple;
         background-color: transparent;
       }
 
@@ -80,7 +80,7 @@
       .col-descr {
         padding-top: 2px;
         padding-bottom: 2px;
-        border-left: 1px solid $blue;
+        border-left: 1px solid $purple;
         font-size: 1.20rem;
         line-height: 1.35;
       }
@@ -88,7 +88,7 @@
 
     .custom-control-input:checked ~ .custom-control-label {
       &:before {
-        background-color: $blue;
+        background-color: $purple;
       }
     }
   }
@@ -153,7 +153,7 @@
   label, legend {
     padding-left: 15px;
     padding-bottom: 4px;
-    color: $blue;
+    color: $purple;
     font-size: 1.2rem;
     font-weight: 700;
   }
@@ -162,10 +162,10 @@
     .form-control {
       height: auto;
       padding: 0.60rem 1.4rem 0.65rem 1.4rem;
-      color: $blue;
+      color: $purple;
       font-size: 1.1rem;
       font-weight: 500;
-      border-color: $blue;
+      border-color: $purple;
       border-radius: 28px;
       background-color: transparent;
     }

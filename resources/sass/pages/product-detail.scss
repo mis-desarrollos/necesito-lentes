@@ -50,7 +50,7 @@
       }
 
       .subtitle {
-        color: $blue;
+        color: $purple;
         font-size: 0.95rem;
         font-weight: 700;
         line-height: 1.0;
@@ -71,13 +71,13 @@
           font-weight: 600;
           letter-spacing: 1px;
           text-align: center;
-          border: 1px solid $blue;
+          border: 1px solid $purple;
           border-radius: 20px;
-          background-color: $blue;
+          background-color: $purple;
 
           &:hover {
-            border-color: $blue2;
-            background-color: $blue2;
+            border-color: $purple2;
+            background-color: $purple2;
           }
         }
       }
@@ -96,8 +96,8 @@
           font-weight: 600;
           text-align: center;
           border: 0;
-          border-top: 1px solid $blue;
-          border-bottom: 1px solid $blue;
+          border-top: 1px solid $purple;
+          border-bottom: 1px solid $purple;
           border-radius: 0;
         }
 
@@ -106,8 +106,8 @@
           padding-top: 6px;
           padding-bottom: 6px;
           width: 40px;
-          color: $blue;
-          border: 1px solid $blue;
+          color: $purple;
+          border: 1px solid $purple;
           cursor: pointer;
 
           &:first-child{

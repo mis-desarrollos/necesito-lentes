@@ -11,7 +11,7 @@
           <div class="col-lg col-newsletter">
             <div class="row align-items-center">
               <div class="col-lg col-text">
-                <h5>¡Suscríbete al Newsletter!</h5>
+                <h5>¡Suscríbete a nuestro newsletter!</h5>
               </div>
 
               <div class="col-lg col-form">
@@ -20,12 +20,12 @@
                     <b-form-input
                       v-model="form.email"
                       type="email"
-                      placeholder="Escribe tu correo"
+                      placeholder="Correo electrónico"
                       required
                     ></b-form-input>
                   </b-form-group>
 
-                  <b-button type="submit" class="col btn-snewsletter">Suscribirse</b-button>
+                  <b-button type="submit" class="col btn-snewsletter">Enviar</b-button>
                 </b-form>
               </div>
             </div>
@@ -38,41 +38,38 @@
       <div class="container oversized-container">
         <div class="row">
           <div class="col-sm-6 col-lg-3 col-main-1">
-            <p class="mt-3 t-w-break">
-              <a class="link-icon email" href="mailto:contacto@necesitolentes.club"><i></i> contacto@necesitolentes.club</a>
+            <p class="mt-3 mt-lg-5 t-w-break">
+              <a class="link-icon" href="mailto:contacto@necesitolentes.club"><i></i> contacto@necesitolentes.club</a>
             </p>
             <p class="mt-2 t-w-break">
-              <a class="link-icon help"><i></i> +55 323-4332-9438</a>
+              <a class="link-icon"><i></i> +55 323-4332-9438</a>
             </p>
-            <!-- <p class="mt-2 t-w-break">
-              <span class="link-icon map"><i></i> <span>Diamante #2680,<br />Bosques de la Victoria, Zapopan</span></span>
-            </p> -->
           </div>
 
-          <div class="col-lg-6 col-main-2">
+          <div class="col-lg col-main-2">
             <div class="row justify-content-center">
-              <div class="col-6 col-sm-4 col-xl-3 col-menu">
+              <div class="col-12 col-sm-4 col-xl-3 col-menu">
                 <h5 class="title">General</h5>
 
                 <p>
-									<router-link to="/test">¿Necesitas lentes?</router-link><br />
-                  <router-link to="/nosotros">Sobre nosotros</router-link><br />
+									<router-link class="t-150 btn-test" to="/test">Hacer test</router-link><br />
+                  <router-link to="/nosotros">Nosotros</router-link><br />
                   <router-link to="/contacto">Contacto</router-link>
                 </p>
               </div>
 
-              <div class="col-6 col-sm-4 col-xl-3 col-menu">
+              <div class="col-12 col-sm-4 col-xl-3 col-menu">
                 <h5 class="title">Sitio</h5>
 
                 <p>
-                  <router-link to="/">Home</router-link><br />
+                  <router-link to="/">Inicio</router-link><br />
                   <router-link to="/busqueda">Armazones</router-link><br />
                   <router-link to="/obtener-lentes">Obtén tus lentes</router-link>
                 </p>
               </div>
 
-              <div class="col-6 col-sm-4 col-menu">
-                <h5 class="title">Links de ayuda</h5>
+              <div class="col-12 col-sm-4 col-menu">
+                <h5 class="title">Ayuda</h5>
 
                 <p>
                   <router-link to="/cart">Carrito de compras</router-link><br />
@@ -83,10 +80,10 @@
             </div>
           </div>
 
-          <div class="col-sm-6 col-lg-3 col-main-3">
+          <div class="col-sm-6 col-lg col-main-3">
             <p>
-              <a class="_btn-net ig t-150" target="_blank"><span><i class="fab fa-instagram"></i></span></a>
               <a class="_btn-net fb t-150" target="_blank"><span><i class="fab fa-facebook-f"></i></span></a>
+              <a class="_btn-net ig t-150" target="_blank"><span><i class="fab fa-instagram"></i></span></a>
               <a class="_btn-net tw t-150" target="_blank"><span><i class="fab fa-twitter"></i></span></a>
               <a class="_btn-net lk t-150" target="_blank"><span><i class="fab fa-linkedin-in"></i></span></a>
             </p>
@@ -94,7 +91,7 @@
             <p class="mt-3">
               <router-link class="mini-text" to="/aviso-de-privacidad">Aviso de privacidad</router-link><br />
               <router-link class="mt-1 mini-text" to="/terminos-y-condiciones">Términos y condiciones de uso</router-link><br />
-              <span class="mt-1 mini-text">Copyright © {{ currentYear }} Necesito lentes</span>
+              <span class="mt-2 d-inline-block mini-text f-w-600">Copyright © {{ currentYear }} Necesito lentes</span>
             </p>
           </div>
         </div>
