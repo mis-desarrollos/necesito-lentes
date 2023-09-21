@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap);
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
@@ -30027,6 +30027,23 @@ input[type=number] {
   border: 0 !important;
 }
 
+.btn-s2 {
+  display: inline-block;
+  padding: 14px 32px 16px 32px;
+  color: #ffffff !important;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none !important;
+  border-radius: 30px;
+  border-color: #8240b5;
+  background-color: #8240b5;
+}
+.btn-s2:hover, .btn-s2:focus, .btn-s2:active {
+  border-color: #70339f !important;
+  background-color: #70339f !important;
+}
+
 .custom-radio-group > label, .custom-radio-group > legend {
   padding-bottom: 3px;
   font-size: 1.05rem;
@@ -30591,10 +30608,11 @@ input[type=number] {
   max-width: 100%;
 }
 #footer .newsletter-section .col-newsletter .col-text {
-  flex: 0 0 360px;
-  max-width: 360px;
+  flex: 0 0 380px;
+  max-width: 380px;
 }
 #footer .newsletter-section .col-newsletter .col-text h5 {
+  font-size: 1.35rem;
   font-weight: 700;
 }
 #footer .newsletter-section .col-newsletter .col-form form {
@@ -30648,12 +30666,12 @@ input[type=number] {
 }
 @media screen and (max-width: 991px) {
   #footer .newsletter-section .col-logo {
+    margin-top: 40px;
     text-align: center;
-    margin-top: 14px;
     order: 1;
   }
   #footer .newsletter-section .col-logo img {
-    max-height: 80px;
+    max-height: 90px;
   }
   #footer .newsletter-section .col-newsletter {
     order: 0;
@@ -30665,7 +30683,7 @@ input[type=number] {
     text-align: center;
   }
 }
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 767px) {
   #footer .newsletter-section .col-newsletter .col-text {
     margin-bottom: 20px;
   }
@@ -30758,7 +30776,6 @@ input[type=number] {
 }
 #footer .footer-section .col-main-2 .btn-test {
   position: relative;
-  left: -19px;
   padding: 6px 18px 5px 18px;
   color: #ffffff;
   font-size: 1.1rem;
@@ -30807,6 +30824,10 @@ input[type=number] {
   background-color: #d7a621;
 }
 @media screen and (min-width: 992px) {
+  #footer .footer-section .col-main-2 .btn-test {
+    position: relative;
+    left: -19px;
+  }
   #footer .footer-section .col-main-3 {
     flex: 0 0 248px;
     max-width: 248px;
@@ -30818,24 +30839,17 @@ input[type=number] {
     max-width: 220px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 991px) {
   #footer .footer-section {
     margin-top: 0;
   }
-  #footer .footer-section .col-menu {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-}
-@media screen and (max-width: 575px) {
   #footer .footer-section .link-icon {
     padding-left: 0;
   }
   #footer .footer-section .link-icon i {
     display: none;
   }
-  #footer .footer-section .col-main-1, #footer .footer-section .col-main-3 {
+  #footer .footer-section .col-main-1, #footer .footer-section .col-main-2, #footer .footer-section .col-main-3 {
     text-align: center;
   }
   #footer .footer-section .col-main-2 {
@@ -31382,6 +31396,205 @@ input[type=number] {
   #home-page .banner-section .mobile {
     display: block;
   }
+}
+
+#home-page .title-h1 {
+  color: #8240b5;
+  font-size: 2.9rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+#home-page .suggestion-section {
+  position: relative;
+}
+#home-page .suggestion-section .box-text {
+  padding: 70px 0 10px 0;
+  display: block;
+  text-align: center;
+}
+#home-page .suggestion-section .box-text .title-h1 {
+  margin-bottom: 18px;
+}
+#home-page .suggestion-section .box-text .txt-2 {
+  margin-bottom: 26px;
+  font-size: 1.4rem;
+}
+#home-page .suggestion-section .box-text .txt-w-btn {
+  margin-bottom: 30px;
+}
+#home-page .suggestion-section .box-text .txt-3 {
+  color: #8240b5;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: underline;
+}
+#home-page .suggestion-section .box-image {
+  margin: 0 auto;
+  width: 1040px;
+  max-width: 100%;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+#home-page .design-lenses-section {
+  position: relative;
+  text-align: center;
+}
+#home-page .design-lenses-section .box-text {
+  padding: 40px 0 30px 0;
+  display: block;
+  text-align: center;
+}
+#home-page .design-lenses-section .box-text .title-h1 {
+  margin-bottom: 28px;
+}
+#home-page .design-lenses-section .box-image {
+  margin: 0 auto;
+  width: 960px;
+  max-width: 100%;
+  height: 570px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+#home-page .faqs-section {
+  position: relative;
+  text-align: center;
+}
+#home-page .faqs-section .box-info {
+  padding: 45px 0 40px 0;
+  display: block;
+  text-align: center;
+}
+#home-page .faqs-section .box-info .title-h1 {
+  margin-bottom: 22px;
+}
+#home-page .faqs-section .box-info .box-faqs {
+  position: relative;
+  margin: 0 auto;
+  width: 1000px;
+  max-width: 100%;
+}
+#home-page .faqs-section .box-info .box-faqs .accordion .card {
+  margin-bottom: 16px;
+  border: 0;
+}
+#home-page .faqs-section .box-info .box-faqs .accordion .card .card-header {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+#home-page .faqs-section .box-info .box-faqs .accordion .card .card-header .btn-faq-toggle {
+  position: relative;
+  display: inline-block;
+  padding: 12px 32px 14px 32px;
+  min-width: 264px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-align: center;
+  text-decoration: none !important;
+  border-radius: 28px;
+  background-color: #1a1a1a;
+}
+#home-page .faqs-section .box-info .box-faqs .accordion .card .card-header .btn-faq-toggle:after {
+  position: relative;
+  top: 2px;
+  margin-left: 20px;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1;
+}
+#home-page .faqs-section .box-info .box-faqs .accordion .card .card-header .btn-faq-toggle.collapsed:after {
+  content: "\f078";
+}
+#home-page .faqs-section .box-info .box-faqs .accordion .card .card-header .btn-faq-toggle.not-collapsed:after {
+  content: "\f077";
+}
+#home-page .faqs-section .box-info .box-faqs .accordion .card .card-body {
+  margin-top: 3px;
+  padding: 1.6rem 2.4rem 1.6rem 2.4rem;
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  border-radius: 120px;
+  background: #1a1a1a;
+}
+#home-page .faqs-section .box-image {
+  margin: 0 auto;
+  width: 1040px;
+  max-width: 100%;
+  height: 520px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+#home-page .form-section {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+#home-page .form-section .box-titles {
+  margin-bottom: 35px;
+  text-align: center;
+}
+#home-page .form-section .box-titles .title-h1 {
+  margin-bottom: 20px;
+}
+#home-page .form-section .box-titles .title-2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+#home-page .form-section .box-form {
+  position: relative;
+  margin: 0 auto;
+  width: 660px;
+  max-width: 100%;
+}
+#home-page .form-section .box-form .custom-f-group-s1 {
+  margin-bottom: 1.6rem;
+}
+#home-page .form-section .box-form .custom-f-group-s1 ::-webkit-input-placeholder {
+  color: #222121;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.25rem;
+}
+#home-page .form-section .box-form .custom-f-group-s1 ::-moz-placeholder {
+  color: #222121;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.25rem;
+}
+#home-page .form-section .box-form .custom-f-group-s1 :-ms-input-placeholder {
+  color: #222121;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.25rem;
+}
+#home-page .form-section .box-form .custom-f-group-s1 :-moz-placeholder {
+  color: #222121;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.25rem;
+}
+#home-page .form-section .box-form .custom-f-group-s1 > div .form-control {
+  padding: 0.8rem 2.3rem;
+  height: auto;
+  color: #222121;
+  font-weight: 500;
+  border: 0;
+  border-radius: 40px;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1) !important;
+  background-color: #f2f2f2;
+}
+#home-page .form-section .box-form .btn-s2 {
+  font-size: 1.3rem;
 }
 
 #basic-test-page .questions-section {

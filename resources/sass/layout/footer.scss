@@ -18,10 +18,11 @@
 
     .col-newsletter{
       .col-text{
-        flex: 0 0 360px;
-        max-width: 360px;
+        flex: 0 0 380px;
+        max-width: 380px;
 
         h5{
+          font-size: 1.35rem;
           font-weight: 700;
         }
       }
@@ -61,12 +62,12 @@
 
     @media screen and (max-width: 991px){
       .col-logo{
+        margin-top: 40px;
         text-align: center;
-        margin-top: 14px;
         order: 1;
 
         img{
-          max-height: 80px;
+          max-height: 90px;
         }
       }
 
@@ -81,7 +82,7 @@
         }
       }
     }
-    @media screen and (max-width: 575px){
+    @media screen and (max-width: 767px){
       .col-newsletter {
         .col-text {
           margin-bottom: 20px;
@@ -174,7 +175,6 @@
     .col-main-2 {
       .btn-test {
         position: relative;
-        left: -19px;
         padding: 6px 18px 5px 18px;
         color: #ffffff;
         font-size: 1.1rem;
@@ -243,6 +243,13 @@
     }
 
     @media screen and (min-width: 992px){
+      .col-main-2 {
+        .btn-test {
+          position: relative;
+          left: -19px;
+        }
+      }
+
       .col-main-3{
         flex: 0 0 248px;
         max-width: 248px;
@@ -255,16 +262,9 @@
         }
       }
     }
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 991px){
       margin-top: 0;
 
-      .col-menu{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        text-align: center;
-      }
-    }
-    @media screen and (max-width: 575px){
       .link-icon {
         padding-left: 0;
 
@@ -273,7 +273,7 @@
         }
       }
 
-      .col-main-1, .col-main-3{
+      .col-main-1, .col-main-2, .col-main-3{
         text-align: center;
       }
       .col-main-2{

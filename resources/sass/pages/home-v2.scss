@@ -1,0 +1,225 @@
+#home-page {
+
+  .title-h1 {
+    color: $purple;
+    font-size: 2.9rem;
+    font-weight: 800;
+    line-height: 1.15;
+  }
+
+  .suggestion-section {
+    position: relative;
+
+    .box-text {
+      padding: 70px 0 10px 0;
+      display: block;
+      text-align: center;
+
+      .title-h1 {
+        margin-bottom: 18px;
+      }
+
+      .txt-2 {
+        margin-bottom: 26px;
+        font-size: 1.40rem;
+      }
+
+      .txt-w-btn {
+        margin-bottom: 30px;
+
+        .btn-h1 {}
+      }
+
+      .txt-3 {
+        color: $purple;
+        font-size: 1.10rem;
+        font-weight: 500;
+        text-decoration: underline;
+      }
+    }
+
+    .box-image {
+      margin: 0 auto;
+      width: 1040px;
+      max-width: 100%;
+      height: 600px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .design-lenses-section {
+    position: relative;
+    text-align: center;
+
+    .box-text {
+      padding: 40px 0 30px 0;
+      display: block;
+      text-align: center;
+
+      .title-h1 {
+        margin-bottom: 28px;
+      }
+
+      .txt-w-btn {
+        .btn-h1 {}
+      }
+    }
+
+    .box-image {
+      margin: 0 auto;
+      width: 960px;
+      max-width: 100%;
+      height: 570px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .faqs-section {
+    position: relative;
+    text-align: center;
+
+    .box-info {
+      padding: 45px 0 40px 0;
+      display: block;
+      text-align: center;
+
+      .title-h1 {
+        margin-bottom: 22px;
+      }
+
+      .box-faqs {
+        position: relative;
+        margin: 0 auto;
+        width: 1000px;
+        max-width: 100%;
+
+        .accordion {
+          .card {
+            margin-bottom: 16px;
+            border: 0;
+
+            .card-header {
+              padding: 0;
+              border: 0;
+              background-color: transparent;
+
+              .btn-faq-toggle {
+                position: relative;
+                display: inline-block;
+                padding: 12px 32px 14px 32px;
+                min-width: 264px;
+                color: #ffffff;
+                cursor: pointer;
+                font-size: 1.60rem;
+                font-weight: 800;
+                letter-spacing: 2px;
+                text-align: center;
+                text-decoration: none !important;
+                border-radius: 28px;
+                background-color: #1a1a1a;
+
+                &:after {
+                  position: relative;
+                  top: 2px;
+                  margin-left: 20px;
+                  font-family: "Font Awesome 5 Pro";
+                  font-size: 1.45rem;
+                  font-weight: 700;
+                  line-height: 1.0;
+                }
+
+                &.collapsed {
+                  &:after {
+                    content: "\f078";
+                  }
+                }
+                &.not-collapsed {
+                  &:after {
+                    content: "\f077";
+                  }
+                }
+              }
+            }
+
+            .card-body {
+              margin-top: 3px;
+              padding: 1.6rem 2.4rem 1.6rem 2.4rem;
+              color: #fff;
+              font-size: 0.95rem;
+              line-height: 1.45;
+              border-radius: 120px;
+              background: #1a1a1a;
+            }
+          }
+        }
+      }
+    }
+
+    .box-image {
+      margin: 0 auto;
+      width: 1040px;
+      max-width: 100%;
+      height: 520px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .form-section {
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    .box-titles {
+      margin-bottom: 35px;
+      text-align: center;
+
+      .title-h1 {
+        margin-bottom: 20px;
+      }
+
+      .title-2 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+    }
+
+    .box-form {
+      position: relative;
+      margin: 0 auto;
+      width: 660px;
+      max-width: 100%;
+
+      form {}
+
+      .custom-f-group-s1 {
+        margin-bottom: 1.6rem;
+        @include placeholder(#222121, 500, normal, 1.25rem);
+
+        >div {
+          .form-control {
+            padding: 0.8rem 2.3rem;
+            height: auto;
+            color: #222121;
+            font-weight: 500;
+            border: 0;
+            border-radius: 40px;
+            box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1) !important;
+            background-color: #f2f2f2;
+          }
+        }
+      }
+
+      .btn-s2 {
+        font-size: 1.30rem;
+      }
+    }
+  }
+
+}

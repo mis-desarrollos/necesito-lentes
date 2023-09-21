@@ -10,7 +10,8 @@ const page="./components/page/";
 
 const MyRouter = new VueRouter({
   	routes:[
-      { path: '/', component: require(page+'home.vue').default },
+      { path: '/', component: require(page+'home/index-old.vue').default },
+      { path: '/home', component: require(page+'home/index.vue').default },
       { path: '/nosotros', component: require(page+'about-us/index.vue').default, meta:{title:"Sobre nosotros"}},
       { path: '/contacto', component: require(page+'contact/index.vue').default, meta:{title:"Contacto"}},
 

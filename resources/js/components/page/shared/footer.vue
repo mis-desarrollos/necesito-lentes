@@ -37,7 +37,7 @@
     <section class="footer-section">
       <div class="container oversized-container">
         <div class="row">
-          <div class="col-sm-6 col-lg-3 col-main-1">
+          <div class="col-lg-3 col-main-1">
             <p class="mt-3 mt-lg-5 t-w-break">
               <a class="link-icon" href="mailto:contacto@necesitolentes.club"><i></i> contacto@necesitolentes.club</a>
             </p>
@@ -80,7 +80,7 @@
             </div>
           </div>
 
-          <div class="col-sm-6 col-lg col-main-3">
+          <div class="col-lg col-main-3">
             <p>
               <a class="_btn-net fb t-150" target="_blank"><span><i class="fab fa-facebook-f"></i></span></a>
               <a class="_btn-net ig t-150" target="_blank"><span><i class="fab fa-instagram"></i></span></a>

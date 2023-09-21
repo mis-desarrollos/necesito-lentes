@@ -60,3 +60,21 @@
     border: 0 !important;
   }
 }
+
+.btn-s2 {
+  display: inline-block;
+  padding: 14px 32px 16px 32px;
+  color: #ffffff !important;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.0;
+  text-decoration: none !important;
+  border-radius: 30px;
+  border-color: $purple;
+  background-color: $purple;
+
+  &:hover, &:focus, &:active {
+    border-color: $purple2 !important;
+    background-color: $purple2 !important;
+  }
+}
