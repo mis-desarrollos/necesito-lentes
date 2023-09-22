@@ -1,11 +1,11 @@
-#basic-test-page {
+#basic-test-page-v2 {
 
 	// Questions
 	.questions-section {
 		position: relative;
 		padding: 35px 0;
 		min-height: calc(100vh - 198px - 87px);
-		background-color: $aqua;
+		background-color: #ffffff;
 
 		.box-progress {
 			position: relative;
@@ -26,24 +26,25 @@
 					&.icon-1 {
 						margin-left: 30px;
 						margin-right: auto;
-						background-image: url('../images/pages/test/icon-triangle.svg');
+						background-image: url('../images/pages/test/icon-eye.svg');
 					}
 
 					&.icon-2 {
 						margin-left: auto;
 						margin-right: 30px;
-						background-image: url('../images/pages/test/icon-glasses.svg');
+						width: 58px;
+						background-image: url('../images/pages/test/icon-glasses-v2.svg');
 					}
 				}
 			}
 
 			.progress {
 				background-color: #eff4f4;
-				border-radius: 20px;
+				border-radius: 30px;
 				font-size: 1.15rem;
 
 				.progress-bar {
-					background-color: $purple;
+					background-color: $yellow;
 
 					.num {
 						padding-bottom: 1px;

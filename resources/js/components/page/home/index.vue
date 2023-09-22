@@ -90,6 +90,8 @@
               v-model="form.phone"
               type="text"
               placeholder="Teléfono"
+              minlength="10"
+              maxlength="10"
               size="lg"
               required
             ></b-form-input>

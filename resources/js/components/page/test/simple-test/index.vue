@@ -1,11 +1,11 @@
 <template lang="html">
-  <b-form id="basic-test-page" @submit="onSubmit">
+  <b-form id="basic-test-page-v2" @submit="onSubmit">
 
     <section class="questions-section" v-bind:class="{ 'step6' : step == 6 }">
       <div class="container">
-        <div class="d-block text-center mb-3">
+        <!-- <div class="d-block text-center mb-3">
           <h2 class="h1s f-w-800 txt-blue">Test de la vista</h2>
-        </div>
+        </div> -->
 
         <div class="box-progress">
           <div class="box-icons">
@@ -13,7 +13,7 @@
             <div class="icon icon-2"></div>
           </div>
 
-          <b-progress :max="max" height="40px">
+          <b-progress :max="max" height="50px">
             <b-progress-bar :value="step">
               <span class="num">{{ step }}</span>
             </b-progress-bar>

@@ -12,17 +12,6 @@
  */
 
 /*!
- * Sizzle CSS Selector Engine v2.3.6
- * https://sizzlejs.com/
- *
- * Copyright JS Foundation and other contributors
- * Released under the MIT license
- * https://js.foundation/
- *
- * Date: 2021-02-16
- */
-
-/*!
  * The buffer module from node.js, for the browser.
  *
  * @author   Feross Aboukhadijeh <http://feross.org>
@@ -30,23 +19,20 @@
  */
 
 /*!
- * Vue.js v2.7.13
+ * Vue.js v2.7.14
  * (c) 2014-2022 Evan You
  * Released under the MIT License.
  */
 
 /*!
- * jQuery JavaScript Library v3.6.1
+ * jQuery JavaScript Library v3.7.0
  * https://jquery.com/
- *
- * Includes Sizzle.js
- * https://sizzlejs.com/
  *
  * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2022-08-26T17:52Z
+ * Date: 2023-05-11T18:29Z
  */
 
 /*!
@@ -56,21 +42,12 @@
  */
 
 /*!
-FullCalendar v5.11.3
+FullCalendar v5.11.5
 Docs & License: https://fullcalendar.io/
 (c) 2022 Adam Shaw
 */
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
-/**
-  * bootstrap-table - An extended table to integration with some of the most widely used CSS frameworks. (Supports Bootstrap, Semantic UI, Bulma, Material Design, Foundation)
-  *
-  * @version v1.21.1
-  * @homepage https://bootstrap-table.com
-  * @author wenzhixin <wenzhixin2010@gmail.com> (http://wenzhixin.net.cn/)
-  * @license MIT
-  */
 
 /**
   * vee-validate v2.2.15
