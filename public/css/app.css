@@ -30043,6 +30043,12 @@ input[type=number] {
   border-color: #70339f !important;
   background-color: #70339f !important;
 }
+@media screen and (max-width: 767px) {
+  .btn-s2 {
+    padding: 13px 26px 14px 26px;
+    font-size: 1.25rem;
+  }
+}
 
 .custom-radio-group > label, .custom-radio-group > legend {
   padding-bottom: 3px;
@@ -31404,6 +31410,11 @@ input[type=number] {
   font-weight: 800;
   line-height: 1.15;
 }
+@media screen and (max-width: 575px) {
+  #home-page .title-h1 {
+    font-size: 2.5rem;
+  }
+}
 #home-page .suggestion-section {
   position: relative;
 }
@@ -31428,6 +31439,9 @@ input[type=number] {
   font-weight: 500;
   text-decoration: underline;
 }
+#home-page .suggestion-section .box-text .txt-3:hover {
+  color: #70339f;
+}
 #home-page .suggestion-section .box-image {
   margin: 0 auto;
   width: 1040px;
@@ -31437,8 +31451,45 @@ input[type=number] {
   background-repeat: no-repeat;
   background-size: contain;
 }
+@media screen and (max-width: 1399px) {
+  #home-page .suggestion-section .box-image {
+    width: 980px;
+    height: 550px;
+  }
+}
+@media screen and (max-width: 991px) {
+  #home-page .suggestion-section .box-text {
+    padding: 50px 0 10px 0;
+  }
+  #home-page .suggestion-section .box-image {
+    width: 991px;
+    background-size: cover;
+    height: 550px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #home-page .suggestion-section .box-image {
+    height: 490px;
+    background-position: left 12% center;
+  }
+}
+@media screen and (max-width: 575px) {
+  #home-page .suggestion-section .box-text {
+    padding: 45px 0 35px 0;
+  }
+  #home-page .suggestion-section .box-text .txt-2 {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1.25rem;
+  }
+  #home-page .suggestion-section .box-image {
+    height: 400px;
+    background-position: left 6% center;
+  }
+}
 #home-page .design-lenses-section {
   position: relative;
+  margin-top: 15px;
   text-align: center;
 }
 #home-page .design-lenses-section .box-text {
@@ -31458,8 +31509,40 @@ input[type=number] {
   background-repeat: no-repeat;
   background-size: contain;
 }
+@media screen and (max-width: 1399px) {
+  #home-page .design-lenses-section .box-image {
+    width: 910px;
+    height: 540px;
+  }
+}
+@media screen and (max-width: 991px) {
+  #home-page .design-lenses-section .box-image {
+    width: 991px;
+    background-size: cover;
+    height: 592px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #home-page .design-lenses-section .box-image {
+    height: 500px;
+    background-position: right center;
+  }
+}
+@media screen and (max-width: 575px) {
+  #home-page .design-lenses-section {
+    margin-top: 0;
+  }
+  #home-page .design-lenses-section .box-text {
+    padding: 15px 0 40px 0;
+  }
+  #home-page .design-lenses-section .box-image {
+    height: 370px;
+    background-position: right 44% center;
+  }
+}
 #home-page .faqs-section {
   position: relative;
+  margin-top: 15px;
   text-align: center;
 }
 #home-page .faqs-section .box-info {
@@ -31533,10 +31616,50 @@ input[type=number] {
   background-repeat: no-repeat;
   background-size: contain;
 }
+@media screen and (max-width: 1399px) {
+  #home-page .faqs-section .box-image {
+    width: 990px;
+    height: 490px;
+  }
+}
+@media screen and (max-width: 991px) {
+  #home-page .faqs-section .box-image {
+    width: 991px;
+    background-size: cover;
+    height: 490px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #home-page .faqs-section .box-info .box-faqs .accordion .card .card-body {
+    padding: 1.6rem 1.4rem 1.6rem 1.4rem;
+    border-radius: 0;
+  }
+  #home-page .faqs-section .box-image {
+    height: 440px;
+    background-position: right 28% center;
+  }
+}
+@media screen and (max-width: 575px) {
+  #home-page .faqs-section {
+    margin-top: 0;
+  }
+  #home-page .faqs-section .box-info .box-faqs .accordion .card .card-header .btn-faq-toggle {
+    font-size: 1.4rem;
+  }
+  #home-page .faqs-section .box-info .box-faqs .accordion .card .card-body {
+    padding: 1.2rem 1rem 1.2rem 1rem;
+    font-size: 0.9rem;
+  }
+  #home-page .faqs-section .box-image {
+    height: 460px;
+    background-position: right 7% center;
+  }
+}
 #home-page .form-section {
   position: relative;
   padding-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
+  margin-top: 15px;
 }
 #home-page .form-section .box-titles {
   margin-bottom: 35px;
@@ -31595,6 +31718,23 @@ input[type=number] {
 }
 #home-page .form-section .box-form .btn-s2 {
   font-size: 1.3rem;
+}
+@media screen and (max-width: 575px) {
+  #home-page .form-section {
+    padding-top: 0;
+    margin-top: 0;
+  }
+  #home-page .form-section .box-titles .title-2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  #home-page .form-section .box-form {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #home-page .form-section .box-form .btn-s2 {
+    font-size: 1.2rem;
+  }
 }
 
 #basic-test-page .questions-section {
