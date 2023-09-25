@@ -60,30 +60,115 @@
 			padding-bottom: 20px;
 			text-align: center;
 
-			.num-circle {
+			.box-result {
+				width: 600px;
+				max-width: 100%;
+  			margin: 0 auto;
+			}
+
+			.box-step-icon {
 				@include flex-center-xy();
 				margin: 0 auto;
-				padding-bottom: 5px;
-				line-height: 1;
-				width: 150px;
-				height: 150px;
-				color: $purple;
-				font-family: 'Kanit', sans-serif;
-				font-size: 7rem;
-				font-weight: 600;
-				border-radius: 50%;
-				background-color: #ffffff;
+				width: 178px;
+				height: 146px;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+
+				&.ic-1 {
+					background-image: url('../images/pages/test/test-icon-1.svg');
+				}
+				&.ic-2 {
+					background-image: url('../images/pages/test/test-icon-2.svg');
+				}
+				&.ic-3 {
+					background-image: url('../images/pages/test/test-icon-3.svg');
+				}
+				&.ic-4 {
+					background-image: url('../images/pages/test/test-icon-4.svg');
+				}
+				&.ic-5 {
+					background-image: url('../images/pages/test/test-icon-5.svg');
+				}
+				&.ic-6 {
+					background-image: url('../images/pages/test/test-icon-6.svg');
+				}
+				&.ic-7 {
+					background-image: url('../images/pages/test/test-icon-7.svg');
+				}
+				&.ic-8 {
+					background-image: url('../images/pages/test/test-icon-8.svg');
+				}
+				&.ic-9 {
+					background-image: url('../images/pages/test/test-icon-9.svg');
+				}
 			}
 
 			.question {
-				color: $purple;
-				font-weight: 600;
+				color: #000000;
+				font-size: 1.9rem;
+				font-weight: 700;
 			}
 
 			.box-answers {
 				position: relative;
 				display: block;
 				padding: 15px 0;
+
+				.btn-sp-1 {
+					padding: 0.8rem 1.95rem 0.85rem 1.95rem;
+					margin: 3px 9px;
+					font-size: 1.25rem;
+					font-weight: 600;
+					border-radius: 50px;
+					line-height: 1.15;
+					letter-spacing: 1px;
+
+					&.green {
+						border-color: $blueGreen;
+						background-color: $blueGreen;
+
+						&:hover {
+							border-color: $blueGreen2;
+							background-color: $blueGreen2;
+						}
+					}
+					&.pink {
+						border-color: $pink;
+						background-color: $pink;
+
+						&:hover {
+							border-color: $pink2;
+							background-color: $pink2;
+						}
+					}
+					&.purple {
+						border-color: $purple;
+						background-color: $purple;
+
+						&:hover {
+							border-color: $purple2;
+							background-color: $purple2;
+						}
+					}
+
+					&:first-child {
+						margin-left: 0;
+					}
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+
+				&.a2 {
+					.btn-sp-1 {
+						margin: 3px 30px
+					}
+				}
+			}
+
+			h3,.h3 {
+				font-size: 1.50rem;
 			}
 
 			.link-go-glasses{
@@ -93,22 +178,125 @@
 			}
 		}
 
-		&.step6 { // En caso de llegar al paso 6 (final)
-			padding-bottom: 0 !important;
-
-			.box-content {
-				padding-bottom: 0 !important;
+		&.res-0 {
+			.box-progress {
+				.progress {
+					.progress-bar {
+						background-color: $blueGreen !important;
+					}
+				}
+			}
+		}
+		&.res-1 {
+			.box-progress {
+				.progress {
+					.progress-bar {
+						background-color: $pink !important;
+					}
+				}
+			}
+		}
+		&.res-2 {
+			.box-progress {
+				.progress {
+					.progress-bar {
+						background-color: $purple !important;
+					}
+				}
 			}
 		}
 
+		@media screen and (max-width: 1199px) {
+			.box-content {
+				.box-answers {
+					.btn-sp-1 {
+						margin: 3px 6px;
+						font-size: 1.15rem;
+					}
+
+					&.a2 {
+						.btn-sp-1 {
+							margin: 3px 26px
+						}
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 991px) {
+			.box-content {
+				.box-answers {
+					.btn-sp-1 {
+						margin: 8px 5px;
+						font-size: 1.05rem;
+					}
+
+					&.a2 {
+						.btn-sp-1 {
+							margin: 8px 26px
+						}
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 767px) {
+			.box-content {
+				.box-step-icon {
+					width: 158px;
+  				height: 112px;
+				}
+
+				.question {
+					font-size: 1.65rem;
+				}
+
+				.box-answers {
+					.btn-sp-1 {
+						padding: 0.6rem 1.85rem 0.6rem 1.85rem;
+						font-size: 1.20rem;
+
+						span {
+							display: block;
+						}
+					}
+
+					&.a2 {
+						.btn-sp-1 {
+							margin: 8px 20px
+						}
+					}
+				}
+			}
+		}
 		@media screen and (max-width: 575px) {
 			.box-content {
+				.box-step-icon {
+					width: 150px;
+  				height: 96px;
+				}
+
 				.question {
-					font-size: 1.8rem;
+					font-size: 1.50rem;
+					font-weight: 800;
+				}
+
+				.box-answers {
+					.btn-sp-1 {
+						padding: 0.45rem 0.95rem 0.45rem 0.95rem;
+						margin: 5px 3px;
+						font-size: 0.95rem;
+					}
+
+					&.a2 {
+						.btn-sp-1 {
+							padding: 0.55rem 0.95rem 0.6rem 0.95rem;
+							margin: 5px 16px;
+							font-size: 1.2rem;
+						}
+					}
 				}
 
 				h1,h2,h3,h4,h5,p, .h1,.h2,.h3,.h4,.h5,.p {
-					line-height: 1.10;
+					line-height: 1.25;
 				}
 
 				.h1s {
@@ -117,6 +305,9 @@
 
 				h2,.h2 {
 					font-size: 1.7rem;
+				}
+				h3,.h3 {
+					font-size: 1.50rem;
 				}
 				h4,.h4 {
 					font-size: 1.25rem;

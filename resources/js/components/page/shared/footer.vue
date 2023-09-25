@@ -62,9 +62,9 @@
                 <h5 class="title">Sitio</h5>
 
                 <p>
-                  <router-link to="/">Inicio</router-link><br />
                   <router-link to="/busqueda">Armazones</router-link><br />
                   <router-link to="/obtener-lentes">Obtén tus lentes</router-link>
+                  <router-link to="">Preguntas frecuentes</router-link>
                 </p>
               </div>
 
