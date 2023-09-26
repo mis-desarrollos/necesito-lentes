@@ -42,7 +42,7 @@
       <div class="box-info">
         <h2 class="title-h1">Preguntas<br />frecuentes</h2>
 
-        <div class="box-faqs">
+        <div class="box-faqs-s1">
           <div class="accordion" role="tablist">
             <b-card no-body v-for="(item, qaInx) in faqs" :key="'qaInx'+qaInx">
               <b-card-header header-tag="header" role="tab">

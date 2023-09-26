@@ -12,6 +12,7 @@ const MyRouter = new VueRouter({
   	routes:[
       { path: '/', component: require(page+'home/index.vue').default },
       { path: '/nosotros', component: require(page+'about-us/index.vue').default, meta:{title:"Sobre nosotros"}},
+      { path: '/preguntas-frecuentes', component: require(page+'faqs/index.vue').default, meta:{title:"Preguntas frecuentes"}},
       { path: '/contacto', component: require(page+'contact/index.vue').default, meta:{title:"Contacto"}},
 
       { path: '/test', component: require(page+'test/simple-test/index.vue').default, meta:{title:"Test de la vista"} },
