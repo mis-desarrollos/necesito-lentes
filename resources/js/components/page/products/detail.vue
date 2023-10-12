@@ -118,8 +118,8 @@
 </template>
 
 <script>
-import Step3ModalMateriales from '../test/crear-lentes/step-3-modal-materiales.vue';
-import Step3ModalRecubrimiento from '../test/crear-lentes/step-3-modal-recubrimiento.vue';
+import Step3ModalMateriales from '../test/crear-lentes-old/step-3-modal-materiales.vue';
+import Step3ModalRecubrimiento from '../test/crear-lentes-old/step-3-modal-recubrimiento.vue';
 export default {
   components: {
     Step3ModalMateriales,

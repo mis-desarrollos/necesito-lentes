@@ -3,7 +3,7 @@
 
     <section class="main-section">
       <div class="box-titles">
-        <h2 class="title-h1">Preguntas frecuentes</h2>
+        <h2 class="title-s1">Preguntas frecuentes</h2>
 
         <h5 class="title-2">¿Tienes dudas? Revisa nuestro apartado de preguntas.</h5>
 

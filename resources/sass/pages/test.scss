@@ -125,12 +125,12 @@
 					letter-spacing: 1px;
 
 					&.green {
-						border-color: $blueGreen;
-						background-color: $blueGreen;
+						border-color: $aqua;
+						background-color: $aqua;
 
 						&:hover {
-							border-color: $blueGreen2;
-							background-color: $blueGreen2;
+							border-color: $aqua2;
+							background-color: $aqua2;
 						}
 					}
 					&.pink {
@@ -182,7 +182,7 @@
 			.box-progress {
 				.progress {
 					.progress-bar {
-						background-color: $blueGreen !important;
+						background-color: $aqua !important;
 					}
 				}
 			}

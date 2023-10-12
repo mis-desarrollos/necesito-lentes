@@ -3,7 +3,7 @@
 
     <section class="suggestion-section">
       <div class="box-text">
-        <h2 class="title-h1">Si, talvez<br />necesitas lentes.</h2>
+        <h2 class="title-s1">Si, talvez<br />necesitas lentes.</h2>
         <h5 class="txt-2">
           Si llegaste hasta aquí es porque tienes esa pequeña duda.<br />
           Pero, tranquilo, es fácil resolverla con un sencillo test.
@@ -26,7 +26,7 @@
 
     <section class="design-lenses-section">
       <div class="box-text">
-        <h2 class="title-h1">¿Sabes tu<br />graduación?</h2>
+        <h2 class="title-s1">¿Sabes tu<br />graduación?</h2>
 
         <p class="txt-w-btn">
           <router-link class="t-150 btn-s2" to="/test">Diseña tus lentes</router-link>
@@ -40,7 +40,7 @@
 
     <section class="faqs-section">
       <div class="box-info">
-        <h2 class="title-h1">Preguntas<br />frecuentes</h2>
+        <h2 class="title-s1">Preguntas<br />frecuentes</h2>
 
         <div class="box-faqs-s1">
           <div class="accordion" role="tablist">
@@ -68,7 +68,7 @@
 
     <section class="container form-section">
       <div class="box-titles">
-        <h2 class="title-h1">¿Tienes<br />una óptica?</h2>
+        <h2 class="title-s1">¿Tienes<br />una óptica?</h2>
 
         <h5 class="title-2">Afiliate con nosotros</h5>
       </div>

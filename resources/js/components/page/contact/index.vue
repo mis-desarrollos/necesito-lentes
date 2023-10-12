@@ -3,7 +3,7 @@
 
     <section class="contact-section">
       <div class="box-titles">
-        <h2 class="title-h1">Contacto</h2>
+        <h2 class="title-s1">Contacto</h2>
 
         <h5 class="title-2">Envía tus dudas y sugerencias</h5>
 
@@ -80,7 +80,7 @@
 
     <section class="contact-section">
       <div class="box-titles">
-        <h2 class="title-h1">¿Tienes<br />una óptica?</h2>
+        <h2 class="title-s1">¿Tienes<br />una óptica?</h2>
 
         <h5 class="title-2">Afíliate con nosotros</h5>
       </div>
