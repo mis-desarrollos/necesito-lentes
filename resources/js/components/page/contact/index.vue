@@ -3,7 +3,7 @@
 
     <section class="contact-section">
       <div class="box-titles">
-        <h2 class="title-s1">Contacto</h2>
+        <h2 class="title-s1 txt-purple">Contacto</h2>
 
         <h5 class="title-2">Envía tus dudas y sugerencias</h5>
 
@@ -68,7 +68,7 @@
           </b-form-group>
 
           <p class="pt-2 text-center">
-            <b-button type="submit" class="btn-s2">Enviar mensaje</b-button>
+            <b-button type="submit" class="btn-s2 bg-purple">Enviar mensaje</b-button>
           </p>
         </b-form>
       </div>
@@ -80,7 +80,7 @@
 
     <section class="contact-section">
       <div class="box-titles">
-        <h2 class="title-s1">¿Tienes<br />una óptica?</h2>
+        <h2 class="title-s1 txt-purple">¿Tienes<br />una óptica?</h2>
 
         <h5 class="title-2">Afíliate con nosotros</h5>
       </div>
@@ -120,7 +120,7 @@
           </b-form-group>
 
           <p class="pt-2 text-center">
-            <b-button type="submit" class="btn-s2">Afíliate con nosotros</b-button>
+            <b-button type="submit" class="btn-s2 bg-purple">Afíliate con nosotros</b-button>
           </p>
         </b-form>
       </div>

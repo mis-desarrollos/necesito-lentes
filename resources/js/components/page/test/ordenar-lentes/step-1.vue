@@ -1,8 +1,8 @@
 <template lang="html">
   <section class="step-1">
     <div class="container">
-      <div class="box-title">
-        <h2 class="title-s1">Elige tu paquete</h2>
+      <div class="box-title-top-1">
+        <h2 class="title-s1 txt-purple">Elige tu paquete</h2>
       </div>
 
       <div class="box-packages">
@@ -75,8 +75,8 @@
         </swiper>
       </div>
 
-      <div class="box-navs">
-        <button type="button" name="button" class="btn btn-s2 btn-sm">Siguiente</button>
+      <div class="box-bottom-navs">
+        <button type="button" name="button" class="btn _btn btn-s2 bg-purple btn-sm" @click="$parent.step = 2" v-if="$parent.form.plan">Siguiente</button>
       </div>
     </div>
   </section>

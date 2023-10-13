@@ -30042,27 +30042,54 @@ input[type=number] {
 .btn-s2 {
   display: inline-block;
   padding: 14px 32px 16px 32px;
-  color: #ffffff !important;
   font-size: 1.7rem;
   font-weight: 700;
   line-height: 1;
   text-decoration: none !important;
   border-radius: 30px;
+}
+.btn-s2.bg-purple {
+  color: #ffffff !important;
   border-color: #8240b5;
   background-color: #8240b5;
 }
-.btn-s2:hover, .btn-s2:focus, .btn-s2:active {
+.btn-s2.bg-purple:hover, .btn-s2.bg-purple:focus, .btn-s2.bg-purple:active {
   border-color: #70339f !important;
   background-color: #70339f !important;
+}
+.btn-s2.bg-gray {
+  color: #ffffff !important;
+  border-color: #b3b3b3;
+  background-color: #b3b3b3;
+}
+.btn-s2.bg-gray:hover, .btn-s2.bg-gray:focus, .btn-s2.bg-gray:active {
+  border-color: #a4a5a6 !important;
+  background-color: #a4a5a6 !important;
+}
+.btn-s2.outline-purple {
+  color: #8240b5;
+  border: 2px solid #8240b5;
+}
+.btn-s2.outline-purple:hover, .btn-s2.outline-purple:focus, .btn-s2.outline-purple:active {
+  color: #70339f !important;
+  border: 2px solid #70339f !important;
+}
+.btn-s2.outline-gray {
+  color: #a4a5a6;
+  border: 2px solid #a4a5a6;
+}
+.btn-s2.outline-gray:hover, .btn-s2.outline-gray:focus, .btn-s2.outline-gray:active {
+  color: #868686 !important;
+  border: 2px solid #868686 !important;
+}
+.btn-s2.btn-sm {
+  font-size: 1.3rem;
 }
 @media screen and (max-width: 767px) {
   .btn-s2 {
     padding: 13px 26px 14px 26px;
     font-size: 1.25rem;
   }
-}
-.btn-s2.btn-sm {
-  font-size: 1.4rem;
 }
 
 .custom-radio-group > label, .custom-radio-group > legend {
@@ -30233,10 +30260,18 @@ input[type=number] {
 }
 
 .title-s1 {
-  color: #8240b5;
   font-size: 2.9rem;
   font-weight: 800;
   line-height: 1.15;
+}
+.title-s1.txt-purple {
+  color: #8240b5;
+}
+.title-s1.txt-aqua {
+  color: #05d3ba;
+}
+.title-s1.txt-pink {
+  color: #fc3293;
 }
 @media screen and (max-width: 575px) {
   .title-s1 {
@@ -31927,15 +31962,25 @@ input[type=number] {
 #order-glasses-page {
   min-height: 77vh;
 }
+#order-glasses-page .box-title-top-1 {
+  position: relative;
+  margin-bottom: 24px;
+  text-align: center;
+}
+#order-glasses-page .box-bottom-navs {
+  position: relative;
+  margin-top: 30px;
+  text-align: center;
+  min-height: 52px;
+}
+#order-glasses-page .box-bottom-navs ._btn {
+  margin-left: 8px;
+  margin-right: 8px;
+}
 #order-glasses-page .step-1 {
   position: relative;
   padding-top: 60px;
   padding-bottom: 60px;
-}
-#order-glasses-page .step-1 .box-title {
-  position: relative;
-  margin-bottom: 24px;
-  text-align: center;
 }
 #order-glasses-page .step-1 .box-packages {
   position: relative;
@@ -32081,11 +32126,6 @@ input[type=number] {
 #order-glasses-page .step-1 .box-packages .box-package.bg-purple.active:before {
   border-color: #8240b5;
 }
-#order-glasses-page .step-1 .box-navs {
-  position: relative;
-  margin-top: 25px;
-  text-align: center;
-}
 @media screen and (min-width: 1100px) and (max-width: 1199px) {
   #order-glasses-page .step-1 > .container {
     max-width: 1100px;
@@ -32110,6 +32150,175 @@ input[type=number] {
   #order-glasses-page .step-1 .box-packages .swiper .swiper-button-prev:after, #order-glasses-page .step-1 .box-packages .swiper .swiper-button-next:after {
     font-size: 1.6rem;
   }
+}
+#order-glasses-page .step-2 {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design {
+  position: relative;
+  min-height: 402px;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.2);
+  background-color: #8240b5;
+  transition: all 200ms ease-in-out;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  pointer-events: none;
+  z-index: 5;
+  transition: all 200ms ease-in-out;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-icon {
+  display: block;
+  padding: 60px 10px 28px 10px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #8240b5;
+  transition: all 200ms ease-in-out;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-icon img {
+  max-height: 155px;
+  max-width: 93%;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-title {
+  display: block;
+  padding: 0 10px 26px 10px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #8240b5;
+  transition: all 200ms ease-in-out;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-title h5 {
+  font-size: 1.95rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected {
+  position: relative;
+  display: block;
+  padding: 6px 10px;
+  min-height: 104px;
+  color: #8240b5;
+  text-align: center;
+  background-color: #ffffff;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected .name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected .name .ic-asterisk {
+  position: relative;
+  top: -1px;
+  color: #00a78d;
+  font-size: 84%;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected.centered {
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected .selected-glasses {
+  padding-top: 18px;
+  padding-bottom: 14px;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected .selected-glasses .glasses {
+  display: block;
+  margin-bottom: 8px;
+  height: 76px;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected .selected-glasses .glasses img {
+  max-width: 92%;
+  max-height: 76px;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected .selected-glasses .name {
+  margin-bottom: 7px;
+  font-size: 1.6rem;
+}
+#order-glasses-page .step-2 .box-glasses-design .col-design .box-design .box-selected .selected-glasses .descr {
+  font-size: 1.2rem;
+  line-height: 1.1;
+}
+#order-glasses-page .step-2.plan-1 .box-title-top-1 .title-s1 {
+  color: #05d3ba !important;
+}
+#order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design {
+  background-color: #05d3ba !important;
+}
+#order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design .box-icon, #order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design .box-title {
+  background-color: #05d3ba !important;
+}
+#order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design .box-selected {
+  color: #05d3ba !important;
+}
+#order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design .box-selected .ic-asterisk {
+  color: #bf1e1e;
+}
+#order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design:hover {
+  background-color: #07c1ab !important;
+}
+#order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design:hover:before {
+  border-color: #07c1ab !important;
+}
+#order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design:hover .box-icon, #order-glasses-page .step-2.plan-1 .box-glasses-design .col-design .box-design:hover .box-title {
+  background-color: #07c1ab !important;
+}
+#order-glasses-page .step-2.plan-2 .box-title-top-1 .title-s1 {
+  color: #fc3293 !important;
+}
+#order-glasses-page .step-2.plan-2 .box-glasses-design .col-design .box-design {
+  background-color: #fc3293 !important;
+}
+#order-glasses-page .step-2.plan-2 .box-glasses-design .col-design .box-design .box-icon, #order-glasses-page .step-2.plan-2 .box-glasses-design .col-design .box-design .box-title {
+  background-color: #fc3293 !important;
+}
+#order-glasses-page .step-2.plan-2 .box-glasses-design .col-design .box-design .box-selected {
+  color: #fc3293 !important;
+}
+#order-glasses-page .step-2.plan-2 .box-glasses-design .col-design .box-design:hover {
+  background-color: #e12d83 !important;
+}
+#order-glasses-page .step-2.plan-2 .box-glasses-design .col-design .box-design:hover:before {
+  border-color: #e12d83 !important;
+}
+#order-glasses-page .step-2.plan-2 .box-glasses-design .col-design .box-design:hover .box-icon, #order-glasses-page .step-2.plan-2 .box-glasses-design .col-design .box-design:hover .box-title {
+  background-color: #e12d83 !important;
+}
+#order-glasses-page .step-2.plan-3 .box-title-top-1 .title-s1 {
+  color: #8240b5 !important;
+}
+#order-glasses-page .step-2.plan-3 .box-glasses-design .col-design .box-design {
+  background-color: #8240b5 !important;
+}
+#order-glasses-page .step-2.plan-3 .box-glasses-design .col-design .box-design .box-icon, #order-glasses-page .step-2.plan-3 .box-glasses-design .col-design .box-design .box-title {
+  background-color: #8240b5 !important;
+}
+#order-glasses-page .step-2.plan-3 .box-glasses-design .col-design .box-design .box-selected {
+  color: #8240b5 !important;
+}
+#order-glasses-page .step-2.plan-3 .box-glasses-design .col-design .box-design:hover {
+  background-color: #70339f !important;
+}
+#order-glasses-page .step-2.plan-3 .box-glasses-design .col-design .box-design:hover:before {
+  border-color: #70339f !important;
+}
+#order-glasses-page .step-2.plan-3 .box-glasses-design .col-design .box-design:hover .box-icon, #order-glasses-page .step-2.plan-3 .box-glasses-design .col-design .box-design:hover .box-title {
+  background-color: #70339f !important;
 }
 
 #get-glasses-page {
