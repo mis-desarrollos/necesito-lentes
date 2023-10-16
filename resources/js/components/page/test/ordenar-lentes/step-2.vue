@@ -9,7 +9,7 @@
         <div class="row">
           <!-- Material -->
           <div class="col-lg-4 col-design">
-            <div class="box-design">
+            <div class="box-design" @click="$parent.showModalMateriales = true;">
               <div class="box-icon">
                 <img src="public/images/pages/get-glasses/icon-material.svg" alt="">
               </div>
@@ -18,8 +18,8 @@
                 <h5>Material</h5>
               </div>
 
-              <div class="box-selected centered">
-                <h6 class="name">Trivex</h6>
+              <div class="box-selected centered" v-if="material">
+                <h6 class="name">{{ material.name }}</h6>
               </div>
             </div>
           </div>
@@ -75,21 +75,51 @@
         <button type="button" name="button" class="btn _btn btn-s2 bg-gray btn-sm" @click="$parent.step = 3">Agregar al carrito</button>
       </div>
     </div>
-
-    <b-modal modal-class="modal-glasses-design" ref="modal-material" hide-footer centered title="Elige el material">
-      <div class="d-block text-center">
-        <h3>Hello From My Modal!</h3>
-      </div>
-      <b-button class="mt-3" variant="outline-danger" block @click="hideModal">Close Me</b-button>
-      <b-button class="mt-2" variant="outline-warning" block @click="toggleModal">Toggle Me</b-button>
-    </b-modal>
   </section>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      material: {},
+      recubrimiento: {},
+      armazon: {},
+    }
+  },
+
+  methods: {
+    setMaterial() {
+      this.material = this.$parent.materiales.find(x => x.id == this.$parent.form.material);
+    },
+
+    // setRecubrimiento() {
+    //   this.recubrimiento = this.$parent.recubrimientos.find(x => x.id == this.$parent.form.recubrimiento);
+    // },
+    //
+    // setArmazon() {
+    //   this.armazon = this.$parent.armazones.find(x => x.id == this.$parent.form.armazon);
+    // },
+  },
+
+  watch: {
+    '$parent.form.material'(val, oldVal) {
+      this.setMaterial();
+    },
+
+    // '$parent.form.recubrimiento'(val, oldVal) {
+    //   this.setRecubrimiento();
+    // },
+    //
+    // '$parent.form.armazon'(val, oldVal) {
+    //   this.setArmazon();
+    // },
+  },
+
   mounted() {
-    this.$refs['modal-material'].show();
-  }
+    this.setMaterial();
+    // this.setRecubrimiento();
+    // this.setArmazon();
+  },
 }
 </script>
