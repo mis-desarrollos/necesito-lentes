@@ -31,7 +31,7 @@ export default {
     return {
       step: 2,
       showModalMateriales: false,     // Modal materiales
-      showModalRecubrimientos: true,  // Modal recubrimientos
+      showModalRecubrimientos: false,  // Modal recubrimientos
       showModalArmazon: false,         // Modal armazón
 
       // Materieles
@@ -45,15 +45,16 @@ export default {
 
       // Recubrimientos
       recubrimientos: [
-        { id: 1, name: 'AR Green',       shortDescr: 'Ideal para personas muy sencibles a destellos.' },
-        { id: 2, name: 'AR Blue',  shortDescr: 'Ideal para uso de dispositivos digitales.' },
-        { id: 3, name: 'AR Gold',  shortDescr: 'Ideal para conducir de noche.' },
+        { id: 1, name: 'AR Green', color: 'green',  shortDescr: 'Ideal para personas muy sencibles a destellos.' },
+        { id: 2, name: 'AR Blue', color: 'blue',    shortDescr: 'Ideal para uso de dispositivos digitales.' },
+        { id: 3, name: 'AR Gold', color: 'gold',    shortDescr: 'Ideal para conducir de noche.' },
       ],
 
       // Formulario principal
       form: {
         plan: 3,
         material: null,
+        recubrimiento: null,
       }
     }
   },

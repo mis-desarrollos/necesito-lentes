@@ -8,7 +8,7 @@
       <div class="box-glasses-design">
         <div class="row">
           <!-- Material -->
-          <div class="col-lg-4 col-design">
+          <div class="col-sm-10 col-md-8 col-lg-4 col-design">
             <div class="box-design" @click="$parent.showModalMateriales = true;">
               <div class="box-icon">
                 <img src="public/images/pages/get-glasses/icon-material.svg" alt="">
@@ -26,8 +26,8 @@
           <!--  -->
 
           <!-- Recubrimiento -->
-          <div class="col-lg-4 col-design">
-            <div class="box-design">
+          <div class="col-sm-10 col-md-8 col-lg-4 col-design">
+            <div class="box-design" @click="$parent.showModalRecubrimientos = true;">
               <div class="box-icon">
                 <img src="public/images/pages/get-glasses/icon-recubrimiento.svg" alt="">
               </div>
@@ -36,15 +36,15 @@
                 <h5>Recubrimiento</h5>
               </div>
 
-              <div class="box-selected centered">
-                <h6 class="name"><i class="far fa-asterisk ic-asterisk"></i> AR Green</h6>
+              <div class="box-selected centered" v-if="recubrimiento">
+                <h6 class="name"><i :class="'far fa-asterisk ic-asterisk '+recubrimiento.color"></i> {{ recubrimiento.name }}</h6>
               </div>
             </div>
           </div>
           <!--  -->
 
           <!-- Armazón -->
-          <div class="col-lg-4 col-design">
+          <div class="col-sm-10 col-md-8 col-lg-4 col-design">
             <div class="box-design">
               <div class="box-icon">
                 <img src="public/images/pages/get-glasses/icon-armazon.svg" alt="">
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div class="box-bottom-navs">
+      <div class="box-bottom-navs nav-multi-btns">
         <button type="button" name="button" class="btn _btn btn-s2 outline-gray btn-sm" @click="$parent.step = 1">Anterior</button>
         <button type="button" name="button" class="btn _btn btn-s2 bg-gray btn-sm" @click="$parent.step = 3">Agregar al carrito</button>
       </div>
@@ -93,10 +93,10 @@ export default {
       this.material = this.$parent.materiales.find(x => x.id == this.$parent.form.material);
     },
 
-    // setRecubrimiento() {
-    //   this.recubrimiento = this.$parent.recubrimientos.find(x => x.id == this.$parent.form.recubrimiento);
-    // },
-    //
+    setRecubrimiento() {
+      this.recubrimiento = this.$parent.recubrimientos.find(x => x.id == this.$parent.form.recubrimiento);
+    },
+
     // setArmazon() {
     //   this.armazon = this.$parent.armazones.find(x => x.id == this.$parent.form.armazon);
     // },
@@ -107,10 +107,10 @@ export default {
       this.setMaterial();
     },
 
-    // '$parent.form.recubrimiento'(val, oldVal) {
-    //   this.setRecubrimiento();
-    // },
-    //
+    '$parent.form.recubrimiento'(val, oldVal) {
+      this.setRecubrimiento();
+    },
+
     // '$parent.form.armazon'(val, oldVal) {
     //   this.setArmazon();
     // },
@@ -118,7 +118,7 @@ export default {
 
   mounted() {
     this.setMaterial();
-    // this.setRecubrimiento();
+    this.setRecubrimiento();
     // this.setArmazon();
   },
 }
