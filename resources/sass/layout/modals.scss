@@ -474,6 +474,23 @@
           }
         }
 
+        .box-glasses {
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: -15px;
+          margin-right: -15px;
+
+          .col-eyeglasses {
+            .box-eyeglasses {
+              position: relative;
+              display: block;
+              padding: 10px;
+              border: 2px solid #222121;
+              border-radius: 15px;
+            }
+          }
+        }
+
         @media screen and (max-width: 385px) {
           .box-extra-info {
             font-size: 0.95rem;

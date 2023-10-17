@@ -9,6 +9,7 @@
     <Step2 v-if="step == 2"></Step2>
     <ModalMateriales :opts="materiales" v-if="showModalMateriales"></ModalMateriales>
     <ModalRecubrimiento :opts="recubrimientos" v-if="showModalRecubrimientos"></ModalRecubrimiento>
+    <ModalArmazones :opts="recubrimientos" v-if="showModalArmazones"></ModalArmazones>
     <!--  -->
 
   </b-form>
@@ -19,12 +20,13 @@ import Step1 from './step-1.vue';
 import Step2 from './step-2.vue';
 import ModalMateriales from './step-2-modal-materiales.vue';
 import ModalRecubrimiento from './step-2-recubrimiento.vue';
+import ModalArmazones from './step-2-modal-armazones.vue';
 
 export default {
   components: {
     Step1,
     Step2,
-    ModalMateriales, ModalRecubrimiento,
+    ModalMateriales, ModalRecubrimiento, ModalArmazones,
   },
 
   data() {
@@ -32,7 +34,7 @@ export default {
       step: 2,
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimientos: false,  // Modal recubrimientos
-      showModalArmazon: false,         // Modal armazón
+      showModalArmazones: true,         // Modal armazón
 
       // Materieles
       materiales: [
@@ -48,6 +50,14 @@ export default {
         { id: 1, name: 'AR Green', color: 'green',  shortDescr: 'Ideal para personas muy sencibles a destellos.' },
         { id: 2, name: 'AR Blue', color: 'blue',    shortDescr: 'Ideal para uso de dispositivos digitales.' },
         { id: 3, name: 'AR Gold', color: 'gold',    shortDescr: 'Ideal para conducir de noche.' },
+      ],
+
+      // Armazones
+      armazones: [
+        { id: 1, imageUrl: 'public/images/pages/test/glasses-1.jpg', disabled: false, selected: false, name: 'Schopenhauer',  shortDescr: 'Pasta color negro' },
+        { id: 2, imageUrl: 'public/images/pages/test/glasses-2.jpg', disabled: false, selected: false, name: 'Chomsky',  shortDescr: 'Metal color azul' },
+        { id: 3, imageUrl: 'public/images/pages/test/glasses-3.jpg', disabled: true,  selected: false, name: 'Saturnino',  shortDescr: 'Pasta color café' },
+        { id: 3, imageUrl: 'public/images/pages/test/glasses-3.jpg', disabled: false, selected: false, name: 'Arvo Pärt',  shortDescr: 'Metal color negro' },
       ],
 
       // Formulario principal
