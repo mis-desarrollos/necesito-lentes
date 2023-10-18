@@ -45,7 +45,7 @@
 
           <!-- Armazón -->
           <div class="col-sm-10 col-md-8 col-lg-4 col-design">
-            <div class="box-design">
+            <div class="box-design" @click="$parent.showModalArmazones = true;">
               <div class="box-icon">
                 <img src="public/images/pages/get-glasses/icon-armazon.svg" alt="">
               </div>
@@ -54,14 +54,14 @@
                 <h5>Armazón</h5>
               </div>
 
-              <div class="box-selected centered">
+              <div class="box-selected centered" v-if="armazon">
                 <div class="selected-glasses">
                   <div class="glasses">
-                    <img src="public/images/pages/get-glasses/glasses-1.jpg">
+                    <img :src="armazon.imageUrl">
                   </div>
 
-                  <h6 class="name">Schopenhauer</h6>
-                  <p class="descr">Pasta color negro</p>
+                  <h6 class="name">{{ armazon.name }}</h6>
+                  <p class="descr">{{ armazon.shortDescr }}</p>
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@
 
       <div class="box-bottom-navs nav-multi-btns">
         <button type="button" name="button" class="btn _btn btn-s2 outline-gray btn-sm" @click="$parent.step = 1">Anterior</button>
-        <button type="button" name="button" class="btn _btn btn-s2 bg-gray btn-sm" @click="$parent.step = 3">Agregar al carrito</button>
+        <button type="button" name="button" class="btn _btn btn-s2 bg-gray btn-sm">Agregar al carrito</button>
       </div>
     </div>
   </section>
@@ -97,9 +97,9 @@ export default {
       this.recubrimiento = this.$parent.recubrimientos.find(x => x.id == this.$parent.form.recubrimiento);
     },
 
-    // setArmazon() {
-    //   this.armazon = this.$parent.armazones.find(x => x.id == this.$parent.form.armazon);
-    // },
+    setArmazon() {
+      this.armazon = this.$parent.armazones.find(x => x.id == this.$parent.form.armazon);
+    },
   },
 
   watch: {
@@ -111,15 +111,15 @@ export default {
       this.setRecubrimiento();
     },
 
-    // '$parent.form.armazon'(val, oldVal) {
-    //   this.setArmazon();
-    // },
+    '$parent.form.armazon'(val, oldVal) {
+      this.setArmazon();
+    },
   },
 
   mounted() {
     this.setMaterial();
     this.setRecubrimiento();
-    // this.setArmazon();
+    this.setArmazon();
   },
 }
 </script>
