@@ -23,7 +23,7 @@
       </b-form-radio>
     </b-form-radio-group>
 
-    <div class="d-block mt-4 text-center" v-if="$parent.form.armazon">
+    <div class="box-btns-bottom" v-if="$parent.form.armazon">
       <button type="button" name="button" class="btn _btn btn-s2 bg-purple btn-sm" @click="$refs['modal-armazones'].hide();">Agregar</button>
     </div>
   </b-modal>

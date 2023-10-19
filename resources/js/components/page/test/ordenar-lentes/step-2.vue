@@ -72,7 +72,7 @@
 
       <div class="box-bottom-navs nav-multi-btns">
         <button type="button" name="button" class="btn _btn btn-s2 outline-gray btn-sm" @click="$parent.step = 1">Anterior</button>
-        <button type="button" name="button" class="btn _btn btn-s2 bg-gray btn-sm">Agregar al carrito</button>
+        <button type="button" name="button" class="btn _btn btn-s2 bg-gray btn-sm" @click="$parent.step = 3" v-if="showNextBTN">Agregar al carrito</button>
       </div>
     </div>
   </section>
@@ -82,6 +82,8 @@
 export default {
   data() {
     return {
+      showNextBTN: false,
+
       material: {},
       recubrimiento: {},
       armazon: {},
@@ -100,19 +102,28 @@ export default {
     setArmazon() {
       this.armazon = this.$parent.armazones.find(x => x.id == this.$parent.form.armazon);
     },
+
+    checkStatus() {
+      if(this.material && this.recubrimiento && this.armazon) {
+        this.showNextBTN = true;
+      }
+    },
   },
 
   watch: {
     '$parent.form.material'(val, oldVal) {
       this.setMaterial();
+      this.checkStatus();
     },
 
     '$parent.form.recubrimiento'(val, oldVal) {
       this.setRecubrimiento();
+      this.checkStatus();
     },
 
     '$parent.form.armazon'(val, oldVal) {
       this.setArmazon();
+      this.checkStatus();
     },
   },
 

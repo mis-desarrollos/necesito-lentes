@@ -12,6 +12,14 @@
     <ModalArmazones :opts="armazones" v-if="showModalArmazones"></ModalArmazones>
     <!--  -->
 
+    <!-- Paso 3 -->
+    <Step3 v-if="step == 3"></Step3>
+    <!--  -->
+
+    <!-- Paso 4 -->
+    <Step4 v-if="step == 4"></Step4>
+    <!--  -->
+
   </b-form>
 </template>
 
@@ -21,12 +29,16 @@ import Step2 from './step-2.vue';
 import ModalMateriales from './step-2-modal-materiales.vue';
 import ModalRecubrimientos from './step-2-recubrimiento.vue';
 import ModalArmazones from './step-2-modal-armazones.vue';
+import Step3 from './step-3.vue';
+import Step4 from './step-4.vue';
 
 export default {
   components: {
     Step1,
     Step2,
     ModalMateriales, ModalRecubrimientos, ModalArmazones,
+    Step3,
+    Step4,
   },
 
   data() {
@@ -61,6 +73,10 @@ export default {
         { id: 5, imageUrl: 'public/images/pages/get-glasses/glasses-5.jpg', disabled: false, selected: false, name: 'Chomsky',  shortDescr: 'Metal color café' },
         { id: 6, imageUrl: 'public/images/pages/get-glasses/glasses-6.jpg', disabled: false, selected: false, name: 'Saturnino',  shortDescr: 'Pasta color azul' },
         { id: 7, imageUrl: 'public/images/pages/get-glasses/glasses-1.jpg', disabled: false, selected: false, name: 'Schopenhauer',  shortDescr: 'Pasta color negro' },
+        { id: 8, imageUrl: 'public/images/pages/get-glasses/glasses-2.jpg', disabled: false, selected: false, name: 'Chomsky',  shortDescr: 'Metal color azul' },
+        { id: 9, imageUrl: 'public/images/pages/get-glasses/glasses-3.jpg', disabled: false,  selected: false, name: 'Saturnino',  shortDescr: 'Pasta color café' },
+        { id: 10, imageUrl: 'public/images/pages/get-glasses/glasses-4.jpg', disabled: true, selected: false, name: 'Arvo Pärt',  shortDescr: 'Metal color negro' },
+        { id: 11, imageUrl: 'public/images/pages/get-glasses/glasses-5.jpg', disabled: false, selected: false, name: 'Chomsky',  shortDescr: 'Metal color café' },
       ],
 
       // Formulario principal
