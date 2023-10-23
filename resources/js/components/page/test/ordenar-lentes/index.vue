@@ -43,7 +43,7 @@ export default {
 
   data() {
     return {
-      step: 1,
+      step: 4,
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimientos: false,  // Modal recubrimientos
       showModalArmazones: false,         // Modal armazón
