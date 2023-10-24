@@ -84,6 +84,8 @@ export default {
         plan: 3,
         material: null,
         recubrimiento: null,
+        fecha: null,
+        hora: null,
       }
     }
   },
