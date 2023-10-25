@@ -43,7 +43,7 @@ export default {
 
   data() {
     return {
-      step: 4,
+      step: 1,
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimientos: false,  // Modal recubrimientos
       showModalArmazones: false,         // Modal armazón
@@ -81,9 +81,10 @@ export default {
 
       // Formulario principal
       form: {
-        plan: 3,
+        plan: null,
         material: null,
         recubrimiento: null,
+        tienda: {},
         fecha: null,
         hora: null,
       }
