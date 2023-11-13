@@ -2,8 +2,7 @@
   padding: 30px 0;
   color: #ffffff;
   border-top: 1px solid #ffffff;
-  background-color: $gray;
-
+  background-color: #000000;
 
   .newsletter-section{
     .col-logo{
@@ -19,10 +18,11 @@
 
     .col-newsletter{
       .col-text{
-        flex: 0 0 360px;
-        max-width: 360px;
+        flex: 0 0 380px;
+        max-width: 380px;
 
         h5{
+          font-size: 1.35rem;
           font-weight: 700;
         }
       }
@@ -33,13 +33,14 @@
 
           .form-group{
             margin-bottom: 0;
+            @include placeholder(#000000, 600, normal, 1.00rem);
 
             .form-control{
               padding-left: 18px;
               padding-right: 18px;
               height: 40px;
-              font-size: 0.95rem;
-              font-weight: 500;
+              font-size: 1.00rem;
+              font-weight: 600;
               border: 0 !important;
               border-radius: 22px 0 0 22px;
             }
@@ -48,11 +49,12 @@
           .btn-snewsletter{
             max-width: 164px;
             height: 40px;
-            font-size: 0.95rem;
-            font-weight: 600;
+            color: #000000;
+            font-size: 1.15rem;
+            font-weight: 700;
             border: 0 !important;
             border-radius: 0 22px 22px 0;
-            background-color: $aqua;
+            background-color: $yellow;
           }
         }
       }
@@ -60,15 +62,18 @@
 
     @media screen and (max-width: 991px){
       .col-logo{
+        margin-top: 40px;
         text-align: center;
-        margin-bottom: 14px;
+        order: 1;
 
         img{
-          max-height: 80px;
+          max-height: 90px;
         }
       }
 
       .col-newsletter{
+        order: 0;
+
         .col-text{
           margin-bottom: 8px;
           flex: 0 0 100%;
@@ -77,17 +82,67 @@
         }
       }
     }
+    @media screen and (max-width: 767px){
+      .col-newsletter {
+        .col-text {
+          margin-bottom: 20px;
+
+          h5 {
+            font-size: 1.55rem;
+          }
+        }
+
+        .col-form {
+          .form-group {
+            margin-bottom: 22px !important;
+            flex: 0 0 100%;
+            max-width: 100%;
+            @include placeholder(#000000, 600, normal, 1.3rem !important);
+
+            >div {
+              .form-control {
+                padding: 0.65rem 18px;
+                height: auto;
+                font-size: 1.3rem;
+                font-weight: 500;
+                text-align: center;
+                border-radius: 28px;
+              }
+            }
+          }
+
+          form {
+            .btn-snewsletter {
+              margin: 0 auto;
+              height: 52px;
+              font-size: 1.40rem;
+              border-radius: 28px;
+            }
+          }
+        }
+      }
+
+      .col-logo {
+        margin-top: 60px;
+        margin-bottom: 10px;
+
+        img{
+          max-height: 100px;
+        }
+      }
+    }
   }
 
   .footer-section{
     margin-top: 25px;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
+    border-radius: 20px;
 
     .title{
       margin-bottom: 6px;
       color: #ffffff;
-      font-size: 1.1rem;
-      font-weight: 600;
+      font-size: 1.3rem;
+      font-weight: 700;
     }
 
     a{
@@ -107,41 +162,41 @@
     .link-icon{
       position: relative;
       display: inline-block;
-      padding-left: 26px;
-
-      i{
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin-right: 3px;
-        top: 4px;
-        width: 18px;
-        height: 18px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-      }
-
-      &.email{
-        i{
-          background-image: url('../images/shared/ic-email.svg');
-        }
-      }
-      &.help{
-        i{
-          background-image: url('../images/shared/ic-help.svg');
-        }
-      }
-      &.map{
-        i{
-          background-image: url('../images/shared/ic-map.svg');
-        }
-      }
+      font-size: 1.1rem;
+      font-weight: 600;
+      word-break: break-word;
     }
 
     .col-main-1, .col-main-2, .col-main-3{
       margin-top: 10px;
       margin-bottom: 10px;
+    }
+
+    .col-main-2 {
+      .btn-test {
+        position: relative;
+        padding: 6px 18px 5px 18px;
+        color: #ffffff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-decoration: none !important;
+        border-radius: 20px;
+        background-color: $purple;
+
+        &:hover {
+          background-color: $purple2;
+        }
+      }
+
+      .title {
+        margin-bottom: 10px;
+      }
+
+      p {
+        a {
+          margin-bottom: 7px;
+        }
+      }
     }
 
     .col-main-3{
@@ -154,70 +209,62 @@
         cursor: pointer;
         text-decoration: none !important;
 
-        &:hover{
-          opacity: 0.85;
-        }
-
         >span{
           @extend .flex-center-xy;
           width: 40px;
           height: 40px;
-          color: #ffffff;
+          color: #000000;
           font-size: 1.2rem;
           border-radius: 50%;
+          background-color: $yellow;
         }
 
-        &.fb{
-          >span{
-            background-color: #0a73f7;
+        &.tw {
+          span {
+            i {
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: 18px 18px;
+              background-image: url('../images/shared/twitter-x.svg');
+
+              &:before {
+                opacity: 0;
+              }
+            }
           }
         }
-        &.tw{
-          >span{
-            background-color: #00b3ff;
-          }
-        }
-        &.ig{
-          >span{
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-          }
-        }
-        &.lk{
-          >span{
-            background-color: #007dbd;
-          }
-        }
-        &.yt{
-          >span{
-            background-color: #ff0000;
-          }
-        }
-        &.tt{
-          >span{
-            background-color: #854ff6;
+
+        &:hover{
+          >span {
+            background-color: $yellow2;
           }
         }
       }
     }
 
-    @media screen and (max-width: 991px){
-      .col-main-1{
-        order: 1;
+    @media screen and (min-width: 992px){
+      .col-main-2 {
+        .btn-test {
+          position: relative;
+          left: -19px;
+        }
       }
+
       .col-main-3{
-        order: 2;
+        flex: 0 0 248px;
+        max-width: 248px;
+      }
+
+      @media screen and (max-width: 1199px) {
+        .col-main-3{
+          flex: 0 0 220px;
+          max-width: 220px;
+        }
       }
     }
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 991px){
       margin-top: 0;
 
-      .col-menu{
-        margin-top: 10px;
-        margin-bottom: 10px;
-        text-align: center;
-      }
-    }
-    @media screen and (max-width: 575px){
       .link-icon {
         padding-left: 0;
 
@@ -226,11 +273,58 @@
         }
       }
 
-      .col-main-1, .col-main-3{
+      .col-main-1, .col-main-2, .col-main-3{
         text-align: center;
       }
       .col-main-2{
         margin-bottom: 0;
+      }
+      .col-main-1 {
+        margin-top: 18px;
+        margin-bottom: 25px;
+
+        .link-icon {
+          font-size: 1.35rem;
+          font-weight: 700;
+        }
+      }
+      .col-main-2 {
+        .col-menu {
+          margin-top: 18px;
+          margin-bottom: 18px;
+
+          .title {
+            font-size: 1.70rem;
+            font-weight: 700;
+          }
+
+          p {
+            margin-bottom: 6px;
+          }
+
+          a {
+            font-size: 1.25rem;
+          }
+        }
+      }
+      .col-main-3 {
+        ._btn-net {
+          margin: 3px 9px;
+
+          span {
+            width: 52px;
+            height: 52px;
+            font-size: 1.8rem;
+          }
+
+          &.tw {
+            span {
+              i {
+                background-size: 23px 23px;
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -10,12 +10,14 @@ const page="./components/page/";
 
 const MyRouter = new VueRouter({
   	routes:[
-      { path: '/', component: require(page+'home.vue').default },
+      { path: '/', component: require(page+'home/index.vue').default },
       { path: '/nosotros', component: require(page+'about-us/index.vue').default, meta:{title:"Sobre nosotros"}},
+      { path: '/preguntas-frecuentes', component: require(page+'faqs/index.vue').default, meta:{title:"Preguntas frecuentes"}},
       { path: '/contacto', component: require(page+'contact/index.vue').default, meta:{title:"Contacto"}},
 
       { path: '/test', component: require(page+'test/simple-test/index.vue').default, meta:{title:"Test de la vista"} },
-      { path: '/obtener-lentes', component: require(page+'test/crear-lentes/index.vue').default, meta:{title:"Obtén tus lentes"} },
+      { path: '/obtener-lentes', component: require(page+'test/ordenar-lentes/index.vue').default, meta:{title:"Obtén tus lentes"} },
+      { path: '/obtener-lentes-old', component: require(page+'test/crear-lentes-old/index.vue').default, meta:{title:"Obtén tus lentes"} },
 	    { path: '/finalizado', component: require(page+'test/pagado/index.vue').default, meta:{title:"Pagado correctamente"} },
 
       { path: '/productos/:id?', component: require(page+'products/results.vue').default, meta:{title:"Productos"}},

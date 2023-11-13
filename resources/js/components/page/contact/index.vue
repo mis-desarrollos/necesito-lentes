@@ -1,71 +1,128 @@
 <template lang="html">
-  <div id="contact-page">
+  <div id="contact-v2-page">
 
-    <section class="container main-section">
-      <div class="row align-items-center">
-        <div class="col-12 col-title">
-          <h1 class="h1s f-w-800 txt-blue">Contacto</h1>
-        </div>
+    <section class="contact-section">
+      <div class="box-titles">
+        <h2 class="title-s1 txt-purple">Contacto</h2>
 
-        <div class="col-lg-6 col-info">
-          <h5 class="title">¿Tienes preguntas?<br />Envíanos un mensaje o comunicate con nosotros.</h5>
+        <h5 class="title-2">Envía tus dudas y sugerencias</h5>
 
-          <h5 class="mt-3 subtitle">Dirección Matriz</h5>
-          <p>
-            Calle 1 #123<br />
-            Guadalajara, Jalisco<br />
-            México.
+        <p class="mt-3 mt-sm-2 txt-info">
+          Un asesor se pondrá en contacto contigo lo antes posible.
+        </p>
+      </div>
+
+      <div class="box-form">
+        <b-form @submit="onSubmit">
+          <b-form-group class="custom-f-group-s1">
+            <b-form-input
+              v-model="form.name"
+              type="text"
+              placeholder="Nombre"
+              size="lg"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="custom-f-group-s1">
+            <b-form-input
+              v-model="form.phone"
+              type="text"
+              placeholder="Teléfono"
+              minlength="10"
+              maxlength="10"
+              size="lg"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="custom-f-group-s1">
+            <b-form-input
+              v-model="form.email"
+              type="email"
+              placeholder="Correo electrónico"
+              size="lg"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="custom-f-group-s1">
+            <b-form-input
+              v-model="form.company"
+              type="text"
+              placeholder="Empresa"
+              size="lg"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="custom-f-group-s1">
+            <b-form-textarea
+              v-model="form.msg"
+              placeholder="Mensaje"
+              rows="4"
+              max-rows="4"
+              size="lg"
+              required
+            ></b-form-textarea>
+          </b-form-group>
+
+          <p class="pt-2 text-center">
+            <b-button type="submit" class="btn-s2 bg-purple">Enviar mensaje</b-button>
           </p>
+        </b-form>
+      </div>
 
-          <h5 class="mt-3 subtitle">Teléfono</h5>
-          <p>
-            Tel. 55 323-4332-9438
+      <div class="box-image" v-bind:style="{ backgroundImage: 'url(public/images/pages/home/h-glasses-3.jpg)' }">
+        <!-- <img src="public/images/pages/home/h-glasses-3.png"> -->
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="box-titles">
+        <h2 class="title-s1 txt-purple">¿Tienes<br />una óptica?</h2>
+
+        <h5 class="title-2">Afíliate con nosotros</h5>
+      </div>
+
+      <div class="box-form">
+        <b-form @submit="onSubmitAf">
+          <b-form-group class="custom-f-group-s1">
+            <b-form-input
+              v-model="formAf.name"
+              type="text"
+              placeholder="Nombre"
+              size="lg"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="custom-f-group-s1">
+            <b-form-input
+              v-model="formAf.phone"
+              type="text"
+              placeholder="Teléfono"
+              minlength="10"
+              maxlength="10"
+              size="lg"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <b-form-group class="custom-f-group-s1">
+            <b-form-input
+              v-model="formAf.email"
+              type="email"
+              placeholder="Correo electrónico"
+              size="lg"
+              required
+            ></b-form-input>
+          </b-form-group>
+
+          <p class="pt-2 text-center">
+            <b-button type="submit" class="btn-s2 bg-purple">Afíliate con nosotros</b-button>
           </p>
-
-          <h5 class="mt-3 subtitle">Correo</h5>
-          <p>
-            contacto@necesitolentes.club
-          </p>
-
-          <h5 class="mt-3 subtitle">Síguenos</h5>
-          <p>
-            <a class="btn-network mr-1" href=""><i class="fab fa-instagram"></i></a>
-            <a class="btn-network ml-1" href=""><i class="fab fa-twitter"></i></a>
-            <a class="btn-network ml-1" href=""><i class="fab fa-facebook-f"></i></a>
-            <!-- <a class="btn-network ml-1" href="#"><i class="fab fa-linkedin-in"></i></a> -->
-          </p>
-        </div>
-
-        <div class="col-lg-6 col-form">
-          <b-form @submit="onSubmit">
-            <b-form-group class="custom-form-group-s1" label="Nombre completo">
-              <b-form-input type="text" size="sm" v-model="form.name" required placeholder=""></b-form-input>
-            </b-form-group>
-
-            <b-form-group class="custom-form-group-s1" label="Correo electrónico">
-              <b-form-input type="email" size="sm" v-model="form.email" required placeholder=""></b-form-input>
-            </b-form-group>
-
-            <b-form-group class="custom-form-group-s1" label="Teléfono">
-              <b-form-input type="text" size="sm" v-model="form.phone" minlength="10" maxlength="10" required placeholder=""></b-form-input>
-            </b-form-group>
-
-            <b-form-group class="custom-form-group-s1" label="Mensaje">
-              <b-form-textarea
-                required
-                v-model="form.msg"
-                size="sm"
-                placeholder=""
-                rows="4"
-                max-rows="4"
-              ></b-form-textarea>
-            </b-form-group>
-
-            <p class="text-right">
-              <b-button type="submit" class="btn-s1 bg-blue">ENVIAR</b-button>
-            </p>
-          </b-form>
-        </div>
+        </b-form>
       </div>
     </section>
 
@@ -78,14 +135,28 @@ export default {
     return{
       form: {
         name: null,
-      }
+        form: null,
+        email: null,
+        company: null,
+        msg: null,
+      },
+
+      formAf: {
+        name: null,
+        form: null,
+        email: null,
+      },
     }
   },
 
   methods: {
     onSubmit(event) {
       event.preventDefault();
-    }
+    },
+
+    onSubmitAf(event) {
+      event.preventDefault();
+    },
   },
 }
 </script>

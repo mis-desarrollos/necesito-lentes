@@ -5,11 +5,7 @@ body,html{
 }
 
 #app {
-	&.loading-page {
-		position: relative;
-		height: 100vh;
-		overflow: hidden;
-	}
+	@include transition(250ms);
 }
 
 p,h1,h2,h3,h4,h5,h6{
