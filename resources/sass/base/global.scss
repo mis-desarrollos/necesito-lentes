@@ -37,6 +37,11 @@ p,h1,h2,h3,h4,h5,h6{
   background-repeat: no-repeat;
 }
 
+// Pointer
+.c-pointer {
+	cursor: pointer !important;
+}
+
 // Remove outline
 select:focus, select:active, select:hover, button:focus, button:active, button:hover,
 input:focus, input:active, input:hover, textarea:focus, textarea:active, textarea:hover{

@@ -72,7 +72,7 @@
 
       <div class="box-bottom-navs nav-multi-btns">
         <button type="button" name="button" class="btn _btn btn-s2 outline-gray btn-sm" @click="$parent.step = 1">Anterior</button>
-        <button type="button" name="button" class="btn _btn btn-s2 bg-gray btn-sm" @click="$parent.step = 3" v-if="showNextBTN">Agregar al carrito</button>
+        <button type="button" name="button" class="btn _btn btn-s2 bg-purple btn-sm" @click="$parent.step = 3" v-if="showNextBTN">Agregar al carrito</button>
       </div>
     </div>
   </section>

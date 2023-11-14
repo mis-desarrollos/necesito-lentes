@@ -16,20 +16,21 @@
           :clickable="true"
           :draggable="false"
           :icon="{ url: (m.selected) ? 'public/images/shared/map-icon-selected.svg' : 'public/images/shared/map-icon.svg' }"
-          @click="showMarkerModal(m)"
+          @click="showMarkerModal(m, mInx)"
         />
       </GmapMap>
     </div>
 
     <div class="box-bottom-navs nav-multi-btns">
-      <p class="pb-2"><small class="f-w-600"><i>Seleccione una tienda del mapa</i>*</small></p>
+      <p class="pb-2" v-if="!showNextBTN"><small class="f-w-600"><i>Seleccione una tienda del mapa</i>*</small></p>
 
       <button type="button" name="button" class="btn _btn btn-s2 outline-gray btn-sm" @click="$parent.step = 3">Anterior</button>
-      <!-- <button type="button" name="button" class="btn _btn btn-s2 bg-gray btn-sm" @click="$parent.step = 5">Agendar</button> -->
+      <button type="button" name="button" class="btn _btn btn-s2 bg-purple btn-sm" v-if="showNextBTN" @click="$parent.step = 5">Agendar</button>
     </div>
 
+    <!-- Modal elegir tienda -->
     <b-modal modal-class="modal-marker" ref="modal-marker" hide-footer centered no-close-on-backdrop no-close-on-esc>
-      <div class="box-basic-info">
+      <div class="box-basic-store-info">
         <h5 class="name">{{ selectedMarker.name }}</h5>
 
         <div class="descr" v-html="selectedMarker.content"></div>
@@ -40,7 +41,7 @@
           </div>
 
           <div class="col col-lg col-summary">
-            <span class="comment">13 opiniones</span>
+            <a class="comment" @click="$refs['modal-comments'].show()">13 opiniones</a>
           </div>
         </div>
       </div>
@@ -59,12 +60,12 @@
       <div class="box-schedule">
         <h5 class="title">¿Qué día vas a asistir?</h5>
         <div class="box-time-date date">
-          <b-form-datepicker v-model="$parent.form.fecha" :min="minDate" :date-disabled-fn="dateDisabled" :date-format-options="dateFormOpts" v-bind="datepickerOpts"  placeholder="Fecha" required></b-form-datepicker>
+          <b-form-datepicker v-model="selectedMarker.fecha" :min="minDate" :date-disabled-fn="dateDisabled" :date-format-options="dateFormOpts" v-bind="datepickerOpts"  placeholder="Fecha" required></b-form-datepicker>
         </div>
 
         <h5 class="mt-4 pt-1 title">Próximo horario disponible</h5>
         <div class="box-time-date time">
-          <b-form-select class="b-select-time" v-bind:class="{ 'text-muted' : $parent.form.hora == null }" v-model="$parent.form.hora">
+          <b-form-select class="b-select-time" v-bind:class="{ 'text-muted' : selectedMarker.hora == null }" v-model="selectedMarker.hora">
             <b-form-select-option :value="null">Hora</b-form-select-option>
             <b-form-select-option value="1">9:00 a.m.</b-form-select-option>
             <b-form-select-option value="2">10:00 a.m.</b-form-select-option>
@@ -75,10 +76,52 @@
         </div>
       </div>
 
-      <div class="box-buttons" v-if="$parent.form.fecha && $parent.form.hora">
-        <button type="button" name="button" class="btn _btn btn-s2 bg-purple btn-sm"  @click="hideMarkerModal">Agendar</button>
+      <div class="box-buttons" v-if="selectedMarker.fecha && selectedMarker.hora">
+        <button type="button" name="button" class="btn _btn btn-s2 bg-purple btn-sm" @click="hideMarkerModal">Agendar</button>
       </div>
     </b-modal>
+    <!--  -->
+
+    <!-- Modal comentarios -->
+    <b-modal modal-class="modal-marker m-comments" ref="modal-comments" hide-footer hide-header no-close-on-backdrop no-close-on-esc>
+      <div class="box-comments">
+        <div class="bc-back">
+          <a class="btn-back" @click="$refs['modal-comments'].hide()"><i class="fas fa-caret-left"></i> Volver</a>
+        </div>
+
+        <div class="bc-store-info">
+          <div class="col col-image">
+
+          </div>
+
+          <div class="col col-info">
+            <div class="box-basic-store-info">
+              <h5 class="name">Óptica del Sur</h5>
+
+              <div class="descr">
+                <p>
+                  Av. Cruz del Sur #1234<br />
+                  Col. del Sur C.P. 36690
+                </p>
+              </div>
+
+              <div class="row box-rating">
+                <div class="col col-lg-5 col-stars">
+                  <b-form-rating readonly inline value="4"></b-form-rating>
+                </div>
+
+                <div class="col col-lg col-summary">
+                  <span class="comment" @click="$refs['modal-comments'].show()">13 opiniones</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </b-modal>
+    <!--  -->
+
   </section>
 </template>
 
@@ -94,10 +137,14 @@ export default {
         { id: 3, position: { lat: 20.7217495, lng: -103.3931807, zoom: 17.4 },  name: 'Óptica del norte', selected: false, content: `Avenida Vallarta Eje Poniente 3959, Interior 22, La Gran Plaza, 45049 Zapopan, Jal.` },
         { id: 4, position: { lat: 20.63164, lng: -103.3771829, zoom: 17.4 },    name: 'Óptica del oriente',selected: false, content: `Av Guadalupe 1579, Chapalita Oriente,<br />45040 Zapopan, Jal.` },
       ],
+
       selectedMarker: {
         name: null,
         content: null,
+        fecha: null,
+        hora: null,
       },
+      showNextBTN: false,
 
       gallery: [
         'public/images/pages/get-glasses/store-0.jpg',
@@ -106,17 +153,6 @@ export default {
         'public/images/pages/get-glasses/store-3.jpg',
       ],
       showModalGallery: false,
-
-      // == Carousels ==
-      galleryOptions: {
-        effect: 'fade',
-
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        }
-      },
-      // == ==
 
       // == Variables para datepicker y timepicker ==
       minDate: null,
@@ -141,14 +177,39 @@ export default {
         labelPm: 'PM',
         labelNoTimeSelected: 'No seleccionado',
         labelCloseButton: 'Cerrar',
-      }
+      },
+      // == ==
+
+      // == Carousels ==
+      galleryOptions: {
+        effect: 'fade',
+
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      },
       // == ==
     }
   },
 
   methods: {
+    // Resetear marcador seleccionado
+    resetMarkerInfo(deleteParent = false) {
+      this.selectedMarker = {
+        name: null,
+        content: null,
+        fecha: null,
+        hora: null,
+      };
+
+      if(deleteParent) { // Borrar también el contenido de la tienda en la variable principal
+        this.$parent.form.tienda = {};
+      }
+    },
+
     // Abrir modal con info del marcador
-    showMarkerModal(marker) {
+    showMarkerModal(marker, index) {
       this.selectedMarker = marker;
       this.$refs['modal-marker'].show();
 
@@ -160,14 +221,21 @@ export default {
     // Ocultar modal de marcador tras haber seleccionado fecha y hora
     hideMarkerModal() {
       this.$parent.form.tienda = this.selectedMarker;
-      this.$refs['modal-marker'].hide();
-    },
 
-    // Resetear marcador seleccionado
-    resetMarker() {
-      this.$parent.form.tienda = {};
-      this.$parent.form.fecha = null;
-      this.$parent.form.hora = null;
+      for (var i = 0; i < this.markers.length; i++) { // Marcar al seleccionado
+        this.markers[i].selected = false;
+
+        if(this.markers[i].id == this.selectedMarker.id) {
+          this.markers[i].selected = true;
+        }
+      }
+
+      setTimeout(()=> {
+        this.showNextBTN = true;
+        this.resetMarkerInfo;
+      }, 700)
+
+      this.$refs['modal-marker'].hide();
     },
 
     // Dias deshabilidatos en calendario
@@ -181,10 +249,11 @@ export default {
   },
 
   mounted() {
+    this.$refs['modal-comments'].show();
   },
 
   beforeMount(){
-    this.resetMarker();
+    this.resetMarkerInfo(true);
 
     const now = new Date();
     this.minDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
