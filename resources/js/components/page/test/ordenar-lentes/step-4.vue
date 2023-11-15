@@ -91,7 +91,7 @@
 
         <div class="bc-store-info">
           <div class="col col-image">
-
+            <div class="placed-backg image" v-bind:style="{ backgroundImage: 'url(public/images/pages/get-glasses/store-2.jpg)' }"></div>
           </div>
 
           <div class="col col-info">
@@ -112,6 +112,47 @@
 
                 <div class="col col-lg col-summary">
                   <span class="comment" @click="$refs['modal-comments'].show()">13 opiniones</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row bc-comments">
+          <div class="col-12 col-top">
+            <h5>13 opiniones</h5>
+          </div>
+
+          <div class="col-12 col-comments">
+            <div class="col-12 col-comment">
+              <div class="col col-photo">
+                <!-- <div class="placed-backg photo" v-bind:style="{ backgroundImage: 'url(public/images/pages/user/photo-0.jpg)' }"></div> -->
+                <div class="placed-backg photo no-photo">M</div>
+              </div>
+
+              <div class="col col-text">
+                <h6 class="name">Manual Huerta</h6>
+                <h6 class="verified">Perfil verificado <i class="fas fa-check-circle icon"></i></h6>
+                <h6 class="date">23 de Agosto del 2023</h6>
+
+                <div class="comment">
+                  El dr. que me atendió es una eminencia y los materiales que tiene ni se digan. 10/10.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-comment" v-for="x in 15">
+              <div class="col col-photo">
+                <div class="placed-backg photo" v-bind:style="{ backgroundImage: 'url(public/images/pages/user/photo-0.jpg)' }"></div>
+              </div>
+
+              <div class="col col-text">
+                <h6 class="name">Norma Rodriguez</h6>
+                <h6 class="verified">Perfil verificado <i class="fas fa-check-circle icon"></i></h6>
+                <h6 class="date">23 de Agosto del 2023</h6>
+
+                <div class="comment">
+                  Excelente óptica, gran variedad de armazones y una atención inigualable.
                 </div>
               </div>
             </div>

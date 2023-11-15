@@ -1057,14 +1057,24 @@
             position: relative;
             display: flex;
             flex-wrap: wrap;
-            padding: 20px 32px 18px 34px;
+            padding: 22px 32px 22px 34px;
             margin-left: -34px;
             margin-right: -32px;
             background-color: #ffffff;
 
             .col-image {
               padding: 0;
+              flex: 0 0 192px;
               max-width: 192px;
+
+              .image {
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 124px;
+                border-radius: 14px;
+                background-color: $soft-gray;
+              }
             }
 
             .col-info {
@@ -1072,6 +1082,193 @@
 
               .box-basic-store-info {
                 padding: 0;
+              }
+            }
+          }
+
+          .bc-comments {
+            position: relative;
+            padding-top: 20px;
+
+            .col-top {
+              margin-bottom: 8px;
+              text-align: center;
+
+              h5 {
+                color: $purple;
+                font-size: 1.6rem;
+                font-weight: 700;
+              }
+            }
+
+            .col-comments {
+              display: flex;
+              flex-wrap: wrap;
+              padding-left: 0;
+              padding-right: 0;
+              max-height: 65vh;
+              overflow: auto;
+              overflow-x: hidden;
+
+              .col-comment {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 18px;
+                margin-bottom: 18px;
+
+                .col-photo {
+                  padding: 0;
+                  max-width: 102px;
+
+                  .photo {
+                    width: 100%;
+                    height: 102px;
+                    border-radius: 50%;
+                    box-shadow: 0 0 1px rgba(0,0,0,0.2);
+                    background-color: $soft-gray;
+
+                    &.no-photo {
+                      @include flex-center-xy();
+                      flex: 0 0 100%;
+                      max-width: 100%;
+                      color: #ffffff;
+                      font-size: 2.9rem;
+                      font-weight: 700;
+                      box-shadow: none !important;
+                      background-color: #f7931e;
+                    }
+                  }
+                }
+
+                .col-text {
+                  padding-left: 22px;
+
+                  .name {
+                    margin-bottom: 4px;
+                    font-size: 1.30rem;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                  }
+
+                  .verified {
+                    margin-bottom: 12px;
+                    color: $purple;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+
+                    .icon {
+                      font-size: 75%;
+                    }
+                  }
+
+                  .date {
+                    color: #7d7d7d;
+                    font-size: 0.95rem;
+                    font-weight: 700;
+                  }
+
+                  .comment {
+                    margin-top: 8px;
+                    font-size: 1.03rem;
+                    font-weight: 500;
+                    line-height: 1.4;
+                  }
+                }
+              }
+            }
+          }
+
+          @media screen and (max-width: 575px) {
+            padding: 25px 22px 20px 24px;
+
+            .bc-store-info {
+              padding: 22px 22px 22px 24px;
+              margin-left: -24px;
+              margin-right: -22px;
+
+              .col-image {
+                flex: 0 0 124px;
+                max-width: 124px;
+              }
+
+              .col-info {
+                .box-basic-store-info {
+                  .name {
+                    font-size: 1.25rem;
+                  }
+
+                  .descr {
+                    font-size: 1.0rem;
+                  }
+
+                  .box-rating {
+                    .col-stars {
+                      flex: 0 0 100%;
+                      max-width: 100%;
+                    }
+
+                    .col-summary {
+                      .comment {
+                        font-size: 1.0rem;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .bc-comments {
+              padding-top: 16px;
+
+              .col-top {
+                h5 {
+                  font-size: 1.45rem;
+                }
+              }
+
+              .col-comments {
+                max-height: 58vh;
+
+                .col-comment {
+                  padding-left: 10px;
+                  margin-top: 12px;
+                  margin-bottom: 12px;
+
+                  .col-photo {
+                    max-width: 80px;
+
+                    .photo {
+                      height: 80px;
+
+                      &.no-photo {
+                        font-size: 2.5rem;
+                      }
+                    }
+                  }
+
+                  .col-text {
+                    padding-left: 18px;
+
+                    .name {
+                      font-size: 1.10rem;
+                    }
+
+                    .verified {
+                      margin-bottom: 5px;
+                      font-size: 0.70rem;
+                      font-weight: 700;
+                    }
+
+                    .date {
+                      font-size: 0.80rem;
+                    }
+
+                    .comment {
+                      font-size: 0.85rem;
+                    }
+                  }
+                }
               }
             }
           }
