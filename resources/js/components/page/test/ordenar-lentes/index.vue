@@ -20,6 +20,14 @@
     <Step4 v-if="step == 4"></Step4>
     <!--  -->
 
+    <!-- Paso 5 -->
+    <Step5 v-if="step == 5"></Step5>
+    <!--  -->
+
+    <!-- Paso 6 -->
+    <Step6 v-if="step == 6"></Step6>
+    <!--  -->
+
   </b-form>
 </template>
 
@@ -31,6 +39,8 @@ import ModalRecubrimientos from './step-2-recubrimiento.vue';
 import ModalArmazones from './step-2-modal-armazones.vue';
 import Step3 from './step-3.vue';
 import Step4 from './step-4.vue';
+import Step5 from './step-5.vue';
+import Step6 from './step-6.vue';
 
 export default {
   components: {
@@ -39,11 +49,13 @@ export default {
     ModalMateriales, ModalRecubrimientos, ModalArmazones,
     Step3,
     Step4,
+    Step5,
+    Step6,
   },
 
   data() {
     return {
-      step: 4,
+      step: 1,
       showModalMateriales: false,     // Modal materiales
       showModalRecubrimientos: false,  // Modal recubrimientos
       showModalArmazones: false,         // Modal armazón
@@ -85,6 +97,7 @@ export default {
         material: null,
         recubrimiento: null,
         tienda: {},
+        paymentType: 'tarjeta',
       }
     }
   },

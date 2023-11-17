@@ -290,7 +290,6 @@ export default {
   },
 
   mounted() {
-    this.$refs['modal-comments'].show();
   },
 
   beforeMount(){

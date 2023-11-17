@@ -180,3 +180,75 @@
     }
   }
 }
+
+.custom-form-group-s2 {
+  text-align: left;
+
+  label, legend {
+    padding-left: 15px;
+    padding-bottom: 4px;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  >div {
+    @include placeholder(#000000, 500, normal, 1.3rem);
+
+    .form-control {
+      height: auto;
+      padding: 0.6rem 1.4rem 0.60rem 1.4rem;
+      color: #000000;
+      font-size: 1.3rem;
+      font-weight: 500;
+      border-color: #b3b3b3;
+      border-radius: 14px;
+      background-color: transparent;
+    }
+
+    .form-control-sm {
+      padding: 0.45rem 1.2rem 0.5rem 1.2rem;
+      font-size: 1.0rem;
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+}
+
+.custom-checkbox-s1 {
+  padding-left: 34px;
+
+  .custom-control-input:checked ~ .custom-control-label {
+    &:after {
+      background-color: $purple !important;
+    }
+  }
+
+  .custom-control-label {
+    font-size: 1.20rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:before, &:after {
+      border-radius: 50%;
+    }
+
+    &:before {
+      top: 4px;
+      left: -33px;
+      width: 24px;
+      height: 24px;
+      background-color: transparent !important;
+      border: 1px solid $purple !important;
+    }
+    &:after {
+      top: 8px;
+      left: -29px;
+      width: 16px;
+      height: 16px;
+      background-image: none !important;
+    }
+  }
+}

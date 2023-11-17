@@ -7,7 +7,7 @@
 
       <div class="box-content">
         <div class="col-md-8 col-lg-6 col-xl-5 col-cart">
-          <div class="box-cart">
+          <div class="box-cart-totals">
             <div class="col col-num">
               <span class="num">1</span>
             </div>

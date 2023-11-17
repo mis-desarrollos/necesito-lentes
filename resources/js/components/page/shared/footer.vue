@@ -52,7 +52,7 @@
                 <h5 class="title">General</h5>
 
                 <p>
-									<router-link class="t-150 btn-test" to="/test">Hacer test</router-link><br />
+									<router-link class="t-150 btn-highlighted bg-purple" to="/test">Hacer test</router-link><br />
                   <router-link to="/nosotros">Nosotros</router-link><br />
                   <router-link to="/contacto">Contacto</router-link>
                 </p>
@@ -62,8 +62,8 @@
                 <h5 class="title">Sitio</h5>
 
                 <p>
+                  <router-link class="btn-highlighted bg-aqua" to="/obtener-lentes">Obtén tus lentes</router-link><br />
                   <router-link to="/productos/para-mujer-182">Armazones</router-link><br />
-                  <router-link to="/obtener-lentes">Obtén tus lentes</router-link>
                   <router-link to="/preguntas-frecuentes">Preguntas frecuentes</router-link>
                 </p>
               </div>
