@@ -1,0 +1,61 @@
+#about-us-page {
+
+  .main-section {
+    position: relative;
+    background-color: #ecf0ef;
+
+    .bg-image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url('../images/pages/about-us/bg-1.jpg');
+    }
+
+    .container {
+      >.row {
+        min-height: 77vh;
+        align-items: center;
+      }
+    }
+
+    .col-info {
+      line-height: 1.3;
+      text-align: justify;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding-bottom: 405px;
+
+      .bg-image {
+        top: inherit;
+        bottom: 0;
+        width: 100%;
+        height: 400px;
+        background-position: center top;
+      }
+
+      .container {
+        >.row {
+          min-height: inherit;
+        }
+      }
+
+      .col-info {
+        padding-top: 20px;
+        padding-bottom: 5px;
+      }
+    }
+    @media screen and (max-width: 575px) {
+      .bg-image {
+        background-position: right 43% top;
+        background-size: 240%;
+      }
+    }
+  }
+
+}

@@ -37,27 +37,7 @@
 
       form {}
 
-      .custom-f-group-s1 {
-        margin-bottom: 1.6rem;
-        @include placeholder(#222121, 500, normal, 1.25rem);
-
-        >div {
-          .form-control {
-            padding: 0.8rem 2.3rem;
-            height: auto;
-            color: #222121;
-            font-weight: 500;
-            border: 0;
-            border-radius: 40px;
-            box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1) !important;
-            background-color: #f2f2f2;
-          }
-
-          textarea {
-            resize: none;
-          }
-        }
-      }
+      .custom-f-group-s1 {}
 
       .btn-s2 {
         font-size: 1.30rem;
