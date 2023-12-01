@@ -1,5 +1,5 @@
 <template lang="html">
-  <b-modal modal-class="modal-glasses-design" ref="modal-recubrimientos" title="Elige el recubrimiento" hide-footer centered no-close-on-esc no-close-on-backdrop @hidden="destroyComp">
+  <b-modal modal-class="modal-glasses-design" ref="modal-recubrimientos" title="Elige el antirreflejante" hide-footer centered no-close-on-esc no-close-on-backdrop @hidden="destroyComp">
     <div class="box-extra-info">
       El antirreflejante es un recubrimiento que se coloca en ambas superficies de las lentes y sus principal función es evitar los moletos reflejos.
     </div>

@@ -48,16 +48,16 @@
           <h6 class="mt-4 mb-1 subtitle">Material:</h6>
           <div class="box-descr">
             <div class="btn-opt" @click="showModalMateriales = true;">
-              <span v-if="form.material"><small>Material: </small> {{ material.name }}</span>
+              <span v-if="form.material"><small>Micas: </small> {{ material.name }}</span>
               <span v-else>Selecciona un material</span>
             </div>
           </div>
 
-          <h6 class="mt-4 mb-1 subtitle">Recubrimiento :</h6>
+          <h6 class="mt-4 mb-1 subtitle">Antirreflejante :</h6>
           <div class="box-descr">
             <div class="btn-opt" @click="showModalRecubrimiento = true;">
-              <span v-if="form.recubrimiento"><small>Recubrimiento: </small> {{ recubrimiento.name }}</span>
-              <span v-else>Selecciona un recubrimiento</span>
+              <span v-if="form.recubrimiento"><small>Antirreflejante: </small> {{ recubrimiento.name }}</span>
+              <span v-else>Selecciona un antirreflejante</span>
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 <template lang="html">
-  <b-modal modal-class="modal-glasses-design" ref="modal-materiales" title="Elige el material" hide-footer centered no-close-on-esc no-close-on-backdrop @hidden="destroyComp">
+  <b-modal modal-class="modal-glasses-design" ref="modal-materiales" title="Elige las micas" hide-footer centered no-close-on-esc no-close-on-backdrop @hidden="destroyComp">
     <b-form-radio-group class="radio-opts-s1"
       v-model="$parent.form.material"
       name="radio-materiales">

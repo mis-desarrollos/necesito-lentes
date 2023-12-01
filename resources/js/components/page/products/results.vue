@@ -66,7 +66,7 @@
               </div>
 
               <div class="box-filters">
-                <h6 class="group-f-title">Recubrimiento </h6>
+                <h6 class="group-f-title">Antirreflejante </h6>
 
                 <b-form-group class="box-filters-group" v-slot="{ ariaDescribedby }">
                   <b-form-checkbox-group

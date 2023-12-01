@@ -17,7 +17,7 @@
                 <h6 class="mb-2 title-1">Incluye</h6>
 
                 <ul>
-                  <li>Materiales y recubrimientos básicos.</li>
+                  <li>Micas y antirreflejantes básicos.</li>
                   <li>Armazones básicos.</li>
                 </ul>
               </div>
@@ -38,7 +38,7 @@
                 <h6 class="mb-2 title-1">Incluye</h6>
 
                 <ul>
-                  <li>Materiales y recubrimientos amplios y especializados.</li>
+                  <li>Micas y antirreflejantes amplios y especializados.</li>
                   <li>Armazones Pro.</li>
                 </ul>
               </div>
@@ -59,7 +59,7 @@
                 <h6 class="mb-2 title-1">Incluye</h6>
 
                 <ul>
-                  <li>Materiales y recubrimientos amplios y especializados.</li>
+                  <li>Micas y antirreflejantes amplios y especializados.</li>
                   <li>Armazones Ultra.</li>
                 </ul>
               </div>

@@ -3,10 +3,10 @@
 
     <section class="suggestion-section">
       <div class="box-text">
-        <h2 class="title-s1 txt-purple">Si, talvez<br />necesitas lentes.</h2>
+        <h2 class="title-s1 txt-purple">Sí, talvez<br />necesitas lentes.</h2>
         <h5 class="txt-2">
-          Si llegaste hasta aquí es porque tienes esa pequeña duda.<br />
-          Pero, tranquilo, es fácil resolverla con un sencillo test.
+          Sólo en México hay 40 millones de personas que necesitan lentes, pero no lo saben.<br />
+          Tal vez tú seas una de ellas.
         </h5>
 
         <p class="txt-w-btn">
@@ -29,7 +29,7 @@
         <h2 class="title-s1 txt-purple">¿Sabes tu<br />graduación?</h2>
 
         <p class="txt-w-btn">
-          <router-link class="t-150 btn-s2 bg-purple" to="/test">Diseña tus lentes</router-link>
+          <router-link class="t-150 btn-s2 bg-purple" to="/test">Diseña tus anteojos</router-link>
         </p>
       </div>
 

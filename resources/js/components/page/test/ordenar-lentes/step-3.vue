@@ -26,14 +26,14 @@
                 </div>
 
                 <div class="block">
-                  <h5 class="title">Material</h5>
+                  <h5 class="title">Micas</h5>
                   <div class="descr">
                     Trivex
                   </div>
                 </div>
 
                 <div class="block">
-                  <h5 class="title">Recubrimiento</h5>
+                  <h5 class="title">Antirreflejante</h5>
                   <div class="descr">
                     Matiz E
                   </div>

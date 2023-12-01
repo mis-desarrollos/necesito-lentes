@@ -2,12 +2,12 @@
   <section class="step-2" v-bind:class="{ 'plan-1' : $parent.form.plan == 1, 'plan-2' : $parent.form.plan == 2, 'plan-3' : $parent.form.plan == 3 }">
     <div class="container">
       <div class="box-title-top-1">
-        <h2 class="title-s1">Diseña tus lentes</h2>
+        <h2 class="title-s1">Diseña tus anteojos</h2>
       </div>
 
       <div class="box-glasses-design">
         <div class="row">
-          <!-- Material -->
+          <!-- Micas -->
           <div class="col-sm-10 col-md-8 col-lg-4 col-design">
             <div class="box-design" @click="$parent.showModalMateriales = true;">
               <div class="box-icon">
@@ -15,7 +15,7 @@
               </div>
 
               <div class="box-title">
-                <h5>Material</h5>
+                <h5>Micas</h5>
               </div>
 
               <div class="box-selected centered" v-if="material">
@@ -25,7 +25,7 @@
           </div>
           <!--  -->
 
-          <!-- Recubrimiento -->
+          <!-- Antirreflejante -->
           <div class="col-sm-10 col-md-8 col-lg-4 col-design">
             <div class="box-design" @click="$parent.showModalRecubrimientos = true;">
               <div class="box-icon">
@@ -33,7 +33,7 @@
               </div>
 
               <div class="box-title">
-                <h5>Recubrimiento</h5>
+                <h5>Antirreflejante</h5>
               </div>
 
               <div class="box-selected centered" v-if="recubrimiento">

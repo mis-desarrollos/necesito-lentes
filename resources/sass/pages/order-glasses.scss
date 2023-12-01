@@ -97,7 +97,7 @@
         .title {
           margin-bottom: 2px;
           font-size: 1.80rem;
-          font-weight: 800;
+          font-weight: 700;
         }
 
         .descr {
@@ -930,14 +930,14 @@
         }
 
         .title {
-          font-weight: 800;
+          font-weight: 700;
           color: #1a1a1a;
         }
 
         .result {
           color: $purple;
-          font-family: "Kanit", "Raleway", sans-serif;
-          font-size: 1.6rem;
+          // font-family: "Kanit", "Raleway", sans-serif;
+          font-size: 1.5rem;
           font-weight: 600;
           letter-spacing: 2px;
           word-break: break-word;
@@ -946,7 +946,7 @@
         a {
           color: $purple;
           text-decoration: underline;
-          font-weight: 600;
+          font-weight: 400;
 
           &:hover {
             color: $purple2;

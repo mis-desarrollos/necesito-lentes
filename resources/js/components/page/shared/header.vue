@@ -15,9 +15,9 @@
             <b-navbar-nav class="ml-auto">
               <b-nav-item class="simple-item btn-item" to="/test"><i class="fal fa-sunglasses ic-simple d-lg-none"></i> Test de la vista</b-nav-item>
               <!-- <b-nav-item class="simple-item" to="/empresa">Nosotros</b-nav-item> -->
-              <li class="nav-item simple-item">
+              <!-- <li class="nav-item simple-item">
                 <a class="nav-link" @click="isPActive = true;"><i class="far fa-glasses ic-simple mr-lg-1"></i> Armazones</a>
-              </li>
+              </li> -->
               <b-nav-item class="simple-item" to="/contacto"><i class="far fa-envelope ic-simple d-lg-none"></i> Contacto</b-nav-item>
 
               <b-nav-item-dropdown class="simple-item dropdown-account" right>

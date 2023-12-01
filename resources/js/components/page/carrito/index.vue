@@ -48,8 +48,8 @@
                   <h5 class="txt-name">
                     <router-link target="_blank" :to="'/producto/'+product.id">{{ product.name }}</router-link>
                   </h5>
-                  <h5 class="txt-features"><small>Material: </small> Parasol</h5>
-                  <h5 class="txt-features"><small>Recubrimiento: </small> Matiz E Azul</h5>
+                  <h5 class="txt-features"><small>Mica: </small> Parasol</h5>
+                  <h5 class="txt-features"><small>Antirreflejante: </small> Matiz E Azul</h5>
                   <h5 class="txt-features"><small>SKU: </small> {{ product.sku }}</h5>
 
                   <hr class="mt-1 mb-1" />
