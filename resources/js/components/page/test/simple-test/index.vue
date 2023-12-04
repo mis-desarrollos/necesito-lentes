@@ -1,7 +1,7 @@
 <template lang="html">
   <b-form id="basic-test-page-v2" @submit="onSubmit">
 
-    <section class="questions-section" v-bind:class="{ 'res-0' : result == 0, 'res-1' : result == 1, 'res-2' : result >= 2 && result <= 6 }">
+    <section class="questions-section" v-bind:class="{ 'option-0' : option == 0, 'option-1' : option == 1, 'option-2' : option >= 2 && option <= 6 }">
       <div class="container">
         <!-- <div class="d-block text-center mb-3">
           <h2 class="h1s f-w-800 txt-blue">Test de la vista</h2>
@@ -37,7 +37,7 @@
 
         <!-- Pregunta 2 -->
         <div class="box-content" v-if="step == 2">
-          <div>
+          <div v-if="form.res1 == 10">
             <p class="text-center">
               <span class="box-step-icon ic-2"></span>
             </p>
@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <div>
+          <div v-else>
             <p class="text-center">
               <span class="box-step-icon ic-3"></span>
             </p>
@@ -80,7 +80,7 @@
 
         <!-- Pregunta 4 -->
         <div class="box-content" v-if="step == 4">
-          <div>
+          <div v-if="form.res1 == 10">
             <p class="text-center">
               <span class="box-step-icon ic-5"></span>
             </p>
@@ -92,7 +92,7 @@
             </div>
           </div>
 
-          <div>
+          <div v-else>
             <p class="text-center">
               <span class="box-step-icon ic-6"></span>
             </p>
@@ -122,7 +122,7 @@
 
         <!-- Pregunta 6 -->
         <div class="box-content" v-if="step == 6">
-          <div>
+          <div v-if="form.res1 == 10">
             <p class="text-center">
               <span class="box-step-icon ic-8"></span>
             </p>
@@ -135,7 +135,7 @@
             </div>
           </div>
 
-          <div>
+          <div v-else>
             <p class="text-center">
               <span class="box-step-icon ic-9"></span>
             </p>
@@ -152,7 +152,7 @@
         <!-- Final -->
         <div class="box-content" v-if="step == 7">
           <!-- No necesitas lentes -->
-          <div class="box-result" v-if="result == 0">
+          <div class="box-option" v-if="option == 0">
             <h2 class="mb-4 h1s f-w-700 txt-green">Todo indica que por lo pronto no necesitas lentes.</h2>
             <h3 class="mb-4 h3 f-w-400">Aunque nunca está de más estar pendiente de tu salud visual, asi que revísate continuamente.</h3>
             <h3 class="h3 f-w-700">Puedes volver acá cuando quieras.</h3>
@@ -160,7 +160,7 @@
           <!--  -->
 
           <!-- Quizas necesitas lentes -->
-          <div class="box-result" v-if="result == 1">
+          <div class="box-option" v-if="option == 1">
             <h2 class="mb-4 h1s f-w-700 txt-pink">Nop. Todo indica que aún no necesitas lentes.<br />Pero casi.</h2>
             <h3 class="mb-4 h3 f-w-400">Por tu estilo de vida es muy recomendable que estés pendiente de cualquier señal, asi que no está de más darte una vuelta por acá en unos 6 meses.</h3>
             <h2 class="h2 f-w-700">¡Nos vemos pronto!</h2>
@@ -168,10 +168,10 @@
           <!--  -->
 
           <!-- Necesitas lentes (General) -->
-          <div class="box-result" v-if="result == 2">
+          <div class="box-option" v-if="option == 2">
             <h2 class="mb-4 h1s f-w-700 txt-purple">Sí, todo indica que necesites lentes.</h2>
             <h3 class="mb-3 h3 f-w-400">Igual que el 70% de la población, asi que nada de qué sorprenderse.</h3>
-            <h3 class="mb-4 h3 f-w-400">Lo que sigue es que te hagas un examen de la vsta en una óptica cercana, para que te diagnostique y te dé la graduación exacta para tus primeros lentes.</h3>
+            <h3 class="mb-4 h3 f-w-400">Lo que sigue es que te hagas un examen de la vista en una óptica cercana, para que te diagnostique y te dé la graduación exacta para tus primeros lentes.</h3>
             <h2 class="h2 mb-5 f-w-700">¡Obtenlos en 3 sencillos pasos!</h2>
 
             <p>
@@ -181,7 +181,7 @@
           <!--  -->
 
           <!-- Necesitas lentes (Tras paso 1) -->
-          <div class="box-result" v-if="result == 3">
+          <div class="box-option" v-if="option == 3">
             <h2 class="mb-3 h1s f-w-700 txt-purple">¡Ey!, no tienes que seguir haciendo el test.<br />Casi todas las personas mayores de 40 necesitan lentes sí o sí.</h2>
             <h3 class="mb-4 h3 f-w-400">Lo que sigue es que te hagas un examen de la vista en una óptica cercana, para que te diagnostique y te dé la graduación exacta para tus primeros lentes.</h3>
             <h2 class="h2 mb-5 f-w-700">¡Obtenlos en 3 sencillos pasos!</h2>
@@ -193,7 +193,7 @@
           <!--  -->
 
           <!-- Necesitas lentes (Tras paso 2-A) -->
-          <div class="box-result" v-if="result == 4">
+          <div class="box-option" v-if="option == 4">
             <h2 class="mb-3 h1s f-w-700 txt-purple">¡Bien! Pero seguro pasas horas frente a la pantalla. Tus ojos necesitan lentes sí o sí.</h2>
             <h3 class="mb-4 h3 f-w-400">Lo que sigue es que te hagas un examen de la vista en una óptica cercana, para que te diagnostique y te recomiende los lentes que mejor vayan a tu forma de vida.</h3>
             <h2 class="h2 mb-5 f-w-700">¡Obtenlos en 3 sencillos pasos!</h2>
@@ -205,7 +205,7 @@
           <!--  -->
 
           <!-- Necesitas lentes (Tras paso 2-B) -->
-          <div class="box-result" v-if="result == 5">
+          <div class="box-option" v-if="option == 5">
             <h2 class="mb-3 h1s f-w-700 txt-purple">Seguro pasas horas frente a la pantalla. Tus ojos necesitan lentes sí o sí.</h2>
             <h3 class="mb-4 h3 f-w-400">Lo que sigue es que te hagas un examen de la vista en una óptica cercana, para que te diagnostique y te recomiende los lentes que mejor vayan a tu forma de vida.</h3>
             <h2 class="h2 mb-5 f-w-700">¡Obtenlos en 3 sencillos pasos!</h2>
@@ -217,7 +217,7 @@
           <!--  -->
 
           <!-- Necesitas lentes (Tras paso 4) -->
-          <div class="box-result" v-if="result == 6">
+          <div class="box-option" v-if="option == 6">
             <h2 class="mb-3 h1s f-w-700 txt-purple">Definitivamente necesitas lentes. Pero no te preocupes, la mayoría los necesitamos en algún momento.</h2>
             <h3 class="mb-4 h3 f-w-400">Lo que sigue es que te hagas un examen de la vista en una óptica cercana, para que te diagnostique y te recomiende los lentes que mejor vayan a tu forma de vida.</h3>
             <h2 class="h2 mb-5 f-w-700">¡Obtenlos en 3 sencillos pasos!</h2>
@@ -247,7 +247,7 @@ export default {
     return {
       step: 1,
       max: 7,
-      result: null, // (0) No Necesita & (1) Quizas & (2 al 6) Necesita lentes
+      option: null, // (0) No Necesita & (1) Quizas & (2 al 6) Necesita lentes
 
       form: {
         res1: null,
@@ -269,11 +269,37 @@ export default {
   watch: {
     form: {
       handler(val){
-        this.step += 1;
         window.scrollTo(0,0);
+        var total = 0;
 
-        if(this.step == 7) {
-          this.result = Math.floor(Math.random() * 7); // Random para mostrar
+        for (var i = 0; i < this.step; i++) {
+          total = total + this.form['res'+(i+1)];
+        }
+        // console.log(total);
+
+        if( total >= 75 ) { // Necesita lentes
+          let currentStep = this.step;
+          this.step = 7;
+
+          if( currentStep == 1 ) { // Mostrar Opción 3
+            this.option = 3;
+          }
+          if( currentStep == 2 ) { // Mostrar Opción 4 o 5
+            this.option = ( this.form.res1 == 10 ) ? 4 : 5;
+          }
+          if( currentStep >= 3 && currentStep <= 5 ) { // Mostrar Opción 6
+            this.option = 6;
+          }
+          if( currentStep == 6 ) { // Mostrar Opción 2
+            this.option = 2;
+          }
+        }
+        else { // No necesita lentes hasta el paso actual
+          this.step += 1;
+
+          if(this.step == 7) {
+            this.option = ( total >= 0 && total <= 20 ) ? 0 : 1;
+          }
         }
       },
       deep: true
