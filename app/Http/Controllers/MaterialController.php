@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Material\StoreMaterialRequest;
+use App\Http\Requests\Material\UpdateMaterialRequest;
+use App\Http\Resources\Material\MaterialDataCollection;
+use App\Http\Resources\Material\MaterialResource;
 use App\Models\Material;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MaterialController extends Controller
 {
@@ -14,8 +19,15 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $row = Material::all();
-        return $row; 
+        try {
+            $data = Material::paginate(3);
+            return new MaterialDataCollection($data);
+        } catch (\Throwable $th) {
+            // Log::error($th);
+            return response([
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -24,14 +36,17 @@ class MaterialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMaterialRequest $request)
     {
-        $row = new Material();
-        $row->name = $request->name;
-        $row->description = $request->description;
-        $row->save();
-
-        return $row;
+        try {
+            $nMaterial = Material::create($request->all());
+            return response(new MaterialResource($nMaterial));
+        } catch (\Throwable $th) {
+            // Log::error($th);
+            return response([
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -42,8 +57,15 @@ class MaterialController extends Controller
      */
     public function show($id)
     {
-        $row = Material::find($id);
-        return $row;
+        try {
+            $row = Material::findOrFail($id);
+            return response(new MaterialResource($row));
+        } catch (\Throwable $th) {
+            // Log::error($th);
+            return response([
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
 
@@ -54,14 +76,20 @@ class MaterialController extends Controller
      * @param  \App\Categoria  $row
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMaterialRequest $request, $id)
     {
-        $row = Material::find($id);
-        $row->name = $request->name;
-        $row->description = $request->description;
-        $row->save();
-
-        return $row;
+        try {
+            $row = Material::find($id);
+            $row->name = $request->name;
+            $row->description = $request->description;
+            $row->save();
+            return response(new MaterialResource($row));
+        } catch (\Throwable $th) {
+            // Log::error($th);
+            return response([
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     /**
