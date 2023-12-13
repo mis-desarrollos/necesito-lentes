@@ -31,6 +31,7 @@ class PermsSeeder extends Seeder
         Permission::create(['name' => 'packages']);
         Permission::create(['name' => 'frames']);
         Permission::create(['name' => 'opticians']);
+        Permission::create(['name' => 'antireflectives']);
 
 
         $admins = Role::create(['name' => 'administrador']);
@@ -47,6 +48,7 @@ class PermsSeeder extends Seeder
         $admins->givePermissionTo('packages');
         $admins->givePermissionTo('frames');
         $admins->givePermissionTo('opticians');
+        $admins->givePermissionTo('antireflectives');
 
         $customer = Role::create(['name' => 'cliente']);
 

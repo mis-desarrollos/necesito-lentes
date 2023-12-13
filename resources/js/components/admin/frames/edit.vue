@@ -181,7 +181,7 @@
 			},
             getMaterialsOpcs(){
                 axios.get(tools.url("/api/admin/materials")).then((response)=>{
-                    this.materials = response.data;
+                    this.materials = response.data.data;
                 }).catch((error)=>{
                 });
             },

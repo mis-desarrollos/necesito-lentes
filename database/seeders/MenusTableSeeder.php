@@ -17,58 +17,67 @@ class MenusTableSeeder extends Seeder
     {
 
         DB::table('menus')->insert([
-            "name"=>"Administradores",
-            "description"=>"Administradores de tu sitio",
-            "route"=>"/users",
-            "icon"=>"fa fa-users",
-            "permissions_name"=>"users",
-            "position"=>1
+            "name" => "Administradores",
+            "description" => "Administradores de tu sitio",
+            "route" => "/users",
+            "icon" => "fa fa-users",
+            "permissions_name" => "users",
+            "position" => 1
         ]);
 
         DB::table('menus')->insert([
-            "name"=>"Materiales",
-            "description"=>"Materiales de tu sitio",
-            "route"=>"/materials",
-            "icon"=>"fa fa-cubes",
-            "permissions_name"=>"materials",
-            "position"=>2
+            "name" => "Materiales",
+            "description" => "Materiales de tu sitio",
+            "route" => "/materials",
+            "icon" => "fa fa-cubes",
+            "permissions_name" => "materials",
+            "position" => 2
+        ]);
+
+        DB::table('menus')->insert([
+            "name" => "Antirreflejantes",
+            "description" => "Antirreflejantes de tu sitio",
+            "route" => "/antireflectives",
+            "icon" => "fa fa-cubes",
+            "permissions_name" => "antireflectives",
+            "position" => 3
         ]);
 
 
         DB::table('menus')->insert([
-            "name"=>"Paquetes",
-            "description"=>"Paquetes de tu sitio",
-            "route"=>"/packages",
-            "icon"=>"fa fa-box",
-            "permissions_name"=>"packages",
-            "position"=>3
-        ]);
-        
-        DB::table('menus')->insert([
-            "name"=>"Armazones",
-            "description"=>"Armazones de tu sitio",
-            "route"=>"/frames",
-            "icon"=>"fa fa-glasses",
-            "permissions_name"=>"frames",
-            "position"=>4
-        ]);
-        
-        DB::table('menus')->insert([
-            "name"=>"Pedidos",
-            "description"=>"Pedidos de tu sitio",
-            "route"=>"/orders",
-            "icon"=>"fa fa-file",
-            "permissions_name"=>"orders",
-            "position"=>5
+            "name" => "Paquetes",
+            "description" => "Paquetes de tu sitio",
+            "route" => "/packages",
+            "icon" => "fa fa-box",
+            "permissions_name" => "packages",
+            "position" => 4
         ]);
 
         DB::table('menus')->insert([
-            "name"=>"Opticas",
-            "description"=>"Opticas de tu sitio",
-            "route"=>"/opticians",
-            "icon"=>"fa fa-store",
-            "permissions_name"=>"opticians",
-            "position"=>6
+            "name" => "Armazones",
+            "description" => "Armazones de tu sitio",
+            "route" => "/frames",
+            "icon" => "fa fa-glasses",
+            "permissions_name" => "frames",
+            "position" => 5
+        ]);
+
+        DB::table('menus')->insert([
+            "name" => "Pedidos",
+            "description" => "Pedidos de tu sitio",
+            "route" => "/orders",
+            "icon" => "fa fa-file",
+            "permissions_name" => "orders",
+            "position" => 6
+        ]);
+
+        DB::table('menus')->insert([
+            "name" => "Opticas",
+            "description" => "Opticas de tu sitio",
+            "route" => "/opticians",
+            "icon" => "fa fa-store",
+            "permissions_name" => "opticians",
+            "position" => 7
         ]);
 
         /*DB::table('menus')->insert([
@@ -188,6 +197,5 @@ class MenusTableSeeder extends Seeder
             "permissions_name"=>"blogs",
             "position"=>8
         ]);*/
-        
     }
 }

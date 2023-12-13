@@ -64,6 +64,11 @@ const MyRouter = new VueRouter({
 		{ path: '/materials', component: require(page+'materials/index.vue').default, meta:{title:"Materiales" }},
 		{ path: '/materials/edit', component: require(page+'materials/edit.vue').default, meta:{title:"Editar" }},
 		{ path: '/materials/edit/:id', component: require(page+'materials/edit.vue').default, meta:{title:"Editar"}},
+		
+		// Antireflectives
+		{ path: '/antireflectives', component: require(page+'antireflectives/index.vue').default, meta:{title:"Antireflectives" }},
+		{ path: '/antireflectives/edit', component: require(page+'antireflectives/edit.vue').default, meta:{title:"Editar" }},
+		{ path: '/antireflectives/edit/:id', component: require(page+'antireflectives/edit.vue').default, meta:{title:"Editar"}},
 
 		//Paquetes
 		{ path: '/packages', component: require(page+'packages/index.vue').default, meta:{title:"Paquetes" }},

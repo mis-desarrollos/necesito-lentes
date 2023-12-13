@@ -17,10 +17,10 @@ class MaterialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $data = Material::paginate(3);
+            $data = Material::paginate();
             return new MaterialDataCollection($data);
         } catch (\Throwable $th) {
             // Log::error($th);
