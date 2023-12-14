@@ -10,8 +10,6 @@
 	<title>Necesito lentes</title>
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-	{{-- <link rel="stylesheet" type="text/css" href="{{ asset('extras/css/font-awesome/css/all.min.css') }}"> --}}
-	{{-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css" type="text/css"> --}}
 
 	{{-- FB sharing metadata --}}
 	{{-- <meta name="robots" content="NOODP">

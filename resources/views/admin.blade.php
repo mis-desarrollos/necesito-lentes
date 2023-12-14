@@ -4,7 +4,8 @@
 	<title>Cargando..</title>
 	@include('shared.css')
 	<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="public/extras/css/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('extras/css/font-awesome/css/all.min.css') }}">
+
 	@include('shared.jsDir')
 </head>
 <body class="page-body login-page">
@@ -47,7 +48,7 @@
     <script>
         window.Laravel = JSON.parse(atob('{{ base64_encode(json_encode($user_auth_data)) }}'));
     </script>
-	<script type="text/javascript" src="public/js/admin.js"></script>
+	<script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
 	@include('shared.js')
 </body>
 </html>
