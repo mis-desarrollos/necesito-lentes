@@ -18,8 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $roles = Role::whereNotIn('name', ['cliente'])->get()->pluck('name');
-        $users = User::role($roles)->get();
+        
+        $users = User::role('administrador')->get();
         $data=[];
 
         foreach ($users as $key => $value) {
@@ -44,6 +44,7 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
         $user->access = isset($request->access) ? $request->access : 0;
+        $user->password = bcrypt($request->password);
         $user->save();
 
         $address = new Address();

@@ -10,7 +10,7 @@ import es from 'vee-validate/dist/locale/es';
 import Datetime from 'vue-datetime';
 import vSelect from 'vue-select';
 import vueTopprogress from 'vue-top-progress';
-import '@fortawesome/fontawesome-free/js/all.js';
+// import '@fortawesome/fontawesome-free/js/all.js';
 import Vue2Editor from "vue2-editor";
 
 import vue2Dropzone from 'vue2-dropzone';
@@ -19,6 +19,8 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 import * as VueGoogleMaps from 'vue2-google-maps';
 
 import VueGoogleAutocomplete from 'vue-google-autocomplete';
+
+import SweetModal from 'sweet-modal-vue/src/plugin.js';
 
 //Funcion para añadirlas a Vue
 function fire(Vue){
@@ -35,6 +37,7 @@ function fire(Vue){
 	Vue.use(Vue2Editor);
 	Vue.component('vue-dropzone', vue2Dropzone);
 
+	Vue.use(SweetModal);
 	//Google map
 	Vue.use(VueGoogleMaps, {
 		load: {

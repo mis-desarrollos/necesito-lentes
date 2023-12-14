@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Exam;
 use App\Models\Address;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class CustomerController extends Controller
 {
     /**
@@ -15,9 +16,37 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = User::role('cliente')->get();
+        $rolcheck = Auth::user()->roles[0]['name'];
+        if($rolcheck == 'administrador'){
+            $customer = User::role('cliente')->get();
+            return response()->json($customer);
+        }
+        elseif ($rolcheck == 'optica') {
+            $users_id = Exam::where('users_id_optician',Auth::user()->id)->pluck('users_id');
+            $customer = User::whereIn('id',$users_id)->get();
+            return response()->json($customer);
+        }
+        
+    }
+
+    public function indexOpcs()
+    {
+
+        /*$rolcheck = Auth::user()->roles[0]['name'];
+        if($rolcheck == 'administrador'){
+            $customer = User::select('id','name')->role('cliente')->get();
+            return response()->json($customer);
+        }
+        elseif ($rolcheck == 'optica') {
+            $users_id = Exam::where('users_id_optician',Auth::user()->id)->pluck('users_id');
+            $customer = User::select('id','name')->whereIn('id',$users_id)->get();
+            return response()->json($customer);
+        }
+        */
+        $customer = User::select('id','name')->role('cliente')->get();
         return response()->json($customer);
     }
+    
 
     /**
      * Store a newly created resource in storage.

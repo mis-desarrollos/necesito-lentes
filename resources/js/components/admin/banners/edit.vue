@@ -22,9 +22,9 @@
 							<div class="col-sm-7">
 								<select name="seccion" required="required" v-model="banner.section" class="form-control">
 									<option :value="0">Principal</option>
-									<option :value="1">Secundario posición 1</option>
-									<option :value="2">Secundario posición 2</option>
-									<option :value="3">Secundario posición 3</option>
+									<option :value="1">Secundario</option>
+									<!-- <option :value="2">Secundario posición 2</option>
+									<option :value="3">Secundario posición 3</option> -->
 								</select>
 								<!--<input type="number" name="seccion" min="0" max="13" class="form-control" required v-model="banner.section">-->
 							</div>

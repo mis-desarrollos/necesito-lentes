@@ -45,14 +45,47 @@
 
             <div class="col-md-12">
                 <div id="toolbar">
-                    
-                    <!-- <button class="btn btn-danger btn-sm" @click="cancelarPedidos()">
-                        <i class="fa fa-trash"></i> Cancelar pedidos
-                    </button>
 
-                    <button class="btn btn-success btn-sm" @click="pagarPedidos()">
-                        <i class="fa fa-check"></i> Pagar pedidos
-                    </button> -->
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <a type="button" class="btn btn-primary btn-sm" href="./api/admin/ordersExport" download="ventas.xlsx" ><i class="fa fa-file"></i> Exportar</a>
+                        </div>
+
+                        
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="field-1" class="col-sm-3 control-label">Filtrar por cliente</label>
+                                <div class="col-sm-7">
+                                    <v-select id="filed-1" v-model="customer_id" :options="courses" label="name" index="id"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="field-1" class="col-sm-3 control-label">Filtrar por productos</label>
+                                <div class="col-sm-7">
+                                    <v-select id="filed-1" v-model="product_id" :options="courses" label="name" index="id"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <input-form name="start" type="date" text="Desde" :data.sync="start"></input-form>
+                                </div>
+                                <div class="col-md-5">
+                                    <input-form name="end" type="date" text="Hasta" :data.sync="end"></input-form>
+                                </div>
+                                <div class="form-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" @click="filterContent()">Filtrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <table id="pedidos"></table>
             </div>
@@ -70,7 +103,13 @@
                     totalToMonth: 0,
                     ordersToDay: 0,
                     ordersToMonth: 0
-                }
+                },
+                start: null,
+                end: null,
+                customer_id:null,
+                product_id:null,
+                
+                courses:[]
             }
         },
         methods:{
@@ -158,6 +197,20 @@
                     jQuery('#pedidos').bootstrapTable('append',response.data.orders);
                 }).catch((error)=>{
                     this.$parent.handleErrors(error);
+                });
+            },
+            filterContent(){
+                this.$parent.inPetition = true;
+                axios.post(tools.url("/api/admin/ordersFilter"), { desde: this.start, hasta: this.end,}).then((response)=>{
+                    this.totals = response.data.totals;
+                    this.orders = response.data.orders;
+                    jQuery('#pedidos').bootstrapTable('removeAll');
+                    jQuery('#pedidos').bootstrapTable('append',response.data.orders);
+                    
+
+                }).catch((error)=>{
+                    this.$parent.handleErrors(error);
+
                 });
             },
 

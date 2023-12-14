@@ -6,7 +6,7 @@
 			
 				<div class="panel-heading">
 					<div class="panel-title">
-						<i class="fa fa-angle-right"></i> Blog
+						<i class="fa fa-angle-right"></i> Comunicados
 					</div>
 					<div class="panel-options">
 						<a @click="$router.push('/blogs/')"><i class="fas fa-times"></i></a>
@@ -82,7 +82,7 @@
 						axios.post(tools.url("/api/admin/blogs/"+this.id),data)
 						.then((response)=>{
 					    	this.getNews();
-					    	this.$parent.showMessage("Noticia "+this.news.title+" modificado correctamente!","success");
+					    	this.$parent.showMessage("Registro modificado correctamente!","success");
 					    	this.$parent.inPetition=false;
 					    }).catch((error)=>{
 					    	this.$parent.handleErrors(error);
@@ -93,8 +93,8 @@
 						axios.post(tools.url("/api/admin/blogs"),data)
 						.then((response)=>{
 							var news = response.data;
-					    	this.$parent.showMessage("Noticia "+news.title+" agregada correctamente!","success");
-					    	this.$router.push('/blogs/'+news.id);
+					    	this.$parent.showMessage("Registro agregado correctamente!","success");
+					    	this.$router.push('/blogs');
 					    	this.$parent.inPetition=false;
 					    }).catch((error)=>{
 					    	this.$parent.handleErrors(error);
@@ -107,7 +107,7 @@
 				});				
 			},
 			deleteNews:function(){
-				alertify.confirm("Alerta!","¿Seguro que deseas borrar esta noticia?",()=>{
+				alertify.confirm("Alerta!","¿Seguro que deseas borrar este registro?",()=>{
 					this.$parent.inPetition=true;
 					axios.delete(tools.url("/api/admin/blogs/"+this.id))
 					.then((response)=>{

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content ="{!!csrf_token()!!}" />
 	<link rel="icon" type="image/png"   href="public/images/favicon.png">
-	<title>Base v2</title>
+	<title>Necesito lentes</title>
 
 	<link rel="stylesheet" type="text/css" href="public/css/app.css">
 	{{-- <link rel="stylesheet" type="text/css" href="public/extras/css/font-awesome/css/all.min.css"> --}}
@@ -25,12 +25,12 @@
 
 <body>
 	<div id="app">
-		<vue-topprogress ref="loadingBar" color="yellow" :height="2"></vue-topprogress>
+		<vue-topprogress ref="loadingBar" color="#ffffff" :height="2"></vue-topprogress>
 		<my-header></my-header>
 		<router-view></router-view>
 		<my-footer></my-footer>
 	</div>
-	
+
 	<script type="text/javascript" src="public/js/app.js"></script>
 </body>
 

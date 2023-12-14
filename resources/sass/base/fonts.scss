@@ -1,2 +1,134 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap');
+
+@font-face {
+    font-family: 'TT Norms Pro';
+    src: url('../fonts/TTNormsPro-Thin.eot');
+    src: url('../fonts/TTNormsPro-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTNormsPro-Thin.woff2') format('woff2'),
+        url('../fonts/TTNormsPro-Thin.woff') format('woff'),
+        url('../fonts/TTNormsPro-Thin.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Norms Pro';
+    src: url('../fonts/TTNormsPro-Light.eot');
+    src: url('../fonts/TTNormsPro-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTNormsPro-Light.woff2') format('woff2'),
+        url('../fonts/TTNormsPro-Light.woff') format('woff'),
+        url('../fonts/TTNormsPro-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Norms Pro';
+    src: url('../fonts/TTNormsPro-Regular.eot');
+    src: url('../fonts/TTNormsPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTNormsPro-Regular.woff2') format('woff2'),
+        url('../fonts/TTNormsPro-Regular.woff') format('woff'),
+        url('../fonts/TTNormsPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Norms Pro';
+    src: url('../fonts/TTNormsPro-Medium.eot');
+    src: url('../fonts/TTNormsPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTNormsPro-Medium.woff2') format('woff2'),
+        url('../fonts/TTNormsPro-Medium.woff') format('woff'),
+        url('../fonts/TTNormsPro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Norms Pro';
+    src: url('../fonts/TTNormsPro-Bold.eot');
+    src: url('../fonts/TTNormsPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTNormsPro-Bold.woff2') format('woff2'),
+        url('../fonts/TTNormsPro-Bold.woff') format('woff'),
+        url('../fonts/TTNormsPro-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Norms Pro';
+    src: url('../fonts/TTNormsPro-ExtraBold.eot');
+    src: url('../fonts/TTNormsPro-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTNormsPro-ExtraBold.woff2') format('woff2'),
+        url('../fonts/TTNormsPro-ExtraBold.woff') format('woff'),
+        url('../fonts/TTNormsPro-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Norms Pro';
+    src: url('../fonts/TTNormsPro-Black.eot');
+    src: url('../fonts/TTNormsPro-Black.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTNormsPro-Black.woff2') format('woff2'),
+        url('../fonts/TTNormsPro-Black.woff') format('woff'),
+        url('../fonts/TTNormsPro-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+.h1s {
+  font-size: 2.9rem !important;
+}
+
+.f-f-kanit {
+  font-family: "Kanit", sans-serif;
+}
+
+.f-w-300 {
+  font-weight: 300 !important;
+}
+.f-w-400 {
+  font-weight: 400 !important;
+}
+.f-w-500 {
+  font-weight: 500 !important;
+}
+.f-w-600 {
+  font-weight: 600 !important;
+}
+.f-w-700 {
+  font-weight: 700 !important;
+}
+.f-w-800 {
+  font-weight: 800 !important;
+}
+
+.txt-blue {
+  color: $purple !important;
+}
+.txt-green {
+  color: $aqua !important;
+}
+.txt-pink {
+  color: $pink !important;
+}
+.txt-purple {
+  color: $purple !important;
+}
+.txt-white {
+  color: #ffffff !important;
+}
+
+.c-pointer {
+  cursor: pointer !important;
+}

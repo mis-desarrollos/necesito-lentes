@@ -1,0 +1,49 @@
+#text-page{
+  padding-top: 15px;
+  padding-bottom: 30px;
+  color: #515151;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: justify;
+  min-height: 67vh;
+
+  .page-title{
+    margin-bottom: 5px;
+    color: $purple;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+  }
+
+  h5{
+    color: #000000;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  h6{
+    color: #000000;
+    font-size: 1.0rem;
+    font-weight: 600;
+  }
+
+  ul,ol{
+    padding-left: 16px;
+
+    li{}
+
+    &.l-latin{
+      list-style-type: lower-latin;
+    }
+  }
+
+  .table-v-middle{
+    thead, tbody{
+      tr{
+        th,td{
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

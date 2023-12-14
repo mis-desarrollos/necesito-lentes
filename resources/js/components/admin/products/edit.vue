@@ -6,7 +6,8 @@
 
 				<div class="panel-heading">
 					<div class="panel-title">
-						<i class="fas fa-box"></i> Productos
+						<i class="fa fa-glasses"></i> Armazones
+
 					</div>
 					<div class="panel-options">
 						<a @click="$router.push('/products/')"><i class="fas fa-times"></i></a>
@@ -14,66 +15,70 @@
 				</div>
 
 				<div class="panel-body">
-					
+                    <div id="tabs" >
+                        <ul class="nav nav-tabs">
+                            <li :class="active1"><a @click="setActive(1)" href="#1" data-toggle="tab">Información</a></li>
+                            <li :class="active2" v-if="id"><a @click="setActive(2)" href="#2" data-toggle="tab">Imagenes</a></li>   
+                        </ul>
+                        <div class="tab-content">
+                            <div :class=" 'tab-pane ' + active1" id="1">
+                                <form role="form" class="form-horizontal" @submit.prevent="newRow($event.target)">
 
-					<div id="tabs">
-						<ul class="nav nav-tabs">
-							<li :class="activeInfo"><a @click="active = 1" href="#1" data-toggle="tab">Información</a></li>
-						</ul>
+                                    <input-form name="name" text="Nombre" :data.sync="row.name"></input-form>
 
+                                    <text-form name="description" text="Descripcion" :data.sync="row.description"></text-form>
 
-						<div class="tab-content">
+									<input-form name="width" text="Ancho" :data.sync="row.width"></input-form>
+									<input-form name="high" text="Alto" :data.sync="row.high"></input-form>
+									<input-form name="long" text="Largo" :data.sync="row.long"></input-form>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Material:</label>
+                                        <div class="col-sm-7">
+                                            <v-select v-model="row.materials_id" :options="materials" label="name" index="id" />
+                                        </div>
+                                    </div>
 
-							<div :class=" 'tab-pane ' + activeInfo" id="1">
-								<form role="form" class="form-horizontal" @submit.prevent="newProducto($event.target)">
-
-									<input-form name="sku" text="SKU" :data.sync="producto.sku" validate="required"></input-form>
-									<input-form name="nombre" text="Nombre" :data.sync="producto.name" validate="required"></input-form>
-
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Paquete:</label>
+                                        <div class="col-sm-7">
+                                            <v-select v-model="row.packages_id" :options="packages" label="name" index="id" />
+                                        </div>
+                                    </div>
 									<div class="form-group">
-										<label for="editor2" class="col-sm-3 control-label">Descripción</label>
-										<div class="col-sm-7">
-											<vue-editor id="editor2" v-model="producto.description"
-												:editor-toolbar="[['bold', 'italic', 'underline'],[{ list: 'ordered' }, { list: 'bullet' }]]">
-											</vue-editor>
-										</div>
-									</div>
+                                        <label class="col-sm-3 control-label">Recubrimiento:</label>
+                                        <div class="col-sm-7">
+                                            <v-select v-model="row.coverings_id" :options="coverings" label="name" index="id" />
+                                        </div>
+                                    </div>
+									
 
-									<input-form type="decimal" name="precio" text="Precio" :data.sync="producto.price"></input-form>
-									<input-form type="number" name="stock" text="cantidad (stock)" :data.sync="producto.stock"></input-form>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button type="button" class="btn btn-danger" @click="deleteRow" v-show="$route.params.id"><i class="fa fa-trash"></i> Borrar</button>
+                                            <button type="submit" class="btn btn-success pull-right"><i class="far fa-save"></i> Guardar</button>
+                                            <button type="button" class="btn btn-default pull-right" @click="$router.push('/products/')">Cancelar</button>
+                                        </div>
+                                    </div>
 
-									<div class="form-group">
-										<label class="col-sm-3 control-label">Categoria:</label>
-										<div class="col-sm-7">
-											<v-select v-model="producto.category_id" :options="categories" label="name" index="id" @change="getSubcategories(producto.category_id);"/>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label">Subcategoria:</label>
-										<div class="col-sm-7">
-											<v-select v-model="producto.subcategory_id" :options="subcategories" label="name" index="id"/>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="col-sm-12">
-											<button type="submit" class="btn btn-success pull-right"><i class="far fa-save"></i>
-												Guardar</button>
-											<button type="button" class="btn btn-default pull-right"
-												@click="$router.push('/products/')">Cancelar</button>
-										</div>
-									</div>
-
-								</form>
-							</div>
-
-						</div>
-					</div>	
-
-
-
-
+                                    </form>
+                            </div>
+                            <div :class=" 'tab-pane ' + active2" id="2">
+                                <vue-dropzone ref="VueDropzone" id="dropzone" :options="dropzoneOptions" @vdropzone-complete="onUpload"></vue-dropzone>
+									<br><br>
+								<table v-if="row.images.length > 0" id="tableproducts">
+										<tr>
+											<th>Imagen</th>
+											<th>Eliminar</th>
+										</tr>
+										<tr v-for="(image, index) in row.images" :key="index">
+											<td><img :src="image.url" class="img-thumbnail" width="100"></td>
+													
+											<td><button  class="btn btn-danger" @click="deleteImage(image.id)"><i class="fa fa-times"></i></button></td>
+										</tr>
+								</table>
+                            </div>
+                        </div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -84,98 +89,171 @@
 	export default {
 		data(){
 			return {
-				producto:{
+                active:1,
+				row:{
 					name: '',
-					sku: '',
-					description: '',
-					price: 0.00,
-					stock: 0,
-					category_id: null,
-					subcategory_id: null,
+                    images:[]
 				},
-
-				categories: [],
-				subcategories: [],
 				
 				id: '',
 				check:false,
-				active:1,
+                materials:[],
+                packages:[],
+				coverings:[],
+
+                dropzoneOptions: {
+		     		url: tools.url('/api/admin/dropzone/productsImage/' + this.$route.params.id),
+		            acceptedFiles:'image/*',
+		            uploadMultiple:false,
+		            maxFilesize:3,
+                    withCredentials:false,
+		        },
 			}
 		},
+        computed:{
+            active1: function()
+            {
+                return (this.active == 1) ? 'active' : '';
+            },
+            active2: function()
+            {
+                return (this.active == 2) ? 'active' : '';
+            },
+           
 
-		computed:{
-			activeInfo: function()
-			{
-				return (this.active == 1) ? 'active' : '';
-			},
-
-			activeVariantes: function()
-			{
-				return (this.active == 2) ? 'active' : '';
-			}
-		},
-
+        },
 		methods:{
-
-			getProducto(){
+            setActive(val)
+            {
+                this.active = val;
+            },
+			getRow(){
+				this.$parent.inPetition=true;
 				axios.get(tools.url("/api/admin/products/"+this.id)).then((response)=>{
-			    	this.producto = response.data;
+
+			    	this.row = response.data;
+					this.$parent.inPetition=false;
+					
 			    }).catch((error)=>{
 			    	this.$parent.handleErrors(error);
+			       this.$parent.inPetition=false;
 			    });
 			},
 
-			newProducto(form){
+			newRow(form){
+				this.$parent.inPetition=true;
 				this.$parent.validateAll(()=>{
-					var data=tools.params(form, this.producto);
+					var data=tools.params(form, this.row);
 					if(this.$route.params.id){
-						axios.post(tools.url("/api/admin/products/"+this.id),data).then((response)=>{
-					    	this.getProducto();
-					    	this.$parent.showMessage("Producto "+ this.producto.name +" modificado correctamente!","success");
+						axios.post(tools.url("/api/admin/products/"+this.id),data)
+						.then((response)=>{
+					    	this.getRow();
+					    	this.$parent.showMessage("Registro modificado correctamente!","success");
+					    	this.$parent.inPetition=false;
 					    }).catch((error)=>{
 					    	this.$parent.handleErrors(error);
+					        this.$parent.inPetition=false;
 					    });
 					}
 					else{
 						axios.post(tools.url("/api/admin/products"),data).then((response)=>{
 							var temp = response.data;
-					    	this.$parent.showMessage("Producto "+ temp.name +" agregado correctamente!","success");
+					    	this.$parent.showMessage("Registro agregado correctamente!","success");
 					    	this.$router.push('/products/edit/'+temp.id);
+                            location.reload();
+					    	this.$parent.inPetition=false;
 					    }).catch((error)=>{
 					    	this.$parent.handleErrors(error);
+					        this.$parent.inPetition=false;
 					    });
 					}
 				},(e)=>{
 					console.log(e);
+					this.$parent.inPetition=false;
 				});
 			},
 
-			getCategories(){
-				axios.get(tools.url("/api/admin/categories")).then((response)=>{
-			    	this.categories = response.data;
-			    }).catch((error)=>{
-			    	this.$parent.handleErrors(error);
-			    });
+			deleteRow:function(){
+				alertify.confirm("Alerta!","¿Seguro que deseas borrar?",()=>{
+					this.$parent.inPetition=true;
+					axios.delete(tools.url("/api/admin/products/"+this.id))
+					.then((response)=>{
+						this.$parent.showMessage(response.data.msg,"success");
+						this.$router.push("/products/");
+						this.$parent.inPetition=false;
+					})
+					.catch((error)=>{
+						this.$parent.handleErrors(error);
+				        this.$parent.inPetition=false;
+					});
+				},
+				()=>{
+				});
 			},
+            getMaterialsOpcs(){
+                axios.get(tools.url("/api/admin/materials")).then((response)=>{
+                    this.materials = response.data;
+                }).catch((error)=>{
+                });
+            },
+            getPackagesOpcs(){
+                axios.get(tools.url("/api/admin/packages")).then((response)=>{
+                    this.packages = response.data;
+                }).catch((error)=>{
+                });
+            },
+			getCoveringsOpcs(){
+                axios.get(tools.url("/api/admin/coverings")).then((response)=>{
+                    this.coverings = response.data;
+                }).catch((error)=>{
+                });
+            },
+            //Manejador de evento onUpload del dropZone
+			onUpload(file, response) {
+				setTimeout(() => {
+		        	let vueDropzone = this.$refs['VueDropzone'];
+					vueDropzone.removeFile(file);
+					this.getRow();
+				}, 1000);
 
-			getSubcategories(id){
-				if(id){
-					axios.get(tools.url("/api/admin/getSubcategories/"+id)).then((response)=>{
-						this.subcategories = response.data.subcategories;
-					}).catch((error)=>{
-			    		this.$parent.handleErrors(error);
-			    	});
-				}
+			},
+			//Borrar una image de la galeria del paquete
+			deleteImage(id) {
+				alertify.confirm("Alerta!","¿Seguro que desea eliminar esta imagen?",() => {
+					axios.delete(tools.url("/api/admin/dropzone/productsImage/" + id )).then(result => {
+						this.getRow();
+						this.$parent.showMessage(result.data.msg, "success");
+					}).catch(error => {
+						this.$parent.handleErrors(error);
+					});
+				}, ()=>{});
 			},
 		},
-
 		mounted(){
-			this.getCategories();
+            this.getMaterialsOpcs();
+            this.getPackagesOpcs();
+			this.getCoveringsOpcs();
 			if(this.$route.params.id){
-				this.id = this.$route.params.id;
-				this.getProducto();
-				this.getSubcategories(this.producto.category_id);
+				this.id=this.$route.params.id;
+				this.getRow();
 			}
 		}
 	}
 </script>
+<style>
+table, #tableproducts{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table #tableproducts, td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+table #tableproducts, th {
+  background-color: #dddddd;
+}
+</style>

@@ -1,0 +1,98 @@
+.row-prd-xxl-5 {
+  @media screen and (min-width: 1600px) {
+    .box-product-sample-s1 {
+      flex: 0 0 20%;
+      max-width: 20%;
+    }
+  }
+}
+
+.box-product-sample-s1 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  .box-link {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    color: #3e3e3e;
+    border: 1px solid transparent;
+    // border-radius: 10px;
+    // box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    background-color: #ffffff;
+    text-decoration: none !important;
+
+    .bubble {
+      position: absolute;
+      padding: 4px 9px 3px 9px;
+      min-width: 60px;
+      top: 18px;
+      left: 18px;
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-align: center;
+      border-radius: 25px;
+      background-color: $purple;
+      z-index: 10;
+    }
+
+    .box-image {
+      display: block;
+      border-radius: 8px;
+      background-size: contain !important;
+      // background-color: #efefef;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .box-descr {
+      display: block;
+      padding: 8px 0;
+      text-align: center;
+
+      .name {
+        margin-bottom: 3px;
+        color: #131313;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.0;
+      }
+
+      .descr {
+        display: block;
+        padding-top: 1px;
+        color: #979595;
+        font-size: 0.95rem;
+        line-height: 1.1;
+      }
+
+      .price {
+        margin-top: 10px;
+        color: $pink;
+        font-family: "Kanit", "Raleway", sans-serif;
+        font-size: 1.50rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  a.box-link {
+    cursor: pointer;
+    @include transition(250ms);
+
+    &:hover {
+      opacity: 0.85;
+      // border-color: $purple;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

@@ -175,7 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -230,7 +231,8 @@ return [
         //custom
         'Images' => App\Providers\ImageServiceProvider::class,
         'Documents' => App\Providers\DocumentServiceProvider::class,
-
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Imageintervention'     => Intervention\Image\Facades\Image::class
     ],
 
 ];

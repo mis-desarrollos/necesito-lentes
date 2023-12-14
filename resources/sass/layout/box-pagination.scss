@@ -1,0 +1,41 @@
+.col-pagination-sample-1{
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+  padding-bottom: 10px;
+
+  >nav{
+    display: inline-block;
+    text-align: center;
+  }
+
+  .pagination{
+    .page-item{
+      margin-left: 3px;
+      margin-right: 3px;
+
+      .page-link{
+        color: $pink;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        font-weight: 600;
+
+        &:hover{
+          border-color: $pink;
+          background-color: transparent;
+        }
+      }
+
+      &.active{
+        .page-link{
+          color: #ffffff;
+          border-color: $pink;
+          background-color: $pink !important;
+        }
+      }
+    }
+  }
+}

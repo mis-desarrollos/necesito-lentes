@@ -20,7 +20,7 @@ const MyRouter = new VueRouter({
 	    { path: '/roles/edit/:id', component: require(page+'configuration/permissions.vue').default, meta:{title:"Editar"}},
 
 		//Banners
-	    { path: '/banners', component: require(page+'banners/index.vue').default, meta:{title:"Bnners"}},
+	    { path: '/banners', component: require(page+'banners/index.vue').default, meta:{title:"Banners"}},
 	    { path: '/banners/edit', component: require(page+'banners/edit.vue').default, meta:{title:"Editar"}},//Cuando no envian parametro
 	    { path: '/banners/edit/:id', component: require(page+'banners/edit.vue').default, meta:{title:"Editar"}},//Con parametro
 
@@ -69,6 +69,10 @@ const MyRouter = new VueRouter({
 		{ path: '/antireflectives', component: require(page+'antireflectives/index.vue').default, meta:{title:"Antireflectives" }},
 		{ path: '/antireflectives/edit', component: require(page+'antireflectives/edit.vue').default, meta:{title:"Editar" }},
 		{ path: '/antireflectives/edit/:id', component: require(page+'antireflectives/edit.vue').default, meta:{title:"Editar"}},
+		//Recubrimientos
+		{ path: '/coverings', component: require(page+'coverings/index.vue').default, meta:{title:"Recubrimientos" }},
+		{ path: '/coverings/edit', component: require(page+'coverings/edit.vue').default, meta:{title:"Editar" }},
+		{ path: '/coverings/edit/:id', component: require(page+'coverings/edit.vue').default, meta:{title:"Editar"}},
 
 		//Paquetes
 		{ path: '/packages', component: require(page+'packages/index.vue').default, meta:{title:"Paquetes" }},
@@ -84,6 +88,13 @@ const MyRouter = new VueRouter({
 		{ path: '/opticians', component: require(page+'opticians/index.vue').default, meta:{title:"Opticas" }},
 		{ path: '/opticians/edit', component: require(page+'opticians/edit.vue').default, meta:{title:"Editar" }},
 		{ path: '/opticians/edit/:id', component: require(page+'opticians/edit.vue').default, meta:{title:"Editar"}},
+
+		//examanes
+		{ path: '/exams', component: require(page+'exams/index.vue').default, meta:{title:"Examanes de la vista" }},
+		//Newslette
+		{ path: '/newsletters', component: require(page+'newsletters/index.vue').default, meta:{title:"Newsletter" }},
+		//Estado de cuenta
+		{ path: '/accountstatus', component: require(page+'accountstatus/index.vue').default, meta:{title:"Estado de cuenta" }},
 	  ]
 });
 

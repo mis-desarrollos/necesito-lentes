@@ -1,9 +1,9 @@
 <template>
-	<div class="sidebar-menu" style="background-color: #7dc7ba;">
+	<div class="sidebar-menu" >
 
 		<div class="sidebar-menu-inner">
 			
-			<header class="logo-env" style="background-color: white;">
+			<header class="logo-env" style="background-color: #7dc7ba;" >
 
 				<!-- logo -->
 				<div class="logo">

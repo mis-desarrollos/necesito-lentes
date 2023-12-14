@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as Imageintervention;
+
 use App\Models\Image;
 
 class ImageServiceProvider extends ServiceProvider
@@ -39,10 +41,18 @@ class ImageServiceProvider extends ServiceProvider
      */
     public static function save($image,$disk='public')
     {
-        $img_name = Storage::disk($disk)->putFile('photos', $image);
+        //creamos un nombre para la imagen
+        $nombreImagen = uniqid() . '.jpg';
 
+        //hacemos la imagen con la libreria
+        $imagenIntervencion = Imageintervention::make($image);
+        // Comprime la imagen
+        $imagenIntervencion->encode('jpg', 60); // 60 es la calidad de compresión (0-100)
+        //guardamos en storage
+        $img_name = Storage::disk($disk)->put('photos/'.$nombreImagen, $imagenIntervencion);
+        //guardamos en base de datos
         $image = new Image(array(
-            "path" => $img_name,
+            "path" => 'photos/'.$nombreImagen,
             "disk" => $disk,
             "key"  => uniqid(),
         ));

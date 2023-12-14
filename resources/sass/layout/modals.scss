@@ -1,0 +1,1299 @@
+// == Modal opciones para lentes (OLD) ==
+.modal-glasses-opts {
+
+  .modal-dialog {
+    .modal-content {
+      padding-top: 0.7rem;
+      padding-bottom: 0.8rem;
+      background-color: $yellow;
+      border: 0;
+
+      .modal-header {
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 0;
+
+        .modal-title {
+          color: $purple;
+          font-size: 2.9rem;
+          font-weight: 800;
+          line-height: 1.1;
+          text-align: center;
+        }
+
+        .close {
+          position: absolute;
+          padding: 0 14px;
+          margin: 0;
+          top: -5px;
+          right: 8px;
+          color: $purple;
+          font-size: 3rem;
+          font-weight: 400;
+          line-height: 1;
+          text-shadow: none;
+          opacity: 1;
+        }
+      }
+
+      .modal-body {
+        .col-nav-buttons {
+          margin-top: 25px;
+          text-align: center;
+
+          a {
+            cursor: pointer;
+          }
+
+          .btn-s1 {
+            margin: 5px 7px;
+
+            &:first-child {
+              margin-left: 0;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      .modal-header {
+        .modal-title {
+          margin-top: 5px;
+          font-size: 2.0rem !important;
+        }
+
+        .close {
+          top: -16px !important;
+          right: 3px !important;
+        }
+      }
+
+      .modal-body {
+        .col-nav-buttons {
+          .btn-s1 {
+            padding: 0.6rem 1.9rem;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  // Modal materiales
+  &.modal-g-step-material {
+    .modal-body {
+      >.row {
+        justify-content: center;
+      }
+    }
+  }
+
+  // Modal recubrimiento
+  &.modal-g-step-recubrimiento {
+    .modal-body {
+      >.row {
+        justify-content: center;
+      }
+    }
+  }
+
+  // Modal armazón
+  &.modal-g-step-armazon {
+    .modal-dialog {
+      .modal-content {
+        background-color: #ffffff;
+
+        .modal-header {
+          padding-bottom: 8px;
+
+          .modal-title {
+            padding-right: 30px;
+            text-align: center;
+            font-size: 2.6rem;
+          }
+        }
+      }
+    }
+
+    .modal-body {
+      padding-top: 0;
+
+      >.row {
+        justify-content: center;
+      }
+
+      .col-carousel {
+        min-height: 190px;
+        background-color: #ffffff;
+
+        &.loading {
+          background-position: center;
+          background-repeat: no-repeat;
+          background-image: url('../images/shared/loading-pink.svg');
+        }
+
+        .swiper {
+          .swiper-button-prev {
+            left: 3px;
+          }
+
+          .swiper-button-next {
+            right: 3px;
+          }
+
+          .swiper-button-prev, .swiper-button-next {
+            color: $purple;
+
+            &:after {
+              font-size: 2.4rem;
+              font-weight: 800;
+            }
+
+            &:hover {
+              color: $purple2;
+            }
+          }
+
+          .swiper-slide {
+            padding: 3px;
+
+            .box-opt {
+              position: relative;
+              display: inline-block;
+              padding-bottom: 5px;
+              margin-top: 5px;
+              width: 100%;
+              border: 2px solid transparent;
+              border-radius: 8px;
+              cursor: pointer;
+
+              &.active {
+                border-color: $purple !important;
+              }
+
+              &.disabled {
+                cursor: not-allowed;
+
+                .inside {
+                  pointer-events: none !important;
+                }
+
+                .box-legend {
+                  display: flex !important;
+                }
+              }
+
+              .inside {
+                position: relative;
+                display: block;
+              }
+
+              .box-legend {
+                position: absolute;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                padding: 15px 32px;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255,255,255,0.8);
+                z-index: 10;
+
+                >div {
+                  display: inline-block;
+                  width: 100%;
+                  color: $purple;
+                  font-size: 1.90rem;
+                  font-weight: 800;
+                  line-height: 1.0;
+                  text-align: center;
+                }
+              }
+
+              .box-image {
+                display: block;
+                padding-right: 50px;
+                padding-left: 50px;
+
+                .image {
+                  display: block;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: contain;
+
+                  img {
+                    width: 100%;
+                  }
+                }
+              }
+
+              .box-info {
+                display: block;
+                padding-left: 60px;
+                padding-right: 60px;
+                padding-bottom: 15px;
+                color: $purple;
+
+                .name {
+                  font-size: 1.35rem;
+                  font-weight: 600;
+                }
+
+                .descr {
+                  display: block;
+                  padding-top: 4px;
+                  font-size: 1.1rem;
+                  line-height: 1.1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      .modal-header {
+        .modal-title {
+          padding-right: 0;
+        }
+      }
+      .modal-body {
+        .col-carousel {
+          &.loading {
+            // background-image: url();
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          .swiper {
+            .swiper-button-prev, .swiper-button-next {
+              top: 45%;
+
+              &:after {
+                font-size: 2.1rem;
+              }
+            }
+
+            .swiper-slide {
+              .box-opt {
+                .box-image {
+                  padding-left: 35px;
+                  padding-right: 35px;
+                }
+
+                .box-info {
+                  padding-left: 40px;
+                  padding-right: 40px;
+
+                  .name {
+                    font-size: 1.25rem;
+                  }
+
+                  .descr {
+                    font-size: 1.05rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-glasses-opts + .modal-backdrop {
+  opacity: 0.3 !important;
+  background-color: rgba(255, 255, 255, 1.0);
+}
+// == ==
+
+// == Modal selección de opciones para lentes V2 ==
+.modal-glasses-design {
+  .modal-dialog {
+    @media screen and (min-width: 992px) {
+      max-width: 460px;
+    }
+
+    .modal-content {
+      border: 0;
+      border-radius: 2.3rem;
+
+      .modal-header {
+        position: relative;
+        padding: 1.6rem 4.0rem 0.5rem 1.8rem;
+        border-bottom: 0;
+
+        .modal-title {
+          font-size: 1.9rem;
+          font-weight: 700;
+          line-height: 1.05;
+        }
+
+        .close {
+          position: absolute;
+          @include flex-center-xy();
+          padding: 0 0 6px 0;
+          margin: -9px 0 0 0;
+          top: 50%;
+          right: 22px;
+          width: 36px;
+          height: 36px;
+          color: #222121;
+          font-size: 2.8rem;
+          font-weight: 400;
+          float: none;
+          border: 2px solid #000;
+          border-radius: 50%;
+          text-shadow: none;
+          opacity: 1;
+        }
+      }
+
+      .modal-body {
+        padding: 1rem 1.8rem 1.6rem 1.8rem;
+
+        .box-extra-info {
+          position: relative;
+          padding: 13px 1.8rem;
+          margin: 0 -1.8rem 27px -1.8rem;
+          color: #ffffff;
+          font-size: 1.00rem;
+          background-color: $purple;
+        }
+
+        .radio-opts-s1 {
+          .custom-control {
+            display: block;
+            padding-left: 48px;
+            margin-bottom: 10px;
+
+            .custom-control-label {
+              cursor: pointer;
+
+              &:before {
+                top: 1px;
+                left: -47px;
+                width: 32px;
+                height: 32px;
+                border: 2px solid #222121;;
+              }
+              &:after {
+                width: 22px !important;
+                height: 22px !important;
+                top: 6px;
+                left: -42px;
+              }
+
+              .txt {
+                display: block;
+                font-size: 1.40em;
+                line-height: 1.3;
+
+                strong {
+                  font-size: 108%;
+                }
+              }
+            }
+
+            .custom-control-input:checked ~ .custom-control-label {
+              &:before {
+                border-color: $purple;
+                background-color: #ffffff;
+              }
+
+              &:after {
+                width: 1.4rem;
+                height: 1.4rem;
+                border-radius: 50%;
+                background-color: $purple;
+                background-image: none !important;
+              }
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+
+          &.w-asterisk {
+            .custom-control {
+              margin-bottom: 15px;
+
+              .custom-control-label {
+                .txt {
+                  position: relative;
+                  padding-left: 31px;
+
+                  &:before {
+                    content: "\f069";
+                    position: absolute;
+                    top: 1px;
+                    left: 0;
+                    font-family: "Font Awesome 5 Pro";
+                    font-size: 1.4rem;
+                    font-weight: 700;
+                  }
+                }
+              }
+
+              &.green {
+                .custom-control-label {
+                  .txt {
+                    &:before {
+                      color: #10ac94;
+                    }
+                  }
+                }
+              }
+              &.blue {
+                .custom-control-label {
+                  .txt {
+                    &:before {
+                      color: #0096db;
+                    }
+                  }
+                }
+              }
+              &.gold {
+                .custom-control-label {
+                  .txt {
+                    &:before {
+                      color: #b3a077;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .box-glasses {
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: -15px;
+          margin-right: -15px;
+
+          .custom-control {
+            position: relative;
+            margin: 12px 0 12px 0;
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 0 1px;
+            border-radius: 34px;
+            overflow: hidden;
+
+            &:nth-child(odd) {
+              padding-right: 7px;
+            }
+            &:nth-child(even) {
+              padding-left: 7px;
+            }
+
+            .custom-control-label {
+              width: 100%;
+
+              &:before, &:after {
+                display: none !important;
+              }
+
+              .box-eyeglasses-s1 {
+                position: relative;
+                display: block;
+                padding: 0;
+                border: 2px solid #cdcdcd;
+                border-radius: 34px;
+                cursor: pointer;
+                overflow: hidden;
+
+                .not-available {
+                  @include flex-center-xy();
+                  position: absolute;
+                  padding: 20px;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  color: #ffffff;
+                  pointer-events: none;
+                  text-align: center;
+                  background-color: rgba(161, 162, 164, 0.9);
+                  visibility: hidden;
+                  opacity: 0;
+                  z-index: 15;
+
+                  h6 {
+                    font-size: 1.05rem;
+                    font-weight: 700;
+                  }
+                }
+
+                .img {
+                  position: relative;
+                  display: block;
+                  padding: 34px 2px 15px 2px;
+                  height: 117px;
+                  text-align: center;
+                  background-position: center 40px;
+                  background-repeat: no-repeat;
+                  background-image: url('../images/shared/loading-1.gif');
+
+                  img {
+                    max-width: 100%;
+                    max-height: 69px;
+                  }
+                }
+
+                .info {
+                  position: relative;
+                  padding-left: 51px;
+                  display: block;
+                  padding-bottom: 12px;
+                  margin-top: 2px;
+                  min-height: 80px;
+
+                  &:before {
+                    content: " ";
+                    position: absolute;
+                    top: -6px;
+                    left: 10px;
+                    width: 30px;
+                    height: 30px;
+                    border: 2px solid #222121;
+                    border-radius: 50%;
+                  }
+
+                  &:after {
+                    content: " ";
+                    position: absolute;
+                    top: -1px;
+                    left: 15px;
+                    width: 20px;
+                    height: 20px;
+                    background: transparent;
+                    border-radius: 50%;
+                  }
+
+                  .name {
+                    word-break: break-word;
+                    font-size: 1.10rem;
+                    font-weight: 700;
+                    line-height: 1.1;
+                  }
+
+                  .descr {
+                    margin-top: 5px;
+                    font-size: 0.95rem;
+                    font-weight: 500;
+                    line-height: 1.2;
+                  }
+                }
+
+                &.not-av {
+                  cursor: not-allowed;
+                  border-color: rgba(161, 162, 164, 0.9);
+
+                  .not-available {
+                    visibility: visible;
+                    opacity: 1;
+                  }
+
+                  .img, .info {
+                    user-select: none;
+                  }
+                }
+              }
+            }
+
+            .custom-control-input:checked ~ .custom-control-label {
+              .box-eyeglasses-s1 {
+                border-color: #222121;
+
+                .info {
+                  &:before {
+                    border-color: $purple;
+                  }
+                  &:after {
+                    background-color: $purple;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .box-btns-bottom {
+          position: sticky;
+          padding-top: 15px;
+          padding-bottom: 10px;
+          bottom: -1.6rem;
+          left: -1.8rem;
+          text-align: center;
+          pointer-events: none;
+          z-index: 20;
+
+          ._btn {
+            position: relative;
+            pointer-events: all;
+
+            &:before {
+              content: " ";
+              position: absolute;
+              top: 0;
+              left: 0;
+              inset: -10px -10px;
+              border-radius: 30px;
+              background: #ffffff;
+              z-index: -1;
+            }
+          }
+        }
+
+        @media screen and (max-width: 575px) {
+          .box-glasses {
+            .custom-control {
+              .custom-control-label {
+                .box-eyeglasses-s1 {
+                  padding-top: 17px;
+
+                  .img {
+                    padding: 34px 2px 5px 2px;
+                    height: 105px;
+
+                    img {
+                      max-height: 65px;
+                      background-color: #ffffff;
+                    }
+                  }
+
+                  .info {
+                    position: initial;
+                    padding: 0 10px 12px 10px;
+                    min-height: 70px;
+                    text-align: center;
+
+                    &:before, &:after {
+                      left: 50%;
+                    }
+                    &:before {
+                      top: 15px;
+                      margin-left: -15px;
+                    }
+                    &:after {
+                      top: 20px;
+                      margin-left: -10px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @media screen and (max-width: 385px) {
+          .box-extra-info {
+            font-size: 0.95rem;
+
+            .box-glasses {
+              .custom-control {
+                .custom-control-label {
+                  .box-eyeglasses-s1 {
+                    .info {
+                      .name {
+                        font-size: 1.05rem;
+                      }
+
+                      .descr {
+                        font-size: 0.90rem;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .radio-opts-s1 {
+            .custom-control {
+              .custom-control-label {
+                .txt {
+                  font-size: 1.25rem;
+                }
+              }
+            }
+
+            &.w-asterisk {
+              .custom-control {
+                .custom-control-label {
+                  &:before {
+                    top: -2px;
+                  }
+                  &:after {
+                    top: 3px;
+                  }
+
+                  .txt {
+                    padding-left: 27px;
+
+                    &:before {
+                      font-size: 1.25rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-glasses-design + .modal-backdrop {
+  opacity: 0.3 !important;
+}
+// == ==
+
+
+// == Modal marcadores mapa ==
+.modal-marker {
+  .modal-dialog {
+    @media screen and (min-width: 992px) {
+      max-width: 460px;
+    }
+
+    .modal-content {
+      border: 0;
+      border-radius: 2.1rem;
+      box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.20) !important;
+      overflow: hidden;
+
+      .modal-header {
+        position: relative;
+        padding: 0;
+        height: auto;
+        border: 0;
+        background-color: #f9f9f9;
+        z-index: 20;
+
+        .close {
+          position: absolute;
+          @include flex-center-xy();
+          padding: 0 0 2px 0;
+          top: 33px;
+          right: 34px;
+          width: 24px;
+          height: 24px;
+          font-size: 1.8rem;
+          font-weight: 500;
+          border: 2px solid #000;
+          border-radius: 50%;
+          opacity: 1;
+        }
+      }
+
+      .modal-body {
+        padding: 0;
+        background-color: #f9f9f9;
+
+        .box-basic-store-info {
+          display: block;
+          padding: 25px 32px 20px 34px;
+
+          .name {
+            margin-bottom: 3px;
+            color: $purple;
+            font-size: 1.60rem;
+            font-weight: 700;
+          }
+
+          .descr {
+            display: block;
+            font-size: 1.20rem;
+            font-weight: 500;
+            line-height: 1.35;
+          }
+
+          .box-rating {
+            margin-top: 12px;
+            align-items: center;
+
+            .col-stars {
+              padding-right: 0;
+              max-width: 146px;
+              line-height: 1.0;
+
+              .b-rating {
+                padding: 0 0.3em;
+                margin-left: -0.45rem;
+                height: auto;
+                border: 0;
+                box-shadow: none !important;
+                background-color: transparent;
+
+                .b-rating-star {
+                  color: $purple;
+                  font-size: 1.1rem;
+                }
+              }
+            }
+
+            .col-summary {
+              .comment {
+                position: relative;
+                font-family: "Kanit", sans-serif;
+                font-size: 1.10rem;
+                font-weight: 400;
+              }
+
+              a.comment {
+                color: #222121;
+                cursor: pointer;
+
+                &:hover {
+                  color: #555252;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+
+        .box-gallery {
+          display: block;
+          height: 256px;
+          background-color: $soft-gray;
+
+          .swiper {
+            .swiper-slide {
+              .image {
+                display: block;
+                height: 256px;
+              }
+            }
+
+            .swiper-button-prev, .swiper-button-next {
+              width: 34px;
+              height: 34px;
+              color: #ffffff;
+              border-radius: 50%;
+              background-color: rgba(0,0,0,0.4);
+
+              &:after {
+                font-family: "Font Awesome 5 Pro";
+                font-size: 1.10rem;
+                font-weight: 600;
+              }
+            }
+
+            .swiper-button-prev {
+              padding-right: 2px;
+
+              &:after {
+                content: "\f053";
+              }
+            }
+            .swiper-button-next {
+              padding-left: 1px;
+
+              &:after {
+                content: "\f054";
+              }
+            }
+          }
+        }
+
+        .box-schedule {
+          display: block;
+          padding: 25px 32px 20px 34px;
+
+          .title {
+            margin-bottom: 12px;
+            color: $purple;
+            font-size: 1.10rem;
+            font-weight: 700;
+            text-align: center;
+          }
+
+          .box-time-date {
+            position: relative;
+            padding-left: 136px;
+            height: 52px;
+            border-radius: 32px;
+
+            &:before {
+              content: " ";
+              position: absolute;
+              border-radius: 32px 0 0 32px;
+              top: 0;
+              left: 0;
+              width: 136px;
+              height: 100%;
+              color: #ffffff;
+              background-color: $purple;
+              z-index: 5;
+            }
+
+            &:after {
+              content: " ";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 136px;
+              height: 100%;
+              background-repeat: no-repeat;
+              background-position: center;
+              z-index: 6;
+            }
+
+            &.date {
+              &:after {
+                background-image: url('../images/pages/get-glasses/calendar-icon.svg');
+                background-size: 39px;
+              }
+            }
+            &.time {
+              &:after {
+                background-image: url('../images/pages/get-glasses/clock-icon.svg');
+                background-size: 32px;
+              }
+            }
+
+            .b-form-datepicker, .b-form-timepicker, .b-select-time {
+              margin: 0 !important;
+              height: 100%;
+              border: 0;
+              border-radius: 0 32px 32px 0;
+              text-align: center;
+              box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15) !important;
+
+              >button {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100% !important;
+
+                svg {
+                  display: none !important;
+                }
+              }
+
+              .form-control {
+                text-align: center;
+                line-height: 2.0;
+                color: $purple;
+                font-size: 1.2rem;
+                font-weight: 600;
+              }
+            }
+
+            .b-select-time {
+              padding-right: 0.75rem;
+              color: $purple;
+              cursor: pointer;
+              font-size: 1.2rem;
+              font-weight: 600;
+              line-height: 2.0;
+              text-align: center;
+              background-image: none !important;
+
+              option {
+                color: $purple;
+
+                &:first-child {
+                  color: #6c757d !important;
+                }
+              }
+            }
+          }
+        }
+
+        .box-buttons {
+          display: block;
+          padding: 10px 15px 22px 15px;
+          text-align: center;
+        }
+
+        .box-comments {
+          display: block;
+          padding: 25px 32px 20px 34px;
+
+          .bc-back {
+            position: relative;
+            display: block;
+            margin-top: -5px;
+            margin-bottom: 12px;
+
+            .btn-back {
+              color: $purple;
+              font-size: 1.3rem;
+              font-weight: 700;
+              text-decoration: none;
+              cursor: pointer;
+
+              i {
+                position: relative;
+                margin-right: 4px;
+                top: 3px;
+                font-size: 1.8rem;
+                line-height: 1;
+              }
+
+              &:hover {
+                color: $purple2;
+              }
+            }
+          }
+
+          .bc-store-info {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 22px 32px 22px 34px;
+            margin-left: -34px;
+            margin-right: -32px;
+            background-color: #ffffff;
+
+            .col-image {
+              padding: 0;
+              flex: 0 0 192px;
+              max-width: 192px;
+
+              .image {
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 124px;
+                border-radius: 14px;
+                background-color: $soft-gray;
+              }
+            }
+
+            .col-info {
+              padding-right: 0;
+
+              .box-basic-store-info {
+                padding: 0;
+              }
+            }
+          }
+
+          .bc-comments {
+            position: relative;
+            padding-top: 20px;
+
+            .col-top {
+              margin-bottom: 8px;
+              text-align: center;
+
+              h5 {
+                color: $purple;
+                font-size: 1.6rem;
+                font-weight: 700;
+              }
+            }
+
+            .col-comments {
+              display: flex;
+              flex-wrap: wrap;
+              padding-left: 0;
+              padding-right: 0;
+              max-height: 65vh;
+              overflow: auto;
+              overflow-x: hidden;
+
+              .col-comment {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 18px;
+                margin-bottom: 18px;
+
+                .col-photo {
+                  padding: 0;
+                  max-width: 102px;
+
+                  .photo {
+                    width: 100%;
+                    height: 102px;
+                    border-radius: 50%;
+                    box-shadow: 0 0 1px rgba(0,0,0,0.2);
+                    background-color: $soft-gray;
+
+                    &.no-photo {
+                      @include flex-center-xy();
+                      flex: 0 0 100%;
+                      max-width: 100%;
+                      color: #ffffff;
+                      font-size: 2.9rem;
+                      font-weight: 700;
+                      box-shadow: none !important;
+                      background-color: #f7931e;
+                    }
+                  }
+                }
+
+                .col-text {
+                  padding-left: 22px;
+
+                  .name {
+                    margin-bottom: 4px;
+                    font-size: 1.30rem;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                  }
+
+                  .verified {
+                    margin-bottom: 12px;
+                    color: $purple;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+
+                    .icon {
+                      font-size: 75%;
+                    }
+                  }
+
+                  .date {
+                    color: #7d7d7d;
+                    font-size: 0.95rem;
+                    font-weight: 700;
+                  }
+
+                  .comment {
+                    margin-top: 8px;
+                    font-size: 1.03rem;
+                    font-weight: 500;
+                    line-height: 1.4;
+                  }
+                }
+              }
+            }
+          }
+
+          @media screen and (max-width: 575px) {
+            padding: 25px 22px 20px 24px;
+
+            .bc-store-info {
+              padding: 22px 22px 22px 24px;
+              margin-left: -24px;
+              margin-right: -22px;
+
+              .col-image {
+                flex: 0 0 124px;
+                max-width: 124px;
+              }
+
+              .col-info {
+                .box-basic-store-info {
+                  .name {
+                    font-size: 1.25rem;
+                  }
+
+                  .descr {
+                    font-size: 1.0rem;
+                  }
+
+                  .box-rating {
+                    .col-stars {
+                      flex: 0 0 100%;
+                      max-width: 100%;
+                    }
+
+                    .col-summary {
+                      .comment {
+                        font-size: 1.0rem;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .bc-comments {
+              padding-top: 16px;
+
+              .col-top {
+                h5 {
+                  font-size: 1.45rem;
+                }
+              }
+
+              .col-comments {
+                max-height: 58vh;
+
+                .col-comment {
+                  padding-left: 10px;
+                  margin-top: 12px;
+                  margin-bottom: 12px;
+
+                  .col-photo {
+                    max-width: 80px;
+
+                    .photo {
+                      height: 80px;
+
+                      &.no-photo {
+                        font-size: 2.5rem;
+                      }
+                    }
+                  }
+
+                  .col-text {
+                    padding-left: 18px;
+
+                    .name {
+                      font-size: 1.10rem;
+                    }
+
+                    .verified {
+                      margin-bottom: 5px;
+                      font-size: 0.70rem;
+                      font-weight: 700;
+                    }
+
+                    .date {
+                      font-size: 0.80rem;
+                    }
+
+                    .comment {
+                      font-size: 0.85rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.m-comments {
+    .modal-dialog {
+      @media screen and (min-width: 992px) {
+        max-width: 520px !important;
+      }
+    }
+  }
+}
+.modal-marker + .modal-backdrop {
+  opacity: 0.0 !important;
+}
+// == ==
+
+// == Efecto blur al abrir modales de bootstrap ==
+.modal-open {
+  >#app {
+    filter: blur(4px);
+  }
+}
+// == ==

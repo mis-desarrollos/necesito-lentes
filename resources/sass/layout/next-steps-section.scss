@@ -1,0 +1,49 @@
+// Next steps
+.next-steps-section {
+  .box-step {
+    position: relative;
+    padding: 11px 0 10px 0;
+    color: #ffffff;
+    line-height: 1.0;
+    text-align: right;
+
+    .icon {
+      display: inline-block;
+      width: 32px;
+      height: 26px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    &.s-2 {
+      background-color: $yellow;
+
+      .icon {
+        background-image: url('../images/pages/test/icon-glasses-white.svg');
+      }
+    }
+    &.s-3 {
+      background-color: $purple;
+
+      .icon {
+        background-image: url('../images/pages/test/icon-map-white.svg');
+      }
+    }
+    &.s-4 {
+      background-color: $pink;
+
+      .icon {
+        background-image: url('../images/pages/test/icon-bag-white.svg');
+      }
+    }
+    &.s-5 {
+      background-color: $gray;
+
+      .icon {
+        background-image: url('../images/pages/test/icon-share-white.svg');
+      }
+    }
+  }
+}
+// == ==

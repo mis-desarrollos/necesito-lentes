@@ -1,0 +1,147 @@
+#about-us-page-v2 {
+
+  .main-section {
+    position: relative;
+    padding-top: 42px;
+    padding-bottom: 42px;
+    overflow: hidden;
+
+    .box-info {
+      justify-content: center;
+      text-align: center;
+
+      .col-text {
+        .txt {
+          margin-top: 15px;
+          font-size: 1.25rem;
+        }
+      }
+
+      .col-image {
+        margin-top: 26px;
+
+        .img {
+          position: relative;
+          display: inline-block;
+          width: 100%;
+
+          img {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    .box-partner {
+      justify-content: center;
+      text-align: center;
+
+      .col-info {
+        .box-images {
+          display: block;
+          margin-top: 15px;
+
+          .b-logo {
+            display: block;
+            margin-bottom: 20px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .logo {
+              max-width: 94%;
+            }
+          }
+        }
+      }
+    }
+
+    .box-form {
+      justify-content: center;
+      margin-top: 55px;
+
+      .col-info {
+        text-align: center;
+
+        .box-image {
+          display: block;
+
+          .glasses {
+            max-width: 100%;
+          }
+        }
+
+        .box-content {
+          display: block;
+          margin-top: 25px;
+
+          .subtitle {
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+          }
+
+          .form {
+            position: relative;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 0 auto 0 auto;
+            width: 660px;
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      .box-info {
+        .col-text {
+          .txt {
+            margin-top: 10px;
+            font-size: 1.15rem;
+            line-height: 1.4;
+          }
+        }
+
+        .col-image {
+          margin-top: 95px;
+          margin-bottom: 50px;
+
+          .img {
+            @include cp-property(transform, scale(1.4));
+          }
+        }
+      }
+
+      .box-form {
+        margin-top: 45px;
+
+        .col-info {
+          .box-image {
+            position: relative;
+            height: 460px;
+
+            &:before {
+              content: " ";
+              position: absolute;
+              left: -15px;
+              width: calc(100% + 30px);
+              height: 100%;
+              background-position: right 7% center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-image: url("../images/pages/home/h-glasses-3.jpg");
+            }
+            .glasses {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

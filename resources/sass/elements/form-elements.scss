@@ -1,0 +1,276 @@
+.custom-radio-group {
+  >label, >legend {
+    padding-bottom: 3px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  >div {
+    .custom-radio {
+      display: block;
+      padding-left: 1.7rem;
+      margin: 3px 0;
+
+      .custom-control-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:before {
+          left: -1.7rem;
+          border: 1px solid #222121;
+          background-color: transparent;
+        }
+        &:after {
+          left: -1.7rem;
+        }
+      }
+
+      .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #222121 !important;
+        border-color: #222121;
+      }
+    }
+  }
+}
+
+.box-radio-options-s1 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 2px solid $purple;
+  border-radius: 15px;
+
+  .custom-radio {
+    display: inline-block;
+    padding-left: 0;
+    margin-right: 0;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .custom-control-label {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 0;
+      color: $purple;
+      align-items: center;
+      cursor: pointer;
+
+      &:before {
+        top: calc(50% - 16px);
+        left: 1.3rem;
+        width: 32px;
+        height: 32px;
+        border: 2px solid $purple;
+        background-color: transparent;
+      }
+
+      &:after {
+        display: none;
+      }
+
+      .col-name {
+        padding: 0 12px 0 72px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        line-height: 1.1;
+      }
+
+      .col-descr {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        border-left: 1px solid $purple;
+        font-size: 1.20rem;
+        line-height: 1.35;
+      }
+    }
+
+    .custom-control-input:checked ~ .custom-control-label {
+      &:before {
+        background-color: $purple;
+      }
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .custom-radio {
+      .custom-control-label {
+        &:before {
+          top: calc(50% - 11px);
+          left: 0.75rem;
+          width: 22px;
+          height: 22px;
+        }
+
+        .col-name {
+          padding: 0 12px 0 44px;
+          font-size: 1.10rem;
+        }
+
+        .col-descr {
+          font-size: 1.0rem;
+        }
+      }
+    }
+  }
+}
+
+.custom-select-s1 {
+  padding: 0.55rem 1.50rem;
+  height: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 34px;
+  background-size: 12px 12px;
+  background-position: right 17px center;
+
+  &.custom-select-lg {
+    padding: 0.70rem 2.1rem;
+    font-size: 1.3rem;
+    background-size: 14px 15px;
+  }
+
+  &.outline-white {
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    background-color: transparent !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23ffffff' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e");
+  }
+
+  option {
+    color: $gray;
+
+    &:first-child {
+      color: #999999 !important;
+    }
+  }
+}
+
+.custom-form-group-s1 {
+  text-align: left;
+
+  label, legend {
+    padding-left: 15px;
+    padding-bottom: 4px;
+    color: $purple;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  >div {
+    .form-control {
+      height: auto;
+      padding: 0.60rem 1.4rem 0.65rem 1.4rem;
+      color: $purple;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-color: $purple;
+      border-radius: 28px;
+      background-color: transparent;
+    }
+
+    .form-control-sm {
+      padding: 0.45rem 1.2rem 0.5rem 1.2rem;
+      font-size: 1.0rem;
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+}
+
+.custom-form-group-s2 {
+  text-align: left;
+
+  label, legend {
+    padding-left: 15px;
+    padding-bottom: 4px;
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  >div {
+    @include placeholder(#000000, 500, normal, 1.3rem);
+
+    .form-control {
+      height: auto;
+      padding: 0.6rem 1.4rem 0.60rem 1.4rem;
+      color: #000000;
+      font-size: 1.3rem;
+      font-weight: 500;
+      border-color: #b3b3b3;
+      border-radius: 14px;
+      background-color: transparent;
+    }
+
+    .form-control-sm {
+      padding: 0.45rem 1.2rem 0.5rem 1.2rem;
+      font-size: 1.0rem;
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+}
+
+.custom-f-group-s1 {
+  margin-bottom: 1.6rem;
+  @include placeholder(#222121, 500, normal, 1.25rem);
+
+  >div {
+    .form-control {
+      padding: 0.8rem 2.3rem;
+      height: auto;
+      color: #222121;
+      font-weight: 500;
+      border: 0;
+      border-radius: 40px;
+      box-shadow: 0 5px 6px rgba(0, 0, 0, 0.1) !important;
+      background-color: #f2f2f2;
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+}
+
+.custom-checkbox-s1 {
+  padding-left: 34px;
+
+  .custom-control-input:checked ~ .custom-control-label {
+    &:after {
+      background-color: $purple !important;
+    }
+  }
+
+  .custom-control-label {
+    font-size: 1.20rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:before, &:after {
+      border-radius: 50%;
+    }
+
+    &:before {
+      top: 4px;
+      left: -33px;
+      width: 24px;
+      height: 24px;
+      background-color: transparent !important;
+      border: 1px solid $purple !important;
+    }
+    &:after {
+      top: 8px;
+      left: -29px;
+      width: 16px;
+      height: 16px;
+      background-image: none !important;
+    }
+  }
+}

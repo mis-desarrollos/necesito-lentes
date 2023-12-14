@@ -7,7 +7,9 @@ use App\Models\OrderDetail;
 use App\Models\Address;
 use App\Models\User; 
 use Carbon\Carbon;
+use App\Exports\OrdersExport;
 
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -26,12 +28,41 @@ class OrderController extends Controller
             $order->subtotal = '$'.$order->subtotal;
         }
 
-        $ordersToDay   = Order::whereDate('created_at', Carbon::today())->count(); 
+        /*$ordersToDay   = Order::whereDate('created_at', Carbon::today())->count(); 
         $ordersToMonth = Order::whereDate('created_at', '>', Carbon::now()->subDays(30))->count();
         $totalToDay    = Order::whereDate('created_at', Carbon::today())->sum('total');
-        $totalToMonth  = Order::whereDate('created_at', '>', Carbon::now()->subDays(30))->sum('total'); 
+        $totalToMonth  = Order::whereDate('created_at', '>', Carbon::now()->subDays(30))->sum('total');*/
+        
+        $ordersToDay   = Order::count(); 
+        $ordersToMonth = Order::count();
+        $totalToDay    = Order::sum('total');
+        $totalToMonth  = Order::sum('total');
 
         return response()->json(['orders' => $orders, 'totals' => [ 'totalToDay' => $totalToDay, 'totalToMonth'=> $totalToMonth, 'ordersToDay'=> $ordersToDay, 'ordersToMonth'=> $ordersToMonth]]);
+    }
+
+    public function Filter(Request $request)
+    {
+        $orders = Order::with('user')->where('created_at','>',$request->desde.' 00:00:00')->where('created_at','<',$request->hasta.' 23:59:59')->get();
+        
+        foreach($orders as $order){
+            $order->total = '$'.$order->total;
+            $order->subtotal = '$'.$order->subtotal;
+        }
+
+        /*$ordersToDay   = Order::whereDate('created_at', Carbon::today())->count(); 
+        $ordersToMonth = Order::whereDate('created_at', '>', Carbon::now()->subDays(30))->count();
+        $totalToDay    = Order::whereDate('created_at', Carbon::today())->sum('total');
+        $totalToMonth  = Order::whereDate('created_at', '>', Carbon::now()->subDays(30))->sum('total'); */
+        $ordersToDay   = Order::count(); 
+        $ordersToMonth = Order::count();
+        $totalToDay    = Order::sum('total');
+        $totalToMonth  = Order::sum('total');
+
+        return response()->json(['orders' => $orders, 'totals' => [ 'totalToDay' => $totalToDay, 'totalToMonth'=> $totalToMonth, 'ordersToDay'=> $ordersToDay, 'ordersToMonth'=> $ordersToMonth]]);
+    
+
+        return response()->json($orders);
     }
 
 
@@ -71,5 +102,10 @@ class OrderController extends Controller
         else
             return response()->json(['msg'=>'Ocurrio un error al actualizar el pedido'],500);
 
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new OrdersExport, 'ventas.xlsx');
     }
 }

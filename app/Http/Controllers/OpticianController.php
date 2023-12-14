@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Optician;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OpticianController extends Controller
@@ -14,7 +14,7 @@ class OpticianController extends Controller
      */
     public function index()
     {
-        $row = Optician::all();
+        $row = User::role('optica')->get();
         foreach ($row as $key => $value) {
            
         }
@@ -29,7 +29,7 @@ class OpticianController extends Controller
      */
     public function store(Request $request)
     {
-        $row = new Optician();
+        $row = new User();
         $row->name = $request->name;
         $row->email = $request->email;
         $row->phone = $request->phone;
@@ -42,6 +42,7 @@ class OpticianController extends Controller
         $row->address = $request->address;
         $row->lng = $request->lng;
         $row->lat = $request->lat;
+        $row->password = bcrypt($request->password);
         $row->save();
 
         return $row;
@@ -55,7 +56,7 @@ class OpticianController extends Controller
      */
     public function show($id)
     {
-        $row = Optician::find($id);
+        $row = User::find($id);
         $row->lat = floatval($row->lat);
         $row->lng = floatval($row->lng);
         return $row;
@@ -71,7 +72,7 @@ class OpticianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $row = Optician::find($id);
+        $row = User::find($id);
         $row->name = $request->name;
         $row->email = $request->email;
         $row->phone = $request->phone;
@@ -84,6 +85,9 @@ class OpticianController extends Controller
         $row->address = $request->address;
         $row->lng = $request->lng;
         $row->lat = $request->lat;
+        if(isset($request->password)){
+            $row->password = bcrypt($request->password);
+        }
         $row->save();
 
         return $row;
@@ -123,7 +127,7 @@ class OpticianController extends Controller
 
     private function _delete($id)
     {
-        $temp = Optician::find($id);
+        $temp = User::find($id);
 
         if ($temp->delete()) {
             return true;

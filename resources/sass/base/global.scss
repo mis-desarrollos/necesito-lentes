@@ -1,43 +1,86 @@
 body,html{
-	font-family: 'Raleway', sans-serif;
+	// font-family: 'Raleway', sans-serif;
+	font-family: "TT Norms Pro", "Raleway", sans-serif;
 	font-weight: 400;
-	color: #000000;
+	color: #222121;
 }
 
-.title{
-	margin-bottom: 30px;
-	color: $color--background;
-	font-weight: 600;
+#app {
+	@include transition(250ms);
 }
 
-.pagina{
-	padding-top: 100px;
+p,h1,h2,h3,h4,h5,h6{
+	margin-bottom: 0px;
 }
 
-.seccion{
-	padding-top: 25px;
-	padding-bottom: 25px;
+// Container
+.oversized-container{
+	@media screen and (min-width: 992px){
+		max-width: 98%;
+	}
+	@media screen and (min-width: 1670px){
+		max-width: 1620px;
+	}
+}
+.med-container{
+	@media screen and (min-width: 992px){
+		max-width: 98%;
+	}
+	@media screen and (min-width: 1490px){
+		max-width: 1440px;
+	}
 }
 
-.tarjeta{
+// Backgrounds
+.placed-backg{
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+// Pointer
+.c-pointer {
+	cursor: pointer !important;
+}
+
+// Remove outline
+select:focus, select:active, select:hover, button:focus, button:active, button:hover,
+input:focus, input:active, input:hover, textarea:focus, textarea:active, textarea:hover{
+  box-shadow: none !important;
+  outline: none !important;
+}
+.custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow:none !important;
+}
+
+// Remove Arrows/Spinners
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+// WhatsApp link
+.ic-glob-whatsapp{
+	@extend .flex-center-xy;
+	position: fixed;
+	padding-bottom: 2px;
+	bottom: 19px;
+	right: 19px;
+	width: 60px;
+	height: 60px;
+	color: #ffffff !important;
 	text-align: center;
-	padding-top: 20px;
-    padding-bottom: 20px;
-    box-shadow: 3px 3px 10px darkgrey;
-    cursor: pointer;
-    height: 100%;
-    width: 100%;
-    @include transition(400ms);
-    .image{
-    	margin-bottom: 3em;
-    	font-size: 1.2em;
-    	color: aqua;
-    }
-    &:hover{
-    	@include cp-property(transform,scale(1.05));
-    	opacity: 0.7;
-    }
-    .descript{
-    	color: $color--text;
-    }
+	font-size: 32px;
+	background-color: #25d366;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 88;
+
+	&:hover{
+	text-decoration: none;
+	}
 }

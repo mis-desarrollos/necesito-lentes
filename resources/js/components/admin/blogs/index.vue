@@ -2,9 +2,9 @@
   <div>
     <ol class="breadcrumb 2">
 			<li><router-link to="/home"><i class="entypo-home"></i>Home</router-link></li>
-			<li class="active"><strong>Blog</strong></li>
+			<li class="active"><strong>Comunicados</strong></li>
 		</ol>
-		<h2 class="margin-bottom">Blog</h2>
+		<h2 class="margin-bottom">Comunicados</h2>
 
 		<div class="row">
 			<div class="col-md-12">
@@ -45,18 +45,7 @@
             sortable:true,
             switchable:true,
           },
-          {
-            field: 'created_at',
-            title: 'Fecha de registro',
-            sortable:true,
-            switchable:true,
-          },
-          {
-            field: 'updated_at',
-            title: 'Fecha de actualización',
-            sortable:true,
-            switchable:true,
-          }
+          
 
           
         ],

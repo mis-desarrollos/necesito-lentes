@@ -4,6 +4,7 @@
 	<title>Cargando..</title>
 	@include('shared.css')
 	<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="public/extras/css/font-awesome/css/all.min.css">
 	@include('shared.jsDir')
 </head>
 <body class="page-body login-page">

@@ -18,9 +18,11 @@
 
 						<input-form name="name" text="Nombre" :data.sync="row.name"></input-form>
 
-                        <input-form name="email" text="Email" :data.sync="row.email"></input-form>
+                        <input-form name="email_optica" text="Email" :data.sync="row.email"></input-form>
 
-                        <input-form name="phone" text="Telefono" :data.sync="row.phone"></input-form>
+						<input-form type="password" name="password_optica" text="Password" :data.sync="row.password" :validate="rule_password" place="Solo si desea cambiarla"></input-form>
+                        
+						<input-form name="phone" text="Telefono" :data.sync="row.phone"></input-form>
 
                         <input-form name="web" text="Sitio web" :data.sync="row.web"></input-form>
 
@@ -116,6 +118,16 @@
 				ciudades: [],
                 mapLoaded:false
 			}
+		},
+		computed:{
+			rule_password:function(){
+				if(this.row.password==undefined || this.row.password.length==0){
+					return '';
+				}
+				else{
+					return 'min:5|required';
+				}
+			},
 		},
 		methods:{
 

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Category;
-use App\Models\Subcategory;
+
+use App\Models\ProductsImages;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -21,8 +21,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category', 'subcategory')->get();
-        return response()->json($products);
+        $row = Product::all();
+        foreach ($row as $key => $value) {
+            $images = ProductsImages::where('frames_id',$value->id)->first();
+            if ($images) {
+                $value->image = Images::getImg($images->images_id);
+            }
+        }
+        return $row; 
     }
 
     /**
@@ -33,77 +39,73 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->sku = $request->sku;
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->category_id = $request->category_id;
-        $product->subcategory_id = $request->subcategory_id; 
-        $product->save();
+        $row = new Product();
+        $row->name = $request->name;
+        $row->description = $request->description;
+        $row->width = $request->width;
+        $row->high = $request->high;
+        $row->long = $request->long;
+        $row->materials_id = $request->materials_id;
+        $row->packages_id = $request->packages_id;
+        $row->coverings_id = $request->coverings_id;
+        
+        $row->save();
 
-        return response()->json($product);
+        return $row;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Categoria  $row
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $product = Product::find($id);
-
-        return response()->json($product);
+        $row = Product::find($id);
+        $images = ProductsImages::where('frames_id',$id)->get();
+        foreach ($images as $key => $value) {
+            $value->url = Images::getUrl($value->images_id);
+        }
+        $row->images = $images;
+        return $row;
     }
+
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Categoria  $row
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
-        $product->sku = $request->sku;
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->price = $request->price;
-        $product->stock = $request->stock;
-        $product->category_id = $request->category_id;
-        $product->subcategory_id = $request->subcategory_id;   
-        $product->save();
+        $row = Product::find($id);
+        $row->name = $request->name;
+        $row->description = $request->description;
+        $row->width = $request->width;
+        $row->high = $request->high;
+        $row->long = $request->long;
+        $row->materials_id = $request->materials_id;
+        $row->packages_id = $request->packages_id;
 
-        return response()->json($product);
+        $row->coverings_id = $request->coverings_id;
+        $row->save();
+
+        return $row;
     }
-
-    public function import(Request $request)
-    {
-        try{
-            Excel::import(new ProductsImport, request()->file('file'));
-            return response()->json(['msg'=>'La importación ha finalizado exitosamente!.']);   
-
-        }catch (\Exception $e) {
-            return $e;
-            return response()->json(['msg'=>'Ocurrio un error', 'error' => $e],500);
-        }
-    }
-
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\Categoria  $row
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         if($this->_delete($id)){
-            return response()->json(['msg'=>'registro con ID '.$id.' eliminado.']);
+            return response()->json(['msg'=>'Registro con ID '.$id.' eliminado.']);
         }
         else{
             return response()->json(['msg'=>'Ocurrio un error al eliminar.'],500);
@@ -136,5 +138,23 @@ class ProductController extends Controller
         else{
             return false;
         }
+    }
+
+    public function uploadImage(Request $request, $id)
+    {
+        if($request->has('file'))
+        {
+            $imagep = new ProductsImages();
+            $imagep->frames_id = $id;
+            $imagep->images_id = Images::save($request->file('file'));
+            $imagep->save();
+        }
+
+        return response()->json('Imagen cargada!');
+    }
+    public function deleteImage($id)
+    {
+        ProductsImages::where('id', $id)->delete();
+        return response()->json(array("msg" => 'Imagen eliminada'));
     }
 }

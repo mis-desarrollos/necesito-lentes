@@ -1,0 +1,124 @@
+.btn-s1 {
+  padding: 0.65rem 1.50rem;
+  min-width: 124px;
+  font-size: 1.10rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 34px;
+  text-align: center;
+
+  &.btn-lg {
+    padding: 0.75rem 2.1rem;
+    font-size: 1.5rem;
+  }
+  &.btn-sm {
+    padding: 0.50rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  &.bg-blue {
+    color: #ffffff !important;
+    border-color: $purple;
+    background-color: $purple;
+
+    &:hover, &:focus, &:active {
+      border-color: $purple2 !important;
+      background-color: $purple2 !important;
+    }
+  }
+  &.bg-white {
+    color: $purple !important;
+    border-color: #ffffff;
+    background-color: #ffffff;
+
+    &:hover, &:focus, &:active {
+      border-color: #e8e4e4 !important;
+      background-color: #e8e4e4 !important;
+    }
+  }
+  &.outline-blue {
+    color: $purple !important;
+    border-color: $purple;
+    background-color: transparent !important;
+
+    &:hover, &:focus, &:active {
+      color: $purple2 !important;
+      border-color: $purple2 !important;
+    }
+  }
+  &.outline-white {
+    color: #ffffff !important;
+    border-color: #ffffff;
+    background-color: transparent !important;
+
+    &:hover, &:focus, &:active {
+      color: #eae6e6 !important;
+      border-color: #eae6e6 !important;
+    }
+  }
+  &.no-border {
+    border: 0 !important;
+  }
+}
+
+.btn-s2 {
+  display: inline-block;
+  padding: 14px 32px 16px 32px;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.0;
+  text-align: center;
+  text-decoration: none !important;
+  border-radius: 30px;
+
+  &.bg-purple {
+    color: #ffffff !important;
+    border-color: $purple;
+    background-color: $purple;
+
+    &:hover, &:focus, &:active {
+      border-color: $purple2 !important;
+      background-color: $purple2 !important;
+    }
+  }
+
+  &.bg-gray {
+    color: #ffffff !important;
+    border-color: #b3b3b3;
+    background-color: #b3b3b3;
+
+    &:hover, &:focus, &:active {
+      border-color: #a4a5a6 !important;
+      background-color: #a4a5a6 !important;
+    }
+  }
+
+  &.outline-purple {
+    color: $purple;
+    border: 2px solid $purple;
+
+    &:hover, &:focus, &:active {
+      color: $purple2 !important;
+      border: 2px solid $purple2 !important;
+    }
+  }
+
+  &.outline-gray {
+    color: #a4a5a6;
+    border: 2px solid #a4a5a6;
+
+    &:hover, &:focus, &:active {
+      color: #868686 !important;
+      border: 2px solid #868686 !important;
+    }
+  }
+
+  &.btn-sm {
+    font-size: 1.3rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 13px 26px 14px 26px;
+    font-size: 1.25rem;
+  }
+}
