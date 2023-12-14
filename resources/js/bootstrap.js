@@ -145,15 +145,8 @@ window.tools={
             }
         });    
     },
-
-    url:function(url){
-        if(url[0]=="/"){
-            return window._proyectUrl+url.substring(1,url.length);
-        }
-        else{
-            return window._proyectUrl+url;
-        }
-        
+    url: function(url) {
+        return `${window._proyectUrl}/${url.startsWith('/') ? url.substring(1) : url}`;
     },
 }
 
