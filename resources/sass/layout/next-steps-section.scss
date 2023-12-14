@@ -20,28 +20,28 @@
       background-color: $yellow;
 
       .icon {
-        background-image: url('../images/pages/test/icon-glasses-white.svg');
+        background-image: url('../public/images/pages/test/icon-glasses-white.svg');
       }
     }
     &.s-3 {
       background-color: $purple;
 
       .icon {
-        background-image: url('../images/pages/test/icon-map-white.svg');
+        background-image: url('../public/images/pages/test/icon-map-white.svg');
       }
     }
     &.s-4 {
       background-color: $pink;
 
       .icon {
-        background-image: url('../images/pages/test/icon-bag-white.svg');
+        background-image: url('../public/images/pages/test/icon-bag-white.svg');
       }
     }
     &.s-5 {
       background-color: $gray;
 
       .icon {
-        background-image: url('../images/pages/test/icon-share-white.svg');
+        background-image: url('../public/images/pages/test/icon-share-white.svg');
       }
     }
   }

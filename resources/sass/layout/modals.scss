@@ -134,7 +134,7 @@
         &.loading {
           background-position: center;
           background-repeat: no-repeat;
-          background-image: url('../images/shared/loading-pink.svg');
+          background-image: url('../public/images/shared/loading-pink.svg');
         }
 
         .swiper {
@@ -544,7 +544,7 @@
                   text-align: center;
                   background-position: center 40px;
                   background-repeat: no-repeat;
-                  background-image: url('../images/shared/loading-1.gif');
+                  background-image: url('../public/images/shared/loading-1.gif');
 
                   img {
                     max-width: 100%;
@@ -955,13 +955,13 @@
 
             &.date {
               &:after {
-                background-image: url('../images/pages/get-glasses/calendar-icon.svg');
+                background-image: url('../public/images/pages/get-glasses/calendar-icon.svg');
                 background-size: 39px;
               }
             }
             &.time {
               &:after {
-                background-image: url('../images/pages/get-glasses/clock-icon.svg');
+                background-image: url('../public/images/pages/get-glasses/clock-icon.svg');
                 background-size: 32px;
               }
             }

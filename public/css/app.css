@@ -30775,7 +30775,7 @@ input[type=number] {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url("../images/shared/chevron-down.svg");
+  background-image: url("../public/images/shared/chevron-down.svg");
   z-index: 1;
 }
 #header .products-menu .card .card-header .btn-toggle:hover {
@@ -31075,7 +31075,7 @@ input[type=number] {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 18px 18px;
-  background-image: url("../images/shared/twitter-x.svg");
+  background-image: url("../public/images/shared/twitter-x.svg");
 }
 #footer .footer-section .col-main-3 ._btn-net.tw span i:before {
   opacity: 0;
@@ -31306,7 +31306,7 @@ input[type=number] {
 .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel.loading {
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("../images/shared/loading-pink.svg");
+  background-image: url("../public/images/shared/loading-pink.svg");
 }
 .modal-glasses-opts.modal-g-step-armazon .modal-body .col-carousel .swiper .swiper-button-prev {
   left: 3px;
@@ -31625,7 +31625,7 @@ input[type=number] {
   text-align: center;
   background-position: center 40px;
   background-repeat: no-repeat;
-  background-image: url("../images/shared/loading-1.gif");
+  background-image: url("../public/images/shared/loading-1.gif");
 }
 .modal-glasses-design .modal-dialog .modal-content .modal-body .box-glasses .custom-control .custom-control-label .box-eyeglasses-s1 .img img {
   max-width: 100%;
@@ -31942,11 +31942,11 @@ input[type=number] {
   z-index: 6;
 }
 .modal-marker .modal-dialog .modal-content .modal-body .box-schedule .box-time-date.date:after {
-  background-image: url("../images/pages/get-glasses/calendar-icon.svg");
+  background-image: url("../public/images/pages/get-glasses/calendar-icon.svg");
   background-size: 39px;
 }
 .modal-marker .modal-dialog .modal-content .modal-body .box-schedule .box-time-date.time:after {
-  background-image: url("../images/pages/get-glasses/clock-icon.svg");
+  background-image: url("../public/images/pages/get-glasses/clock-icon.svg");
   background-size: 32px;
 }
 .modal-marker .modal-dialog .modal-content .modal-body .box-schedule .box-time-date .b-form-datepicker, .modal-marker .modal-dialog .modal-content .modal-body .box-schedule .box-time-date .b-form-timepicker, .modal-marker .modal-dialog .modal-content .modal-body .box-schedule .box-time-date .b-select-time {
@@ -32308,25 +32308,25 @@ input[type=number] {
   background-color: #ffc62b;
 }
 .next-steps-section .box-step.s-2 .icon {
-  background-image: url("../images/pages/test/icon-glasses-white.svg");
+  background-image: url("../public/images/pages/test/icon-glasses-white.svg");
 }
 .next-steps-section .box-step.s-3 {
   background-color: #8240b5;
 }
 .next-steps-section .box-step.s-3 .icon {
-  background-image: url("../images/pages/test/icon-map-white.svg");
+  background-image: url("../public/images/pages/test/icon-map-white.svg");
 }
 .next-steps-section .box-step.s-4 {
   background-color: #fc3293;
 }
 .next-steps-section .box-step.s-4 .icon {
-  background-image: url("../images/pages/test/icon-bag-white.svg");
+  background-image: url("../public/images/pages/test/icon-bag-white.svg");
 }
 .next-steps-section .box-step.s-5 {
   background-color: #3c3c3b;
 }
 .next-steps-section .box-step.s-5 .icon {
-  background-image: url("../images/pages/test/icon-share-white.svg");
+  background-image: url("../public/images/pages/test/icon-share-white.svg");
 }
 
 @media screen and (min-width: 1600px) {
@@ -32717,13 +32717,13 @@ input[type=number] {
 #basic-test-page-v2 .questions-section .box-progress .box-icons .icon.icon-1 {
   margin-left: 30px;
   margin-right: auto;
-  background-image: url("../images/pages/test/icon-eye.svg");
+  background-image: url("../public/images/pages/test/icon-eye.svg");
 }
 #basic-test-page-v2 .questions-section .box-progress .box-icons .icon.icon-2 {
   margin-left: auto;
   margin-right: 30px;
   width: 58px;
-  background-image: url("../images/pages/test/icon-glasses-v2.svg");
+  background-image: url("../public/images/pages/test/icon-glasses-v2.svg");
 }
 #basic-test-page-v2 .questions-section .box-progress .progress {
   background-color: #eff4f4;
@@ -32760,31 +32760,31 @@ input[type=number] {
   background-size: contain;
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-1 {
-  background-image: url("../images/pages/test/test-icon-1.svg");
+  background-image: url("../public/images/pages/test/test-icon-1.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-2 {
-  background-image: url("../images/pages/test/test-icon-2.svg");
+  background-image: url("../public/images/pages/test/test-icon-2.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-3 {
-  background-image: url("../images/pages/test/test-icon-3.svg");
+  background-image: url("../public/images/pages/test/test-icon-3.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-4 {
-  background-image: url("../images/pages/test/test-icon-4.svg");
+  background-image: url("../public/images/pages/test/test-icon-4.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-5 {
-  background-image: url("../images/pages/test/test-icon-5.svg");
+  background-image: url("../public/images/pages/test/test-icon-5.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-6 {
-  background-image: url("../images/pages/test/test-icon-6.svg");
+  background-image: url("../public/images/pages/test/test-icon-6.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-7 {
-  background-image: url("../images/pages/test/test-icon-7.svg");
+  background-image: url("../public/images/pages/test/test-icon-7.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-8 {
-  background-image: url("../images/pages/test/test-icon-8.svg");
+  background-image: url("../public/images/pages/test/test-icon-8.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .box-step-icon.ic-9 {
-  background-image: url("../images/pages/test/test-icon-9.svg");
+  background-image: url("../public/images/pages/test/test-icon-9.svg");
 }
 #basic-test-page-v2 .questions-section .box-content .question {
   color: #000000;
@@ -33515,7 +33515,7 @@ input[type=number] {
   height: 570px;
   background-position: right center;
   background-repeat: no-repeat;
-  background-image: url("../images/pages/get-glasses/bg-glasses-1.jpg");
+  background-image: url("../public/images/pages/get-glasses/bg-glasses-1.jpg");
   background-size: contain;
 }
 #order-glasses-page .step-5 .box-forms {
@@ -33811,7 +33811,7 @@ input[type=number] {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url("../images/pages/test/icon-glasses.svg");
+  background-image: url("../public/images/pages/test/icon-glasses.svg");
 }
 @media screen and (max-width: 575px) {
   #get-glasses-page .box-plan-selected .col-price .box {
@@ -33881,7 +33881,7 @@ input[type=number] {
   height: 501px;
   background-position: center top;
   background-repeat: no-repeat;
-  background-image: url("../images/pages/test/head-1.png");
+  background-image: url("../public/images/pages/test/head-1.png");
 }
 #get-glasses-page .box-head-s2 {
   position: absolute;
@@ -33891,7 +33891,7 @@ input[type=number] {
   height: 501px;
   background-position: center top;
   background-repeat: no-repeat;
-  background-image: url("../images/pages/test/head-2.png");
+  background-image: url("../public/images/pages/test/head-2.png");
 }
 #get-glasses-page .box-head-s3 {
   position: absolute;
@@ -33901,7 +33901,7 @@ input[type=number] {
   height: 551px;
   background-position: center top;
   background-repeat: no-repeat;
-  background-image: url("../images/pages/test/head-3.png");
+  background-image: url("../public/images/pages/test/head-3.png");
 }
 #get-glasses-page .first-section {
   position: relative;
@@ -34828,7 +34828,7 @@ input[type=number] {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url("../images/shared/chevron-down-gray.svg");
+  background-image: url("../public/images/shared/chevron-down-gray.svg");
   z-index: 1;
 }
 #products-results-page .products-section .col-filters .box-f-categories .card .box-subs .card-body {
@@ -35257,7 +35257,7 @@ input[type=number] {
     background-position: right 7% center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("../images/pages/home/h-glasses-3.jpg");
+    background-image: url("../public/images/pages/home/h-glasses-3.jpg");
   }
   #about-us-page-v2 .main-section .box-form .col-info .box-image .glasses {
     display: none;
