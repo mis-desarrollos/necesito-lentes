@@ -1,8 +1,8 @@
 <!-- Glyphicons -->
-<link rel="stylesheet" type="text/css" href="{{ asset('public/extras/css/ga.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('extras/css/ga.css') }}">
 
 <!-- css webpack -->
-<link rel="stylesheet" type="text/css" href="{{ asset('public/css/admin.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/admin.css') }}">
 
 <!-- /* Solo para el dashboard */ -->
 <link rel="stylesheet" type="text/css" href="{{ asset('extras/css/neon-core.css') }}">
