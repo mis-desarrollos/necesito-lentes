@@ -128,6 +128,14 @@ Route::prefix('admin')->group(function () {
 		Route::post('/materials/{id}', [App\Http\Controllers\MaterialController::class, 'update']);
 		Route::delete('/materials/{id}', [App\Http\Controllers\MaterialController::class, 'destroy']);
 		Route::delete('/materials', [App\Http\Controllers\MaterialController::class, 'destroyMultiple']);
+		
+		// Antireflectives
+        Route::get('/antireflectives', [App\Http\Controllers\AntireflectiveController::class, 'index']);
+		Route::get('/antireflectives/{id}', [App\Http\Controllers\AntireflectiveController::class, 'show']);
+		Route::post('/antireflectives', [App\Http\Controllers\AntireflectiveController::class, 'store']);
+		Route::post('/antireflectives/{id}', [App\Http\Controllers\AntireflectiveController::class, 'update']);
+		Route::delete('/antireflectives/{id}', [App\Http\Controllers\AntireflectiveController::class, 'destroy']);
+		Route::delete('/antireflectives', [App\Http\Controllers\AntireflectiveController::class, 'destroyMultiple']);
 
 		//paquetes
         Route::get('/packages', [App\Http\Controllers\PackageController::class, 'index']);

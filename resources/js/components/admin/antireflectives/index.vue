@@ -6,10 +6,10 @@
         </ol>
         <h2 class="margin-bottom">Antirreflejantes</h2>
 
-        <!-- <div class="row">
+        <div class="row">
             <div class="col-md-12">
                 <div id="toolbar">
-                    <router-link to="/materials/edit">
+                    <router-link to="/antireflectives/edit">
                         <button class="btn btn-success btn-sm">
                             <i class="fa fa-plus"></i> Nuevo
                         </button>
@@ -42,7 +42,7 @@
                     </ul>
                 </nav>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 <script type="text/javascript">
@@ -94,7 +94,7 @@ export default {
             });
 
             jQuery('#table').on('click-row.bs.table', (row, data) => {
-                this.$router.push('/materials/edit/' + data.id);
+                this.$router.push('/antireflectives/edit/' + data.id);
             });
 
             this.getContent();
@@ -105,7 +105,7 @@ export default {
             this.$parent.inPetition = true;
             let params = {}
             params.page = Number(page)
-            axios.get(tools.url("/api/admin/materials"), { params }).then((response) => {
+            axios.get(tools.url("/api/admin/antireflectives"), { params }).then((response) => {
                 this.rows = response.data.data;
                 console.log('response.data', response.data)
                 this.pagination = {
@@ -135,7 +135,7 @@ export default {
                     return row.id;
                 });
 
-                axios.delete(tools.url('/api/admin/materials'), { data: params })
+                axios.delete(tools.url('/api/admin/antireflectives'), { data: params })
                     .then((response) => {
                         this.$parent.showMessage(response.data.msg, "success");
                         this.getContent();

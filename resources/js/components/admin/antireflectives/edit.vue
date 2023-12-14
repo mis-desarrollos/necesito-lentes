@@ -9,7 +9,7 @@
 						<i class="fa fa-cubes"></i> Antireflejantes
 					</div>
 					<div class="panel-options">
-						<a @click="$router.push('/materials/')"><i class="fas fa-times"></i></a>
+						<a @click="$router.push('/antireflectives/')"><i class="fas fa-times"></i></a>
 					</div>
 				</div>
 
@@ -18,13 +18,16 @@
 
 						<input-form name="name" text="Nombre" :data.sync="row.name"></input-form>
 
-                        <text-form name="description" text="Descripcion" :data.sync="row.description"></text-form>
-						
+						<text-form name="description" text="Descripcion" :data.sync="row.description"></text-form>
+
 						<div class="form-group">
 							<div class="col-sm-12">
-								<button type="button" class="btn btn-danger" @click="deleteRow" v-show="$route.params.id"><i class="fa fa-trash"></i> Borrar</button>
-								<button type="submit" class="btn btn-success pull-right"><i class="far fa-save"></i> Guardar</button>
-								<button type="button" class="btn btn-default pull-right" @click="$router.push('/materials/')">Cancelar</button>
+								<button type="button" class="btn btn-danger" @click="deleteRow" v-show="$route.params.id"><i
+										class="fa fa-trash"></i> Borrar</button>
+								<button type="submit" class="btn btn-success pull-right"><i class="far fa-save"></i>
+									Guardar</button>
+								<button type="button" class="btn btn-default pull-right"
+									@click="$router.push('/antireflectives/')">Cancelar</button>
 							</div>
 						</div>
 
@@ -36,87 +39,87 @@
 	</div>
 </template>
 <script type="text/javascript">
-	export default {
-		data(){
-			return {
-				row:{
-					name: ''
-				},
-				
-				id: '',
-				check:false,
-			}
+export default {
+	data() {
+		return {
+			row: {
+				name: ''
+			},
+
+			id: '',
+			check: false,
+		}
+	},
+	methods: {
+
+		getRow() {
+			this.$parent.inPetition = true;
+			axios.get(tools.url("/api/admin/antireflectives/" + this.id)).then((response) => {
+
+				this.row = response.data;
+				this.$parent.inPetition = false;
+
+			}).catch((error) => {
+				this.$parent.handleErrors(error);
+				this.$parent.inPetition = false;
+			});
 		},
-		methods:{
 
-			getRow(){
-				this.$parent.inPetition=true;
-				axios.get(tools.url("/api/admin/materials/"+this.id)).then((response)=>{
-
-			    	this.row = response.data;
-					this.$parent.inPetition=false;
-					
-			    }).catch((error)=>{
-			    	this.$parent.handleErrors(error);
-			       this.$parent.inPetition=false;
-			    });
-			},
-
-			newRow(form){
-				this.$parent.inPetition=true;
-				this.$parent.validateAll(()=>{
-					var data=tools.params(form, this.row);
-					if(this.$route.params.id){
-						axios.post(tools.url("/api/admin/materials/"+this.id),data)
-						.then((response)=>{
-					    	this.getRow();
-					    	this.$parent.showMessage("Registro modificado correctamente!","success");
-					    	this.$parent.inPetition=false;
-					    }).catch((error)=>{
-					    	this.$parent.handleErrors(error);
-					        this.$parent.inPetition=false;
-					    });
-					}
-					else{
-						axios.post(tools.url("/api/admin/materials"),data).then((response)=>{
-							var temp = response.data;
-					    	this.$parent.showMessage("Registro agregado correctamente!","success");
-					    	this.$router.push('/materials');
-					    	this.$parent.inPetition=false;
-					    }).catch((error)=>{
-					    	this.$parent.handleErrors(error);
-					        this.$parent.inPetition=false;
-					    });
-					}
-				},(e)=>{
-					console.log(e);
-					this.$parent.inPetition=false;
-				});
-			},
-
-			deleteRow:function(){
-				alertify.confirm("Alerta!","¿Seguro que deseas borrar?",()=>{
-					this.$parent.inPetition=true;
-					axios.delete(tools.url("/api/admin/materials/"+this.id))
-					.then((response)=>{
-						this.$parent.showMessage(response.data.msg,"success");
-						this.$router.push("/materials/");
-						this.$parent.inPetition=false;
-					})
-					.catch((error)=>{
+		newRow(form) {
+			this.$parent.inPetition = true;
+			this.$parent.validateAll(() => {
+				var data = tools.params(form, this.row);
+				if (this.$route.params.id) {
+					axios.post(tools.url("/api/admin/antireflectives/" + this.id), data)
+						.then((response) => {
+							this.getRow();
+							this.$parent.showMessage("Registro modificado correctamente!", "success");
+							this.$parent.inPetition = false;
+						}).catch((error) => {
+							this.$parent.handleErrors(error);
+							this.$parent.inPetition = false;
+						});
+				}
+				else {
+					axios.post(tools.url("/api/admin/antireflectives"), data).then((response) => {
+						var temp = response.data;
+						this.$parent.showMessage("Registro agregado correctamente!", "success");
+						this.$router.push('/antireflectives');
+						this.$parent.inPetition = false;
+					}).catch((error) => {
 						this.$parent.handleErrors(error);
-				        this.$parent.inPetition=false;
+						this.$parent.inPetition = false;
 					});
-				},
-				()=>{
-				});
-			},
+				}
+			}, (e) => {
+				console.log(e);
+				this.$parent.inPetition = false;
+			});
 		},
-		mounted(){
-			if(this.$route.params.id){
-				this.id=this.$route.params.id;
-				this.getRow();
-			}
+
+		deleteRow: function () {
+			alertify.confirm("Alerta!", "¿Seguro que deseas borrar?", () => {
+				this.$parent.inPetition = true;
+				axios.delete(tools.url("/api/admin/antireflectives/" + this.id))
+					.then((response) => {
+						this.$parent.showMessage(response.data.msg, "success");
+						this.$router.push("/antireflectives/");
+						this.$parent.inPetition = false;
+					})
+					.catch((error) => {
+						this.$parent.handleErrors(error);
+						this.$parent.inPetition = false;
+					});
+			},
+				() => {
+				});
+		},
+	},
+	mounted() {
+		if (this.$route.params.id) {
+			this.id = this.$route.params.id;
+			this.getRow();
 		}
 	}
+}
 </script>
