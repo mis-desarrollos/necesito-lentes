@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class AntireflectiveDataCollection extends ResourceCollection
 {
+    public $collects = AntireflectiveResource::class;
     /**
      * Transform the resource collection into an array.
      *

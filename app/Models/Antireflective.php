@@ -10,4 +10,8 @@ class Antireflective extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'user_id'];
+
+    public function package() {
+        return $this->morphToMany(Package::class, 'packageable', 'packageables');
+    }
 }

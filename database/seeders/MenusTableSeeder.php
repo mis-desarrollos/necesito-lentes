@@ -55,19 +55,19 @@ class MenusTableSeeder extends Seeder
             "name" => "Antirreflejantes",
             "description" => "Antirreflejantes de tu sitio",
             "route" => "/antireflectives",
-            "icon" => "fa fa-cubes",
+            "icon" => "fas fa-circle-notch",
             "permissions_name" => "antireflectives",
             "position" => 5,
         ]);
 
-        DB::table('menus')->insert([
-            "name" => "Recubrimientos",
-            "description" => "Recubrimientos de tu sitio",
-            "route" => "/coverings",
-            "icon" => "fas fa-circle-notch",
-            "permissions_name" => "coverings",
-            "position" => 6
-        ]);
+        // DB::table('menus')->insert([
+        //     "name" => "Recubrimientos",
+        //     "description" => "Recubrimientos de tu sitio",
+        //     "route" => "/coverings",
+        //     "icon" => "fas fa-circle-notch",
+        //     "permissions_name" => "coverings",
+        //     "position" => 6
+        // ]);
 
         DB::table('menus')->insert([
             "name" => "Paquetes",

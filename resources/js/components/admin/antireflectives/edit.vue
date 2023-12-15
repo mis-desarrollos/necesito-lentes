@@ -1,7 +1,6 @@
 <template>
 	<div class="row">
 		<div class="col-md-offset-1 col-md-10">
-
 			<div class="panel panel-primary" data-collapsed="0">
 
 				<div class="panel-heading">
@@ -21,6 +20,13 @@
 						<text-form name="description" text="Descripcion" :data.sync="row.description"></text-form>
 
 						<div class="form-group">
+							<label class="col-sm-3 control-label">Package:</label>
+							<div class="col-sm-7">
+								<v-select v-model="row.package" :options="packages" label="name" index="id" required />
+							</div>
+						</div>
+
+						<div class="form-group">
 							<div class="col-sm-12">
 								<button type="button" class="btn btn-danger" @click="deleteRow" v-show="$route.params.id"><i
 										class="fa fa-trash"></i> Borrar</button>
@@ -35,7 +41,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </template>
 <script type="text/javascript">
@@ -43,11 +48,13 @@ export default {
 	data() {
 		return {
 			row: {
-				name: ''
+				name: '',
+				package: undefined
 			},
 
 			id: '',
 			check: false,
+			packages: []
 		}
 	},
 	methods: {
@@ -55,8 +62,9 @@ export default {
 		getRow() {
 			this.$parent.inPetition = true;
 			axios.get(tools.url("/api/admin/antireflectives/" + this.id)).then((response) => {
-
 				this.row = response.data;
+				console.log("🚀 ~ file: edit.vue:66 ~ axios.get ~ response.data:", response.data)
+				this.row.package = response.data.package?.id
 				this.$parent.inPetition = false;
 
 			}).catch((error) => {
@@ -114,12 +122,23 @@ export default {
 				() => {
 				});
 		},
+
+		getPackages() {
+			axios.get(tools.url("/api/admin/packages")).then((response) => {
+				this.packages = response.data;
+				this.$parent.inPetition = false;
+			}).catch((error) => {
+				this.$parent.handleErrors(error);
+				this.$parent.inPetition = false;
+			});
+		},
 	},
 	mounted() {
 		if (this.$route.params.id) {
 			this.id = this.$route.params.id;
 			this.getRow();
 		}
+		this.getPackages()
 	}
 }
 </script>

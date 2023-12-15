@@ -26,6 +26,7 @@ class CreateAntireflectiveRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'description' => ['required', 'string'],
+            'package' => ['required', 'integer']
         ];
     }
 }

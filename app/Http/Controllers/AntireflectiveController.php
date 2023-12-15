@@ -9,6 +9,7 @@ use App\Http\Resources\Antireflective\AntireflectiveResource;
 use App\Models\Antireflective;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AntireflectiveController extends Controller
 {
@@ -41,9 +42,8 @@ class AntireflectiveController extends Controller
         try {
             $data = $request->all();
             $data['user_id'] = auth()->user()->id;
-            $nAntireflective = Antireflective::create($data);
-            $package = Package::first();
-            $package->antireflectives()->attach($package);
+            $package = Package::find($request->package);
+            $nAntireflective = $package->antireflectives()->create($data);
             return response(new AntireflectiveResource($nAntireflective));
         } catch (\Throwable $th) {
             // Log::error($th);
@@ -63,6 +63,7 @@ class AntireflectiveController extends Controller
     {
         try {
             $row = Antireflective::findOrFail($id);
+            Log::debug('sdas', [$row->package]);
             return response(new AntireflectiveResource($row));
         } catch (\Throwable $th) {
             // Log::error($th);
@@ -82,11 +83,12 @@ class AntireflectiveController extends Controller
     public function update(UpdateAntireflectiveRequest $request, $id)
     {
         try {
-            $row = Antireflective::find($id);
-            $row->name = $request->name;
-            $row->description = $request->description;
-            $row->save();
-            return response(new AntireflectiveResource($row));
+            $antireflective = Antireflective::find($id);
+            $antireflective->name = $request->name;
+            $antireflective->description = $request->description;
+            $antireflective->package()->sync($request->package);
+            $antireflective->save();
+            return response(new AntireflectiveResource($antireflective));
         } catch (\Throwable $th) {
             // Log::error($th);
             return response([

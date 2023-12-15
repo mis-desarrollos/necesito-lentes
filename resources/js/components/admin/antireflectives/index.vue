@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div id="toolbar">
+                <div id="antireflective_toolbar">
                     <router-link to="/antireflectives/edit">
                         <button class="btn btn-success btn-sm">
                             <i class="fa fa-plus"></i> Nuevo
@@ -18,8 +18,8 @@
                         <i class="fa fa-trash"></i> Borrar
                     </button>
                 </div>
-                <table id="table" data-pagination-parts="[]"></table>
-                <nav aria-label="pagination" style="width: 100%; text-align: center;">
+                <table id="antireflective_table" data-pagination-parts="[]" data-detail-view="true" data-detail-view-by-click="true"></table>
+                <nav id="antireflective_table_pagination" aria-label="pagination" style="width: 100%; text-align: center;">
                     <ul class="pagination">
                         <li class="page-item">
                             <a class="page-link" @click="getContent(pagination.current_page - 1)"
@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         mounthTable() {
-            jQuery('#table').bootstrapTable({
+            jQuery('#antireflective_table').bootstrapTable({
                 columns: [
                     {
                         field: "check",
@@ -85,15 +85,22 @@ export default {
                         sortable: true,
                         switchable: true,
                     },
+                    {
+                        field: 'package',
+                        title: 'Package',
+                        sortable: true,
+                        switchable: true,
+                        formatter: this.pacakgeName                        
+                    },
                 ],
                 showRefresh: true,
             });
 
-            jQuery('#table').on('refresh.bs.table', () => {
+            jQuery('#antireflective_table').on('refresh.bs.table', () => {
                 this.getContent();
             });
 
-            jQuery('#table').on('click-row.bs.table', (row, data) => {
+            jQuery('#antireflective_table').on('click-row.bs.table', (row, data) => {
                 this.$router.push('/antireflectives/edit/' + data.id);
             });
 
@@ -114,8 +121,8 @@ export default {
                     existsNextPage: response.data.links.next && true,
                     existsPrevPage: response.data.links.prev && true,
                 }
-                jQuery('#table').bootstrapTable('removeAll');
-                jQuery('#table').bootstrapTable('append', this.rows);
+                jQuery('#antireflective_table').bootstrapTable('removeAll');
+                jQuery('#antireflective_table').bootstrapTable('append', this.rows);
                 this.$parent.inPetition = false;
             }).catch((error) => {
                 this.$parent.handleErrors(error);
@@ -124,7 +131,7 @@ export default {
         },
 
         deleteRows: function () {
-            var rows = jQuery('#table').bootstrapTable('getSelections');
+            var rows = jQuery('#antireflective_table').bootstrapTable('getSelections');
             if (rows.length == 0) {
                 return false;
             }
@@ -148,6 +155,11 @@ export default {
             },
                 () => {
                 });
+        },
+
+        pacakgeName(index, row) {
+            console.log("🚀 ~ file: index.vue:161 ~ pacakgeName ~ row:", row)
+            return row.package?.name
         }
     },
     mounted() {
