@@ -7,6 +7,7 @@ use App\Http\Requests\Antireflective\UpdateAntireflectiveRequest;
 use App\Http\Resources\Antireflective\AntireflectiveDataCollection;
 use App\Http\Resources\Antireflective\AntireflectiveResource;
 use App\Models\Antireflective;
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class AntireflectiveController extends Controller
@@ -41,6 +42,8 @@ class AntireflectiveController extends Controller
             $data = $request->all();
             $data['user_id'] = auth()->user()->id;
             $nAntireflective = Antireflective::create($data);
+            $package = Package::first();
+            $package->antireflectives()->attach($package);
             return response(new AntireflectiveResource($nAntireflective));
         } catch (\Throwable $th) {
             // Log::error($th);
