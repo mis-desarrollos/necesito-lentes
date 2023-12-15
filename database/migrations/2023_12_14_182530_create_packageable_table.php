@@ -21,14 +21,6 @@ class CreatePackageableTable extends Migration
 
             $table->foreign('package_id')->references('id')->on('packages');
         });
-
-        Schema::table('packages', function (Blueprint $table) {
-            $table->unsignedInteger('level')->after('description')->default(1);
-        });
-
-        Schema::table('antireflectives', function (Blueprint $table) {
-            $table->string('color')->after('description')->nullable();
-        });
     }
 
     /**
@@ -39,23 +31,5 @@ class CreatePackageableTable extends Migration
     public function down()
     {
         Schema::dropIfExists('packageables');
-
-        Schema::table('packages', function (Blueprint $table) {
-            $table->dropColumn('level');
-        });
-
-        Schema::table('frames', function (Blueprint $table) {
-            $table->dropColumn('image');
-
-            $table->unsignedBigInteger('materials_id')->nullable();;
-            $table->unsignedBigInteger('packages_id')->nullable();;
-
-            $table->foreign('materials_id')->references('id')->on('materials');
-            $table->foreign('packages_id')->references('id')->on('packages');
-        });
-
-        Schema::table('antireflectives', function (Blueprint $table) {
-            $table->dropColumn('color');
-        });
     }
 }
