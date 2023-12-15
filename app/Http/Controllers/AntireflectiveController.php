@@ -41,7 +41,7 @@ class AntireflectiveController extends Controller
     {
         try {
             $data = $request->all();
-            $data['user_id'] = auth()->user()->id;
+            // $data['user_id'] = auth()->user()->id;
             $package = Package::find($request->package);
             $nAntireflective = $package->antireflectives()->create($data);
             return response(new AntireflectiveResource($nAntireflective));
@@ -84,10 +84,8 @@ class AntireflectiveController extends Controller
     {
         try {
             $antireflective = Antireflective::find($id);
-            $antireflective->name = $request->name;
-            $antireflective->description = $request->description;
+            $antireflective->update($request->all());
             $antireflective->package()->sync($request->package);
-            $antireflective->save();
             return response(new AntireflectiveResource($antireflective));
         } catch (\Throwable $th) {
             // Log::error($th);

@@ -63,7 +63,6 @@ export default {
 			this.$parent.inPetition = true;
 			axios.get(tools.url("/api/admin/antireflectives/" + this.id)).then((response) => {
 				this.row = response.data;
-				console.log("🚀 ~ file: edit.vue:66 ~ axios.get ~ response.data:", response.data)
 				this.row.package = response.data.package?.id
 				this.$parent.inPetition = false;
 

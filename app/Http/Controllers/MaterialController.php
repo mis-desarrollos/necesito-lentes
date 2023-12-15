@@ -7,11 +7,20 @@ use App\Http\Requests\Material\UpdateMaterialRequest;
 use App\Http\Resources\Material\MaterialDataCollection;
 use App\Http\Resources\Material\MaterialResource;
 use App\Models\Material;
+use App\Models\Package;
+use App\Services\Material\MaterialService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\JsonResponse;
 
 class MaterialController extends Controller
 {
+    const MATERIAL_NOT_FOUND_MSG = 'Material not found';
+
+    public function __construct(
+        protected MaterialService $materialService
+    ) {
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,11 +31,8 @@ class MaterialController extends Controller
         try {
             $data = Material::paginate();
             return new MaterialDataCollection($data);
-        } catch (\Throwable $th) {
-            // Log::error($th);
-            return response([
-                'message' => $th->getMessage()
-            ], 500);
+        } catch (\Throwable $e) {
+            return $this->handleErrorResponse($e, 'Error loading materials');
         }
     }
 
@@ -39,13 +45,12 @@ class MaterialController extends Controller
     public function store(StoreMaterialRequest $request)
     {
         try {
-            $nMaterial = Material::create($request->all());
-            return response(new MaterialResource($nMaterial));
-        } catch (\Throwable $th) {
-            // Log::error($th);
-            return response([
-                'message' => $th->getMessage()
-            ], 500);
+            $validatedData = $request->validated();
+            $package = Package::findOrFail($request->package);
+            $nMaterial = $package->materials()->create($validatedData);
+            return $this->handleSuccessResponse($nMaterial);
+        } catch (\Throwable $e) {
+            return $this->handleErrorResponse($e, 'Error creating material');
         }
     }
 
@@ -55,16 +60,12 @@ class MaterialController extends Controller
      * @param  \App\Categoria  $row
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Material $id)
     {
         try {
-            $row = Material::findOrFail($id);
-            return response(new MaterialResource($row));
-        } catch (\Throwable $th) {
-            // Log::error($th);
-            return response([
-                'message' => $th->getMessage()
-            ], 500);
+            return $this->handleSuccessResponse($id);
+        } catch (\Throwable $e) {
+            return $this->handleErrorResponse($e, 'Error finding material');
         }
     }
 
@@ -79,16 +80,13 @@ class MaterialController extends Controller
     public function update(UpdateMaterialRequest $request, $id)
     {
         try {
-            $row = Material::find($id);
-            $row->name = $request->name;
-            $row->description = $request->description;
-            $row->save();
-            return response(new MaterialResource($row));
+            $validatedData = $request->validated();
+            $material = Material::findOrFail($id);
+            $material->update($validatedData);
+            $material->package()->sync($request->package);
+            return $this->handleSuccessResponse($material);
         } catch (\Throwable $th) {
-            // Log::error($th);
-            return response([
-                'message' => $th->getMessage()
-            ], 500);
+            return $this->handleErrorResponse($th, 'Error updating material');
         }
     }
 
@@ -100,27 +98,25 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
-        if($this->_delete($id)){
-            return response()->json(['msg'=>'Registro con ID '.$id.' eliminado.']);
-        }
-        else{
-            return response()->json(['msg'=>'Ocurrio un error al eliminar.'],500);
+        if ($this->_delete($id)) {
+            return response()->json(['msg' => 'Registro con ID ' . $id . ' eliminado.']);
+        } else {
+            return response()->json(['msg' => 'Ocurrio un error al eliminar.'], 500);
         }
     }
 
     public function destroyMultiple(Request $request)
     {
         foreach ($request->ids as $key => $value) {
-            $status=$this->_delete($value);
-            if(!$status)
+            $status = $this->_delete($value);
+            if (!$status)
                 break;
         }
 
         if ($status) {
-            return response()->json(['msg'=>'Registros eliminados.']);
-        }
-        else{
-            return response()->json(['msg'=>'Ocurrio un error al eliminar.'],500);
+            return response()->json(['msg' => 'Registros eliminados.']);
+        } else {
+            return response()->json(['msg' => 'Ocurrio un error al eliminar.'], 500);
         }
     }
 
@@ -130,9 +126,22 @@ class MaterialController extends Controller
 
         if ($temp->delete()) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
+    }
+
+    protected function handleSuccessResponse($material)
+    {
+        $material->load('package');
+        return new MaterialResource($material);
+    }
+
+    protected function handleErrorResponse($e, $message)
+    {
+        Log::error("{$message}: {$e}");
+        return response()->json(
+            ['message' => "{$message}: {$e->getMessage()}"], JsonResponse::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 }

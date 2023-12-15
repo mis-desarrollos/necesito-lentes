@@ -18,6 +18,7 @@ class MaterialResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'package' => $this->package()->first(),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
