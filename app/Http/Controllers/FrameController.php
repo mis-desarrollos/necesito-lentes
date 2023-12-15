@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Frame\FrameRequest;
 use App\Http\Resources\Frame\FrameResource;
 use App\Services\Frame\FrameService;
+use App\Services\Image\ImageHandler;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class FrameController extends Controller
     const FRAME_NOT_FOUND_MSG = 'Frame not found';
 
     public function __construct(
-        protected FrameService $frameService
+        protected FrameService $frameService,
+        protected ImageHandler $imageHandler
     ) {
     }
     public function index(): AnonymousResourceCollection|JsonResponse
@@ -36,9 +38,7 @@ class FrameController extends Controller
             $validatedData = $request->validated();
             $frame = $this->frameService->createFrame($validatedData);
             $images = $request->file('images');
-            if ($images) {
-                $this->frameService->saveImagesForFrame($frame, $images);
-            }
+            $this->imageHandler->handleImages($frame, $images);
             return $this->handleSuccessResponse($frame);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
