@@ -26,15 +26,6 @@ class FrameService
         return $this->frameRepository->create($frameData);
     }
 
-    public function saveImagesForFrame(Frame $frame, array $images)
-    {
-        foreach ($images as $image) {
-            $path = $image->store('images/frames', 'public');
-            $imageModel = $this->imageRepository->save(['path' => $path]);
-            $frame->images()->save($imageModel);
-        }
-    }
-
     public function deleteImagesForFrame(Frame $frame)
     {
         $frame->images()->get()->each(function ($image) {
