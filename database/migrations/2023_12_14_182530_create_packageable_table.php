@@ -12,7 +12,7 @@ class CreatePackageableTable extends Migration
      * @return void
      */
     public function up()
-    {        
+    {
         Schema::create('packageables', function (Blueprint $table) {
             $table->id();
             $table->morphs('packageable');
@@ -21,15 +21,9 @@ class CreatePackageableTable extends Migration
 
             $table->foreign('package_id')->references('id')->on('packages');
         });
-        
+
         Schema::table('packages', function (Blueprint $table) {
             $table->unsignedInteger('level')->after('description')->default(1);
-        });
-        
-        Schema::table('frames', function (Blueprint $table) {
-            $table->string('image')->after('description')->nullable();
-            $table->dropConstrainedForeignId('materials_id');
-            $table->dropConstrainedForeignId('packages_id');
         });
 
         Schema::table('antireflectives', function (Blueprint $table) {
@@ -49,10 +43,10 @@ class CreatePackageableTable extends Migration
         Schema::table('packages', function (Blueprint $table) {
             $table->dropColumn('level');
         });
-        
+
         Schema::table('frames', function (Blueprint $table) {
             $table->dropColumn('image');
-            
+
             $table->unsignedBigInteger('materials_id')->nullable();;
             $table->unsignedBigInteger('packages_id')->nullable();;
 

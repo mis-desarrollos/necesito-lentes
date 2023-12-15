@@ -158,16 +158,8 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/packages/{id}', [App\Http\Controllers\PackageController::class, 'destroy']);
 		Route::delete('/packages', [App\Http\Controllers\PackageController::class, 'destroyMultiple']);
 
-		//armazones
-       /* Route::get('/frames', [App\Http\Controllers\FrameController::class, 'index']);
-		Route::get('/frames/{id}', [App\Http\Controllers\FrameController::class, 'show']);
-		Route::post('/frames', [App\Http\Controllers\FrameController::class, 'store']);
-		Route::post('/frames/{id}', [App\Http\Controllers\FrameController::class, 'update']);
-		Route::delete('/frames/{id}', [App\Http\Controllers\FrameController::class, 'destroy']);
-		Route::delete('/frames', [App\Http\Controllers\FrameController::class, 'destroyMultiple']);
-
-		Route::post('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'uploadImage']);
-        Route::delete('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'deleteImage']);*/
+		/* Route::post('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'uploadImage']);
+    	Route::delete('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'deleteImage']); */
 
 		//opticas
         Route::get('/opticians', [App\Http\Controllers\OpticianController::class, 'index']);

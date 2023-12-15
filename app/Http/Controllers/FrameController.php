@@ -2,143 +2,148 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Frame;
-use App\Models\FrameImage;
+use App\Http\Requests\Frame\FrameRequest;
+use App\Http\Resources\Frame\FrameResource;
+use App\Services\Frame\FrameService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Images;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\Log;
+
 class FrameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    const FRAME_NOT_FOUND_MSG = 'Frame not found';
+
+    public function __construct(
+        protected FrameService $frameService
+    ) {
+    }
+    public function index(): AnonymousResourceCollection|JsonResponse
     {
-        $row = Frame::all();
-        foreach ($row as $key => $value) {
-            $images = FrameImage::where('frames_id',$value->id)->first();
+        try {
+            $frames = $this->frameService->getAllFramesPaginated();
+            $frames->load('images');
+            return FrameResource::collection($frames);
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error loading frames');
+        }
+    }
+
+    public function store(FrameRequest $request)
+    {
+        try {
+            $validatedData = $request->validated();
+            $frame = $this->frameService->createFrame($validatedData);
+            $images = $request->file('images');
             if ($images) {
-                $value->image = Images::getImg($images->images_id);
+                $this->frameService->saveImagesForFrame($frame, $images);
             }
-        }
-        return $row; 
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $row = new Frame();
-        $row->name = $request->name;
-        $row->description = $request->description;
-        $row->materials_id = $request->materials_id;
-        $row->packages_id = $request->packages_id;
-        $row->save();
-
-        return $row;
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Categoria  $row
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $row = Frame::find($id);
-        $images = FrameImage::where('frames_id',$id)->get();
-        foreach ($images as $key => $value) {
-            $value->url = Images::getUrl($value->images_id);
-        }
-        $row->images = $images;
-        return $row;
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Categoria  $row
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $row = Frame::find($id);
-        $row->name = $request->name;
-        $row->description = $request->description;
-        $row->materials_id = $request->materials_id;
-        $row->packages_id = $request->packages_id;
-        $row->save();
-
-        return $row;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Categoria  $row
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        if($this->_delete($id)){
-            return response()->json(['msg'=>'Registro con ID '.$id.' eliminado.']);
-        }
-        else{
-            return response()->json(['msg'=>'Ocurrio un error al eliminar.'],500);
+            return $this->handleSuccessResponse($frame);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error creating frame');
         }
     }
 
-    public function destroyMultiple(Request $request)
-    {
-        foreach ($request->ids as $key => $value) {
-            $status=$this->_delete($value);
-            if(!$status)
-                break;
-        }
+    public function show(
+        $id
+    ): FrameResource|JsonResponse {
+        try {
+            $frame = $this->frameService->getFrameById($id);
+            if (!$frame) {
+                throw new ModelNotFoundException(self::FRAME_NOT_FOUND_MSG);
+            }
 
-        if ($status) {
-            return response()->json(['msg'=>'Registros eliminados.']);
-        }
-        else{
-            return response()->json(['msg'=>'Ocurrio un error al eliminar.'],500);
+            return $this->handleSuccessResponse($frame);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error finding frame');
         }
     }
 
-    private function _delete($id)
+    // Laravel PATCH and PUT method does not work with form-data
+    public function update(FrameRequest $request, $id)
     {
-        $temp = Frame::find($id);
+        try {
+            $validatedData = $request->validated();
+            $frame = $this->frameService->getFrameById($id);
 
-        if ($temp->delete()) {
-            return true;
-        }
-        else{
-            return false;
+            if (!$frame) {
+                throw new ModelNotFoundException(self::FRAME_NOT_FOUND_MSG);
+            }
+
+            $this->frameService->updateFrame($frame, $validatedData);
+
+            return $this->handleSuccessResponse($frame);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error updating frame');
         }
     }
 
-    public function uploadImage(Request $request, $id)
-    {
-        if($request->has('file'))
-        {
-            $imagep = new FrameImage();
-            $imagep->frames_id = $id;
-            $imagep->images_id = Images::save($request->file('file'));
-            $imagep->save();
-        }
+    public function destroy(
+        $id
+    ): JsonResponse {
+        try {
+            $frame = $this->frameService->deleteFrame($id);
 
-        return response()->json('Imagen cargada!');
+            if (!$frame) {
+                throw new ModelNotFoundException(self::FRAME_NOT_FOUND_MSG);
+            }
+
+            $this->frameService->deleteImagesForFrame($frame);
+
+            return response()->json(['message' => 'Frame deleted successfully'], JsonResponse::HTTP_OK);
+        } catch (ModelNotFoundException $e) {
+            // return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
+            return $this->handleErrorResponse($e, 'Error Destroying frame');
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error Destroying frame');
+        }
     }
-    public function deleteImage($id)
+
+    public function destroyMultiple(Request $request): JsonResponse
     {
-        FrameImage::where('id', $id)->delete();
-        return response()->json(array("msg" => 'Imagen eliminada'));
+        try {
+            $ids = $request->input('ids');
+            $frames = $this->frameService->getFrameByIds($ids);
+
+            if (!$frames) {
+                throw new ModelNotFoundException(self::FRAME_NOT_FOUND_MSG);
+            }
+
+            $this->frameService->deleteImagesAssociatedWithFrames($frames);
+            $deleted = $this->frameService->deleteMultipleFrames($frames);
+
+            if (!$deleted) {
+                throw new ModelNotFoundException(self::FRAME_NOT_FOUND_MSG);
+            }
+
+            return response()->json(
+                ['message' => 'Frames and associated images deleted successfully'], JsonResponse::HTTP_OK
+            );
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error destroyMultiple frames');
+        }
+    }
+
+    protected function handleSuccessResponse($frame)
+    {
+        $frame->load('images');
+        return new FrameResource($frame);
+    }
+
+    protected function handleErrorResponse($e, $message)
+    {
+        Log::error("{$message}: {$e}");
+        return response()->json(
+            ['message' => "{$message}: {$e->getMessage()}"], JsonResponse::HTTP_INTERNAL_SERVER_ERROR
+        );
     }
 }

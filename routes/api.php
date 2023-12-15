@@ -20,5 +20,11 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $user;
 });
 
+//armazones
+Route::prefix('frames')->group(function () {
+    Route::delete('/multiple', [App\Http\Controllers\FrameController::class, 'destroyMultiple']);
+});
+Route::resource('frames', App\Http\Controllers\FrameController::class);
+
 
 Route::post('/newsletter', [App\Http\Controllers\NewsletterController::class, 'store']);

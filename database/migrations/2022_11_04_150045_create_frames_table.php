@@ -17,17 +17,9 @@ class CreateFramesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->longText('description')->nullable();
-
-            $table->unsignedBigInteger('materials_id')->nullable();;
-            $table->unsignedBigInteger('packages_id')->nullable();;
-         
-
-            $table->foreign('materials_id')->references('id')->on('materials');
-            $table->foreign('packages_id')->references('id')->on('packages');
-   
-
-
             $table->timestamps();
+            // $table->unsignedBigInteger('materials_id')->nullable();
+            // $table->foreign('materials_id')->references('id')->on('materials');
         });
     }
 
