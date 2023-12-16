@@ -9,6 +9,7 @@ use App\Http\Resources\Material\MaterialResource;
 use App\Models\Material;
 use App\Models\Package;
 use App\Services\Material\MaterialService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\JsonResponse;
@@ -29,7 +30,7 @@ class MaterialController extends Controller
     public function index(Request $request)
     {
         try {
-            $data = Material::paginate();
+            $data = $this->materialService->getAllMaterialsPaginated();
             return new MaterialDataCollection($data);
         } catch (\Throwable $e) {
             return $this->handleErrorResponse($e, 'Error loading materials');
@@ -46,9 +47,10 @@ class MaterialController extends Controller
     {
         try {
             $validatedData = $request->validated();
-            $package = Package::findOrFail($request->package);
-            $nMaterial = $package->materials()->create($validatedData);
-            return $this->handleSuccessResponse($nMaterial);
+            $material = $this->materialService->createMaterial($validatedData);
+            return $this->handleSuccessResponse($material);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
         } catch (\Throwable $e) {
             return $this->handleErrorResponse($e, 'Error creating material');
         }
@@ -60,10 +62,16 @@ class MaterialController extends Controller
      * @param  \App\Categoria  $row
      * @return \Illuminate\Http\Response
      */
-    public function show(Material $id)
+    public function show($id)
     {
         try {
-            return $this->handleSuccessResponse($id);
+            $material = $this->materialService->getMaterialById($id);
+            if (!$material) {
+                throw new ModelNotFoundException(self::MATERIAL_NOT_FOUND_MSG);
+            }
+            return $this->handleSuccessResponse($material);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
         } catch (\Throwable $e) {
             return $this->handleErrorResponse($e, 'Error finding material');
         }
@@ -81,10 +89,19 @@ class MaterialController extends Controller
     {
         try {
             $validatedData = $request->validated();
-            $material = Material::findOrFail($id);
-            $material->update($validatedData);
-            $material->package()->sync($request->package);
+            $material = $this->materialService->getMaterialById($id);
+
+            if (!$material) {
+                throw new ModelNotFoundException(self::MATERIAL_NOT_FOUND_MSG);
+            }
+
+            $this->materialService->updateMaterial($material, $validatedData);
+
             return $this->handleSuccessResponse($material);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
         } catch (\Throwable $th) {
             return $this->handleErrorResponse($th, 'Error updating material');
         }
@@ -98,25 +115,40 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->_delete($id)) {
-            return response()->json(['msg' => 'Registro con ID ' . $id . ' eliminado.']);
-        } else {
-            return response()->json(['msg' => 'Ocurrio un error al eliminar.'], 500);
+        try {
+            $frame = $this->materialService->deleteMaterial($id);
+            if (!$frame) {
+                throw new ModelNotFoundException(self::MATERIAL_NOT_FOUND_MSG);
+            }
+            return response()->json(['message' => 'Material deleted successfully'], JsonResponse::HTTP_OK);
+        } catch (ModelNotFoundException $e) {
+            return $this->handleErrorResponse($e, 'Error Destroying material');
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error Destroying material');
         }
     }
 
     public function destroyMultiple(Request $request)
     {
-        foreach ($request->ids as $key => $value) {
-            $status = $this->_delete($value);
-            if (!$status)
-                break;
-        }
+        try {
+            $ids = $request->input('ids');
+            $materials = $this->materialService->getMaterialByIds($ids);
 
-        if ($status) {
-            return response()->json(['msg' => 'Registros eliminados.']);
-        } else {
-            return response()->json(['msg' => 'Ocurrio un error al eliminar.'], 500);
+            if (!$materials) {
+                throw new ModelNotFoundException(self::MATERIAL_NOT_FOUND_MSG);
+            }
+            $deleted = $this->materialService->deleteMultipleMaterials($materials);
+            if (!$deleted) {
+                throw new ModelNotFoundException(self::MATERIAL_NOT_FOUND_MSG);
+            }
+            return response()->json(
+                ['message' => 'Frames and associated images deleted successfully'],
+                JsonResponse::HTTP_OK
+            );
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error destroyMultiple frames');
         }
     }
 
@@ -141,7 +173,8 @@ class MaterialController extends Controller
     {
         Log::error("{$message}: {$e}");
         return response()->json(
-            ['message' => "{$message}: {$e->getMessage()}"], JsonResponse::HTTP_INTERNAL_SERVER_ERROR
+            ['message' => "{$message}: {$e->getMessage()}"],
+            JsonResponse::HTTP_INTERNAL_SERVER_ERROR
         );
     }
 }
