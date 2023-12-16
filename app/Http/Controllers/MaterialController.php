@@ -6,8 +6,6 @@ use App\Http\Requests\Material\StoreMaterialRequest;
 use App\Http\Requests\Material\UpdateMaterialRequest;
 use App\Http\Resources\Material\MaterialDataCollection;
 use App\Http\Resources\Material\MaterialResource;
-use App\Models\Material;
-use App\Models\Package;
 use App\Services\Material\MaterialService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -149,17 +147,6 @@ class MaterialController extends Controller
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
         } catch (\Exception $e) {
             return $this->handleErrorResponse($e, 'Error destroyMultiple frames');
-        }
-    }
-
-    private function _delete($id)
-    {
-        $temp = Material::find($id);
-
-        if ($temp->delete()) {
-            return true;
-        } else {
-            return false;
         }
     }
 

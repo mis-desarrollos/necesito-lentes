@@ -21,7 +21,9 @@ class AntireflectiveService
 
     public function createAntireflective(array $antireflectiveData)
     {
-        return $this->antireflectiveRepository->create($antireflectiveData);
+        $antireflective = $this->antireflectiveRepository->create($antireflectiveData);
+        $antireflective->package()->sync($antireflectiveData['package']);
+        return $antireflective;
     }
 
     public function deleteImagesForAntireflective(Antireflective $antireflective)
@@ -42,6 +44,7 @@ class AntireflectiveService
     public function updateAntireflective($antireflective, $validatedData)
     {
         $antireflective->update($validatedData);
+        $antireflective->package()->sync($validatedData['package']);
         return $antireflective;
     }
 
