@@ -6,8 +6,6 @@ use App\Http\Requests\Antireflective\CreateAntireflectiveRequest;
 use App\Http\Requests\Antireflective\UpdateAntireflectiveRequest;
 use App\Http\Resources\Antireflective\AntireflectiveDataCollection;
 use App\Http\Resources\Antireflective\AntireflectiveResource;
-use App\Models\Antireflective;
-use App\Models\Package;
 use App\Services\Antireflective\AntireflectiveService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -47,8 +45,8 @@ class AntireflectiveController extends Controller
     {
         try {
             $validatedData = $request->validated();
-            $material = $this->antireflectiveService->createAntireflective($validatedData);
-            return $this->handleSuccessResponse($material);
+            $antireflective = $this->antireflectiveService->createAntireflective($validatedData);
+            return $this->handleSuccessResponse($antireflective);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
         } catch (\Throwable $e) {
@@ -65,11 +63,11 @@ class AntireflectiveController extends Controller
     public function show($id)
     {
         try {
-            $material = $this->antireflectiveService->getAntireflectiveById($id);
-            if (!$material) {
+            $antireflective = $this->antireflectiveService->getAntireflectiveById($id);
+            if (!$antireflective) {
                 throw new ModelNotFoundException(self::NOT_FOUND_MSG);
             }
-            return $this->handleSuccessResponse($material);
+            return $this->handleSuccessResponse($antireflective);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
         } catch (\Throwable $e) {
@@ -88,15 +86,15 @@ class AntireflectiveController extends Controller
     {
         try {
             $validatedData = $request->validated();
-            $material = $this->antireflectiveService->getAntireflectiveById($id);
+            $antireflective = $this->antireflectiveService->getAntireflectiveById($id);
 
-            if (!$material) {
+            if (!$antireflective) {
                 throw new ModelNotFoundException(self::NOT_FOUND_MSG);
             }
 
-            $this->antireflectiveService->updateAntireflective($material, $validatedData);
+            $this->antireflectiveService->updateAntireflective($antireflective, $validatedData);
 
-            return $this->handleSuccessResponse($material);
+            return $this->handleSuccessResponse($antireflective);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
         } catch (ModelNotFoundException $e) {
@@ -114,46 +112,47 @@ class AntireflectiveController extends Controller
      */
     public function destroy($id)
     {
-        if($this->_delete($id)){
-            return response()->json(['msg'=>'Registro con ID '.$id.' eliminado.']);
-        }
-        else{
-            return response()->json(['msg'=>'Ocurrio un error al eliminar.'],500);
+        try {
+            $frame = $this->antireflectiveService->deleteAntireflective($id);
+            if (!$frame) {
+                throw new ModelNotFoundException(self::NOT_FOUND_MSG);
+            }
+            return response()->json(['message' => 'Antireflective deleted successfully'], JsonResponse::HTTP_OK);
+        } catch (ModelNotFoundException $e) {
+            return $this->handleErrorResponse($e, 'Error Destroying antireflective');
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error Destroying antireflective');
         }
     }
 
     public function destroyMultiple(Request $request)
     {
-        foreach ($request->ids as $key => $value) {
-            $status=$this->_delete($value);
-            if(!$status)
-                break;
-        }
+        try {
+            $ids = $request->input('ids');
+            $antireflectives = $this->antireflectiveService->getAntireflectiveByIds($ids);
 
-        if ($status) {
-            return response()->json(['msg'=>'Registros eliminados.']);
-        }
-        else{
-            return response()->json(['msg'=>'Ocurrio un error al eliminar.'],500);
+            if (!$antireflectives) {
+                throw new ModelNotFoundException(self::NOT_FOUND_MSG);
+            }
+            $deleted = $this->antireflectiveService->deleteMultipleAntireflectives($antireflectives);
+            if (!$deleted) {
+                throw new ModelNotFoundException(self::NOT_FOUND_MSG);
+            }
+            return response()->json(
+                ['message' => 'Frames and associated images deleted successfully'],
+                JsonResponse::HTTP_OK
+            );
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error at destroyMultiple antireflectives');
         }
     }
 
-    private function _delete($id)
+    protected function handleSuccessResponse($antireflective)
     {
-        $temp = Antireflective::find($id);
-
-        if ($temp->delete()) {
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    protected function handleSuccessResponse($material)
-    {
-        $material->load('package');
-        return new AntireflectiveResource($material);
+        $antireflective->load('package');
+        return response(new AntireflectiveResource($antireflective));
     }
 
     protected function handleErrorResponse($e, $message)

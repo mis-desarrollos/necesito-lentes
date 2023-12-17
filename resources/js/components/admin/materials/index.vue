@@ -85,6 +85,13 @@ export default {
                         sortable: true,
                         switchable: true,
                     },
+                    {
+                        field: 'package',
+                        title: 'Package',
+                        sortable: true,
+                        switchable: true,
+                        formatter: this.pacakgeName                        
+                    },
                 ],
                 showRefresh: true,
             });
@@ -148,6 +155,10 @@ export default {
             },
                 () => {
                 });
+        },
+
+        pacakgeName(index, row) {
+            return row.package?.name
         }
     },
     mounted() {

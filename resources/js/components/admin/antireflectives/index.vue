@@ -158,7 +158,6 @@ export default {
         },
 
         pacakgeName(index, row) {
-            console.log("🚀 ~ file: index.vue:161 ~ pacakgeName ~ row:", row)
             return row.package?.name
         }
     },

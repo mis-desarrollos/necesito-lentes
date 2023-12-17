@@ -140,20 +140,20 @@ class MaterialController extends Controller
                 throw new ModelNotFoundException(self::MATERIAL_NOT_FOUND_MSG);
             }
             return response()->json(
-                ['message' => 'Frames and associated images deleted successfully'],
+                ['message' => 'Antireflectives deleted successfully'],
                 JsonResponse::HTTP_OK
             );
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
         } catch (\Exception $e) {
-            return $this->handleErrorResponse($e, 'Error destroyMultiple frames');
+            return $this->handleErrorResponse($e, 'Error at destroyMultiple materials ');
         }
     }
 
     protected function handleSuccessResponse($material)
     {
         $material->load('package');
-        return new MaterialResource($material);
+        return response(new MaterialResource($material));
     }
 
     protected function handleErrorResponse($e, $message)
