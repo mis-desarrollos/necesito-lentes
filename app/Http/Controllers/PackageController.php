@@ -2,40 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Package\PackageRequest;
+use App\Http\Resources\Package\PackageResource;
+use App\Models\Frame;
 use App\Models\Package;
+use App\Services\Package\PackageService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class PackageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $row = Package::all();
-        foreach ($row as $key => $value) {
-            $value->price = '$ '.number_format($value->price,2);
-        }
-        return $row; 
+    public function __construct(
+        protected PackageService $packageService,
+    ) {
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function index(): AnonymousResourceCollection|JsonResponse
     {
-        $row = new Package();
-        $row->name = $request->name;
-        $row->price = $request->price;
-        $row->description = $request->description;
-        $row->save();
+        try {
+            $packages = $this->packageService->getAllPackagesPaginated();
+            return PackageResource::collection($packages);
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error loading packages');
+        }
+    }
+    
+    public function store(PackageRequest $request)
+    {
+        try {
+            $validatedData = $request->validated();
+            $package = $this->packageService->createPackage($validatedData);
+            $this->packageService->saveFrames($package, $validatedData['frames']);
+            $this->packageService->saveAntireflectives($package, $validatedData['frames']);
+            $this->packageService->saveMaterials($package, $validatedData['frames']);
+            return new PackageResource($package);
 
-        return $row;
+        } catch (\Exception $e) {
+            return response()->json(
+                ['message' => 'Error creating package: ' . $e->getMessage()], JsonResponse::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
     }
 
     /**

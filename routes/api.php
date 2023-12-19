@@ -44,5 +44,10 @@ Route::prefix('antireflectives')->group(function () {
 });
 Route::resource('antireflectives', App\Http\Controllers\AntireflectiveController::class);
 
+// packages
+Route::prefix('packages')->group(function () {
+    Route::delete('/multiple', [App\Http\Controllers\PackageController::class, 'destroyMultiple']);
+});
+Route::resource('packages', App\Http\Controllers\PackageController::class);
 
 Route::post('/newsletter', [App\Http\Controllers\NewsletterController::class, 'store']);

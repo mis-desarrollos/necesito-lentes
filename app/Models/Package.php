@@ -9,16 +9,23 @@ class Package extends Model
 {
     use HasFactory;
 
-    public function antireflectives() {
+    protected $fillable = [
+        "name", "price", "description", "level"
+    ];
+
+    public function antireflectives()
+    {
         return $this->morphedByMany(Antireflective::class, 'packageable');
     }
-    
+
     // Micas
-    public function materials() {
+    public function materials()
+    {
         return $this->morphedByMany(Material::class, 'packageable');
     }
-    
-    public function frames() {
+
+    public function frames()
+    {
         return $this->morphedByMany(Frame::class, 'packageable');
     }
 }

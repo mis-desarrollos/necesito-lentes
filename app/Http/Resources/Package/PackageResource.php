@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Resources\Frame;
+namespace App\Http\Resources\Package;
 
+use App\Http\Resources\Frame\FrameResource;
 use App\Http\Resources\Image\ImageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class FrameResource extends JsonResource
+class PackageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,12 +19,9 @@ class FrameResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $this->description,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'images' => $this->whenLoaded('images', function () {
-                return ImageResource::collection($this->images);
-            }),
+            'antireflectives' => $this->antireflectives,
+            'materials' => $this->materials,
+            'frames' => FrameResource::collection($this->frames)
         ];
     }
 }

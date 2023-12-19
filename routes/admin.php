@@ -150,13 +150,7 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/coverings', [App\Http\Controllers\CoveringController::class, 'destroyMultiple']);
 
 
-		//paquetes
-        Route::get('/packages', [App\Http\Controllers\PackageController::class, 'index']);
-		Route::get('/packages/{id}', [App\Http\Controllers\PackageController::class, 'show']);
-		Route::post('/packages', [App\Http\Controllers\PackageController::class, 'store']);
-		Route::post('/packages/{id}', [App\Http\Controllers\PackageController::class, 'update']);
-		Route::delete('/packages/{id}', [App\Http\Controllers\PackageController::class, 'destroy']);
-		Route::delete('/packages', [App\Http\Controllers\PackageController::class, 'destroyMultiple']);
+		
 
 		/* Route::post('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'uploadImage']);
     	Route::delete('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'deleteImage']); */
