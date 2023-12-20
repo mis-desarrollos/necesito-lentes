@@ -10,7 +10,7 @@ class Package extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name", "price", "description", "level"
+        "name", "price", "description", "level", "color"
     ];
 
     public function antireflectives()
