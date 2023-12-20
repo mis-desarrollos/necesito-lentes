@@ -125,12 +125,20 @@ export default {
       this.setArmazon();
       this.checkStatus();
     },
+    
+    '$parent.step'(val, oldVal) {
+      if (val === 2) {
+        console.log("🚀 ~ file: step-2.vue:131 ~ val:", val)
+        this.checkStatus()
+      }
+    },
   },
 
   mounted() {
     this.setMaterial();
     this.setRecubrimiento();
     this.setArmazon();
+    this.checkStatus();
   },
 }
 </script>

@@ -26,50 +26,6 @@
             </div>
           </swiper-slide>
 
-          <!-- <swiper-slide>
-            <div class="box-package bg-pink" v-bind:class="{ active: $parent.form.plan == 2 }"
-              @click="$parent.form.plan = 2">
-              <div class="box-name">
-                <h6>Paquete Pro</h6>
-              </div>
-
-              <div class="box-info">
-                <h6 class="mb-2 title-1">Incluye</h6>
-
-                <ul>
-                  <li>Micas y antirreflejantes amplios y especializados.</li>
-                  <li>Armazones Pro.</li>
-                </ul>
-              </div>
-
-              <div class="box-price">
-                <h6>$1,600</h6>
-              </div>
-            </div>
-          </swiper-slide>
-
-          <swiper-slide>
-            <div class="box-package bg-purple" v-bind:class="{ active: $parent.form.plan == 3 }"
-              @click="$parent.form.plan = 3">
-              <div class="box-name">
-                <h6>Paquete Ultra</h6>
-              </div>
-
-              <div class="box-info">
-                <h6 class="mb-2 title-1">Incluye</h6>
-
-                <ul>
-                  <li>Micas y antirreflejantes amplios y especializados.</li>
-                  <li>Armazones Ultra.</li>
-                </ul>
-              </div>
-
-              <div class="box-price">
-                <h6>$1,900</h6>
-              </div>
-            </div>
-          </swiper-slide> -->
-
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
@@ -133,6 +89,7 @@ export default {
     },
 
     handleSelectPackage(pkg) {
+      this.$parent.packageSelected = pkg
       this.$parent.form.plan = pkg.id
       this.$parent.armazones = pkg.frames
       this.$parent.recubrimientos = pkg.antireflectives

@@ -98,7 +98,9 @@ export default {
         recubrimiento: null,
         tienda: {},
         paymentType: 'tarjeta',
-      }
+      },
+      
+      packageSelected: null
     }
   },
 
@@ -108,6 +110,6 @@ export default {
       // window.scrollTo(0,0);
       // console.log('onSubmit');
     }
-  }
+  },
 }
 </script>

@@ -19,23 +19,23 @@
 
               <div class="info">
                 <div class="block">
-                  <h5 class="title">Schopenhauer</h5>
+                  <h5 class="title">{{ armazon.name }}</h5>
                   <div class="descr">
-                    Pasta color negro
+                    {{ armazon.description }}
                   </div>
                 </div>
 
                 <div class="block">
                   <h5 class="title">Micas</h5>
                   <div class="descr">
-                    Trivex
+                    {{ recubrimiento.name }}
                   </div>
                 </div>
 
                 <div class="block">
                   <h5 class="title">Antirreflejante</h5>
                   <div class="descr">
-                    Matiz E
+                    {{ material.name }}
                   </div>
                 </div>
 
@@ -50,14 +50,16 @@
           </div>
 
           <div class="box-totals">
-            <h5><span class="txt">Subtotal:</span> <span class="f-w-600 f-f-kanit">$1,900.00</span></h5>
+            <h5><span class="txt">Subtotal:</span> <span class="f-w-600 f-f-kanit">${{ $parent.packageSelected.price }}</span></h5>
           </div>
         </div>
       </div>
 
       <div class="box-bottom-navs nav-multi-btns">
-        <button type="button" name="button" class="btn _btn btn-s2 outline-gray btn-sm" @click="$parent.step = 2">Anterior</button>
-        <button type="button" name="button" class="btn _btn btn-s2 bg-purple btn-sm" @click="$parent.step = 4">Finalizar compra</button>
+        <button type="button" name="button" class="btn _btn btn-s2 outline-gray btn-sm"
+          @click="$parent.step = 2">Anterior</button>
+        <button type="button" name="button" class="btn _btn btn-s2 bg-purple btn-sm" @click="$parent.step = 4">Finalizar
+          compra</button>
       </div>
     </div>
   </section>
@@ -65,5 +67,38 @@
 
 <script>
 export default {
+  data() {
+    return {
+      showNextBTN: false,
+
+      material: {},
+      recubrimiento: {},
+      armazon: {},
+    }
+  },
+  methods: {
+    setMaterial() {
+      this.material = this.$parent.materiales.find(x => x.id == this.$parent.form.material);
+    },
+
+    setRecubrimiento() {
+      this.recubrimiento = this.$parent.recubrimientos.find(x => x.id == this.$parent.form.recubrimiento);
+    },
+
+    setArmazon() {
+      this.armazon = this.$parent.armazones.find(x => x.id == this.$parent.form.armazon);
+    },
+
+    checkStatus() {
+      if (this.material && this.recubrimiento && this.armazon) {
+        this.showNextBTN = true;
+      }
+    },
+  },
+  mounted() {
+    this.setArmazon()
+    this.setMaterial()
+    this.setRecubrimiento()
+  }
 }
 </script>
