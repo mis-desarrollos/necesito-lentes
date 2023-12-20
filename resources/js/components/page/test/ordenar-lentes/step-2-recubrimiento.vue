@@ -10,7 +10,7 @@
       <b-form-radio :value="m.id" :class="m.color" v-for="(m, mInx) in opts" :key="'mInx-'+mInx">
         <div class="txt">
           <strong>{{ m.name }}</strong>
-          <span>{{ m.shortDescr }}</span>
+          <span>{{ m.description }}</span>
         </div>
       </b-form-radio>
     </b-form-radio-group>
