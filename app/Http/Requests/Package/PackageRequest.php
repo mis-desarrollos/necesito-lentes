@@ -27,9 +27,9 @@ class PackageRequest extends FormRequest
             'name' => 'required',
             'price' => 'required|numeric',
             'level' => 'required',
-            'antireflectives' => 'required|array',
-            'materials' => 'required|array',
-            'frames' => 'required|array',
+            'antireflectives' => 'required_without_all:materials,frames|array',
+            'materials' => 'required_without_all:antireflectives,frames|array',
+            'frames' => 'required_without_all:antireflectives,materials|array',
         ];
     }
 }

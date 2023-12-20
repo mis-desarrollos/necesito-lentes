@@ -19,6 +19,8 @@ class PackageResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'price' => $this->price,
+            'description' => $this->description,
             'antireflectives' => $this->antireflectives,
             'materials' => $this->materials,
             'frames' => FrameResource::collection($this->frames)
