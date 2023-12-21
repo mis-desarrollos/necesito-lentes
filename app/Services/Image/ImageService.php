@@ -4,6 +4,7 @@ namespace App\Services\Image;
 
 use App\Repositories\Image\ImageRepository;
 use App\Strategies\Image\ImageStorageStrategy;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -46,6 +47,23 @@ class ImageService
             // Log the error message.
             Log::error('Error saving images: ' . $e->getMessage());
 
+            throw $e; // Re-throw the exception for handling at a higher level.
+        }
+    }
+
+    public function deleteImagesForModel($model, Collection $images)
+    {
+        try {
+            logger($images);
+            foreach ($images as $image) {
+                // Delete from storage
+                $this->imageStorageStrategy->deleteImage($image->path);
+                // Detach and delete
+                $model->images()->detach($image);
+                $image->delete();
+            }
+        } catch (\Exception $e) {
+            Log::error('Error deleting images: ' . $e->getMessage());
             throw $e; // Re-throw the exception for handling at a higher level.
         }
     }

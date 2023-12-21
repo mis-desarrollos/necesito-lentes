@@ -68,7 +68,6 @@ var app = new Vue({
         },
 
         handleLogin(){
-            console.log(tools.url('/api/login'));
             axios.post(tools.url('/api/login'), this.login).then((response)=>{
                 this.login.password = '';
                 this.getUser();

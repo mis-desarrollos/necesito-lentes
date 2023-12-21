@@ -20,15 +20,12 @@ class PermsSeeder extends Seeder
         Permission::create(['name' => 'configuration']);
         Permission::create(['name' => 'users']);
         Permission::create(['name' => 'orders']);
-        /*Permission::create(['name' => 'products']);
-        Permission::create(['name' => 'categories']);
-        Permission::create(['name' => 'subcategories']);
-        Permission::create(['name' => 'customers']);*/
         Permission::create(['name' => 'customers']);
         Permission::create(['name' => 'blogs']);
         Permission::create(['name' => 'banners']);
         Permission::create(['name' => 'materials']);
         Permission::create(['name' => 'packages']);
+        Permission::create(['name' => 'frames']);
         Permission::create(['name' => 'products']);
         Permission::create(['name' => 'opticians']);
         Permission::create(['name' => 'antireflectives']);
@@ -40,15 +37,12 @@ class PermsSeeder extends Seeder
         $admins->givePermissionTo('configuration');
         $admins->givePermissionTo('users');
         $admins->givePermissionTo('orders');
-        /*$admins->givePermissionTo('products');
-        $admins->givePermissionTo('categories');
-        $admins->givePermissionTo('subcategories');
-        $admins->givePermissionTo('customers');*/
         $admins->givePermissionTo('customers');
         $admins->givePermissionTo('blogs');
         $admins->givePermissionTo('banners');
         $admins->givePermissionTo('materials');
         $admins->givePermissionTo('packages');
+        $admins->givePermissionTo('frames');
         $admins->givePermissionTo('products');
         $admins->givePermissionTo('opticians');
         $admins->givePermissionTo('antireflectives');

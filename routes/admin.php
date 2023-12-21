@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
 
 	//todas las rutas de este grupo requieren session iniciada
-	Route::middleware(["auth:sanctum"])->group(function(){
+	Route::middleware(["auth:sanctum"])->group(function () {
 
 		//ruta para cuando se refresque la pagina
 		Route::get('/user', function (Request $request) {
@@ -29,7 +29,7 @@ Route::prefix('admin')->group(function () {
 		//ciudades y estados
 		Route::get('/states', [App\Http\Controllers\StateController::class, 'index']);
 		Route::get('/towns/{state_id}', [App\Http\Controllers\TownController::class, 'index']);
-		
+
 		//menu
 		Route::get('/menu', [App\Http\Controllers\MenusController::class, 'index']);
 
@@ -40,7 +40,7 @@ Route::prefix('admin')->group(function () {
 		Route::post('/user/{id}', [App\Http\Controllers\UserController::class, 'update']);
 		Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
 		Route::delete('/users', [App\Http\Controllers\UserController::class, 'destroyMultiple']);
-        Route::post('/profile', [App\Http\Controllers\UserController::class, 'profile']);
+		Route::post('/profile', [App\Http\Controllers\UserController::class, 'profile']);
 
 		//Edicion de roles
 		Route::get('/permissions', [App\Http\Controllers\RolesController::class, 'permissions']);
@@ -68,7 +68,7 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/customers/{id}', [App\Http\Controllers\CustomerController::class, 'destroy']);
 		Route::delete('/customers', [App\Http\Controllers\CustomerController::class, 'destroyMultiple']);
 		Route::get('/customersOpcs', [App\Http\Controllers\CustomerController::class, 'indexOpcs']);
-		
+
 		//pedidos
 		Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index']);
 		Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class, 'show']);
@@ -85,7 +85,7 @@ Route::prefix('admin')->group(function () {
 		//importar
 		Route::post('/importProducts', [App\Http\Controllers\ProductController::class, 'import']);
 		Route::post('/dropzone/productsImage/{id}', [App\Http\Controllers\ProductController::class, 'uploadImage']);
-        Route::delete('/dropzone/productsImage/{id}', [App\Http\Controllers\ProductController::class, 'deleteImage']);
+		Route::delete('/dropzone/productsImage/{id}', [App\Http\Controllers\ProductController::class, 'deleteImage']);
 
 		//categorias
 		Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
@@ -116,8 +116,8 @@ Route::prefix('admin')->group(function () {
 		Route::get('/states', [App\Http\Controllers\StateController::class, 'index']);
 		Route::get('/towns/{state_id}', [App\Http\Controllers\TownController::class, 'index']);
 
-        //banners
-        Route::get('/banners', [App\Http\Controllers\BannersController::class, 'index']);
+		//banners
+		Route::get('/banners', [App\Http\Controllers\BannersController::class, 'index']);
 		Route::get('/banners/{id}', [App\Http\Controllers\BannersController::class, 'show']);
 		Route::post('/banners', [App\Http\Controllers\BannersController::class, 'store']);
 		Route::post('/banners/{id}', [App\Http\Controllers\BannersController::class, 'update']);
@@ -126,15 +126,15 @@ Route::prefix('admin')->group(function () {
 
 
 		//materiales
-        Route::get('/materials', [App\Http\Controllers\MaterialController::class, 'index']);
+		Route::get('/materials', [App\Http\Controllers\MaterialController::class, 'index']);
 		Route::get('/materials/{id}', [App\Http\Controllers\MaterialController::class, 'show']);
 		Route::post('/materials', [App\Http\Controllers\MaterialController::class, 'store']);
 		Route::post('/materials/{id}', [App\Http\Controllers\MaterialController::class, 'update']);
 		Route::delete('/materials/{id}', [App\Http\Controllers\MaterialController::class, 'destroy']);
 		Route::delete('/materials', [App\Http\Controllers\MaterialController::class, 'destroyMultiple']);
-		
+
 		// Antireflectives
-        Route::get('/antireflectives', [App\Http\Controllers\AntireflectiveController::class, 'index']);
+		Route::get('/antireflectives', [App\Http\Controllers\AntireflectiveController::class, 'index']);
 		Route::get('/antireflectives/{id}', [App\Http\Controllers\AntireflectiveController::class, 'show']);
 		Route::post('/antireflectives', [App\Http\Controllers\AntireflectiveController::class, 'store']);
 		Route::post('/antireflectives/{id}', [App\Http\Controllers\AntireflectiveController::class, 'update']);
@@ -142,21 +142,18 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/antireflectives', [App\Http\Controllers\AntireflectiveController::class, 'destroyMultiple']);
 
 		//recubrimientos
-        Route::get('/coverings', [App\Http\Controllers\CoveringController::class, 'index']);
+		Route::get('/coverings', [App\Http\Controllers\CoveringController::class, 'index']);
 		Route::get('/coverings/{id}', [App\Http\Controllers\CoveringController::class, 'show']);
 		Route::post('/coverings', [App\Http\Controllers\CoveringController::class, 'store']);
 		Route::post('/coverings/{id}', [App\Http\Controllers\CoveringController::class, 'update']);
 		Route::delete('/coverings/{id}', [App\Http\Controllers\CoveringController::class, 'destroy']);
 		Route::delete('/coverings', [App\Http\Controllers\CoveringController::class, 'destroyMultiple']);
 
-
-		
-
-		/* Route::post('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'uploadImage']);
-    	Route::delete('/dropzone/framesImage/{id}', [App\Http\Controllers\FrameController::class, 'deleteImage']); */
+		Route::post('/dropzone/framesImage/{frame}', [App\Http\Controllers\FrameController::class, 'uploadImage']);
+		Route::delete('/dropzone/framesImage/{frame}/image/{image}', [App\Http\Controllers\FrameController::class, 'deleteImage']);
 
 		//opticas
-        Route::get('/opticians', [App\Http\Controllers\OpticianController::class, 'index']);
+		Route::get('/opticians', [App\Http\Controllers\OpticianController::class, 'index']);
 		Route::get('/opticians/{id}', [App\Http\Controllers\OpticianController::class, 'show']);
 		Route::post('/opticians', [App\Http\Controllers\OpticianController::class, 'store']);
 		Route::post('/opticians/{id}', [App\Http\Controllers\OpticianController::class, 'update']);
@@ -164,7 +161,7 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/opticians', [App\Http\Controllers\OpticianController::class, 'destroyMultiple']);
 
 		//examenes
-        Route::get('/exams', [App\Http\Controllers\ExamController::class, 'index']);
+		Route::get('/exams', [App\Http\Controllers\ExamController::class, 'index']);
 		Route::get('/exams/{id}', [App\Http\Controllers\ExamController::class, 'show']);
 		Route::post('/exams', [App\Http\Controllers\ExamController::class, 'store']);
 		Route::post('/exams/{id}', [App\Http\Controllers\ExamController::class, 'update']);
@@ -178,11 +175,13 @@ Route::prefix('admin')->group(function () {
 		Route::delete('/newsletters/{id}', [App\Http\Controllers\NewsletterController::class, 'destroy']);
 		Route::delete('/newsletters', [App\Http\Controllers\NewsletterController::class, 'destroyMultiple']);
 		Route::post('/newsletters', [App\Http\Controllers\NewsletterController::class, 'store']);
-		
-	});//sanctum
+	}); //sanctum
 
 	Route::get('/ordersExport', [App\Http\Controllers\OrderController::class, 'exportExcel']);
+
+	//armazones
+	Route::prefix('frames')->group(function () {
+		Route::delete('/multiple', [App\Http\Controllers\FrameController::class, 'destroyMultiple']);
+	});
+	Route::resource('frames', App\Http\Controllers\FrameController::class);
 });
-
-
-

@@ -3,9 +3,11 @@
 namespace App\Services\Frame;
 
 use App\Models\Frame;
+use App\Models\Image;
 use App\Repositories\Frame\FrameRepository;
 use App\Repositories\Image\ImageRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 
 class FrameService
@@ -24,16 +26,6 @@ class FrameService
     public function createFrame(array $frameData)
     {
         return $this->frameRepository->create($frameData);
-    }
-
-    public function deleteImagesForFrame(Frame $frame)
-    {
-        $frame->images()->get()->each(function ($image) {
-            $imagePath = 'public/' . $image->path;
-            Storage::delete($imagePath);
-            $image->delete();
-        });
-        $frame->images()->detach();
     }
 
     public function getFrameById($id)
@@ -57,14 +49,7 @@ class FrameService
         return $this->frameRepository->findByIds($ids);
     }
 
-    public function deleteImagesAssociatedWithFrames(array $frames): void
-    {
-        foreach ($frames as $frame) {
-            $this->deleteImagesForFrame($frame);
-        }
-    }
-
-    public function deleteMultipleFrames(array $frames)
+    public function deleteMultipleFrames(Collection $frames)
     {
         foreach ($frames as $frame) {
             $frame->delete();

@@ -26,13 +26,6 @@ Route::get('/user', function (Request $request) {
     return $user;
 });
 
-//armazones
-Route::prefix('frames')->group(function () {
-    Route::delete('/multiple', [App\Http\Controllers\FrameController::class, 'destroyMultiple']);
-});
-Route::resource('frames', App\Http\Controllers\FrameController::class);
-
-// armazones
 Route::prefix('materials')->group(function () {
     Route::delete('/multiple', [App\Http\Controllers\MaterialController::class, 'destroyMultiple']);
 });

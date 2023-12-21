@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Frame\FrameRequest;
 use App\Http\Resources\Frame\FrameResource;
+use App\Models\Frame;
+use App\Models\Image;
 use App\Services\Frame\FrameService;
 use App\Services\Image\ImageHandler;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -20,6 +22,7 @@ class FrameController extends Controller
         protected FrameService $frameService,
         protected ImageHandler $imageHandler
     ) {
+        $this->middleware('auth:sanctum', ['except' => ['index']]);
     }
     public function index(): AnonymousResourceCollection|JsonResponse
     {
@@ -95,13 +98,12 @@ class FrameController extends Controller
                 throw new ModelNotFoundException(self::FRAME_NOT_FOUND_MSG);
             }
 
-            $this->frameService->deleteImagesForFrame($frame);
+            $this->imageHandler->handleDeleteImages($frame, $frame->images);
 
             return response()->json(['message' => 'Frame deleted successfully'], JsonResponse::HTTP_OK);
         } catch (ModelNotFoundException $e) {
-            // return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
-            return $this->handleErrorResponse($e, 'Error Destroying frame');
-        } catch (\Exception $e) {
+            return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
+            } catch (\Exception $e) {
             return $this->handleErrorResponse($e, 'Error Destroying frame');
         }
     }
@@ -115,21 +117,42 @@ class FrameController extends Controller
             if (!$frames) {
                 throw new ModelNotFoundException(self::FRAME_NOT_FOUND_MSG);
             }
-
-            $this->frameService->deleteImagesAssociatedWithFrames($frames);
-            $deleted = $this->frameService->deleteMultipleFrames($frames);
-
-            if (!$deleted) {
-                throw new ModelNotFoundException(self::FRAME_NOT_FOUND_MSG);
+            foreach ($frames as $frame) {
+                $this->imageHandler->handleDeleteImages($frame, $frame->images);
             }
+            $this->frameService->deleteMultipleFrames($frames);
 
             return response()->json(
-                ['message' => 'Frames and associated images deleted successfully'], JsonResponse::HTTP_OK
+                ['message' => 'Frames and associated images deleted successfully'],
+                JsonResponse::HTTP_OK
             );
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
         } catch (\Exception $e) {
             return $this->handleErrorResponse($e, 'Error destroyMultiple frames');
+        }
+    }
+
+    public function uploadImage(Request $request, Frame $frame)
+    {
+        try {
+            if ($request->has('image')) {
+                $image = $request->file('image');
+                $this->imageHandler->handleImages($frame, [$image]);
+            }
+            return response()->json('Imagen cargada!');
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error subiendo la imagen');
+        }
+    }
+
+    public function deleteImage(Frame $frame, Image $image)
+    {
+        try {
+            $this->imageHandler->handleDeleteImages($frame, collect()->push($image));
+            return response()->json(array("message" => 'Imagen eliminada'));
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error eliminando la imagen');
         }
     }
 
@@ -143,7 +166,8 @@ class FrameController extends Controller
     {
         Log::error("{$message}: {$e}");
         return response()->json(
-            ['message' => "{$message}: {$e->getMessage()}"], JsonResponse::HTTP_INTERNAL_SERVER_ERROR
+            ['message' => "{$message}: {$e->getMessage()}"],
+            JsonResponse::HTTP_INTERNAL_SERVER_ERROR
         );
     }
 }
