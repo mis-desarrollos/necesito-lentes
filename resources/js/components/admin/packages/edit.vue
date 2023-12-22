@@ -20,7 +20,9 @@
 
 						<input-form name="price" text="Precio" :data.sync="row.price"></input-form>
 
-						<input-form name="level" text="Nivel" :data.sync="row.level"></input-form>
+						<input-form type="number" name="level" text="Nivel" :data.sync="row.level"></input-form>
+
+						<input-form type="color" name="color" text="Color" :data.sync="row.color"></input-form>
 
 						<text-form name="description" text="Descripcion" :data.sync="row.description"></text-form>
 
@@ -29,6 +31,20 @@
 							<div class="col-sm-7">
 								<v-select v-model="row.frames" :options="frames" label="name" multiple id="frame-select"
 									index="id" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Micas:</label>
+							<div class="col-sm-7">
+								<v-select v-model="row.materials" :options="materials" label="name" multiple
+									id="frame-select" index="id" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Antireflejantes:</label>
+							<div class="col-sm-7">
+								<v-select v-model="row.antireflectives" :options="antireflectives" label="name" multiple
+									id="frame-select" index="id" />
 							</div>
 						</div>
 
@@ -59,11 +75,15 @@ export default {
 				price: 1000,
 				level: 1,
 				description: 'paquete 1',
-				frames: []
+				frames: [],
+				materials: [],
+				antireflectives: []
 			},
 			id: '',
 			check: false,
 			frames: [],
+			materials: [],
+			antireflectives: []
 		}
 	},
 	methods: {
@@ -72,6 +92,8 @@ export default {
 			axios.get(tools.url("/api/admin/packages/" + this.id)).then((response) => {
 				this.row = response.data?.data;
 				this.row.frames = response.data?.data.frames.map(f => f.id);
+				this.row.materials = response.data?.data.materials.map(f => f.id);
+				this.row.antireflectives = response.data?.data.antireflectives.map(f => f.id);
 				this.$parent.inPetition = false;
 			}).catch((error) => {
 				this.$parent.handleErrors(error);
@@ -81,12 +103,11 @@ export default {
 		newRow(form) {
 			this.$parent.inPetition = true;
 			this.$parent.validateAll(() => {
-				let nRow = {...this.row};
-				console.log(nRow);
+				let nRow = { ...this.row };
 				const data = tools.params(form, nRow);
 				if (this.$route.params.id) {
 					axios.post(tools.url("/api/admin/packages/" + this.id), data)
-						.then((response) => {
+						.then(() => {
 							this.getRow();
 							this.$parent.showMessage("Registro modificado correctamente!", "success");
 							this.$parent.inPetition = false;
@@ -135,12 +156,26 @@ export default {
 			axios.get(tools.url("/api/admin/frames")).then((response) => {
 				this.frames = response.data?.data;
 			}).catch((error) => {
-				
+
+			});
+		},
+		getAntireflectivesOpc() {
+			axios.get(tools.url("/api/admin/antireflectives")).then((response) => {
+				this.antireflectives = response.data?.data;
+			}).catch((error) => {
+			});
+		},
+		getMaterialsOpc() {
+			axios.get(tools.url("/api/admin/materials")).then((response) => {
+				this.materials = response.data?.data;
+			}).catch((error) => {
 			});
 		},
 	},
 	mounted() {
 		this.getFramesOpc();
+		this.getAntireflectivesOpc();
+		this.getMaterialsOpc();
 		if (this.$route.params.id) {
 			this.id = this.$route.params.id;
 			this.getRow();

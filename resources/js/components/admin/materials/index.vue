@@ -114,7 +114,6 @@ export default {
             params.page = Number(page)
             axios.get(tools.url("/api/admin/materials"), { params }).then((response) => {
                 this.rows = response.data.data;
-                console.log('response.data', response.data)
                 this.pagination = {
                     total_pages: response.data.meta?.last_page,
                     current_page: page,

@@ -122,7 +122,8 @@ class PackageController extends Controller
     public function destroyMultiple(Request $request)
     {
         try {
-            $packages = Package::whereIn('id', $request->ids);
+            $packages = Package::whereIn('id', $request->ids)->get();
+            logger($packages);
             foreach ($packages as $package) {
                 $package->packageables()->delete();
                 $package->delete();

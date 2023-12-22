@@ -124,7 +124,7 @@ export default {
 
 		getPackages() {
 			axios.get(tools.url("/api/admin/packages")).then((response) => {
-				this.packages = response.data;
+				this.packages = response.data?.data;
 				this.$parent.inPetition = false;
 			}).catch((error) => {
 				this.$parent.handleErrors(error);

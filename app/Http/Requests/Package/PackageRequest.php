@@ -28,7 +28,7 @@ class PackageRequest extends FormRequest
             'price' => ['required', 'numeric'],
             'description' => ['nullable'],
             'level' => ['required'],
-            'color' => ['nullable', 'string', 'regex:/^#[A-Fa-f0-9]{6}$|^#[A-Fa-f0-9]{3}$/'],
+            'color' => ['required', 'string', 'regex:/^#[A-Fa-f0-9]{6}$|^#[A-Fa-f0-9]{3}$/'],
             'antireflectives' => ['required_without_all:materials,frames', 'array'],
             'materials' => ['required_without_all:antireflectives,frames', 'array'],
             'frames' => ['required_without_all:antireflectives,materials', 'array'],
