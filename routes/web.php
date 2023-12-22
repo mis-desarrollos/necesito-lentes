@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MediaController;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,12 @@ use App\Http\Controllers\MediaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::middleware(['auth:sanctum'])->get('api/user', function (Request $request) {
+    $user = $request->user();
+    $user->roles;
+    return $user;
+});
 
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/admin', [HomeController::class, 'admin']);
