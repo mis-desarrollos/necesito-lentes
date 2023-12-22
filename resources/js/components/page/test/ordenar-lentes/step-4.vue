@@ -33,7 +33,7 @@
       <div class="box-basic-store-info">
         <h5 class="name">{{ selectedMarker.name }}</h5>
 
-        <div class="descr" v-html="selectedMarker.content"></div>
+        <div class="descr" v-html="selectedMarker.address"></div>
 
         <div class="row box-rating">
           <div class="col col-lg-5 col-stars">
@@ -173,10 +173,7 @@ export default {
       mapCenter: { id: null, position: { lat: 20.6712689, lng: -103.3923762, zoom: 12.3 } }, // Centro del mapa
 
       markers: [
-        { id: 1, position: { lat: 20.6407548, lng: -103.391109, zoom: 17.4 },   name: 'Óptica del Sur',   selected: false, content: `Av. Cruz del Sur #1234<br />Col. del Sur, C.P. 36690` },
-        { id: 2, position: { lat: 20.689778, lng: -103.3623479, zoom: 17.4 },   name: 'Óptica del centro',selected: false, content: `Av Guadalupe 1579, Chapalita Oriente,<br />45040 Zapopan, Jal.` },
-        { id: 3, position: { lat: 20.7217495, lng: -103.3931807, zoom: 17.4 },  name: 'Óptica del norte', selected: false, content: `Avenida Vallarta Eje Poniente 3959, Interior 22, La Gran Plaza, 45049 Zapopan, Jal.` },
-        { id: 4, position: { lat: 20.63164, lng: -103.3771829, zoom: 17.4 },    name: 'Óptica del oriente',selected: false, content: `Av Guadalupe 1579, Chapalita Oriente,<br />45040 Zapopan, Jal.` },
+        // { id: 1, position: { lat: 20.6407548, lng: -103.391109, zoom: 17.4 },   name: 'Óptica del Sur',   selected: false, content: `Av. Cruz del Sur #1234<br />Col. del Sur, C.P. 36690` },
       ],
 
       selectedMarker: {
@@ -185,6 +182,7 @@ export default {
         fecha: null,
         hora: null,
       },
+
       showNextBTN: false,
 
       gallery: [
@@ -193,6 +191,7 @@ export default {
         'public/images/pages/get-glasses/store-2.jpg',
         'public/images/pages/get-glasses/store-3.jpg',
       ],
+
       showModalGallery: false,
 
       // == Variables para datepicker y timepicker ==
@@ -235,6 +234,18 @@ export default {
   },
 
   methods: {
+    loadOpcticals() {
+      axios.get(tools.url("/api/admin/opticians")).then((response) => {
+        const opticals = response.data.data;
+        const firstOptical = opticals[0] ?? null
+        if (firstOptical) {
+          this.mapCenter = { id: null, position: { ...firstOptical.position, zoom: 12.3 } }
+        }
+        this.markers = opticals
+      }).catch((error) => {
+      });
+    },
+
     // Resetear marcador seleccionado
     resetMarkerInfo(deleteParent = false) {
       this.selectedMarker = {
@@ -290,6 +301,7 @@ export default {
   },
 
   mounted() {
+    this.loadOpcticals()
   },
 
   beforeMount(){

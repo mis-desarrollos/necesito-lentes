@@ -22,7 +22,10 @@ class AntireflectiveService
     public function createAntireflective(array $antireflectiveData)
     {
         $antireflective = $this->antireflectiveRepository->create($antireflectiveData);
-        $antireflective->package()->sync($antireflectiveData['package']);
+        $package = $antireflectiveData['package'] ?? null;
+        if ($package) {
+            $antireflective->package()->sync($antireflectiveData['package']);
+        }
         return $antireflective;
     }
 
@@ -44,7 +47,10 @@ class AntireflectiveService
     public function updateAntireflective($antireflective, $validatedData)
     {
         $antireflective->update($validatedData);
-        $antireflective->package()->sync($validatedData['package']);
+        $package = $validatedData['package'] ?? null;
+        if ($package) {
+            $antireflective->package()->sync($validatedData['package']);
+        }
         return $antireflective;
     }
 

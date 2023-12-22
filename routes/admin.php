@@ -152,14 +152,6 @@ Route::prefix('admin')->group(function () {
 		Route::post('/dropzone/framesImage/{frame}', [App\Http\Controllers\FrameController::class, 'uploadImage']);
 		Route::delete('/dropzone/framesImage/{frame}/image/{image}', [App\Http\Controllers\FrameController::class, 'deleteImage']);
 
-		//opticas
-		Route::get('/opticians', [App\Http\Controllers\OpticianController::class, 'index']);
-		Route::get('/opticians/{id}', [App\Http\Controllers\OpticianController::class, 'show']);
-		Route::post('/opticians', [App\Http\Controllers\OpticianController::class, 'store']);
-		Route::post('/opticians/{id}', [App\Http\Controllers\OpticianController::class, 'update']);
-		Route::delete('/opticians/{id}', [App\Http\Controllers\OpticianController::class, 'destroy']);
-		Route::delete('/opticians', [App\Http\Controllers\OpticianController::class, 'destroyMultiple']);
-
 		//examenes
 		Route::get('/exams', [App\Http\Controllers\ExamController::class, 'index']);
 		Route::get('/exams/{id}', [App\Http\Controllers\ExamController::class, 'show']);
@@ -192,4 +184,11 @@ Route::prefix('admin')->group(function () {
 		Route::post('/{id}', [App\Http\Controllers\PackageController::class, 'update']);
 	});
 	Route::resource('packages', App\Http\Controllers\PackageController::class)->except('update');
+	
+	// packages
+	Route::prefix('opticians')->group(function () {
+		Route::delete('/multiple', [App\Http\Controllers\OpticianController::class, 'destroyMultiple']);
+		Route::post('/{id}', [App\Http\Controllers\OpticianController::class, 'update']);
+	});
+	Route::resource('opticians', App\Http\Controllers\OpticianController::class)->except('update');
 });

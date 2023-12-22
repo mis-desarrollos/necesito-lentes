@@ -27,7 +27,7 @@ class CreateAntireflectiveRequest extends FormRequest
             'name' => ['required', 'string'],
             'description' => ['required', 'string'],
             'color' => ['nullable', 'string'],
-            'package' => ['required', 'integer']
+            'package' => ['nullable', 'integer']
         ];
     }
 }

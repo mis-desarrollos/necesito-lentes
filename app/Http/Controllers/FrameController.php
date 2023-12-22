@@ -42,7 +42,8 @@ class FrameController extends Controller
             $frame = $this->frameService->createFrame($validatedData);
             $images = $request->file('images');
             $this->imageHandler->handleImages($frame, $images);
-            $this->frameService->savePackage($frame, $validatedData['package']);
+            if (isset($validatedData['package']))
+                $this->frameService->savePackage($frame, $validatedData['package']);
             return $this->handleSuccessResponse($frame);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);

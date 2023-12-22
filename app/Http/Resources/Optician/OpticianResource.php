@@ -21,8 +21,10 @@ class OpticianResource extends JsonResource
             'phone' => $this->phone,
             'web' => $this->web,
             'address' => $this->address,
-            'lng' => $this->lng,
-            'lat' => $this->lat,
+            'position' => [
+                'lat' => $this->lat,
+                'lng' => $this->lng,
+            ],
             'instagram' => $this->instagram,
             'facebook' => $this->facebook,
             'twitter' => $this->twitter,

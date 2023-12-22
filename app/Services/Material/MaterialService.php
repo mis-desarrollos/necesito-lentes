@@ -22,7 +22,10 @@ class MaterialService
     public function createMaterial(array $materialData)
     {
         $material = $this->materialRepository->create($materialData);
-        $material->package()->sync($materialData['package']);
+        $package = $materialData['package'] ?? null;
+        if ($package) {
+            $material->package()->sync($materialData['package']);
+        }
         return $material;
     }
 
@@ -44,7 +47,10 @@ class MaterialService
     public function updateMaterial($material, $validatedData)
     {
         $material->update($validatedData);
-        $material->package()->sync($validatedData['package']);
+        $package = $validatedData['package'] ?? null;
+        if ($package) {
+            $material->package()->sync($validatedData['package']);
+        }
         return $material;
     }
 
