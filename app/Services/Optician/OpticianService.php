@@ -22,7 +22,6 @@ class OpticianService
     public function createOptician(array $opticianData)
     {
         $optician = $this->opticianRepository->create($opticianData);
-        $optician->package()->sync($opticianData['package']);
         return $optician;
     }
 
@@ -44,7 +43,6 @@ class OpticianService
     public function updateOptician($optician, $validatedData)
     {
         $optician->update($validatedData);
-        $optician->package()->sync($validatedData['package']);
         return $optician;
     }
 
@@ -65,7 +63,7 @@ class OpticianService
         }
     }
 
-    public function deleteMultipleOpticians(array $opticians)
+    public function deleteMultipleOpticians($opticians)
     {
         foreach ($opticians as $optician) {
             $optician->delete();

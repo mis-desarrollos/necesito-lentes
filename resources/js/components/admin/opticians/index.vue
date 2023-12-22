@@ -82,7 +82,7 @@
       getContent(){
         this.$parent.inPetition=true;
         axios.get(tools.url("/api/admin/opticians")).then((response)=>{
-            this.rows = response.data;
+            this.rows = response.data.data;
             jQuery('#table').bootstrapTable('removeAll');
             jQuery('#table').bootstrapTable('append',this.rows);
             this.$parent.inPetition=false;

@@ -24,7 +24,7 @@ class OpticianRepository
 
     public function findByIds(array $ids)
     {
-        return Optician::with('images')->whereIn('id', $ids)->get();
+        return Optician::whereIn('id', $ids)->get();
     }
 
     public function delete($id)

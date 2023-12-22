@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Optician extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'web',
+        'address',
+        'lng',
+        'lat',
+        'instagram',
+        'facebook',
+        'twitter',
+    ];
 }

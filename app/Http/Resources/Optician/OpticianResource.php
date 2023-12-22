@@ -14,6 +14,18 @@ class OpticianResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'web' => $this->web,
+            'address' => $this->address,
+            'lng' => $this->lng,
+            'lat' => $this->lat,
+            'instagram' => $this->instagram,
+            'facebook' => $this->facebook,
+            'twitter' => $this->twitter,
+        ];
     }
 }
