@@ -28,4 +28,9 @@ class Package extends Model
     {
         return $this->morphedByMany(Frame::class, 'packageable');
     }
+
+    public function packageables()
+    {
+        return $this->hasMany(Packageable::class);
+    }
 }

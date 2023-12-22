@@ -182,6 +182,14 @@ Route::prefix('admin')->group(function () {
 	//armazones
 	Route::prefix('frames')->group(function () {
 		Route::delete('/multiple', [App\Http\Controllers\FrameController::class, 'destroyMultiple']);
+		Route::post('/{id}', [App\Http\Controllers\FrameController::class, 'update']);
 	});
-	Route::resource('frames', App\Http\Controllers\FrameController::class);
+	Route::resource('frames', App\Http\Controllers\FrameController::class)->except('update');
+
+	// packages
+	Route::prefix('packages')->group(function () {
+		Route::delete('/multiple', [App\Http\Controllers\PackageController::class, 'destroyMultiple']);
+		Route::post('/{id}', [App\Http\Controllers\PackageController::class, 'update']);
+	});
+	Route::resource('packages', App\Http\Controllers\PackageController::class)->except('update');
 });

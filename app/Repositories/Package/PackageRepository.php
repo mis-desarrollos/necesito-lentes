@@ -12,6 +12,11 @@ class PackageRepository
         return Package::paginate($perPage);
     }
 
+    public function findById($id)
+    {
+        return Package::find($id);
+    }
+
     public function create(array $packageData)
     {
         return Package::create($packageData);

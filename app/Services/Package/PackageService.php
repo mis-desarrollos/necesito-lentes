@@ -27,33 +27,30 @@ class PackageService
     {
         return $this->packageRepository->create($packageData);
     }
-    
-    public function saveFrames(Package $package, array $frames)
+
+    public function getPackageById($id)
     {
-        foreach ($frames as $frameId) {
-            $frame = Frame::find($frameId);
-            if($frame){
-                $package->frames()->save($frame);
-            }
-        }
-    }
-    public function saveAntireflectives(Package $package, array $antireflectives)
-    {
-        foreach ($antireflectives as $antireflectiveId) {
-            $antireflective = Antireflective::find($antireflectiveId);
-            if($antireflective){
-                $package->antireflectives()->save($antireflective);
-            }
-        }
+        return $this->packageRepository->findById($id);
     }
 
-    public function saveMaterials(Package $package, array $frames)
+    public function updatePackage($package, $validatedData)
     {
-        foreach ($frames as $frameId) {
-            $material = Material::find($frameId);
-            if($material){
-                $package->materials()->save($material);
-            }
-        }
+        $package->update($validatedData);
+        return $package;
+    }
+
+    public function saveFrames(Package $package, array $frameIds)
+    {
+        $package->frames()->sync($frameIds);
+    }
+
+    public function saveAntireflectives(Package $package, array $antireflectivesIds)
+    {
+        $package->antireflectives()->sync($antireflectivesIds);
+    }
+
+    public function saveMaterials(Package $package, array $materialsIds)
+    {
+        $package->materials()->sync($materialsIds);
     }
 }
