@@ -191,4 +191,6 @@ Route::prefix('admin')->group(function () {
 		Route::post('/{id}', [App\Http\Controllers\OpticianController::class, 'update']);
 	});
 	Route::resource('opticians', App\Http\Controllers\OpticianController::class)->except('update');
+	Route::post('/dropzone/opticians/{optician}', [App\Http\Controllers\OpticianController::class, 'uploadImage']);
+		Route::delete('/dropzone/opticians/{optician}/image/{image}', [App\Http\Controllers\OpticianController::class, 'deleteImage']);
 });

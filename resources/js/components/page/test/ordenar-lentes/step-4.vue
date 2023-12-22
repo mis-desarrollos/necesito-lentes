@@ -263,6 +263,7 @@ export default {
     // Abrir modal con info del marcador
     showMarkerModal(marker, index) {
       this.selectedMarker = marker;
+      this.gallery = marker.images?.map((img) => img.path)
       this.$refs['modal-marker'].show();
 
       setTimeout(()=> { // Mostrar galería despues de cargar

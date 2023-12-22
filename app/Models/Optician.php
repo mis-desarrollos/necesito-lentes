@@ -20,4 +20,9 @@ class Optician extends Model
         'facebook',
         'twitter',
     ];
+
+    public function images()
+    {
+        return $this->morphToMany(Image::class, 'imageable');
+    }
 }

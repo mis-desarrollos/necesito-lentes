@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Optician\OpticianRequest;
 use App\Http\Resources\Optician\OpticianDataCollection;
 use App\Http\Resources\Optician\OpticianResource;
+use App\Models\Image;
+use App\Models\Optician;
 use App\Models\User;
+use App\Services\Image\ImageHandler;
 use App\Services\Optician\OpticianService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -17,7 +20,8 @@ class OpticianController extends Controller
     const NOT_FOUND_MSG = 'Optician not found';
 
     public function __construct(
-        protected OpticianService $opticianService
+        protected OpticianService $opticianService,
+        protected ImageHandler $imageHandler
     ) {
     }
 
@@ -68,14 +72,13 @@ class OpticianController extends Controller
             if (!$optician) {
                 throw new ModelNotFoundException(self::NOT_FOUND_MSG);
             }
-            return $this->handleSuccessResponse($optician);
+            return $this->handleSuccessResponse($optician->load('images'));
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_NOT_FOUND);
         } catch (\Throwable $e) {
             return $this->handleErrorResponse($e, 'Error finding Optician');
         }
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -106,6 +109,29 @@ class OpticianController extends Controller
         }
     }
 
+    public function uploadImage(Request $request, Optician $optician)
+    {
+        try {
+            if ($request->has('image')) {
+                $image = $request->file('image');
+                $this->imageHandler->handleImages($optician, [$image]);
+            }
+            return response()->json('Imagen cargada!');
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error subiendo la imagen');
+        }
+    }
+
+    public function deleteImage(Optician $optician, Image $image)
+    {
+        try {
+            $this->imageHandler->handleDeleteImages($optician, collect()->push($image));
+            return response()->json(array("message" => 'Imagen eliminada'));
+        } catch (\Exception $e) {
+            return $this->handleErrorResponse($e, 'Error eliminando la imagen');
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -115,8 +141,8 @@ class OpticianController extends Controller
     public function destroy($id)
     {
         try {
-            $frame = $this->opticianService->deleteOptician($id);
-            if (!$frame) {
+            $optician = $this->opticianService->deleteOptician($id);
+            if (!$optician) {
                 throw new ModelNotFoundException(self::NOT_FOUND_MSG);
             }
             return response()->json(['message' => 'Optician deleted successfully'], JsonResponse::HTTP_OK);
@@ -137,7 +163,7 @@ class OpticianController extends Controller
                 throw new ModelNotFoundException(self::NOT_FOUND_MSG);
             }
             $this->opticianService->deleteMultipleOpticians($opticians);
-            
+
             return response()->json(
                 ['message' => 'opticians and associated images deleted successfully'],
                 JsonResponse::HTTP_OK

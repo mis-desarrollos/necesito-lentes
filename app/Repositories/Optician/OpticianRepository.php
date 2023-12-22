@@ -9,7 +9,7 @@ class OpticianRepository
 {
     public function getAllPaginated($perPage = 15): LengthAwarePaginator
     {
-        return Optician::paginate($perPage);
+        return Optician::with('images')->paginate($perPage);
     }
 
     public function create(array $opticianData)

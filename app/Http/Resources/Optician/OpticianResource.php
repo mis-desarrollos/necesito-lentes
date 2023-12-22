@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Optician;
 
+use App\Http\Resources\Image\ImageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OpticianResource extends JsonResource
@@ -25,9 +26,14 @@ class OpticianResource extends JsonResource
                 'lat' => $this->lat,
                 'lng' => $this->lng,
             ],
+            'lat' => $this->lat,
+            'lng' => $this->lng,
             'instagram' => $this->instagram,
             'facebook' => $this->facebook,
             'twitter' => $this->twitter,
+            'images' => $this->whenLoaded('images', function () {
+                return ImageResource::collection($this->images);
+            }),
         ];
     }
 }
