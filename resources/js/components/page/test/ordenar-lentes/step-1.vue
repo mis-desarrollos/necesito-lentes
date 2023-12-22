@@ -7,9 +7,9 @@
 
       <div class="box-packages">
         <swiper class="swiper" :options="packsOptions">
-          <swiper-slide v-for="pkg in packages">
-            <div class="box-package bg-aqua" v-bind:class="{ active: $parent.form.plan == pkg.id }"
-              @click="handleSelectPackage(pkg)" :style="'background-color:' + pkg.color ?? '#00ffff'">
+          <swiper-slide v-for="pkg in packages" :key="pkg.id">
+            <div class="box-package" v-bind:class="{ active: $parent.form.plan == pkg.id }"
+              @click="handleSelectPackage(pkg)" :style="'background-color:' + pkg.color || '#00ffff'">
               <div class="box-name">
                 <h6>{{ pkg.name }}</h6>
               </div>
@@ -78,13 +78,11 @@ export default {
   },
   methods: {
     getPackages() {
-      axios.get(tools.url("/api/packages")).then((response) => {
+      axios.get(tools.url("/api/admin/packages")).then((response) => {
         this.packages = response.data.data;
-        console.log("🚀 ~ file: step-1.vue:130 ~ axios.get ~ response.data:", response.data)
         jQuery('#table').bootstrapTable('removeAll');
         jQuery('#table').bootstrapTable('append', this.rows);
       }).catch((error) => {
-        // console.log("🚀 ~ file: step-1.vue:153 ~ axios.get ~ error:", error)
       });
     },
 
