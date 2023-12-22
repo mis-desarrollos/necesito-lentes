@@ -64,6 +64,15 @@ export default {
             switchable: true,
           },
           {
+            field: 'package',
+            title: 'Package',
+            sortable: true,
+            switchable: true,
+            formatter: function (index, row) {
+              return row.package?.name
+            }
+          },
+          {
             field: 'images',
             title: 'Imágenes',
             formatter: function (value, row, index) {

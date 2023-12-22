@@ -42,6 +42,7 @@ class FrameController extends Controller
             $frame = $this->frameService->createFrame($validatedData);
             $images = $request->file('images');
             $this->imageHandler->handleImages($frame, $images);
+            $this->frameService->savePackage($frame, $validatedData['package']);
             return $this->handleSuccessResponse($frame);
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['message' => $e->getMessage()], JsonResponse::HTTP_BAD_REQUEST);
@@ -79,6 +80,7 @@ class FrameController extends Controller
             }
 
             $this->frameService->updateFrame($frame, $validatedData);
+            $this->frameService->savePackage($frame, $validatedData['package']);
 
             return $this->handleSuccessResponse($frame);
         } catch (ModelNotFoundException $e) {

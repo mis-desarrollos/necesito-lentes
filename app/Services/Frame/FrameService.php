@@ -28,6 +28,12 @@ class FrameService
         return $this->frameRepository->create($frameData);
     }
 
+    public function savePackage($frame, $packageId)
+    {
+        logger($packageId);
+        $frame->package()->sync($packageId);
+    }
+
     public function getFrameById($id)
     {
         return $this->frameRepository->findById($id);

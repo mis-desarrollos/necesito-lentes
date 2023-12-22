@@ -15,4 +15,9 @@ class Frame extends Model
     {
         return $this->morphToMany(Image::class, 'imageable');
     }
+
+    public function package()
+    {
+        return $this->morphToMany(Package::class, 'packageable', 'packageables');
+    }
 }

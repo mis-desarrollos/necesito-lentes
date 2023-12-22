@@ -29,7 +29,7 @@ class FrameRequest extends FormRequest
             'name' => 'required|string',
             'description' => 'required|string',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            // 'materials_id' => 'required|exists:materials,id',
+            'package' => ['required', 'integer']
         ];
     }
 

@@ -18,7 +18,8 @@
 					<div id="tabs">
 						<ul class="nav nav-tabs">
 							<li :class="active1"><a @click="setActive(1)" href="#1" data-toggle="tab">Información</a></li>
-							<li :class="active2" v-if="id"><a @click="setActive(2)" href="##2" data-toggle="tab">Imagenes</a>
+							<li :class="active2" v-if="id"><a @click="setActive(2)" href="##2"
+									data-toggle="tab">Imagenes</a>
 							</li>
 						</ul>
 						<div class="tab-content">
@@ -29,6 +30,14 @@
 
 									<text-form name="description" text="Descripcion"
 										:data.sync="row.description"></text-form>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Package:</label>
+										<div class="col-sm-7">
+											<v-select v-model="row.package" :options="packages" label="name" index="id"
+												required />
+										</div>
+									</div>
 
 									<div class="form-group">
 										<div class="col-sm-12">
@@ -53,7 +62,8 @@
 										<th>Eliminar</th>
 									</tr>
 									<tr v-for="(image, index) in row.images" :key="index">
-										<td><img :src="image.path" class="img-thumbnail" width="100" :alt="row.name+'-'+image.id"></td>
+										<td><img :src="image.path" class="img-thumbnail" width="100"
+												:alt="row.name + '-' + image.id"></td>
 
 										<td><button class="btn btn-danger" @click="deleteImage(image.id)"><i
 													class="fa fa-times"></i></button></td>
@@ -75,14 +85,13 @@ export default {
 			active: 1,
 			row: {
 				name: '',
-				images: []
+				images: [],
+				package: null
 			},
-
 			id: '',
 			check: false,
 			materials: [],
 			packages: [],
-
 			dropzoneOptions: {
 				url: tools.url('/api/admin/dropzone/framesImage/' + this.$route.params.id),
 				acceptedFiles: 'image/*',
@@ -91,6 +100,7 @@ export default {
 				withCredentials: false,
 				paramName: 'image',
 			},
+			packages: []
 		}
 	},
 	computed: {
@@ -110,8 +120,8 @@ export default {
 		getRow() {
 			this.$parent.inPetition = true;
 			axios.get(tools.url("/api/admin/frames/" + this.id)).then((response) => {
-
-				this.row = response.data?.data;
+				this.row = response.data.data;
+				this.row.package = response.data.data.package?.id
 				this.$parent.inPetition = false;
 
 			}).catch((error) => {
@@ -187,12 +197,22 @@ export default {
 				});
 			}, () => { });
 		},
+		getPackages() {
+			axios.get(tools.url("/api/admin/packages")).then((response) => {
+				this.packages = response.data?.data;
+				this.$parent.inPetition = false;
+			}).catch((error) => {
+				this.$parent.handleErrors(error);
+				this.$parent.inPetition = false;
+			});
+		},
 	},
 	mounted() {
 		if (this.$route.params.id) {
 			this.id = this.$route.params.id;
 			this.getRow();
 		}
+		this.getPackages()
 	}
 }
 </script>
@@ -215,5 +235,4 @@ th {
 table #tableproducts,
 th {
 	background-color: #dddddd;
-}
-</style>
+}</style>
