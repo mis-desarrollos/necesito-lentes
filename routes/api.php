@@ -15,16 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-//     $user = $request->user();
-//     $user->roles;
-//     return $user;
-// });
-Route::get('/user', function (Request $request) {
-    $user = User::find(1);
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+    $user = $request->user();
     $user->roles;
     return $user;
 });
+// Route::get('/user', function (Request $request) {
+//     $user = User::find(1);
+//     $user->roles;
+//     return $user;
+// });
 
 Route::prefix('materials')->group(function () {
     Route::delete('/multiple', [App\Http\Controllers\MaterialController::class, 'destroyMultiple']);
@@ -42,5 +42,11 @@ Route::prefix('packages')->group(function () {
     Route::delete('/multiple', [App\Http\Controllers\PackageController::class, 'destroyMultiple']);
 });
 Route::resource('packages', App\Http\Controllers\PackageController::class);
+
+// 
+Route::prefix('opticians')->group(function () {
+    Route::delete('/multiple', [App\Http\Controllers\OpticianController::class, 'destroyMultiple']);
+});
+Route::resource('opticians', App\Http\Controllers\OpticianController::class);
 
 Route::post('/newsletter', [App\Http\Controllers\NewsletterController::class, 'store']);

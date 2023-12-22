@@ -6,18 +6,18 @@
 
     <div class="box-map">
       <GmapMap
-        :center="mapCenter.position"
-        :zoom="mapCenter.position.zoom">
-        <GmapMarker
-          :key="'marker-'+mInx"
-          v-for="(m, mInx) in markers"
-          :position="m.position"
+        :center="mapCenter.position"
+        :zoom="mapCenter.position.zoom">
+        <GmapMarker
+          :key="'marker-'+mInx"
+          v-for="(m, mInx) in markers"
+          :position="m.position"
           :title="m.name"
-          :clickable="true"
-          :draggable="false"
+          :clickable="true"
+          :draggable="false"
           :icon="{ url: (m.selected) ? 'public/images/shared/map-icon-selected.svg' : 'public/images/shared/map-icon.svg' }"
           @click="showMarkerModal(m, mInx)"
-        />
+        />
       </GmapMap>
     </div>
 

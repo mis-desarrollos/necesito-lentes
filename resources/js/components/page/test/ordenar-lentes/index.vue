@@ -1,22 +1,22 @@
 <template lang="html">
   <b-form id="order-glasses-page" @submit="onSubmit">
 
-    <!-- Paso 1 -->
+    <!-- Paso 1: Package -->
     <Step1 v-if="step == 1"></Step1>
     <!--  -->
 
-    <!-- Paso 2 -->
+    <!-- Paso 2: Package components -->
     <Step2 v-if="step == 2"></Step2>
     <ModalMateriales :opts="materiales" v-if="showModalMateriales"></ModalMateriales>
     <ModalRecubrimientos :opts="recubrimientos" v-if="showModalRecubrimientos"></ModalRecubrimientos>
     <ModalArmazones :opts="armazones" v-if="showModalArmazones"></ModalArmazones>
     <!--  -->
 
-    <!-- Paso 3 -->
+    <!-- Paso 3: Resume -->
     <Step3 v-if="step == 3"></Step3>
     <!--  -->
 
-    <!-- Paso 4 -->
+    <!-- Paso 4: Map -->
     <Step4 v-if="step == 4"></Step4>
     <!--  -->
 
