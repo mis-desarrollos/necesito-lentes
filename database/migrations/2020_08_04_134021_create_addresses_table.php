@@ -14,20 +14,26 @@ class CreateAddressesTable extends Migration
     public function up()
     {
         Schema::create('addresses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('street')->nullable();
+            $table->id();
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
             $table->string('num_ext')->nullable();
             $table->string('num_int')->nullable();
             $table->string('neighborhood')->nullable();
             $table->string('zipcode')->nullable();
             $table->string('country')->default('MX');
-            $table->unsignedBigInteger('state_id')->nullable();
-            $table->unsignedBigInteger('town_id')->nullable();
-            $table->unsignedBigInteger('user_id');
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
+            $table->unsignedBigInteger('state_id');
+            $table->unsignedBigInteger('town_id');
+            $table->unsignedBigInteger('addressable_id');
+            $table->string('addressable_type');
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index('state_id');
+            $table->index('town_id');
+            $table->index(['latitude', 'longitude']);
         });
     }
 

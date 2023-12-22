@@ -22,16 +22,6 @@ class CreateOpticiansTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
-
-            $table->unsignedBigInteger('states_id')->nullable();
-            $table->unsignedBigInteger('towns_id')->nullable();
-            
-            $table->string('address')->nullable();
-            $table->float('lng')->nullable();
-            $table->float('lat')->nullable();
-           
-
-
             $table->timestamps();
         });
     }
