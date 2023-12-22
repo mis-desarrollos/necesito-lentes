@@ -14,12 +14,10 @@ class CreateStatesTable extends Migration
     public function up()
     {
         Schema::create('states', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
             $table->string('acronym');
-            $table->string('longitude');
-            $table->string('latitude');
-            $table->integer('zoom');
+            $table->timestamps();
         });
     }
 
